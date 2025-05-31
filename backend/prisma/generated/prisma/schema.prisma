@@ -1,0 +1,107 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "./generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model addresses {
+  id_alamat    String         @id @db.VarChar(50)
+  alamat       String         @db.VarChar(255)
+  latitude     Decimal        @db.Decimal(9, 6)
+  longitude    Decimal        @db.Decimal(9, 6)
+  id_kota      Int?
+  id_prov      Int?
+  created_at   DateTime?      @default(now()) @db.Timestamp(6)
+  updated_at   DateTime?      @default(now()) @db.Timestamp(6)
+  cities       cities?        @relation(fields: [id_kota], references: [id_kota], onDelete: NoAction, onUpdate: NoAction)
+  provinces    provinces?     @relation(fields: [id_prov], references: [id_prov], onDelete: NoAction, onUpdate: NoAction)
+  user_address user_address[]
+}
+
+model cities {
+  id_kota    Int         @id @default(autoincrement())
+  nama_kota  String      @db.VarChar(255)
+  id_prov    Int
+  created_at DateTime?   @default(now()) @db.Timestamp(6)
+  updated_at DateTime?   @default(now()) @db.Timestamp(6)
+  addresses  addresses[]
+  provinces  provinces   @relation(fields: [id_prov], references: [id_prov], onDelete: NoAction, onUpdate: NoAction)
+}
+
+model profession {
+  id_profesi          BigInt               @id @default(autoincrement())
+  profession          String               @db.VarChar(50)
+  created_at          DateTime?            @default(now()) @db.Timestamp(6)
+  updated_at          DateTime?            @default(now()) @db.Timestamp(6)
+  id_prof_cat         BigInt?
+  profession_category profession_category? @relation(fields: [id_prof_cat], references: [id_prof_cat], onDelete: NoAction, onUpdate: NoAction, map: "fk_prof_category")
+  profession_user     profession_user[]
+}
+
+model profession_user {
+  id_user    String     @db.VarChar(50)
+  id_profesi BigInt
+  profession profession @relation(fields: [id_profesi], references: [id_profesi], onDelete: NoAction, onUpdate: NoAction)
+  users      users      @relation(fields: [id_user], references: [id_user], onDelete: NoAction, onUpdate: NoAction)
+
+  @@id([id_user, id_profesi])
+}
+
+model provinces {
+  id_prov    Int         @id @default(autoincrement())
+  nama_prov  String      @db.VarChar(255)
+  created_at DateTime?   @default(now()) @db.Timestamptz(6)
+  updated_at DateTime?   @default(now()) @db.Timestamptz(6)
+  addresses  addresses[]
+  cities     cities[]
+}
+
+model user_address {
+  id_user   String    @db.VarChar(50)
+  id_alamat String    @db.VarChar(50)
+  addresses addresses @relation(fields: [id_alamat], references: [id_alamat], onDelete: NoAction, onUpdate: NoAction)
+  users     users     @relation(fields: [id_user], references: [id_user], onDelete: NoAction, onUpdate: NoAction)
+
+  @@id([id_user, id_alamat])
+}
+
+model users {
+  id_user         String            @id @db.VarChar(50)
+  username        String?           @unique @db.VarChar(50)
+  nama            String?           @db.VarChar(100)
+  email           String            @unique @db.VarChar(255)
+  sandi           String            @db.VarChar(25)
+  gender          gender_enum?
+  birth_date      DateTime?         @db.Date
+  foto            Bytes?
+  bio             String?           @db.VarChar(255)
+  status_user     status_user_enum?
+  created_at      DateTime?         @default(now()) @db.Timestamp(6)
+  updated_at      DateTime?         @default(now()) @db.Timestamp(6)
+  profession_user profession_user[]
+  user_address    user_address[]
+}
+
+model profession_category {
+  id_prof_cat         BigInt       @id @default(autoincrement())
+  profession_category String?      @db.VarChar(100)
+  created_at          DateTime?    @default(now()) @db.Timestamp(6)
+  updated_at          DateTime?    @default(now()) @db.Timestamp(6)
+  profession          profession[]
+}
+
+enum gender_enum {
+  Laki_laki @map("Laki-laki")
+  Perempuan
+  Lainnya
+}
+
+enum status_user_enum {
+  Active
+  Deactive
+  Suspend
+}
