@@ -26,20 +26,19 @@ model cities {
   id_kota    Int         @id @default(autoincrement())
   nama_kota  String      @db.VarChar(255)
   id_prov    Int
-  created_at DateTime?   @default(now()) @db.Timestamp(6)
-  updated_at DateTime?   @default(now()) @db.Timestamp(6)
+  created_at DateTime?   @default(now()) @db.Timestamptz(6)
+  updated_at DateTime?   @default(now()) @db.Timestamptz(6)
   addresses  addresses[]
   provinces  provinces   @relation(fields: [id_prov], references: [id_prov], onDelete: NoAction, onUpdate: NoAction)
 }
 
 model profession {
-  id_profesi          BigInt               @id @default(autoincrement())
-  profession          String               @db.VarChar(50)
-  created_at          DateTime?            @default(now()) @db.Timestamp(6)
-  updated_at          DateTime?            @default(now()) @db.Timestamp(6)
-  id_prof_cat         BigInt?
-  profession_category profession_category? @relation(fields: [id_prof_cat], references: [id_prof_cat], onDelete: NoAction, onUpdate: NoAction, map: "fk_prof_category")
-  profession_user     profession_user[]
+  id_profesi        BigInt              @id @default(autoincrement())
+  profession        String              @db.VarChar(50)
+  created_at        DateTime?           @default(now()) @db.Timestamp(6)
+  updated_at        DateTime?           @default(now()) @db.Timestamp(6)
+  profession_detail profession_detail[]
+  profession_user   profession_user[]
 }
 
 model profession_user {
@@ -87,11 +86,20 @@ model users {
 }
 
 model profession_category {
-  id_prof_cat         BigInt       @id @default(autoincrement())
-  profession_category String?      @db.VarChar(100)
-  created_at          DateTime?    @default(now()) @db.Timestamp(6)
-  updated_at          DateTime?    @default(now()) @db.Timestamp(6)
-  profession          profession[]
+  id_prof_cat         BigInt              @id @default(autoincrement())
+  profession_category String?             @db.VarChar(100)
+  created_at          DateTime?           @default(now()) @db.Timestamptz(6)
+  updated_at          DateTime?           @default(now()) @db.Timestamptz(6)
+  profession_detail   profession_detail[]
+}
+
+model profession_detail {
+  id_profesi          BigInt
+  id_prof_cat         BigInt
+  profession_category profession_category @relation(fields: [id_prof_cat], references: [id_prof_cat], onDelete: NoAction, onUpdate: NoAction)
+  profession          profession          @relation(fields: [id_profesi], references: [id_profesi], onDelete: NoAction, onUpdate: NoAction)
+
+  @@id([id_profesi, id_prof_cat])
 }
 
 enum gender_enum {

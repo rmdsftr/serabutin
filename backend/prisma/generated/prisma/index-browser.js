@@ -143,8 +143,7 @@ exports.Prisma.ProfessionScalarFieldEnum = {
   id_profesi: 'id_profesi',
   profession: 'profession',
   created_at: 'created_at',
-  updated_at: 'updated_at',
-  id_prof_cat: 'id_prof_cat'
+  updated_at: 'updated_at'
 };
 
 exports.Prisma.Profession_userScalarFieldEnum = {
@@ -186,6 +185,11 @@ exports.Prisma.Profession_categoryScalarFieldEnum = {
   updated_at: 'updated_at'
 };
 
+exports.Prisma.Profession_detailScalarFieldEnum = {
+  id_profesi: 'id_profesi',
+  id_prof_cat: 'id_prof_cat'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -220,7 +224,8 @@ exports.Prisma.ModelName = {
   provinces: 'provinces',
   user_address: 'user_address',
   users: 'users',
-  profession_category: 'profession_category'
+  profession_category: 'profession_category',
+  profession_detail: 'profession_detail'
 };
 
 /**

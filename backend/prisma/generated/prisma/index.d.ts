@@ -53,6 +53,11 @@ export type users = $Result.DefaultSelection<Prisma.$usersPayload>
  * 
  */
 export type profession_category = $Result.DefaultSelection<Prisma.$profession_categoryPayload>
+/**
+ * Model profession_detail
+ * 
+ */
+export type profession_detail = $Result.DefaultSelection<Prisma.$profession_detailPayload>
 
 /**
  * Enums
@@ -289,6 +294,16 @@ export class PrismaClient<
     * ```
     */
   get profession_category(): Prisma.profession_categoryDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.profession_detail`: Exposes CRUD operations for the **profession_detail** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Profession_details
+    * const profession_details = await prisma.profession_detail.findMany()
+    * ```
+    */
+  get profession_detail(): Prisma.profession_detailDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -736,7 +751,8 @@ export namespace Prisma {
     provinces: 'provinces',
     user_address: 'user_address',
     users: 'users',
-    profession_category: 'profession_category'
+    profession_category: 'profession_category',
+    profession_detail: 'profession_detail'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -755,7 +771,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "addresses" | "cities" | "profession" | "profession_user" | "provinces" | "user_address" | "users" | "profession_category"
+      modelProps: "addresses" | "cities" | "profession" | "profession_user" | "provinces" | "user_address" | "users" | "profession_category" | "profession_detail"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -1351,6 +1367,80 @@ export namespace Prisma {
           }
         }
       }
+      profession_detail: {
+        payload: Prisma.$profession_detailPayload<ExtArgs>
+        fields: Prisma.profession_detailFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.profession_detailFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$profession_detailPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.profession_detailFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$profession_detailPayload>
+          }
+          findFirst: {
+            args: Prisma.profession_detailFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$profession_detailPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.profession_detailFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$profession_detailPayload>
+          }
+          findMany: {
+            args: Prisma.profession_detailFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$profession_detailPayload>[]
+          }
+          create: {
+            args: Prisma.profession_detailCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$profession_detailPayload>
+          }
+          createMany: {
+            args: Prisma.profession_detailCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.profession_detailCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$profession_detailPayload>[]
+          }
+          delete: {
+            args: Prisma.profession_detailDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$profession_detailPayload>
+          }
+          update: {
+            args: Prisma.profession_detailUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$profession_detailPayload>
+          }
+          deleteMany: {
+            args: Prisma.profession_detailDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.profession_detailUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.profession_detailUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$profession_detailPayload>[]
+          }
+          upsert: {
+            args: Prisma.profession_detailUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$profession_detailPayload>
+          }
+          aggregate: {
+            args: Prisma.Profession_detailAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateProfession_detail>
+          }
+          groupBy: {
+            args: Prisma.profession_detailGroupByArgs<ExtArgs>
+            result: $Utils.Optional<Profession_detailGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.profession_detailCountArgs<ExtArgs>
+            result: $Utils.Optional<Profession_detailCountAggregateOutputType> | number
+          }
+        }
+      }
     }
   } & {
     other: {
@@ -1443,6 +1533,7 @@ export namespace Prisma {
     user_address?: user_addressOmit
     users?: usersOmit
     profession_category?: profession_categoryOmit
+    profession_detail?: profession_detailOmit
   }
 
   /* Types for Logging */
@@ -1599,10 +1690,12 @@ export namespace Prisma {
    */
 
   export type ProfessionCountOutputType = {
+    profession_detail: number
     profession_user: number
   }
 
   export type ProfessionCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    profession_detail?: boolean | ProfessionCountOutputTypeCountProfession_detailArgs
     profession_user?: boolean | ProfessionCountOutputTypeCountProfession_userArgs
   }
 
@@ -1615,6 +1708,13 @@ export namespace Prisma {
      * Select specific fields to fetch from the ProfessionCountOutputType
      */
     select?: ProfessionCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * ProfessionCountOutputType without action
+   */
+  export type ProfessionCountOutputTypeCountProfession_detailArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: profession_detailWhereInput
   }
 
   /**
@@ -1710,11 +1810,11 @@ export namespace Prisma {
    */
 
   export type Profession_categoryCountOutputType = {
-    profession: number
+    profession_detail: number
   }
 
   export type Profession_categoryCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    profession?: boolean | Profession_categoryCountOutputTypeCountProfessionArgs
+    profession_detail?: boolean | Profession_categoryCountOutputTypeCountProfession_detailArgs
   }
 
   // Custom InputTypes
@@ -1731,8 +1831,8 @@ export namespace Prisma {
   /**
    * Profession_categoryCountOutputType without action
    */
-  export type Profession_categoryCountOutputTypeCountProfessionArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: professionWhereInput
+  export type Profession_categoryCountOutputTypeCountProfession_detailArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: profession_detailWhereInput
   }
 
 
@@ -4099,12 +4199,10 @@ export namespace Prisma {
 
   export type ProfessionAvgAggregateOutputType = {
     id_profesi: number | null
-    id_prof_cat: number | null
   }
 
   export type ProfessionSumAggregateOutputType = {
     id_profesi: bigint | null
-    id_prof_cat: bigint | null
   }
 
   export type ProfessionMinAggregateOutputType = {
@@ -4112,7 +4210,6 @@ export namespace Prisma {
     profession: string | null
     created_at: Date | null
     updated_at: Date | null
-    id_prof_cat: bigint | null
   }
 
   export type ProfessionMaxAggregateOutputType = {
@@ -4120,7 +4217,6 @@ export namespace Prisma {
     profession: string | null
     created_at: Date | null
     updated_at: Date | null
-    id_prof_cat: bigint | null
   }
 
   export type ProfessionCountAggregateOutputType = {
@@ -4128,19 +4224,16 @@ export namespace Prisma {
     profession: number
     created_at: number
     updated_at: number
-    id_prof_cat: number
     _all: number
   }
 
 
   export type ProfessionAvgAggregateInputType = {
     id_profesi?: true
-    id_prof_cat?: true
   }
 
   export type ProfessionSumAggregateInputType = {
     id_profesi?: true
-    id_prof_cat?: true
   }
 
   export type ProfessionMinAggregateInputType = {
@@ -4148,7 +4241,6 @@ export namespace Prisma {
     profession?: true
     created_at?: true
     updated_at?: true
-    id_prof_cat?: true
   }
 
   export type ProfessionMaxAggregateInputType = {
@@ -4156,7 +4248,6 @@ export namespace Prisma {
     profession?: true
     created_at?: true
     updated_at?: true
-    id_prof_cat?: true
   }
 
   export type ProfessionCountAggregateInputType = {
@@ -4164,7 +4255,6 @@ export namespace Prisma {
     profession?: true
     created_at?: true
     updated_at?: true
-    id_prof_cat?: true
     _all?: true
   }
 
@@ -4259,7 +4349,6 @@ export namespace Prisma {
     profession: string
     created_at: Date | null
     updated_at: Date | null
-    id_prof_cat: bigint | null
     _count: ProfessionCountAggregateOutputType | null
     _avg: ProfessionAvgAggregateOutputType | null
     _sum: ProfessionSumAggregateOutputType | null
@@ -4286,8 +4375,7 @@ export namespace Prisma {
     profession?: boolean
     created_at?: boolean
     updated_at?: boolean
-    id_prof_cat?: boolean
-    profession_category?: boolean | profession$profession_categoryArgs<ExtArgs>
+    profession_detail?: boolean | profession$profession_detailArgs<ExtArgs>
     profession_user?: boolean | profession$profession_userArgs<ExtArgs>
     _count?: boolean | ProfessionCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["profession"]>
@@ -4297,8 +4385,6 @@ export namespace Prisma {
     profession?: boolean
     created_at?: boolean
     updated_at?: boolean
-    id_prof_cat?: boolean
-    profession_category?: boolean | profession$profession_categoryArgs<ExtArgs>
   }, ExtArgs["result"]["profession"]>
 
   export type professionSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -4306,8 +4392,6 @@ export namespace Prisma {
     profession?: boolean
     created_at?: boolean
     updated_at?: boolean
-    id_prof_cat?: boolean
-    profession_category?: boolean | profession$profession_categoryArgs<ExtArgs>
   }, ExtArgs["result"]["profession"]>
 
   export type professionSelectScalar = {
@@ -4315,26 +4399,21 @@ export namespace Prisma {
     profession?: boolean
     created_at?: boolean
     updated_at?: boolean
-    id_prof_cat?: boolean
   }
 
-  export type professionOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id_profesi" | "profession" | "created_at" | "updated_at" | "id_prof_cat", ExtArgs["result"]["profession"]>
+  export type professionOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id_profesi" | "profession" | "created_at" | "updated_at", ExtArgs["result"]["profession"]>
   export type professionInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    profession_category?: boolean | profession$profession_categoryArgs<ExtArgs>
+    profession_detail?: boolean | profession$profession_detailArgs<ExtArgs>
     profession_user?: boolean | profession$profession_userArgs<ExtArgs>
     _count?: boolean | ProfessionCountOutputTypeDefaultArgs<ExtArgs>
   }
-  export type professionIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    profession_category?: boolean | profession$profession_categoryArgs<ExtArgs>
-  }
-  export type professionIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    profession_category?: boolean | profession$profession_categoryArgs<ExtArgs>
-  }
+  export type professionIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+  export type professionIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
 
   export type $professionPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "profession"
     objects: {
-      profession_category: Prisma.$profession_categoryPayload<ExtArgs> | null
+      profession_detail: Prisma.$profession_detailPayload<ExtArgs>[]
       profession_user: Prisma.$profession_userPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
@@ -4342,7 +4421,6 @@ export namespace Prisma {
       profession: string
       created_at: Date | null
       updated_at: Date | null
-      id_prof_cat: bigint | null
     }, ExtArgs["result"]["profession"]>
     composites: {}
   }
@@ -4737,7 +4815,7 @@ export namespace Prisma {
    */
   export interface Prisma__professionClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    profession_category<T extends profession$profession_categoryArgs<ExtArgs> = {}>(args?: Subset<T, profession$profession_categoryArgs<ExtArgs>>): Prisma__profession_categoryClient<$Result.GetResult<Prisma.$profession_categoryPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    profession_detail<T extends profession$profession_detailArgs<ExtArgs> = {}>(args?: Subset<T, profession$profession_detailArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$profession_detailPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     profession_user<T extends profession$profession_userArgs<ExtArgs> = {}>(args?: Subset<T, profession$profession_userArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$profession_userPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -4772,7 +4850,6 @@ export namespace Prisma {
     readonly profession: FieldRef<"profession", 'String'>
     readonly created_at: FieldRef<"profession", 'DateTime'>
     readonly updated_at: FieldRef<"profession", 'DateTime'>
-    readonly id_prof_cat: FieldRef<"profession", 'BigInt'>
   }
     
 
@@ -5022,10 +5099,6 @@ export namespace Prisma {
      */
     data: professionCreateManyInput | professionCreateManyInput[]
     skipDuplicates?: boolean
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: professionIncludeCreateManyAndReturn<ExtArgs> | null
   }
 
   /**
@@ -5096,10 +5169,6 @@ export namespace Prisma {
      * Limit how many professions to update.
      */
     limit?: number
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: professionIncludeUpdateManyAndReturn<ExtArgs> | null
   }
 
   /**
@@ -5169,22 +5238,27 @@ export namespace Prisma {
   }
 
   /**
-   * profession.profession_category
+   * profession.profession_detail
    */
-  export type profession$profession_categoryArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type profession$profession_detailArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the profession_category
+     * Select specific fields to fetch from the profession_detail
      */
-    select?: profession_categorySelect<ExtArgs> | null
+    select?: profession_detailSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the profession_category
+     * Omit specific fields from the profession_detail
      */
-    omit?: profession_categoryOmit<ExtArgs> | null
+    omit?: profession_detailOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: profession_categoryInclude<ExtArgs> | null
-    where?: profession_categoryWhereInput
+    include?: profession_detailInclude<ExtArgs> | null
+    where?: profession_detailWhereInput
+    orderBy?: profession_detailOrderByWithRelationInput | profession_detailOrderByWithRelationInput[]
+    cursor?: profession_detailWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: Profession_detailScalarFieldEnum | Profession_detailScalarFieldEnum[]
   }
 
   /**
@@ -9816,7 +9890,7 @@ export namespace Prisma {
     profession_category?: boolean
     created_at?: boolean
     updated_at?: boolean
-    profession?: boolean | profession_category$professionArgs<ExtArgs>
+    profession_detail?: boolean | profession_category$profession_detailArgs<ExtArgs>
     _count?: boolean | Profession_categoryCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["profession_category"]>
 
@@ -9843,7 +9917,7 @@ export namespace Prisma {
 
   export type profession_categoryOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id_prof_cat" | "profession_category" | "created_at" | "updated_at", ExtArgs["result"]["profession_category"]>
   export type profession_categoryInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    profession?: boolean | profession_category$professionArgs<ExtArgs>
+    profession_detail?: boolean | profession_category$profession_detailArgs<ExtArgs>
     _count?: boolean | Profession_categoryCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type profession_categoryIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
@@ -9852,7 +9926,7 @@ export namespace Prisma {
   export type $profession_categoryPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "profession_category"
     objects: {
-      profession: Prisma.$professionPayload<ExtArgs>[]
+      profession_detail: Prisma.$profession_detailPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id_prof_cat: bigint
@@ -10253,7 +10327,7 @@ export namespace Prisma {
    */
   export interface Prisma__profession_categoryClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    profession<T extends profession_category$professionArgs<ExtArgs> = {}>(args?: Subset<T, profession_category$professionArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$professionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    profession_detail<T extends profession_category$profession_detailArgs<ExtArgs> = {}>(args?: Subset<T, profession_category$profession_detailArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$profession_detailPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -10675,27 +10749,27 @@ export namespace Prisma {
   }
 
   /**
-   * profession_category.profession
+   * profession_category.profession_detail
    */
-  export type profession_category$professionArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type profession_category$profession_detailArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the profession
+     * Select specific fields to fetch from the profession_detail
      */
-    select?: professionSelect<ExtArgs> | null
+    select?: profession_detailSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the profession
+     * Omit specific fields from the profession_detail
      */
-    omit?: professionOmit<ExtArgs> | null
+    omit?: profession_detailOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: professionInclude<ExtArgs> | null
-    where?: professionWhereInput
-    orderBy?: professionOrderByWithRelationInput | professionOrderByWithRelationInput[]
-    cursor?: professionWhereUniqueInput
+    include?: profession_detailInclude<ExtArgs> | null
+    where?: profession_detailWhereInput
+    orderBy?: profession_detailOrderByWithRelationInput | profession_detailOrderByWithRelationInput[]
+    cursor?: profession_detailWhereUniqueInput
     take?: number
     skip?: number
-    distinct?: ProfessionScalarFieldEnum | ProfessionScalarFieldEnum[]
+    distinct?: Profession_detailScalarFieldEnum | Profession_detailScalarFieldEnum[]
   }
 
   /**
@@ -10714,6 +10788,1071 @@ export namespace Prisma {
      * Choose, which related nodes to fetch as well
      */
     include?: profession_categoryInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model profession_detail
+   */
+
+  export type AggregateProfession_detail = {
+    _count: Profession_detailCountAggregateOutputType | null
+    _avg: Profession_detailAvgAggregateOutputType | null
+    _sum: Profession_detailSumAggregateOutputType | null
+    _min: Profession_detailMinAggregateOutputType | null
+    _max: Profession_detailMaxAggregateOutputType | null
+  }
+
+  export type Profession_detailAvgAggregateOutputType = {
+    id_profesi: number | null
+    id_prof_cat: number | null
+  }
+
+  export type Profession_detailSumAggregateOutputType = {
+    id_profesi: bigint | null
+    id_prof_cat: bigint | null
+  }
+
+  export type Profession_detailMinAggregateOutputType = {
+    id_profesi: bigint | null
+    id_prof_cat: bigint | null
+  }
+
+  export type Profession_detailMaxAggregateOutputType = {
+    id_profesi: bigint | null
+    id_prof_cat: bigint | null
+  }
+
+  export type Profession_detailCountAggregateOutputType = {
+    id_profesi: number
+    id_prof_cat: number
+    _all: number
+  }
+
+
+  export type Profession_detailAvgAggregateInputType = {
+    id_profesi?: true
+    id_prof_cat?: true
+  }
+
+  export type Profession_detailSumAggregateInputType = {
+    id_profesi?: true
+    id_prof_cat?: true
+  }
+
+  export type Profession_detailMinAggregateInputType = {
+    id_profesi?: true
+    id_prof_cat?: true
+  }
+
+  export type Profession_detailMaxAggregateInputType = {
+    id_profesi?: true
+    id_prof_cat?: true
+  }
+
+  export type Profession_detailCountAggregateInputType = {
+    id_profesi?: true
+    id_prof_cat?: true
+    _all?: true
+  }
+
+  export type Profession_detailAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which profession_detail to aggregate.
+     */
+    where?: profession_detailWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of profession_details to fetch.
+     */
+    orderBy?: profession_detailOrderByWithRelationInput | profession_detailOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: profession_detailWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` profession_details from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` profession_details.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned profession_details
+    **/
+    _count?: true | Profession_detailCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: Profession_detailAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: Profession_detailSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: Profession_detailMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: Profession_detailMaxAggregateInputType
+  }
+
+  export type GetProfession_detailAggregateType<T extends Profession_detailAggregateArgs> = {
+        [P in keyof T & keyof AggregateProfession_detail]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateProfession_detail[P]>
+      : GetScalarType<T[P], AggregateProfession_detail[P]>
+  }
+
+
+
+
+  export type profession_detailGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: profession_detailWhereInput
+    orderBy?: profession_detailOrderByWithAggregationInput | profession_detailOrderByWithAggregationInput[]
+    by: Profession_detailScalarFieldEnum[] | Profession_detailScalarFieldEnum
+    having?: profession_detailScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: Profession_detailCountAggregateInputType | true
+    _avg?: Profession_detailAvgAggregateInputType
+    _sum?: Profession_detailSumAggregateInputType
+    _min?: Profession_detailMinAggregateInputType
+    _max?: Profession_detailMaxAggregateInputType
+  }
+
+  export type Profession_detailGroupByOutputType = {
+    id_profesi: bigint
+    id_prof_cat: bigint
+    _count: Profession_detailCountAggregateOutputType | null
+    _avg: Profession_detailAvgAggregateOutputType | null
+    _sum: Profession_detailSumAggregateOutputType | null
+    _min: Profession_detailMinAggregateOutputType | null
+    _max: Profession_detailMaxAggregateOutputType | null
+  }
+
+  type GetProfession_detailGroupByPayload<T extends profession_detailGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<Profession_detailGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof Profession_detailGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], Profession_detailGroupByOutputType[P]>
+            : GetScalarType<T[P], Profession_detailGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type profession_detailSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id_profesi?: boolean
+    id_prof_cat?: boolean
+    profession_category?: boolean | profession_categoryDefaultArgs<ExtArgs>
+    profession?: boolean | professionDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["profession_detail"]>
+
+  export type profession_detailSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id_profesi?: boolean
+    id_prof_cat?: boolean
+    profession_category?: boolean | profession_categoryDefaultArgs<ExtArgs>
+    profession?: boolean | professionDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["profession_detail"]>
+
+  export type profession_detailSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id_profesi?: boolean
+    id_prof_cat?: boolean
+    profession_category?: boolean | profession_categoryDefaultArgs<ExtArgs>
+    profession?: boolean | professionDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["profession_detail"]>
+
+  export type profession_detailSelectScalar = {
+    id_profesi?: boolean
+    id_prof_cat?: boolean
+  }
+
+  export type profession_detailOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id_profesi" | "id_prof_cat", ExtArgs["result"]["profession_detail"]>
+  export type profession_detailInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    profession_category?: boolean | profession_categoryDefaultArgs<ExtArgs>
+    profession?: boolean | professionDefaultArgs<ExtArgs>
+  }
+  export type profession_detailIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    profession_category?: boolean | profession_categoryDefaultArgs<ExtArgs>
+    profession?: boolean | professionDefaultArgs<ExtArgs>
+  }
+  export type profession_detailIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    profession_category?: boolean | profession_categoryDefaultArgs<ExtArgs>
+    profession?: boolean | professionDefaultArgs<ExtArgs>
+  }
+
+  export type $profession_detailPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "profession_detail"
+    objects: {
+      profession_category: Prisma.$profession_categoryPayload<ExtArgs>
+      profession: Prisma.$professionPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id_profesi: bigint
+      id_prof_cat: bigint
+    }, ExtArgs["result"]["profession_detail"]>
+    composites: {}
+  }
+
+  type profession_detailGetPayload<S extends boolean | null | undefined | profession_detailDefaultArgs> = $Result.GetResult<Prisma.$profession_detailPayload, S>
+
+  type profession_detailCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<profession_detailFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: Profession_detailCountAggregateInputType | true
+    }
+
+  export interface profession_detailDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['profession_detail'], meta: { name: 'profession_detail' } }
+    /**
+     * Find zero or one Profession_detail that matches the filter.
+     * @param {profession_detailFindUniqueArgs} args - Arguments to find a Profession_detail
+     * @example
+     * // Get one Profession_detail
+     * const profession_detail = await prisma.profession_detail.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends profession_detailFindUniqueArgs>(args: SelectSubset<T, profession_detailFindUniqueArgs<ExtArgs>>): Prisma__profession_detailClient<$Result.GetResult<Prisma.$profession_detailPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Profession_detail that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {profession_detailFindUniqueOrThrowArgs} args - Arguments to find a Profession_detail
+     * @example
+     * // Get one Profession_detail
+     * const profession_detail = await prisma.profession_detail.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends profession_detailFindUniqueOrThrowArgs>(args: SelectSubset<T, profession_detailFindUniqueOrThrowArgs<ExtArgs>>): Prisma__profession_detailClient<$Result.GetResult<Prisma.$profession_detailPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Profession_detail that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {profession_detailFindFirstArgs} args - Arguments to find a Profession_detail
+     * @example
+     * // Get one Profession_detail
+     * const profession_detail = await prisma.profession_detail.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends profession_detailFindFirstArgs>(args?: SelectSubset<T, profession_detailFindFirstArgs<ExtArgs>>): Prisma__profession_detailClient<$Result.GetResult<Prisma.$profession_detailPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Profession_detail that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {profession_detailFindFirstOrThrowArgs} args - Arguments to find a Profession_detail
+     * @example
+     * // Get one Profession_detail
+     * const profession_detail = await prisma.profession_detail.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends profession_detailFindFirstOrThrowArgs>(args?: SelectSubset<T, profession_detailFindFirstOrThrowArgs<ExtArgs>>): Prisma__profession_detailClient<$Result.GetResult<Prisma.$profession_detailPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Profession_details that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {profession_detailFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Profession_details
+     * const profession_details = await prisma.profession_detail.findMany()
+     * 
+     * // Get first 10 Profession_details
+     * const profession_details = await prisma.profession_detail.findMany({ take: 10 })
+     * 
+     * // Only select the `id_profesi`
+     * const profession_detailWithId_profesiOnly = await prisma.profession_detail.findMany({ select: { id_profesi: true } })
+     * 
+     */
+    findMany<T extends profession_detailFindManyArgs>(args?: SelectSubset<T, profession_detailFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$profession_detailPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Profession_detail.
+     * @param {profession_detailCreateArgs} args - Arguments to create a Profession_detail.
+     * @example
+     * // Create one Profession_detail
+     * const Profession_detail = await prisma.profession_detail.create({
+     *   data: {
+     *     // ... data to create a Profession_detail
+     *   }
+     * })
+     * 
+     */
+    create<T extends profession_detailCreateArgs>(args: SelectSubset<T, profession_detailCreateArgs<ExtArgs>>): Prisma__profession_detailClient<$Result.GetResult<Prisma.$profession_detailPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Profession_details.
+     * @param {profession_detailCreateManyArgs} args - Arguments to create many Profession_details.
+     * @example
+     * // Create many Profession_details
+     * const profession_detail = await prisma.profession_detail.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends profession_detailCreateManyArgs>(args?: SelectSubset<T, profession_detailCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Profession_details and returns the data saved in the database.
+     * @param {profession_detailCreateManyAndReturnArgs} args - Arguments to create many Profession_details.
+     * @example
+     * // Create many Profession_details
+     * const profession_detail = await prisma.profession_detail.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Profession_details and only return the `id_profesi`
+     * const profession_detailWithId_profesiOnly = await prisma.profession_detail.createManyAndReturn({
+     *   select: { id_profesi: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends profession_detailCreateManyAndReturnArgs>(args?: SelectSubset<T, profession_detailCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$profession_detailPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a Profession_detail.
+     * @param {profession_detailDeleteArgs} args - Arguments to delete one Profession_detail.
+     * @example
+     * // Delete one Profession_detail
+     * const Profession_detail = await prisma.profession_detail.delete({
+     *   where: {
+     *     // ... filter to delete one Profession_detail
+     *   }
+     * })
+     * 
+     */
+    delete<T extends profession_detailDeleteArgs>(args: SelectSubset<T, profession_detailDeleteArgs<ExtArgs>>): Prisma__profession_detailClient<$Result.GetResult<Prisma.$profession_detailPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Profession_detail.
+     * @param {profession_detailUpdateArgs} args - Arguments to update one Profession_detail.
+     * @example
+     * // Update one Profession_detail
+     * const profession_detail = await prisma.profession_detail.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends profession_detailUpdateArgs>(args: SelectSubset<T, profession_detailUpdateArgs<ExtArgs>>): Prisma__profession_detailClient<$Result.GetResult<Prisma.$profession_detailPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Profession_details.
+     * @param {profession_detailDeleteManyArgs} args - Arguments to filter Profession_details to delete.
+     * @example
+     * // Delete a few Profession_details
+     * const { count } = await prisma.profession_detail.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends profession_detailDeleteManyArgs>(args?: SelectSubset<T, profession_detailDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Profession_details.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {profession_detailUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Profession_details
+     * const profession_detail = await prisma.profession_detail.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends profession_detailUpdateManyArgs>(args: SelectSubset<T, profession_detailUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Profession_details and returns the data updated in the database.
+     * @param {profession_detailUpdateManyAndReturnArgs} args - Arguments to update many Profession_details.
+     * @example
+     * // Update many Profession_details
+     * const profession_detail = await prisma.profession_detail.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Profession_details and only return the `id_profesi`
+     * const profession_detailWithId_profesiOnly = await prisma.profession_detail.updateManyAndReturn({
+     *   select: { id_profesi: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends profession_detailUpdateManyAndReturnArgs>(args: SelectSubset<T, profession_detailUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$profession_detailPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one Profession_detail.
+     * @param {profession_detailUpsertArgs} args - Arguments to update or create a Profession_detail.
+     * @example
+     * // Update or create a Profession_detail
+     * const profession_detail = await prisma.profession_detail.upsert({
+     *   create: {
+     *     // ... data to create a Profession_detail
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Profession_detail we want to update
+     *   }
+     * })
+     */
+    upsert<T extends profession_detailUpsertArgs>(args: SelectSubset<T, profession_detailUpsertArgs<ExtArgs>>): Prisma__profession_detailClient<$Result.GetResult<Prisma.$profession_detailPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Profession_details.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {profession_detailCountArgs} args - Arguments to filter Profession_details to count.
+     * @example
+     * // Count the number of Profession_details
+     * const count = await prisma.profession_detail.count({
+     *   where: {
+     *     // ... the filter for the Profession_details we want to count
+     *   }
+     * })
+    **/
+    count<T extends profession_detailCountArgs>(
+      args?: Subset<T, profession_detailCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], Profession_detailCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Profession_detail.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {Profession_detailAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends Profession_detailAggregateArgs>(args: Subset<T, Profession_detailAggregateArgs>): Prisma.PrismaPromise<GetProfession_detailAggregateType<T>>
+
+    /**
+     * Group by Profession_detail.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {profession_detailGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends profession_detailGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: profession_detailGroupByArgs['orderBy'] }
+        : { orderBy?: profession_detailGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, profession_detailGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetProfession_detailGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the profession_detail model
+   */
+  readonly fields: profession_detailFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for profession_detail.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__profession_detailClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    profession_category<T extends profession_categoryDefaultArgs<ExtArgs> = {}>(args?: Subset<T, profession_categoryDefaultArgs<ExtArgs>>): Prisma__profession_categoryClient<$Result.GetResult<Prisma.$profession_categoryPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    profession<T extends professionDefaultArgs<ExtArgs> = {}>(args?: Subset<T, professionDefaultArgs<ExtArgs>>): Prisma__professionClient<$Result.GetResult<Prisma.$professionPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the profession_detail model
+   */
+  interface profession_detailFieldRefs {
+    readonly id_profesi: FieldRef<"profession_detail", 'BigInt'>
+    readonly id_prof_cat: FieldRef<"profession_detail", 'BigInt'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * profession_detail findUnique
+   */
+  export type profession_detailFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the profession_detail
+     */
+    select?: profession_detailSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the profession_detail
+     */
+    omit?: profession_detailOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: profession_detailInclude<ExtArgs> | null
+    /**
+     * Filter, which profession_detail to fetch.
+     */
+    where: profession_detailWhereUniqueInput
+  }
+
+  /**
+   * profession_detail findUniqueOrThrow
+   */
+  export type profession_detailFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the profession_detail
+     */
+    select?: profession_detailSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the profession_detail
+     */
+    omit?: profession_detailOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: profession_detailInclude<ExtArgs> | null
+    /**
+     * Filter, which profession_detail to fetch.
+     */
+    where: profession_detailWhereUniqueInput
+  }
+
+  /**
+   * profession_detail findFirst
+   */
+  export type profession_detailFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the profession_detail
+     */
+    select?: profession_detailSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the profession_detail
+     */
+    omit?: profession_detailOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: profession_detailInclude<ExtArgs> | null
+    /**
+     * Filter, which profession_detail to fetch.
+     */
+    where?: profession_detailWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of profession_details to fetch.
+     */
+    orderBy?: profession_detailOrderByWithRelationInput | profession_detailOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for profession_details.
+     */
+    cursor?: profession_detailWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` profession_details from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` profession_details.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of profession_details.
+     */
+    distinct?: Profession_detailScalarFieldEnum | Profession_detailScalarFieldEnum[]
+  }
+
+  /**
+   * profession_detail findFirstOrThrow
+   */
+  export type profession_detailFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the profession_detail
+     */
+    select?: profession_detailSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the profession_detail
+     */
+    omit?: profession_detailOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: profession_detailInclude<ExtArgs> | null
+    /**
+     * Filter, which profession_detail to fetch.
+     */
+    where?: profession_detailWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of profession_details to fetch.
+     */
+    orderBy?: profession_detailOrderByWithRelationInput | profession_detailOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for profession_details.
+     */
+    cursor?: profession_detailWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` profession_details from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` profession_details.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of profession_details.
+     */
+    distinct?: Profession_detailScalarFieldEnum | Profession_detailScalarFieldEnum[]
+  }
+
+  /**
+   * profession_detail findMany
+   */
+  export type profession_detailFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the profession_detail
+     */
+    select?: profession_detailSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the profession_detail
+     */
+    omit?: profession_detailOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: profession_detailInclude<ExtArgs> | null
+    /**
+     * Filter, which profession_details to fetch.
+     */
+    where?: profession_detailWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of profession_details to fetch.
+     */
+    orderBy?: profession_detailOrderByWithRelationInput | profession_detailOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing profession_details.
+     */
+    cursor?: profession_detailWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` profession_details from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` profession_details.
+     */
+    skip?: number
+    distinct?: Profession_detailScalarFieldEnum | Profession_detailScalarFieldEnum[]
+  }
+
+  /**
+   * profession_detail create
+   */
+  export type profession_detailCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the profession_detail
+     */
+    select?: profession_detailSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the profession_detail
+     */
+    omit?: profession_detailOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: profession_detailInclude<ExtArgs> | null
+    /**
+     * The data needed to create a profession_detail.
+     */
+    data: XOR<profession_detailCreateInput, profession_detailUncheckedCreateInput>
+  }
+
+  /**
+   * profession_detail createMany
+   */
+  export type profession_detailCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many profession_details.
+     */
+    data: profession_detailCreateManyInput | profession_detailCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * profession_detail createManyAndReturn
+   */
+  export type profession_detailCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the profession_detail
+     */
+    select?: profession_detailSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the profession_detail
+     */
+    omit?: profession_detailOmit<ExtArgs> | null
+    /**
+     * The data used to create many profession_details.
+     */
+    data: profession_detailCreateManyInput | profession_detailCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: profession_detailIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * profession_detail update
+   */
+  export type profession_detailUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the profession_detail
+     */
+    select?: profession_detailSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the profession_detail
+     */
+    omit?: profession_detailOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: profession_detailInclude<ExtArgs> | null
+    /**
+     * The data needed to update a profession_detail.
+     */
+    data: XOR<profession_detailUpdateInput, profession_detailUncheckedUpdateInput>
+    /**
+     * Choose, which profession_detail to update.
+     */
+    where: profession_detailWhereUniqueInput
+  }
+
+  /**
+   * profession_detail updateMany
+   */
+  export type profession_detailUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update profession_details.
+     */
+    data: XOR<profession_detailUpdateManyMutationInput, profession_detailUncheckedUpdateManyInput>
+    /**
+     * Filter which profession_details to update
+     */
+    where?: profession_detailWhereInput
+    /**
+     * Limit how many profession_details to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * profession_detail updateManyAndReturn
+   */
+  export type profession_detailUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the profession_detail
+     */
+    select?: profession_detailSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the profession_detail
+     */
+    omit?: profession_detailOmit<ExtArgs> | null
+    /**
+     * The data used to update profession_details.
+     */
+    data: XOR<profession_detailUpdateManyMutationInput, profession_detailUncheckedUpdateManyInput>
+    /**
+     * Filter which profession_details to update
+     */
+    where?: profession_detailWhereInput
+    /**
+     * Limit how many profession_details to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: profession_detailIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * profession_detail upsert
+   */
+  export type profession_detailUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the profession_detail
+     */
+    select?: profession_detailSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the profession_detail
+     */
+    omit?: profession_detailOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: profession_detailInclude<ExtArgs> | null
+    /**
+     * The filter to search for the profession_detail to update in case it exists.
+     */
+    where: profession_detailWhereUniqueInput
+    /**
+     * In case the profession_detail found by the `where` argument doesn't exist, create a new profession_detail with this data.
+     */
+    create: XOR<profession_detailCreateInput, profession_detailUncheckedCreateInput>
+    /**
+     * In case the profession_detail was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<profession_detailUpdateInput, profession_detailUncheckedUpdateInput>
+  }
+
+  /**
+   * profession_detail delete
+   */
+  export type profession_detailDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the profession_detail
+     */
+    select?: profession_detailSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the profession_detail
+     */
+    omit?: profession_detailOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: profession_detailInclude<ExtArgs> | null
+    /**
+     * Filter which profession_detail to delete.
+     */
+    where: profession_detailWhereUniqueInput
+  }
+
+  /**
+   * profession_detail deleteMany
+   */
+  export type profession_detailDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which profession_details to delete
+     */
+    where?: profession_detailWhereInput
+    /**
+     * Limit how many profession_details to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * profession_detail without action
+   */
+  export type profession_detailDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the profession_detail
+     */
+    select?: profession_detailSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the profession_detail
+     */
+    omit?: profession_detailOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: profession_detailInclude<ExtArgs> | null
   }
 
 
@@ -10760,8 +11899,7 @@ export namespace Prisma {
     id_profesi: 'id_profesi',
     profession: 'profession',
     created_at: 'created_at',
-    updated_at: 'updated_at',
-    id_prof_cat: 'id_prof_cat'
+    updated_at: 'updated_at'
   };
 
   export type ProfessionScalarFieldEnum = (typeof ProfessionScalarFieldEnum)[keyof typeof ProfessionScalarFieldEnum]
@@ -10819,6 +11957,14 @@ export namespace Prisma {
   };
 
   export type Profession_categoryScalarFieldEnum = (typeof Profession_categoryScalarFieldEnum)[keyof typeof Profession_categoryScalarFieldEnum]
+
+
+  export const Profession_detailScalarFieldEnum: {
+    id_profesi: 'id_profesi',
+    id_prof_cat: 'id_prof_cat'
+  };
+
+  export type Profession_detailScalarFieldEnum = (typeof Profession_detailScalarFieldEnum)[keyof typeof Profession_detailScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -11125,8 +12271,7 @@ export namespace Prisma {
     profession?: StringFilter<"profession"> | string
     created_at?: DateTimeNullableFilter<"profession"> | Date | string | null
     updated_at?: DateTimeNullableFilter<"profession"> | Date | string | null
-    id_prof_cat?: BigIntNullableFilter<"profession"> | bigint | number | null
-    profession_category?: XOR<Profession_categoryNullableScalarRelationFilter, profession_categoryWhereInput> | null
+    profession_detail?: Profession_detailListRelationFilter
     profession_user?: Profession_userListRelationFilter
   }
 
@@ -11135,8 +12280,7 @@ export namespace Prisma {
     profession?: SortOrder
     created_at?: SortOrderInput | SortOrder
     updated_at?: SortOrderInput | SortOrder
-    id_prof_cat?: SortOrderInput | SortOrder
-    profession_category?: profession_categoryOrderByWithRelationInput
+    profession_detail?: profession_detailOrderByRelationAggregateInput
     profession_user?: profession_userOrderByRelationAggregateInput
   }
 
@@ -11148,8 +12292,7 @@ export namespace Prisma {
     profession?: StringFilter<"profession"> | string
     created_at?: DateTimeNullableFilter<"profession"> | Date | string | null
     updated_at?: DateTimeNullableFilter<"profession"> | Date | string | null
-    id_prof_cat?: BigIntNullableFilter<"profession"> | bigint | number | null
-    profession_category?: XOR<Profession_categoryNullableScalarRelationFilter, profession_categoryWhereInput> | null
+    profession_detail?: Profession_detailListRelationFilter
     profession_user?: Profession_userListRelationFilter
   }, "id_profesi">
 
@@ -11158,7 +12301,6 @@ export namespace Prisma {
     profession?: SortOrder
     created_at?: SortOrderInput | SortOrder
     updated_at?: SortOrderInput | SortOrder
-    id_prof_cat?: SortOrderInput | SortOrder
     _count?: professionCountOrderByAggregateInput
     _avg?: professionAvgOrderByAggregateInput
     _max?: professionMaxOrderByAggregateInput
@@ -11174,7 +12316,6 @@ export namespace Prisma {
     profession?: StringWithAggregatesFilter<"profession"> | string
     created_at?: DateTimeNullableWithAggregatesFilter<"profession"> | Date | string | null
     updated_at?: DateTimeNullableWithAggregatesFilter<"profession"> | Date | string | null
-    id_prof_cat?: BigIntNullableWithAggregatesFilter<"profession"> | bigint | number | null
   }
 
   export type profession_userWhereInput = {
@@ -11423,7 +12564,7 @@ export namespace Prisma {
     profession_category?: StringNullableFilter<"profession_category"> | string | null
     created_at?: DateTimeNullableFilter<"profession_category"> | Date | string | null
     updated_at?: DateTimeNullableFilter<"profession_category"> | Date | string | null
-    profession?: ProfessionListRelationFilter
+    profession_detail?: Profession_detailListRelationFilter
   }
 
   export type profession_categoryOrderByWithRelationInput = {
@@ -11431,7 +12572,7 @@ export namespace Prisma {
     profession_category?: SortOrderInput | SortOrder
     created_at?: SortOrderInput | SortOrder
     updated_at?: SortOrderInput | SortOrder
-    profession?: professionOrderByRelationAggregateInput
+    profession_detail?: profession_detailOrderByRelationAggregateInput
   }
 
   export type profession_categoryWhereUniqueInput = Prisma.AtLeast<{
@@ -11442,7 +12583,7 @@ export namespace Prisma {
     profession_category?: StringNullableFilter<"profession_category"> | string | null
     created_at?: DateTimeNullableFilter<"profession_category"> | Date | string | null
     updated_at?: DateTimeNullableFilter<"profession_category"> | Date | string | null
-    profession?: ProfessionListRelationFilter
+    profession_detail?: Profession_detailListRelationFilter
   }, "id_prof_cat">
 
   export type profession_categoryOrderByWithAggregationInput = {
@@ -11465,6 +12606,52 @@ export namespace Prisma {
     profession_category?: StringNullableWithAggregatesFilter<"profession_category"> | string | null
     created_at?: DateTimeNullableWithAggregatesFilter<"profession_category"> | Date | string | null
     updated_at?: DateTimeNullableWithAggregatesFilter<"profession_category"> | Date | string | null
+  }
+
+  export type profession_detailWhereInput = {
+    AND?: profession_detailWhereInput | profession_detailWhereInput[]
+    OR?: profession_detailWhereInput[]
+    NOT?: profession_detailWhereInput | profession_detailWhereInput[]
+    id_profesi?: BigIntFilter<"profession_detail"> | bigint | number
+    id_prof_cat?: BigIntFilter<"profession_detail"> | bigint | number
+    profession_category?: XOR<Profession_categoryScalarRelationFilter, profession_categoryWhereInput>
+    profession?: XOR<ProfessionScalarRelationFilter, professionWhereInput>
+  }
+
+  export type profession_detailOrderByWithRelationInput = {
+    id_profesi?: SortOrder
+    id_prof_cat?: SortOrder
+    profession_category?: profession_categoryOrderByWithRelationInput
+    profession?: professionOrderByWithRelationInput
+  }
+
+  export type profession_detailWhereUniqueInput = Prisma.AtLeast<{
+    id_profesi_id_prof_cat?: profession_detailId_profesiId_prof_catCompoundUniqueInput
+    AND?: profession_detailWhereInput | profession_detailWhereInput[]
+    OR?: profession_detailWhereInput[]
+    NOT?: profession_detailWhereInput | profession_detailWhereInput[]
+    id_profesi?: BigIntFilter<"profession_detail"> | bigint | number
+    id_prof_cat?: BigIntFilter<"profession_detail"> | bigint | number
+    profession_category?: XOR<Profession_categoryScalarRelationFilter, profession_categoryWhereInput>
+    profession?: XOR<ProfessionScalarRelationFilter, professionWhereInput>
+  }, "id_profesi_id_prof_cat">
+
+  export type profession_detailOrderByWithAggregationInput = {
+    id_profesi?: SortOrder
+    id_prof_cat?: SortOrder
+    _count?: profession_detailCountOrderByAggregateInput
+    _avg?: profession_detailAvgOrderByAggregateInput
+    _max?: profession_detailMaxOrderByAggregateInput
+    _min?: profession_detailMinOrderByAggregateInput
+    _sum?: profession_detailSumOrderByAggregateInput
+  }
+
+  export type profession_detailScalarWhereWithAggregatesInput = {
+    AND?: profession_detailScalarWhereWithAggregatesInput | profession_detailScalarWhereWithAggregatesInput[]
+    OR?: profession_detailScalarWhereWithAggregatesInput[]
+    NOT?: profession_detailScalarWhereWithAggregatesInput | profession_detailScalarWhereWithAggregatesInput[]
+    id_profesi?: BigIntWithAggregatesFilter<"profession_detail"> | bigint | number
+    id_prof_cat?: BigIntWithAggregatesFilter<"profession_detail"> | bigint | number
   }
 
   export type addressesCreateInput = {
@@ -11607,7 +12794,7 @@ export namespace Prisma {
     profession: string
     created_at?: Date | string | null
     updated_at?: Date | string | null
-    profession_category?: profession_categoryCreateNestedOneWithoutProfessionInput
+    profession_detail?: profession_detailCreateNestedManyWithoutProfessionInput
     profession_user?: profession_userCreateNestedManyWithoutProfessionInput
   }
 
@@ -11616,7 +12803,7 @@ export namespace Prisma {
     profession: string
     created_at?: Date | string | null
     updated_at?: Date | string | null
-    id_prof_cat?: bigint | number | null
+    profession_detail?: profession_detailUncheckedCreateNestedManyWithoutProfessionInput
     profession_user?: profession_userUncheckedCreateNestedManyWithoutProfessionInput
   }
 
@@ -11625,7 +12812,7 @@ export namespace Prisma {
     profession?: StringFieldUpdateOperationsInput | string
     created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    profession_category?: profession_categoryUpdateOneWithoutProfessionNestedInput
+    profession_detail?: profession_detailUpdateManyWithoutProfessionNestedInput
     profession_user?: profession_userUpdateManyWithoutProfessionNestedInput
   }
 
@@ -11634,7 +12821,7 @@ export namespace Prisma {
     profession?: StringFieldUpdateOperationsInput | string
     created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    id_prof_cat?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+    profession_detail?: profession_detailUncheckedUpdateManyWithoutProfessionNestedInput
     profession_user?: profession_userUncheckedUpdateManyWithoutProfessionNestedInput
   }
 
@@ -11643,7 +12830,6 @@ export namespace Prisma {
     profession: string
     created_at?: Date | string | null
     updated_at?: Date | string | null
-    id_prof_cat?: bigint | number | null
   }
 
   export type professionUpdateManyMutationInput = {
@@ -11658,7 +12844,6 @@ export namespace Prisma {
     profession?: StringFieldUpdateOperationsInput | string
     created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    id_prof_cat?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
   }
 
   export type profession_userCreateInput = {
@@ -11901,7 +13086,7 @@ export namespace Prisma {
     profession_category?: string | null
     created_at?: Date | string | null
     updated_at?: Date | string | null
-    profession?: professionCreateNestedManyWithoutProfession_categoryInput
+    profession_detail?: profession_detailCreateNestedManyWithoutProfession_categoryInput
   }
 
   export type profession_categoryUncheckedCreateInput = {
@@ -11909,7 +13094,7 @@ export namespace Prisma {
     profession_category?: string | null
     created_at?: Date | string | null
     updated_at?: Date | string | null
-    profession?: professionUncheckedCreateNestedManyWithoutProfession_categoryInput
+    profession_detail?: profession_detailUncheckedCreateNestedManyWithoutProfession_categoryInput
   }
 
   export type profession_categoryUpdateInput = {
@@ -11917,7 +13102,7 @@ export namespace Prisma {
     profession_category?: NullableStringFieldUpdateOperationsInput | string | null
     created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    profession?: professionUpdateManyWithoutProfession_categoryNestedInput
+    profession_detail?: profession_detailUpdateManyWithoutProfession_categoryNestedInput
   }
 
   export type profession_categoryUncheckedUpdateInput = {
@@ -11925,7 +13110,7 @@ export namespace Prisma {
     profession_category?: NullableStringFieldUpdateOperationsInput | string | null
     created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    profession?: professionUncheckedUpdateManyWithoutProfession_categoryNestedInput
+    profession_detail?: profession_detailUncheckedUpdateManyWithoutProfession_categoryNestedInput
   }
 
   export type profession_categoryCreateManyInput = {
@@ -11947,6 +13132,40 @@ export namespace Prisma {
     profession_category?: NullableStringFieldUpdateOperationsInput | string | null
     created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type profession_detailCreateInput = {
+    profession_category: profession_categoryCreateNestedOneWithoutProfession_detailInput
+    profession: professionCreateNestedOneWithoutProfession_detailInput
+  }
+
+  export type profession_detailUncheckedCreateInput = {
+    id_profesi: bigint | number
+    id_prof_cat: bigint | number
+  }
+
+  export type profession_detailUpdateInput = {
+    profession_category?: profession_categoryUpdateOneRequiredWithoutProfession_detailNestedInput
+    profession?: professionUpdateOneRequiredWithoutProfession_detailNestedInput
+  }
+
+  export type profession_detailUncheckedUpdateInput = {
+    id_profesi?: BigIntFieldUpdateOperationsInput | bigint | number
+    id_prof_cat?: BigIntFieldUpdateOperationsInput | bigint | number
+  }
+
+  export type profession_detailCreateManyInput = {
+    id_profesi: bigint | number
+    id_prof_cat: bigint | number
+  }
+
+  export type profession_detailUpdateManyMutationInput = {
+
+  }
+
+  export type profession_detailUncheckedUpdateManyInput = {
+    id_profesi?: BigIntFieldUpdateOperationsInput | bigint | number
+    id_prof_cat?: BigIntFieldUpdateOperationsInput | bigint | number
   }
 
   export type StringFilter<$PrismaModel = never> = {
@@ -12220,26 +13439,20 @@ export namespace Prisma {
     not?: NestedBigIntFilter<$PrismaModel> | bigint | number
   }
 
-  export type BigIntNullableFilter<$PrismaModel = never> = {
-    equals?: bigint | number | BigIntFieldRefInput<$PrismaModel> | null
-    in?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel> | null
-    notIn?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel> | null
-    lt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    lte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    gt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    gte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    not?: NestedBigIntNullableFilter<$PrismaModel> | bigint | number | null
-  }
-
-  export type Profession_categoryNullableScalarRelationFilter = {
-    is?: profession_categoryWhereInput | null
-    isNot?: profession_categoryWhereInput | null
+  export type Profession_detailListRelationFilter = {
+    every?: profession_detailWhereInput
+    some?: profession_detailWhereInput
+    none?: profession_detailWhereInput
   }
 
   export type Profession_userListRelationFilter = {
     every?: profession_userWhereInput
     some?: profession_userWhereInput
     none?: profession_userWhereInput
+  }
+
+  export type profession_detailOrderByRelationAggregateInput = {
+    _count?: SortOrder
   }
 
   export type profession_userOrderByRelationAggregateInput = {
@@ -12251,12 +13464,10 @@ export namespace Prisma {
     profession?: SortOrder
     created_at?: SortOrder
     updated_at?: SortOrder
-    id_prof_cat?: SortOrder
   }
 
   export type professionAvgOrderByAggregateInput = {
     id_profesi?: SortOrder
-    id_prof_cat?: SortOrder
   }
 
   export type professionMaxOrderByAggregateInput = {
@@ -12264,7 +13475,6 @@ export namespace Prisma {
     profession?: SortOrder
     created_at?: SortOrder
     updated_at?: SortOrder
-    id_prof_cat?: SortOrder
   }
 
   export type professionMinOrderByAggregateInput = {
@@ -12272,12 +13482,10 @@ export namespace Prisma {
     profession?: SortOrder
     created_at?: SortOrder
     updated_at?: SortOrder
-    id_prof_cat?: SortOrder
   }
 
   export type professionSumOrderByAggregateInput = {
     id_profesi?: SortOrder
-    id_prof_cat?: SortOrder
   }
 
   export type BigIntWithAggregatesFilter<$PrismaModel = never> = {
@@ -12294,22 +13502,6 @@ export namespace Prisma {
     _sum?: NestedBigIntFilter<$PrismaModel>
     _min?: NestedBigIntFilter<$PrismaModel>
     _max?: NestedBigIntFilter<$PrismaModel>
-  }
-
-  export type BigIntNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: bigint | number | BigIntFieldRefInput<$PrismaModel> | null
-    in?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel> | null
-    notIn?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel> | null
-    lt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    lte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    gt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    gte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    not?: NestedBigIntNullableWithAggregatesFilter<$PrismaModel> | bigint | number | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _avg?: NestedFloatNullableFilter<$PrismaModel>
-    _sum?: NestedBigIntNullableFilter<$PrismaModel>
-    _min?: NestedBigIntNullableFilter<$PrismaModel>
-    _max?: NestedBigIntNullableFilter<$PrismaModel>
   }
 
   export type ProfessionScalarRelationFilter = {
@@ -12543,16 +13735,6 @@ export namespace Prisma {
     _max?: NestedEnumstatus_user_enumNullableFilter<$PrismaModel>
   }
 
-  export type ProfessionListRelationFilter = {
-    every?: professionWhereInput
-    some?: professionWhereInput
-    none?: professionWhereInput
-  }
-
-  export type professionOrderByRelationAggregateInput = {
-    _count?: SortOrder
-  }
-
   export type profession_categoryCountOrderByAggregateInput = {
     id_prof_cat?: SortOrder
     profession_category?: SortOrder
@@ -12579,6 +13761,41 @@ export namespace Prisma {
   }
 
   export type profession_categorySumOrderByAggregateInput = {
+    id_prof_cat?: SortOrder
+  }
+
+  export type Profession_categoryScalarRelationFilter = {
+    is?: profession_categoryWhereInput
+    isNot?: profession_categoryWhereInput
+  }
+
+  export type profession_detailId_profesiId_prof_catCompoundUniqueInput = {
+    id_profesi: bigint | number
+    id_prof_cat: bigint | number
+  }
+
+  export type profession_detailCountOrderByAggregateInput = {
+    id_profesi?: SortOrder
+    id_prof_cat?: SortOrder
+  }
+
+  export type profession_detailAvgOrderByAggregateInput = {
+    id_profesi?: SortOrder
+    id_prof_cat?: SortOrder
+  }
+
+  export type profession_detailMaxOrderByAggregateInput = {
+    id_profesi?: SortOrder
+    id_prof_cat?: SortOrder
+  }
+
+  export type profession_detailMinOrderByAggregateInput = {
+    id_profesi?: SortOrder
+    id_prof_cat?: SortOrder
+  }
+
+  export type profession_detailSumOrderByAggregateInput = {
+    id_profesi?: SortOrder
     id_prof_cat?: SortOrder
   }
 
@@ -12744,10 +13961,11 @@ export namespace Prisma {
     deleteMany?: addressesScalarWhereInput | addressesScalarWhereInput[]
   }
 
-  export type profession_categoryCreateNestedOneWithoutProfessionInput = {
-    create?: XOR<profession_categoryCreateWithoutProfessionInput, profession_categoryUncheckedCreateWithoutProfessionInput>
-    connectOrCreate?: profession_categoryCreateOrConnectWithoutProfessionInput
-    connect?: profession_categoryWhereUniqueInput
+  export type profession_detailCreateNestedManyWithoutProfessionInput = {
+    create?: XOR<profession_detailCreateWithoutProfessionInput, profession_detailUncheckedCreateWithoutProfessionInput> | profession_detailCreateWithoutProfessionInput[] | profession_detailUncheckedCreateWithoutProfessionInput[]
+    connectOrCreate?: profession_detailCreateOrConnectWithoutProfessionInput | profession_detailCreateOrConnectWithoutProfessionInput[]
+    createMany?: profession_detailCreateManyProfessionInputEnvelope
+    connect?: profession_detailWhereUniqueInput | profession_detailWhereUniqueInput[]
   }
 
   export type profession_userCreateNestedManyWithoutProfessionInput = {
@@ -12755,6 +13973,13 @@ export namespace Prisma {
     connectOrCreate?: profession_userCreateOrConnectWithoutProfessionInput | profession_userCreateOrConnectWithoutProfessionInput[]
     createMany?: profession_userCreateManyProfessionInputEnvelope
     connect?: profession_userWhereUniqueInput | profession_userWhereUniqueInput[]
+  }
+
+  export type profession_detailUncheckedCreateNestedManyWithoutProfessionInput = {
+    create?: XOR<profession_detailCreateWithoutProfessionInput, profession_detailUncheckedCreateWithoutProfessionInput> | profession_detailCreateWithoutProfessionInput[] | profession_detailUncheckedCreateWithoutProfessionInput[]
+    connectOrCreate?: profession_detailCreateOrConnectWithoutProfessionInput | profession_detailCreateOrConnectWithoutProfessionInput[]
+    createMany?: profession_detailCreateManyProfessionInputEnvelope
+    connect?: profession_detailWhereUniqueInput | profession_detailWhereUniqueInput[]
   }
 
   export type profession_userUncheckedCreateNestedManyWithoutProfessionInput = {
@@ -12772,14 +13997,18 @@ export namespace Prisma {
     divide?: bigint | number
   }
 
-  export type profession_categoryUpdateOneWithoutProfessionNestedInput = {
-    create?: XOR<profession_categoryCreateWithoutProfessionInput, profession_categoryUncheckedCreateWithoutProfessionInput>
-    connectOrCreate?: profession_categoryCreateOrConnectWithoutProfessionInput
-    upsert?: profession_categoryUpsertWithoutProfessionInput
-    disconnect?: profession_categoryWhereInput | boolean
-    delete?: profession_categoryWhereInput | boolean
-    connect?: profession_categoryWhereUniqueInput
-    update?: XOR<XOR<profession_categoryUpdateToOneWithWhereWithoutProfessionInput, profession_categoryUpdateWithoutProfessionInput>, profession_categoryUncheckedUpdateWithoutProfessionInput>
+  export type profession_detailUpdateManyWithoutProfessionNestedInput = {
+    create?: XOR<profession_detailCreateWithoutProfessionInput, profession_detailUncheckedCreateWithoutProfessionInput> | profession_detailCreateWithoutProfessionInput[] | profession_detailUncheckedCreateWithoutProfessionInput[]
+    connectOrCreate?: profession_detailCreateOrConnectWithoutProfessionInput | profession_detailCreateOrConnectWithoutProfessionInput[]
+    upsert?: profession_detailUpsertWithWhereUniqueWithoutProfessionInput | profession_detailUpsertWithWhereUniqueWithoutProfessionInput[]
+    createMany?: profession_detailCreateManyProfessionInputEnvelope
+    set?: profession_detailWhereUniqueInput | profession_detailWhereUniqueInput[]
+    disconnect?: profession_detailWhereUniqueInput | profession_detailWhereUniqueInput[]
+    delete?: profession_detailWhereUniqueInput | profession_detailWhereUniqueInput[]
+    connect?: profession_detailWhereUniqueInput | profession_detailWhereUniqueInput[]
+    update?: profession_detailUpdateWithWhereUniqueWithoutProfessionInput | profession_detailUpdateWithWhereUniqueWithoutProfessionInput[]
+    updateMany?: profession_detailUpdateManyWithWhereWithoutProfessionInput | profession_detailUpdateManyWithWhereWithoutProfessionInput[]
+    deleteMany?: profession_detailScalarWhereInput | profession_detailScalarWhereInput[]
   }
 
   export type profession_userUpdateManyWithoutProfessionNestedInput = {
@@ -12796,12 +14025,18 @@ export namespace Prisma {
     deleteMany?: profession_userScalarWhereInput | profession_userScalarWhereInput[]
   }
 
-  export type NullableBigIntFieldUpdateOperationsInput = {
-    set?: bigint | number | null
-    increment?: bigint | number
-    decrement?: bigint | number
-    multiply?: bigint | number
-    divide?: bigint | number
+  export type profession_detailUncheckedUpdateManyWithoutProfessionNestedInput = {
+    create?: XOR<profession_detailCreateWithoutProfessionInput, profession_detailUncheckedCreateWithoutProfessionInput> | profession_detailCreateWithoutProfessionInput[] | profession_detailUncheckedCreateWithoutProfessionInput[]
+    connectOrCreate?: profession_detailCreateOrConnectWithoutProfessionInput | profession_detailCreateOrConnectWithoutProfessionInput[]
+    upsert?: profession_detailUpsertWithWhereUniqueWithoutProfessionInput | profession_detailUpsertWithWhereUniqueWithoutProfessionInput[]
+    createMany?: profession_detailCreateManyProfessionInputEnvelope
+    set?: profession_detailWhereUniqueInput | profession_detailWhereUniqueInput[]
+    disconnect?: profession_detailWhereUniqueInput | profession_detailWhereUniqueInput[]
+    delete?: profession_detailWhereUniqueInput | profession_detailWhereUniqueInput[]
+    connect?: profession_detailWhereUniqueInput | profession_detailWhereUniqueInput[]
+    update?: profession_detailUpdateWithWhereUniqueWithoutProfessionInput | profession_detailUpdateWithWhereUniqueWithoutProfessionInput[]
+    updateMany?: profession_detailUpdateManyWithWhereWithoutProfessionInput | profession_detailUpdateManyWithWhereWithoutProfessionInput[]
+    deleteMany?: profession_detailScalarWhereInput | profession_detailScalarWhereInput[]
   }
 
   export type profession_userUncheckedUpdateManyWithoutProfessionNestedInput = {
@@ -13058,46 +14293,74 @@ export namespace Prisma {
     deleteMany?: user_addressScalarWhereInput | user_addressScalarWhereInput[]
   }
 
-  export type professionCreateNestedManyWithoutProfession_categoryInput = {
-    create?: XOR<professionCreateWithoutProfession_categoryInput, professionUncheckedCreateWithoutProfession_categoryInput> | professionCreateWithoutProfession_categoryInput[] | professionUncheckedCreateWithoutProfession_categoryInput[]
-    connectOrCreate?: professionCreateOrConnectWithoutProfession_categoryInput | professionCreateOrConnectWithoutProfession_categoryInput[]
-    createMany?: professionCreateManyProfession_categoryInputEnvelope
-    connect?: professionWhereUniqueInput | professionWhereUniqueInput[]
+  export type profession_detailCreateNestedManyWithoutProfession_categoryInput = {
+    create?: XOR<profession_detailCreateWithoutProfession_categoryInput, profession_detailUncheckedCreateWithoutProfession_categoryInput> | profession_detailCreateWithoutProfession_categoryInput[] | profession_detailUncheckedCreateWithoutProfession_categoryInput[]
+    connectOrCreate?: profession_detailCreateOrConnectWithoutProfession_categoryInput | profession_detailCreateOrConnectWithoutProfession_categoryInput[]
+    createMany?: profession_detailCreateManyProfession_categoryInputEnvelope
+    connect?: profession_detailWhereUniqueInput | profession_detailWhereUniqueInput[]
   }
 
-  export type professionUncheckedCreateNestedManyWithoutProfession_categoryInput = {
-    create?: XOR<professionCreateWithoutProfession_categoryInput, professionUncheckedCreateWithoutProfession_categoryInput> | professionCreateWithoutProfession_categoryInput[] | professionUncheckedCreateWithoutProfession_categoryInput[]
-    connectOrCreate?: professionCreateOrConnectWithoutProfession_categoryInput | professionCreateOrConnectWithoutProfession_categoryInput[]
-    createMany?: professionCreateManyProfession_categoryInputEnvelope
-    connect?: professionWhereUniqueInput | professionWhereUniqueInput[]
+  export type profession_detailUncheckedCreateNestedManyWithoutProfession_categoryInput = {
+    create?: XOR<profession_detailCreateWithoutProfession_categoryInput, profession_detailUncheckedCreateWithoutProfession_categoryInput> | profession_detailCreateWithoutProfession_categoryInput[] | profession_detailUncheckedCreateWithoutProfession_categoryInput[]
+    connectOrCreate?: profession_detailCreateOrConnectWithoutProfession_categoryInput | profession_detailCreateOrConnectWithoutProfession_categoryInput[]
+    createMany?: profession_detailCreateManyProfession_categoryInputEnvelope
+    connect?: profession_detailWhereUniqueInput | profession_detailWhereUniqueInput[]
   }
 
-  export type professionUpdateManyWithoutProfession_categoryNestedInput = {
-    create?: XOR<professionCreateWithoutProfession_categoryInput, professionUncheckedCreateWithoutProfession_categoryInput> | professionCreateWithoutProfession_categoryInput[] | professionUncheckedCreateWithoutProfession_categoryInput[]
-    connectOrCreate?: professionCreateOrConnectWithoutProfession_categoryInput | professionCreateOrConnectWithoutProfession_categoryInput[]
-    upsert?: professionUpsertWithWhereUniqueWithoutProfession_categoryInput | professionUpsertWithWhereUniqueWithoutProfession_categoryInput[]
-    createMany?: professionCreateManyProfession_categoryInputEnvelope
-    set?: professionWhereUniqueInput | professionWhereUniqueInput[]
-    disconnect?: professionWhereUniqueInput | professionWhereUniqueInput[]
-    delete?: professionWhereUniqueInput | professionWhereUniqueInput[]
-    connect?: professionWhereUniqueInput | professionWhereUniqueInput[]
-    update?: professionUpdateWithWhereUniqueWithoutProfession_categoryInput | professionUpdateWithWhereUniqueWithoutProfession_categoryInput[]
-    updateMany?: professionUpdateManyWithWhereWithoutProfession_categoryInput | professionUpdateManyWithWhereWithoutProfession_categoryInput[]
-    deleteMany?: professionScalarWhereInput | professionScalarWhereInput[]
+  export type profession_detailUpdateManyWithoutProfession_categoryNestedInput = {
+    create?: XOR<profession_detailCreateWithoutProfession_categoryInput, profession_detailUncheckedCreateWithoutProfession_categoryInput> | profession_detailCreateWithoutProfession_categoryInput[] | profession_detailUncheckedCreateWithoutProfession_categoryInput[]
+    connectOrCreate?: profession_detailCreateOrConnectWithoutProfession_categoryInput | profession_detailCreateOrConnectWithoutProfession_categoryInput[]
+    upsert?: profession_detailUpsertWithWhereUniqueWithoutProfession_categoryInput | profession_detailUpsertWithWhereUniqueWithoutProfession_categoryInput[]
+    createMany?: profession_detailCreateManyProfession_categoryInputEnvelope
+    set?: profession_detailWhereUniqueInput | profession_detailWhereUniqueInput[]
+    disconnect?: profession_detailWhereUniqueInput | profession_detailWhereUniqueInput[]
+    delete?: profession_detailWhereUniqueInput | profession_detailWhereUniqueInput[]
+    connect?: profession_detailWhereUniqueInput | profession_detailWhereUniqueInput[]
+    update?: profession_detailUpdateWithWhereUniqueWithoutProfession_categoryInput | profession_detailUpdateWithWhereUniqueWithoutProfession_categoryInput[]
+    updateMany?: profession_detailUpdateManyWithWhereWithoutProfession_categoryInput | profession_detailUpdateManyWithWhereWithoutProfession_categoryInput[]
+    deleteMany?: profession_detailScalarWhereInput | profession_detailScalarWhereInput[]
   }
 
-  export type professionUncheckedUpdateManyWithoutProfession_categoryNestedInput = {
-    create?: XOR<professionCreateWithoutProfession_categoryInput, professionUncheckedCreateWithoutProfession_categoryInput> | professionCreateWithoutProfession_categoryInput[] | professionUncheckedCreateWithoutProfession_categoryInput[]
-    connectOrCreate?: professionCreateOrConnectWithoutProfession_categoryInput | professionCreateOrConnectWithoutProfession_categoryInput[]
-    upsert?: professionUpsertWithWhereUniqueWithoutProfession_categoryInput | professionUpsertWithWhereUniqueWithoutProfession_categoryInput[]
-    createMany?: professionCreateManyProfession_categoryInputEnvelope
-    set?: professionWhereUniqueInput | professionWhereUniqueInput[]
-    disconnect?: professionWhereUniqueInput | professionWhereUniqueInput[]
-    delete?: professionWhereUniqueInput | professionWhereUniqueInput[]
-    connect?: professionWhereUniqueInput | professionWhereUniqueInput[]
-    update?: professionUpdateWithWhereUniqueWithoutProfession_categoryInput | professionUpdateWithWhereUniqueWithoutProfession_categoryInput[]
-    updateMany?: professionUpdateManyWithWhereWithoutProfession_categoryInput | professionUpdateManyWithWhereWithoutProfession_categoryInput[]
-    deleteMany?: professionScalarWhereInput | professionScalarWhereInput[]
+  export type profession_detailUncheckedUpdateManyWithoutProfession_categoryNestedInput = {
+    create?: XOR<profession_detailCreateWithoutProfession_categoryInput, profession_detailUncheckedCreateWithoutProfession_categoryInput> | profession_detailCreateWithoutProfession_categoryInput[] | profession_detailUncheckedCreateWithoutProfession_categoryInput[]
+    connectOrCreate?: profession_detailCreateOrConnectWithoutProfession_categoryInput | profession_detailCreateOrConnectWithoutProfession_categoryInput[]
+    upsert?: profession_detailUpsertWithWhereUniqueWithoutProfession_categoryInput | profession_detailUpsertWithWhereUniqueWithoutProfession_categoryInput[]
+    createMany?: profession_detailCreateManyProfession_categoryInputEnvelope
+    set?: profession_detailWhereUniqueInput | profession_detailWhereUniqueInput[]
+    disconnect?: profession_detailWhereUniqueInput | profession_detailWhereUniqueInput[]
+    delete?: profession_detailWhereUniqueInput | profession_detailWhereUniqueInput[]
+    connect?: profession_detailWhereUniqueInput | profession_detailWhereUniqueInput[]
+    update?: profession_detailUpdateWithWhereUniqueWithoutProfession_categoryInput | profession_detailUpdateWithWhereUniqueWithoutProfession_categoryInput[]
+    updateMany?: profession_detailUpdateManyWithWhereWithoutProfession_categoryInput | profession_detailUpdateManyWithWhereWithoutProfession_categoryInput[]
+    deleteMany?: profession_detailScalarWhereInput | profession_detailScalarWhereInput[]
+  }
+
+  export type profession_categoryCreateNestedOneWithoutProfession_detailInput = {
+    create?: XOR<profession_categoryCreateWithoutProfession_detailInput, profession_categoryUncheckedCreateWithoutProfession_detailInput>
+    connectOrCreate?: profession_categoryCreateOrConnectWithoutProfession_detailInput
+    connect?: profession_categoryWhereUniqueInput
+  }
+
+  export type professionCreateNestedOneWithoutProfession_detailInput = {
+    create?: XOR<professionCreateWithoutProfession_detailInput, professionUncheckedCreateWithoutProfession_detailInput>
+    connectOrCreate?: professionCreateOrConnectWithoutProfession_detailInput
+    connect?: professionWhereUniqueInput
+  }
+
+  export type profession_categoryUpdateOneRequiredWithoutProfession_detailNestedInput = {
+    create?: XOR<profession_categoryCreateWithoutProfession_detailInput, profession_categoryUncheckedCreateWithoutProfession_detailInput>
+    connectOrCreate?: profession_categoryCreateOrConnectWithoutProfession_detailInput
+    upsert?: profession_categoryUpsertWithoutProfession_detailInput
+    connect?: profession_categoryWhereUniqueInput
+    update?: XOR<XOR<profession_categoryUpdateToOneWithWhereWithoutProfession_detailInput, profession_categoryUpdateWithoutProfession_detailInput>, profession_categoryUncheckedUpdateWithoutProfession_detailInput>
+  }
+
+  export type professionUpdateOneRequiredWithoutProfession_detailNestedInput = {
+    create?: XOR<professionCreateWithoutProfession_detailInput, professionUncheckedCreateWithoutProfession_detailInput>
+    connectOrCreate?: professionCreateOrConnectWithoutProfession_detailInput
+    upsert?: professionUpsertWithoutProfession_detailInput
+    connect?: professionWhereUniqueInput
+    update?: XOR<XOR<professionUpdateToOneWithWhereWithoutProfession_detailInput, professionUpdateWithoutProfession_detailInput>, professionUncheckedUpdateWithoutProfession_detailInput>
   }
 
   export type NestedStringFilter<$PrismaModel = never> = {
@@ -13270,17 +14533,6 @@ export namespace Prisma {
     not?: NestedBigIntFilter<$PrismaModel> | bigint | number
   }
 
-  export type NestedBigIntNullableFilter<$PrismaModel = never> = {
-    equals?: bigint | number | BigIntFieldRefInput<$PrismaModel> | null
-    in?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel> | null
-    notIn?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel> | null
-    lt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    lte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    gt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    gte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    not?: NestedBigIntNullableFilter<$PrismaModel> | bigint | number | null
-  }
-
   export type NestedBigIntWithAggregatesFilter<$PrismaModel = never> = {
     equals?: bigint | number | BigIntFieldRefInput<$PrismaModel>
     in?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel>
@@ -13295,22 +14547,6 @@ export namespace Prisma {
     _sum?: NestedBigIntFilter<$PrismaModel>
     _min?: NestedBigIntFilter<$PrismaModel>
     _max?: NestedBigIntFilter<$PrismaModel>
-  }
-
-  export type NestedBigIntNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: bigint | number | BigIntFieldRefInput<$PrismaModel> | null
-    in?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel> | null
-    notIn?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel> | null
-    lt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    lte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    gt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    gte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    not?: NestedBigIntNullableWithAggregatesFilter<$PrismaModel> | bigint | number | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _avg?: NestedFloatNullableFilter<$PrismaModel>
-    _sum?: NestedBigIntNullableFilter<$PrismaModel>
-    _min?: NestedBigIntNullableFilter<$PrismaModel>
-    _max?: NestedBigIntNullableFilter<$PrismaModel>
   }
 
   export type NestedStringNullableFilter<$PrismaModel = never> = {
@@ -13637,23 +14873,22 @@ export namespace Prisma {
     addresses?: addressesUncheckedUpdateManyWithoutProvincesNestedInput
   }
 
-  export type profession_categoryCreateWithoutProfessionInput = {
-    id_prof_cat?: bigint | number
-    profession_category?: string | null
-    created_at?: Date | string | null
-    updated_at?: Date | string | null
+  export type profession_detailCreateWithoutProfessionInput = {
+    profession_category: profession_categoryCreateNestedOneWithoutProfession_detailInput
   }
 
-  export type profession_categoryUncheckedCreateWithoutProfessionInput = {
-    id_prof_cat?: bigint | number
-    profession_category?: string | null
-    created_at?: Date | string | null
-    updated_at?: Date | string | null
+  export type profession_detailUncheckedCreateWithoutProfessionInput = {
+    id_prof_cat: bigint | number
   }
 
-  export type profession_categoryCreateOrConnectWithoutProfessionInput = {
-    where: profession_categoryWhereUniqueInput
-    create: XOR<profession_categoryCreateWithoutProfessionInput, profession_categoryUncheckedCreateWithoutProfessionInput>
+  export type profession_detailCreateOrConnectWithoutProfessionInput = {
+    where: profession_detailWhereUniqueInput
+    create: XOR<profession_detailCreateWithoutProfessionInput, profession_detailUncheckedCreateWithoutProfessionInput>
+  }
+
+  export type profession_detailCreateManyProfessionInputEnvelope = {
+    data: profession_detailCreateManyProfessionInput | profession_detailCreateManyProfessionInput[]
+    skipDuplicates?: boolean
   }
 
   export type profession_userCreateWithoutProfessionInput = {
@@ -13674,29 +14909,28 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
-  export type profession_categoryUpsertWithoutProfessionInput = {
-    update: XOR<profession_categoryUpdateWithoutProfessionInput, profession_categoryUncheckedUpdateWithoutProfessionInput>
-    create: XOR<profession_categoryCreateWithoutProfessionInput, profession_categoryUncheckedCreateWithoutProfessionInput>
-    where?: profession_categoryWhereInput
+  export type profession_detailUpsertWithWhereUniqueWithoutProfessionInput = {
+    where: profession_detailWhereUniqueInput
+    update: XOR<profession_detailUpdateWithoutProfessionInput, profession_detailUncheckedUpdateWithoutProfessionInput>
+    create: XOR<profession_detailCreateWithoutProfessionInput, profession_detailUncheckedCreateWithoutProfessionInput>
   }
 
-  export type profession_categoryUpdateToOneWithWhereWithoutProfessionInput = {
-    where?: profession_categoryWhereInput
-    data: XOR<profession_categoryUpdateWithoutProfessionInput, profession_categoryUncheckedUpdateWithoutProfessionInput>
+  export type profession_detailUpdateWithWhereUniqueWithoutProfessionInput = {
+    where: profession_detailWhereUniqueInput
+    data: XOR<profession_detailUpdateWithoutProfessionInput, profession_detailUncheckedUpdateWithoutProfessionInput>
   }
 
-  export type profession_categoryUpdateWithoutProfessionInput = {
-    id_prof_cat?: BigIntFieldUpdateOperationsInput | bigint | number
-    profession_category?: NullableStringFieldUpdateOperationsInput | string | null
-    created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  export type profession_detailUpdateManyWithWhereWithoutProfessionInput = {
+    where: profession_detailScalarWhereInput
+    data: XOR<profession_detailUpdateManyMutationInput, profession_detailUncheckedUpdateManyWithoutProfessionInput>
   }
 
-  export type profession_categoryUncheckedUpdateWithoutProfessionInput = {
-    id_prof_cat?: BigIntFieldUpdateOperationsInput | bigint | number
-    profession_category?: NullableStringFieldUpdateOperationsInput | string | null
-    created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  export type profession_detailScalarWhereInput = {
+    AND?: profession_detailScalarWhereInput | profession_detailScalarWhereInput[]
+    OR?: profession_detailScalarWhereInput[]
+    NOT?: profession_detailScalarWhereInput | profession_detailScalarWhereInput[]
+    id_profesi?: BigIntFilter<"profession_detail"> | bigint | number
+    id_prof_cat?: BigIntFilter<"profession_detail"> | bigint | number
   }
 
   export type profession_userUpsertWithWhereUniqueWithoutProfessionInput = {
@@ -13728,7 +14962,7 @@ export namespace Prisma {
     profession: string
     created_at?: Date | string | null
     updated_at?: Date | string | null
-    profession_category?: profession_categoryCreateNestedOneWithoutProfessionInput
+    profession_detail?: profession_detailCreateNestedManyWithoutProfessionInput
   }
 
   export type professionUncheckedCreateWithoutProfession_userInput = {
@@ -13736,7 +14970,7 @@ export namespace Prisma {
     profession: string
     created_at?: Date | string | null
     updated_at?: Date | string | null
-    id_prof_cat?: bigint | number | null
+    profession_detail?: profession_detailUncheckedCreateNestedManyWithoutProfessionInput
   }
 
   export type professionCreateOrConnectWithoutProfession_userInput = {
@@ -13797,7 +15031,7 @@ export namespace Prisma {
     profession?: StringFieldUpdateOperationsInput | string
     created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    profession_category?: profession_categoryUpdateOneWithoutProfessionNestedInput
+    profession_detail?: profession_detailUpdateManyWithoutProfessionNestedInput
   }
 
   export type professionUncheckedUpdateWithoutProfession_userInput = {
@@ -13805,7 +15039,7 @@ export namespace Prisma {
     profession?: StringFieldUpdateOperationsInput | string
     created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    id_prof_cat?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+    profession_detail?: profession_detailUncheckedUpdateManyWithoutProfessionNestedInput
   }
 
   export type usersUpsertWithoutProfession_userInput = {
@@ -14159,7 +15393,60 @@ export namespace Prisma {
     data: XOR<user_addressUpdateManyMutationInput, user_addressUncheckedUpdateManyWithoutUsersInput>
   }
 
-  export type professionCreateWithoutProfession_categoryInput = {
+  export type profession_detailCreateWithoutProfession_categoryInput = {
+    profession: professionCreateNestedOneWithoutProfession_detailInput
+  }
+
+  export type profession_detailUncheckedCreateWithoutProfession_categoryInput = {
+    id_profesi: bigint | number
+  }
+
+  export type profession_detailCreateOrConnectWithoutProfession_categoryInput = {
+    where: profession_detailWhereUniqueInput
+    create: XOR<profession_detailCreateWithoutProfession_categoryInput, profession_detailUncheckedCreateWithoutProfession_categoryInput>
+  }
+
+  export type profession_detailCreateManyProfession_categoryInputEnvelope = {
+    data: profession_detailCreateManyProfession_categoryInput | profession_detailCreateManyProfession_categoryInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type profession_detailUpsertWithWhereUniqueWithoutProfession_categoryInput = {
+    where: profession_detailWhereUniqueInput
+    update: XOR<profession_detailUpdateWithoutProfession_categoryInput, profession_detailUncheckedUpdateWithoutProfession_categoryInput>
+    create: XOR<profession_detailCreateWithoutProfession_categoryInput, profession_detailUncheckedCreateWithoutProfession_categoryInput>
+  }
+
+  export type profession_detailUpdateWithWhereUniqueWithoutProfession_categoryInput = {
+    where: profession_detailWhereUniqueInput
+    data: XOR<profession_detailUpdateWithoutProfession_categoryInput, profession_detailUncheckedUpdateWithoutProfession_categoryInput>
+  }
+
+  export type profession_detailUpdateManyWithWhereWithoutProfession_categoryInput = {
+    where: profession_detailScalarWhereInput
+    data: XOR<profession_detailUpdateManyMutationInput, profession_detailUncheckedUpdateManyWithoutProfession_categoryInput>
+  }
+
+  export type profession_categoryCreateWithoutProfession_detailInput = {
+    id_prof_cat?: bigint | number
+    profession_category?: string | null
+    created_at?: Date | string | null
+    updated_at?: Date | string | null
+  }
+
+  export type profession_categoryUncheckedCreateWithoutProfession_detailInput = {
+    id_prof_cat?: bigint | number
+    profession_category?: string | null
+    created_at?: Date | string | null
+    updated_at?: Date | string | null
+  }
+
+  export type profession_categoryCreateOrConnectWithoutProfession_detailInput = {
+    where: profession_categoryWhereUniqueInput
+    create: XOR<profession_categoryCreateWithoutProfession_detailInput, profession_categoryUncheckedCreateWithoutProfession_detailInput>
+  }
+
+  export type professionCreateWithoutProfession_detailInput = {
     id_profesi?: bigint | number
     profession: string
     created_at?: Date | string | null
@@ -14167,7 +15454,7 @@ export namespace Prisma {
     profession_user?: profession_userCreateNestedManyWithoutProfessionInput
   }
 
-  export type professionUncheckedCreateWithoutProfession_categoryInput = {
+  export type professionUncheckedCreateWithoutProfession_detailInput = {
     id_profesi?: bigint | number
     profession: string
     created_at?: Date | string | null
@@ -14175,41 +15462,61 @@ export namespace Prisma {
     profession_user?: profession_userUncheckedCreateNestedManyWithoutProfessionInput
   }
 
-  export type professionCreateOrConnectWithoutProfession_categoryInput = {
+  export type professionCreateOrConnectWithoutProfession_detailInput = {
     where: professionWhereUniqueInput
-    create: XOR<professionCreateWithoutProfession_categoryInput, professionUncheckedCreateWithoutProfession_categoryInput>
+    create: XOR<professionCreateWithoutProfession_detailInput, professionUncheckedCreateWithoutProfession_detailInput>
   }
 
-  export type professionCreateManyProfession_categoryInputEnvelope = {
-    data: professionCreateManyProfession_categoryInput | professionCreateManyProfession_categoryInput[]
-    skipDuplicates?: boolean
+  export type profession_categoryUpsertWithoutProfession_detailInput = {
+    update: XOR<profession_categoryUpdateWithoutProfession_detailInput, profession_categoryUncheckedUpdateWithoutProfession_detailInput>
+    create: XOR<profession_categoryCreateWithoutProfession_detailInput, profession_categoryUncheckedCreateWithoutProfession_detailInput>
+    where?: profession_categoryWhereInput
   }
 
-  export type professionUpsertWithWhereUniqueWithoutProfession_categoryInput = {
-    where: professionWhereUniqueInput
-    update: XOR<professionUpdateWithoutProfession_categoryInput, professionUncheckedUpdateWithoutProfession_categoryInput>
-    create: XOR<professionCreateWithoutProfession_categoryInput, professionUncheckedCreateWithoutProfession_categoryInput>
+  export type profession_categoryUpdateToOneWithWhereWithoutProfession_detailInput = {
+    where?: profession_categoryWhereInput
+    data: XOR<profession_categoryUpdateWithoutProfession_detailInput, profession_categoryUncheckedUpdateWithoutProfession_detailInput>
   }
 
-  export type professionUpdateWithWhereUniqueWithoutProfession_categoryInput = {
-    where: professionWhereUniqueInput
-    data: XOR<professionUpdateWithoutProfession_categoryInput, professionUncheckedUpdateWithoutProfession_categoryInput>
+  export type profession_categoryUpdateWithoutProfession_detailInput = {
+    id_prof_cat?: BigIntFieldUpdateOperationsInput | bigint | number
+    profession_category?: NullableStringFieldUpdateOperationsInput | string | null
+    created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
-  export type professionUpdateManyWithWhereWithoutProfession_categoryInput = {
-    where: professionScalarWhereInput
-    data: XOR<professionUpdateManyMutationInput, professionUncheckedUpdateManyWithoutProfession_categoryInput>
+  export type profession_categoryUncheckedUpdateWithoutProfession_detailInput = {
+    id_prof_cat?: BigIntFieldUpdateOperationsInput | bigint | number
+    profession_category?: NullableStringFieldUpdateOperationsInput | string | null
+    created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
-  export type professionScalarWhereInput = {
-    AND?: professionScalarWhereInput | professionScalarWhereInput[]
-    OR?: professionScalarWhereInput[]
-    NOT?: professionScalarWhereInput | professionScalarWhereInput[]
-    id_profesi?: BigIntFilter<"profession"> | bigint | number
-    profession?: StringFilter<"profession"> | string
-    created_at?: DateTimeNullableFilter<"profession"> | Date | string | null
-    updated_at?: DateTimeNullableFilter<"profession"> | Date | string | null
-    id_prof_cat?: BigIntNullableFilter<"profession"> | bigint | number | null
+  export type professionUpsertWithoutProfession_detailInput = {
+    update: XOR<professionUpdateWithoutProfession_detailInput, professionUncheckedUpdateWithoutProfession_detailInput>
+    create: XOR<professionCreateWithoutProfession_detailInput, professionUncheckedCreateWithoutProfession_detailInput>
+    where?: professionWhereInput
+  }
+
+  export type professionUpdateToOneWithWhereWithoutProfession_detailInput = {
+    where?: professionWhereInput
+    data: XOR<professionUpdateWithoutProfession_detailInput, professionUncheckedUpdateWithoutProfession_detailInput>
+  }
+
+  export type professionUpdateWithoutProfession_detailInput = {
+    id_profesi?: BigIntFieldUpdateOperationsInput | bigint | number
+    profession?: StringFieldUpdateOperationsInput | string
+    created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    profession_user?: profession_userUpdateManyWithoutProfessionNestedInput
+  }
+
+  export type professionUncheckedUpdateWithoutProfession_detailInput = {
+    id_profesi?: BigIntFieldUpdateOperationsInput | bigint | number
+    profession?: StringFieldUpdateOperationsInput | string
+    created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    profession_user?: profession_userUncheckedUpdateManyWithoutProfessionNestedInput
   }
 
   export type user_addressCreateManyAddressesInput = {
@@ -14270,8 +15577,24 @@ export namespace Prisma {
     updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
+  export type profession_detailCreateManyProfessionInput = {
+    id_prof_cat: bigint | number
+  }
+
   export type profession_userCreateManyProfessionInput = {
     id_user: string
+  }
+
+  export type profession_detailUpdateWithoutProfessionInput = {
+    profession_category?: profession_categoryUpdateOneRequiredWithoutProfession_detailNestedInput
+  }
+
+  export type profession_detailUncheckedUpdateWithoutProfessionInput = {
+    id_prof_cat?: BigIntFieldUpdateOperationsInput | bigint | number
+  }
+
+  export type profession_detailUncheckedUpdateManyWithoutProfessionInput = {
+    id_prof_cat?: BigIntFieldUpdateOperationsInput | bigint | number
   }
 
   export type profession_userUpdateWithoutProfessionInput = {
@@ -14389,34 +15712,20 @@ export namespace Prisma {
     id_alamat?: StringFieldUpdateOperationsInput | string
   }
 
-  export type professionCreateManyProfession_categoryInput = {
-    id_profesi?: bigint | number
-    profession: string
-    created_at?: Date | string | null
-    updated_at?: Date | string | null
+  export type profession_detailCreateManyProfession_categoryInput = {
+    id_profesi: bigint | number
   }
 
-  export type professionUpdateWithoutProfession_categoryInput = {
-    id_profesi?: BigIntFieldUpdateOperationsInput | bigint | number
-    profession?: StringFieldUpdateOperationsInput | string
-    created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    profession_user?: profession_userUpdateManyWithoutProfessionNestedInput
+  export type profession_detailUpdateWithoutProfession_categoryInput = {
+    profession?: professionUpdateOneRequiredWithoutProfession_detailNestedInput
   }
 
-  export type professionUncheckedUpdateWithoutProfession_categoryInput = {
+  export type profession_detailUncheckedUpdateWithoutProfession_categoryInput = {
     id_profesi?: BigIntFieldUpdateOperationsInput | bigint | number
-    profession?: StringFieldUpdateOperationsInput | string
-    created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    profession_user?: profession_userUncheckedUpdateManyWithoutProfessionNestedInput
   }
 
-  export type professionUncheckedUpdateManyWithoutProfession_categoryInput = {
+  export type profession_detailUncheckedUpdateManyWithoutProfession_categoryInput = {
     id_profesi?: BigIntFieldUpdateOperationsInput | bigint | number
-    profession?: StringFieldUpdateOperationsInput | string
-    created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
 
