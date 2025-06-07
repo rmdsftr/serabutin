@@ -14,11 +14,6 @@ export type PrismaPromise<T> = $Public.PrismaPromise<T>
 
 
 /**
- * Model addresses
- * 
- */
-export type addresses = $Result.DefaultSelection<Prisma.$addressesPayload>
-/**
  * Model cities
  * 
  */
@@ -39,11 +34,6 @@ export type profession_user = $Result.DefaultSelection<Prisma.$profession_userPa
  */
 export type provinces = $Result.DefaultSelection<Prisma.$provincesPayload>
 /**
- * Model user_address
- * 
- */
-export type user_address = $Result.DefaultSelection<Prisma.$user_addressPayload>
-/**
  * Model users
  * 
  */
@@ -58,6 +48,26 @@ export type profession_category = $Result.DefaultSelection<Prisma.$profession_ca
  * 
  */
 export type profession_detail = $Result.DefaultSelection<Prisma.$profession_detailPayload>
+/**
+ * Model alamat
+ * 
+ */
+export type alamat = $Result.DefaultSelection<Prisma.$alamatPayload>
+/**
+ * Model kecamatan
+ * 
+ */
+export type kecamatan = $Result.DefaultSelection<Prisma.$kecamatanPayload>
+/**
+ * Model kelurahan
+ * 
+ */
+export type kelurahan = $Result.DefaultSelection<Prisma.$kelurahanPayload>
+/**
+ * Model tipe_alamat
+ * 
+ */
+export type tipe_alamat = $Result.DefaultSelection<Prisma.$tipe_alamatPayload>
 
 /**
  * Enums
@@ -97,8 +107,8 @@ export const status_user_enum: typeof $Enums.status_user_enum
  * @example
  * ```
  * const prisma = new PrismaClient()
- * // Fetch zero or more Addresses
- * const addresses = await prisma.addresses.findMany()
+ * // Fetch zero or more Cities
+ * const cities = await prisma.cities.findMany()
  * ```
  *
  *
@@ -118,8 +128,8 @@ export class PrismaClient<
    * @example
    * ```
    * const prisma = new PrismaClient()
-   * // Fetch zero or more Addresses
-   * const addresses = await prisma.addresses.findMany()
+   * // Fetch zero or more Cities
+   * const cities = await prisma.cities.findMany()
    * ```
    *
    *
@@ -216,16 +226,6 @@ export class PrismaClient<
   }>>
 
       /**
-   * `prisma.addresses`: Exposes CRUD operations for the **addresses** model.
-    * Example usage:
-    * ```ts
-    * // Fetch zero or more Addresses
-    * const addresses = await prisma.addresses.findMany()
-    * ```
-    */
-  get addresses(): Prisma.addressesDelegate<ExtArgs, ClientOptions>;
-
-  /**
    * `prisma.cities`: Exposes CRUD operations for the **cities** model.
     * Example usage:
     * ```ts
@@ -266,16 +266,6 @@ export class PrismaClient<
   get provinces(): Prisma.provincesDelegate<ExtArgs, ClientOptions>;
 
   /**
-   * `prisma.user_address`: Exposes CRUD operations for the **user_address** model.
-    * Example usage:
-    * ```ts
-    * // Fetch zero or more User_addresses
-    * const user_addresses = await prisma.user_address.findMany()
-    * ```
-    */
-  get user_address(): Prisma.user_addressDelegate<ExtArgs, ClientOptions>;
-
-  /**
    * `prisma.users`: Exposes CRUD operations for the **users** model.
     * Example usage:
     * ```ts
@@ -304,6 +294,46 @@ export class PrismaClient<
     * ```
     */
   get profession_detail(): Prisma.profession_detailDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.alamat`: Exposes CRUD operations for the **alamat** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Alamats
+    * const alamats = await prisma.alamat.findMany()
+    * ```
+    */
+  get alamat(): Prisma.alamatDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.kecamatan`: Exposes CRUD operations for the **kecamatan** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Kecamatans
+    * const kecamatans = await prisma.kecamatan.findMany()
+    * ```
+    */
+  get kecamatan(): Prisma.kecamatanDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.kelurahan`: Exposes CRUD operations for the **kelurahan** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Kelurahans
+    * const kelurahans = await prisma.kelurahan.findMany()
+    * ```
+    */
+  get kelurahan(): Prisma.kelurahanDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.tipe_alamat`: Exposes CRUD operations for the **tipe_alamat** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Tipe_alamats
+    * const tipe_alamats = await prisma.tipe_alamat.findMany()
+    * ```
+    */
+  get tipe_alamat(): Prisma.tipe_alamatDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -362,8 +392,8 @@ export namespace Prisma {
   export import Exact = $Public.Exact
 
   /**
-   * Prisma Client JS version: 6.8.2
-   * Query Engine version: 2060c79ba17c6bb9f5823312b6f6b7f4a845738e
+   * Prisma Client JS version: 6.9.0
+   * Query Engine version: 81e4af48011447c3cc503a190e86995b66d2a28e
    */
   export type PrismaVersion = {
     client: string
@@ -744,15 +774,17 @@ export namespace Prisma {
 
 
   export const ModelName: {
-    addresses: 'addresses',
     cities: 'cities',
     profession: 'profession',
     profession_user: 'profession_user',
     provinces: 'provinces',
-    user_address: 'user_address',
     users: 'users',
     profession_category: 'profession_category',
-    profession_detail: 'profession_detail'
+    profession_detail: 'profession_detail',
+    alamat: 'alamat',
+    kecamatan: 'kecamatan',
+    kelurahan: 'kelurahan',
+    tipe_alamat: 'tipe_alamat'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -771,84 +803,10 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "addresses" | "cities" | "profession" | "profession_user" | "provinces" | "user_address" | "users" | "profession_category" | "profession_detail"
+      modelProps: "cities" | "profession" | "profession_user" | "provinces" | "users" | "profession_category" | "profession_detail" | "alamat" | "kecamatan" | "kelurahan" | "tipe_alamat"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
-      addresses: {
-        payload: Prisma.$addressesPayload<ExtArgs>
-        fields: Prisma.addressesFieldRefs
-        operations: {
-          findUnique: {
-            args: Prisma.addressesFindUniqueArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$addressesPayload> | null
-          }
-          findUniqueOrThrow: {
-            args: Prisma.addressesFindUniqueOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$addressesPayload>
-          }
-          findFirst: {
-            args: Prisma.addressesFindFirstArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$addressesPayload> | null
-          }
-          findFirstOrThrow: {
-            args: Prisma.addressesFindFirstOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$addressesPayload>
-          }
-          findMany: {
-            args: Prisma.addressesFindManyArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$addressesPayload>[]
-          }
-          create: {
-            args: Prisma.addressesCreateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$addressesPayload>
-          }
-          createMany: {
-            args: Prisma.addressesCreateManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          createManyAndReturn: {
-            args: Prisma.addressesCreateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$addressesPayload>[]
-          }
-          delete: {
-            args: Prisma.addressesDeleteArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$addressesPayload>
-          }
-          update: {
-            args: Prisma.addressesUpdateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$addressesPayload>
-          }
-          deleteMany: {
-            args: Prisma.addressesDeleteManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          updateMany: {
-            args: Prisma.addressesUpdateManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          updateManyAndReturn: {
-            args: Prisma.addressesUpdateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$addressesPayload>[]
-          }
-          upsert: {
-            args: Prisma.addressesUpsertArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$addressesPayload>
-          }
-          aggregate: {
-            args: Prisma.AddressesAggregateArgs<ExtArgs>
-            result: $Utils.Optional<AggregateAddresses>
-          }
-          groupBy: {
-            args: Prisma.addressesGroupByArgs<ExtArgs>
-            result: $Utils.Optional<AddressesGroupByOutputType>[]
-          }
-          count: {
-            args: Prisma.addressesCountArgs<ExtArgs>
-            result: $Utils.Optional<AddressesCountAggregateOutputType> | number
-          }
-        }
-      }
       cities: {
         payload: Prisma.$citiesPayload<ExtArgs>
         fields: Prisma.citiesFieldRefs
@@ -1145,80 +1103,6 @@ export namespace Prisma {
           }
         }
       }
-      user_address: {
-        payload: Prisma.$user_addressPayload<ExtArgs>
-        fields: Prisma.user_addressFieldRefs
-        operations: {
-          findUnique: {
-            args: Prisma.user_addressFindUniqueArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$user_addressPayload> | null
-          }
-          findUniqueOrThrow: {
-            args: Prisma.user_addressFindUniqueOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$user_addressPayload>
-          }
-          findFirst: {
-            args: Prisma.user_addressFindFirstArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$user_addressPayload> | null
-          }
-          findFirstOrThrow: {
-            args: Prisma.user_addressFindFirstOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$user_addressPayload>
-          }
-          findMany: {
-            args: Prisma.user_addressFindManyArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$user_addressPayload>[]
-          }
-          create: {
-            args: Prisma.user_addressCreateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$user_addressPayload>
-          }
-          createMany: {
-            args: Prisma.user_addressCreateManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          createManyAndReturn: {
-            args: Prisma.user_addressCreateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$user_addressPayload>[]
-          }
-          delete: {
-            args: Prisma.user_addressDeleteArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$user_addressPayload>
-          }
-          update: {
-            args: Prisma.user_addressUpdateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$user_addressPayload>
-          }
-          deleteMany: {
-            args: Prisma.user_addressDeleteManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          updateMany: {
-            args: Prisma.user_addressUpdateManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          updateManyAndReturn: {
-            args: Prisma.user_addressUpdateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$user_addressPayload>[]
-          }
-          upsert: {
-            args: Prisma.user_addressUpsertArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$user_addressPayload>
-          }
-          aggregate: {
-            args: Prisma.User_addressAggregateArgs<ExtArgs>
-            result: $Utils.Optional<AggregateUser_address>
-          }
-          groupBy: {
-            args: Prisma.user_addressGroupByArgs<ExtArgs>
-            result: $Utils.Optional<User_addressGroupByOutputType>[]
-          }
-          count: {
-            args: Prisma.user_addressCountArgs<ExtArgs>
-            result: $Utils.Optional<User_addressCountAggregateOutputType> | number
-          }
-        }
-      }
       users: {
         payload: Prisma.$usersPayload<ExtArgs>
         fields: Prisma.usersFieldRefs
@@ -1441,6 +1325,302 @@ export namespace Prisma {
           }
         }
       }
+      alamat: {
+        payload: Prisma.$alamatPayload<ExtArgs>
+        fields: Prisma.alamatFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.alamatFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$alamatPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.alamatFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$alamatPayload>
+          }
+          findFirst: {
+            args: Prisma.alamatFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$alamatPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.alamatFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$alamatPayload>
+          }
+          findMany: {
+            args: Prisma.alamatFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$alamatPayload>[]
+          }
+          create: {
+            args: Prisma.alamatCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$alamatPayload>
+          }
+          createMany: {
+            args: Prisma.alamatCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.alamatCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$alamatPayload>[]
+          }
+          delete: {
+            args: Prisma.alamatDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$alamatPayload>
+          }
+          update: {
+            args: Prisma.alamatUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$alamatPayload>
+          }
+          deleteMany: {
+            args: Prisma.alamatDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.alamatUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.alamatUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$alamatPayload>[]
+          }
+          upsert: {
+            args: Prisma.alamatUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$alamatPayload>
+          }
+          aggregate: {
+            args: Prisma.AlamatAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateAlamat>
+          }
+          groupBy: {
+            args: Prisma.alamatGroupByArgs<ExtArgs>
+            result: $Utils.Optional<AlamatGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.alamatCountArgs<ExtArgs>
+            result: $Utils.Optional<AlamatCountAggregateOutputType> | number
+          }
+        }
+      }
+      kecamatan: {
+        payload: Prisma.$kecamatanPayload<ExtArgs>
+        fields: Prisma.kecamatanFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.kecamatanFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$kecamatanPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.kecamatanFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$kecamatanPayload>
+          }
+          findFirst: {
+            args: Prisma.kecamatanFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$kecamatanPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.kecamatanFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$kecamatanPayload>
+          }
+          findMany: {
+            args: Prisma.kecamatanFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$kecamatanPayload>[]
+          }
+          create: {
+            args: Prisma.kecamatanCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$kecamatanPayload>
+          }
+          createMany: {
+            args: Prisma.kecamatanCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.kecamatanCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$kecamatanPayload>[]
+          }
+          delete: {
+            args: Prisma.kecamatanDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$kecamatanPayload>
+          }
+          update: {
+            args: Prisma.kecamatanUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$kecamatanPayload>
+          }
+          deleteMany: {
+            args: Prisma.kecamatanDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.kecamatanUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.kecamatanUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$kecamatanPayload>[]
+          }
+          upsert: {
+            args: Prisma.kecamatanUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$kecamatanPayload>
+          }
+          aggregate: {
+            args: Prisma.KecamatanAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateKecamatan>
+          }
+          groupBy: {
+            args: Prisma.kecamatanGroupByArgs<ExtArgs>
+            result: $Utils.Optional<KecamatanGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.kecamatanCountArgs<ExtArgs>
+            result: $Utils.Optional<KecamatanCountAggregateOutputType> | number
+          }
+        }
+      }
+      kelurahan: {
+        payload: Prisma.$kelurahanPayload<ExtArgs>
+        fields: Prisma.kelurahanFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.kelurahanFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$kelurahanPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.kelurahanFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$kelurahanPayload>
+          }
+          findFirst: {
+            args: Prisma.kelurahanFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$kelurahanPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.kelurahanFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$kelurahanPayload>
+          }
+          findMany: {
+            args: Prisma.kelurahanFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$kelurahanPayload>[]
+          }
+          create: {
+            args: Prisma.kelurahanCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$kelurahanPayload>
+          }
+          createMany: {
+            args: Prisma.kelurahanCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.kelurahanCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$kelurahanPayload>[]
+          }
+          delete: {
+            args: Prisma.kelurahanDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$kelurahanPayload>
+          }
+          update: {
+            args: Prisma.kelurahanUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$kelurahanPayload>
+          }
+          deleteMany: {
+            args: Prisma.kelurahanDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.kelurahanUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.kelurahanUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$kelurahanPayload>[]
+          }
+          upsert: {
+            args: Prisma.kelurahanUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$kelurahanPayload>
+          }
+          aggregate: {
+            args: Prisma.KelurahanAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateKelurahan>
+          }
+          groupBy: {
+            args: Prisma.kelurahanGroupByArgs<ExtArgs>
+            result: $Utils.Optional<KelurahanGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.kelurahanCountArgs<ExtArgs>
+            result: $Utils.Optional<KelurahanCountAggregateOutputType> | number
+          }
+        }
+      }
+      tipe_alamat: {
+        payload: Prisma.$tipe_alamatPayload<ExtArgs>
+        fields: Prisma.tipe_alamatFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.tipe_alamatFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$tipe_alamatPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.tipe_alamatFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$tipe_alamatPayload>
+          }
+          findFirst: {
+            args: Prisma.tipe_alamatFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$tipe_alamatPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.tipe_alamatFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$tipe_alamatPayload>
+          }
+          findMany: {
+            args: Prisma.tipe_alamatFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$tipe_alamatPayload>[]
+          }
+          create: {
+            args: Prisma.tipe_alamatCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$tipe_alamatPayload>
+          }
+          createMany: {
+            args: Prisma.tipe_alamatCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.tipe_alamatCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$tipe_alamatPayload>[]
+          }
+          delete: {
+            args: Prisma.tipe_alamatDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$tipe_alamatPayload>
+          }
+          update: {
+            args: Prisma.tipe_alamatUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$tipe_alamatPayload>
+          }
+          deleteMany: {
+            args: Prisma.tipe_alamatDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.tipe_alamatUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.tipe_alamatUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$tipe_alamatPayload>[]
+          }
+          upsert: {
+            args: Prisma.tipe_alamatUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$tipe_alamatPayload>
+          }
+          aggregate: {
+            args: Prisma.Tipe_alamatAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateTipe_alamat>
+          }
+          groupBy: {
+            args: Prisma.tipe_alamatGroupByArgs<ExtArgs>
+            result: $Utils.Optional<Tipe_alamatGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.tipe_alamatCountArgs<ExtArgs>
+            result: $Utils.Optional<Tipe_alamatCountAggregateOutputType> | number
+          }
+        }
+      }
     }
   } & {
     other: {
@@ -1525,15 +1705,17 @@ export namespace Prisma {
     omit?: Prisma.GlobalOmitConfig
   }
   export type GlobalOmitConfig = {
-    addresses?: addressesOmit
     cities?: citiesOmit
     profession?: professionOmit
     profession_user?: profession_userOmit
     provinces?: provincesOmit
-    user_address?: user_addressOmit
     users?: usersOmit
     profession_category?: profession_categoryOmit
     profession_detail?: profession_detailOmit
+    alamat?: alamatOmit
+    kecamatan?: kecamatanOmit
+    kelurahan?: kelurahanOmit
+    tipe_alamat?: tipe_alamatOmit
   }
 
   /* Types for Logging */
@@ -1624,46 +1806,17 @@ export namespace Prisma {
 
 
   /**
-   * Count Type AddressesCountOutputType
-   */
-
-  export type AddressesCountOutputType = {
-    user_address: number
-  }
-
-  export type AddressesCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    user_address?: boolean | AddressesCountOutputTypeCountUser_addressArgs
-  }
-
-  // Custom InputTypes
-  /**
-   * AddressesCountOutputType without action
-   */
-  export type AddressesCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the AddressesCountOutputType
-     */
-    select?: AddressesCountOutputTypeSelect<ExtArgs> | null
-  }
-
-  /**
-   * AddressesCountOutputType without action
-   */
-  export type AddressesCountOutputTypeCountUser_addressArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: user_addressWhereInput
-  }
-
-
-  /**
    * Count Type CitiesCountOutputType
    */
 
   export type CitiesCountOutputType = {
-    addresses: number
+    alamat: number
+    kecamatan: number
   }
 
   export type CitiesCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    addresses?: boolean | CitiesCountOutputTypeCountAddressesArgs
+    alamat?: boolean | CitiesCountOutputTypeCountAlamatArgs
+    kecamatan?: boolean | CitiesCountOutputTypeCountKecamatanArgs
   }
 
   // Custom InputTypes
@@ -1680,8 +1833,15 @@ export namespace Prisma {
   /**
    * CitiesCountOutputType without action
    */
-  export type CitiesCountOutputTypeCountAddressesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: addressesWhereInput
+  export type CitiesCountOutputTypeCountAlamatArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: alamatWhereInput
+  }
+
+  /**
+   * CitiesCountOutputType without action
+   */
+  export type CitiesCountOutputTypeCountKecamatanArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: kecamatanWhereInput
   }
 
 
@@ -1730,12 +1890,12 @@ export namespace Prisma {
    */
 
   export type ProvincesCountOutputType = {
-    addresses: number
+    alamat: number
     cities: number
   }
 
   export type ProvincesCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    addresses?: boolean | ProvincesCountOutputTypeCountAddressesArgs
+    alamat?: boolean | ProvincesCountOutputTypeCountAlamatArgs
     cities?: boolean | ProvincesCountOutputTypeCountCitiesArgs
   }
 
@@ -1753,8 +1913,8 @@ export namespace Prisma {
   /**
    * ProvincesCountOutputType without action
    */
-  export type ProvincesCountOutputTypeCountAddressesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: addressesWhereInput
+  export type ProvincesCountOutputTypeCountAlamatArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: alamatWhereInput
   }
 
   /**
@@ -1770,13 +1930,13 @@ export namespace Prisma {
    */
 
   export type UsersCountOutputType = {
+    alamat: number
     profession_user: number
-    user_address: number
   }
 
   export type UsersCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    alamat?: boolean | UsersCountOutputTypeCountAlamatArgs
     profession_user?: boolean | UsersCountOutputTypeCountProfession_userArgs
-    user_address?: boolean | UsersCountOutputTypeCountUser_addressArgs
   }
 
   // Custom InputTypes
@@ -1793,15 +1953,15 @@ export namespace Prisma {
   /**
    * UsersCountOutputType without action
    */
-  export type UsersCountOutputTypeCountProfession_userArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: profession_userWhereInput
+  export type UsersCountOutputTypeCountAlamatArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: alamatWhereInput
   }
 
   /**
    * UsersCountOutputType without action
    */
-  export type UsersCountOutputTypeCountUser_addressArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: user_addressWhereInput
+  export type UsersCountOutputTypeCountProfession_userArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: profession_userWhereInput
   }
 
 
@@ -1837,1227 +1997,110 @@ export namespace Prisma {
 
 
   /**
-   * Models
+   * Count Type KecamatanCountOutputType
    */
 
-  /**
-   * Model addresses
-   */
-
-  export type AggregateAddresses = {
-    _count: AddressesCountAggregateOutputType | null
-    _avg: AddressesAvgAggregateOutputType | null
-    _sum: AddressesSumAggregateOutputType | null
-    _min: AddressesMinAggregateOutputType | null
-    _max: AddressesMaxAggregateOutputType | null
-  }
-
-  export type AddressesAvgAggregateOutputType = {
-    latitude: Decimal | null
-    longitude: Decimal | null
-    id_kota: number | null
-    id_prov: number | null
-  }
-
-  export type AddressesSumAggregateOutputType = {
-    latitude: Decimal | null
-    longitude: Decimal | null
-    id_kota: number | null
-    id_prov: number | null
-  }
-
-  export type AddressesMinAggregateOutputType = {
-    id_alamat: string | null
-    alamat: string | null
-    latitude: Decimal | null
-    longitude: Decimal | null
-    id_kota: number | null
-    id_prov: number | null
-    created_at: Date | null
-    updated_at: Date | null
-  }
-
-  export type AddressesMaxAggregateOutputType = {
-    id_alamat: string | null
-    alamat: string | null
-    latitude: Decimal | null
-    longitude: Decimal | null
-    id_kota: number | null
-    id_prov: number | null
-    created_at: Date | null
-    updated_at: Date | null
-  }
-
-  export type AddressesCountAggregateOutputType = {
-    id_alamat: number
+  export type KecamatanCountOutputType = {
     alamat: number
-    latitude: number
-    longitude: number
-    id_kota: number
-    id_prov: number
-    created_at: number
-    updated_at: number
-    _all: number
+    kelurahan: number
   }
 
-
-  export type AddressesAvgAggregateInputType = {
-    latitude?: true
-    longitude?: true
-    id_kota?: true
-    id_prov?: true
+  export type KecamatanCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    alamat?: boolean | KecamatanCountOutputTypeCountAlamatArgs
+    kelurahan?: boolean | KecamatanCountOutputTypeCountKelurahanArgs
   }
-
-  export type AddressesSumAggregateInputType = {
-    latitude?: true
-    longitude?: true
-    id_kota?: true
-    id_prov?: true
-  }
-
-  export type AddressesMinAggregateInputType = {
-    id_alamat?: true
-    alamat?: true
-    latitude?: true
-    longitude?: true
-    id_kota?: true
-    id_prov?: true
-    created_at?: true
-    updated_at?: true
-  }
-
-  export type AddressesMaxAggregateInputType = {
-    id_alamat?: true
-    alamat?: true
-    latitude?: true
-    longitude?: true
-    id_kota?: true
-    id_prov?: true
-    created_at?: true
-    updated_at?: true
-  }
-
-  export type AddressesCountAggregateInputType = {
-    id_alamat?: true
-    alamat?: true
-    latitude?: true
-    longitude?: true
-    id_kota?: true
-    id_prov?: true
-    created_at?: true
-    updated_at?: true
-    _all?: true
-  }
-
-  export type AddressesAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Filter which addresses to aggregate.
-     */
-    where?: addressesWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of addresses to fetch.
-     */
-    orderBy?: addressesOrderByWithRelationInput | addressesOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the start position
-     */
-    cursor?: addressesWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` addresses from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` addresses.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Count returned addresses
-    **/
-    _count?: true | AddressesCountAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to average
-    **/
-    _avg?: AddressesAvgAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to sum
-    **/
-    _sum?: AddressesSumAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to find the minimum value
-    **/
-    _min?: AddressesMinAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to find the maximum value
-    **/
-    _max?: AddressesMaxAggregateInputType
-  }
-
-  export type GetAddressesAggregateType<T extends AddressesAggregateArgs> = {
-        [P in keyof T & keyof AggregateAddresses]: P extends '_count' | 'count'
-      ? T[P] extends true
-        ? number
-        : GetScalarType<T[P], AggregateAddresses[P]>
-      : GetScalarType<T[P], AggregateAddresses[P]>
-  }
-
-
-
-
-  export type addressesGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: addressesWhereInput
-    orderBy?: addressesOrderByWithAggregationInput | addressesOrderByWithAggregationInput[]
-    by: AddressesScalarFieldEnum[] | AddressesScalarFieldEnum
-    having?: addressesScalarWhereWithAggregatesInput
-    take?: number
-    skip?: number
-    _count?: AddressesCountAggregateInputType | true
-    _avg?: AddressesAvgAggregateInputType
-    _sum?: AddressesSumAggregateInputType
-    _min?: AddressesMinAggregateInputType
-    _max?: AddressesMaxAggregateInputType
-  }
-
-  export type AddressesGroupByOutputType = {
-    id_alamat: string
-    alamat: string
-    latitude: Decimal
-    longitude: Decimal
-    id_kota: number | null
-    id_prov: number | null
-    created_at: Date | null
-    updated_at: Date | null
-    _count: AddressesCountAggregateOutputType | null
-    _avg: AddressesAvgAggregateOutputType | null
-    _sum: AddressesSumAggregateOutputType | null
-    _min: AddressesMinAggregateOutputType | null
-    _max: AddressesMaxAggregateOutputType | null
-  }
-
-  type GetAddressesGroupByPayload<T extends addressesGroupByArgs> = Prisma.PrismaPromise<
-    Array<
-      PickEnumerable<AddressesGroupByOutputType, T['by']> &
-        {
-          [P in ((keyof T) & (keyof AddressesGroupByOutputType))]: P extends '_count'
-            ? T[P] extends boolean
-              ? number
-              : GetScalarType<T[P], AddressesGroupByOutputType[P]>
-            : GetScalarType<T[P], AddressesGroupByOutputType[P]>
-        }
-      >
-    >
-
-
-  export type addressesSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id_alamat?: boolean
-    alamat?: boolean
-    latitude?: boolean
-    longitude?: boolean
-    id_kota?: boolean
-    id_prov?: boolean
-    created_at?: boolean
-    updated_at?: boolean
-    cities?: boolean | addresses$citiesArgs<ExtArgs>
-    provinces?: boolean | addresses$provincesArgs<ExtArgs>
-    user_address?: boolean | addresses$user_addressArgs<ExtArgs>
-    _count?: boolean | AddressesCountOutputTypeDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["addresses"]>
-
-  export type addressesSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id_alamat?: boolean
-    alamat?: boolean
-    latitude?: boolean
-    longitude?: boolean
-    id_kota?: boolean
-    id_prov?: boolean
-    created_at?: boolean
-    updated_at?: boolean
-    cities?: boolean | addresses$citiesArgs<ExtArgs>
-    provinces?: boolean | addresses$provincesArgs<ExtArgs>
-  }, ExtArgs["result"]["addresses"]>
-
-  export type addressesSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id_alamat?: boolean
-    alamat?: boolean
-    latitude?: boolean
-    longitude?: boolean
-    id_kota?: boolean
-    id_prov?: boolean
-    created_at?: boolean
-    updated_at?: boolean
-    cities?: boolean | addresses$citiesArgs<ExtArgs>
-    provinces?: boolean | addresses$provincesArgs<ExtArgs>
-  }, ExtArgs["result"]["addresses"]>
-
-  export type addressesSelectScalar = {
-    id_alamat?: boolean
-    alamat?: boolean
-    latitude?: boolean
-    longitude?: boolean
-    id_kota?: boolean
-    id_prov?: boolean
-    created_at?: boolean
-    updated_at?: boolean
-  }
-
-  export type addressesOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id_alamat" | "alamat" | "latitude" | "longitude" | "id_kota" | "id_prov" | "created_at" | "updated_at", ExtArgs["result"]["addresses"]>
-  export type addressesInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    cities?: boolean | addresses$citiesArgs<ExtArgs>
-    provinces?: boolean | addresses$provincesArgs<ExtArgs>
-    user_address?: boolean | addresses$user_addressArgs<ExtArgs>
-    _count?: boolean | AddressesCountOutputTypeDefaultArgs<ExtArgs>
-  }
-  export type addressesIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    cities?: boolean | addresses$citiesArgs<ExtArgs>
-    provinces?: boolean | addresses$provincesArgs<ExtArgs>
-  }
-  export type addressesIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    cities?: boolean | addresses$citiesArgs<ExtArgs>
-    provinces?: boolean | addresses$provincesArgs<ExtArgs>
-  }
-
-  export type $addressesPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    name: "addresses"
-    objects: {
-      cities: Prisma.$citiesPayload<ExtArgs> | null
-      provinces: Prisma.$provincesPayload<ExtArgs> | null
-      user_address: Prisma.$user_addressPayload<ExtArgs>[]
-    }
-    scalars: $Extensions.GetPayloadResult<{
-      id_alamat: string
-      alamat: string
-      latitude: Prisma.Decimal
-      longitude: Prisma.Decimal
-      id_kota: number | null
-      id_prov: number | null
-      created_at: Date | null
-      updated_at: Date | null
-    }, ExtArgs["result"]["addresses"]>
-    composites: {}
-  }
-
-  type addressesGetPayload<S extends boolean | null | undefined | addressesDefaultArgs> = $Result.GetResult<Prisma.$addressesPayload, S>
-
-  type addressesCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
-    Omit<addressesFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
-      select?: AddressesCountAggregateInputType | true
-    }
-
-  export interface addressesDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['addresses'], meta: { name: 'addresses' } }
-    /**
-     * Find zero or one Addresses that matches the filter.
-     * @param {addressesFindUniqueArgs} args - Arguments to find a Addresses
-     * @example
-     * // Get one Addresses
-     * const addresses = await prisma.addresses.findUnique({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findUnique<T extends addressesFindUniqueArgs>(args: SelectSubset<T, addressesFindUniqueArgs<ExtArgs>>): Prisma__addressesClient<$Result.GetResult<Prisma.$addressesPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find one Addresses that matches the filter or throw an error with `error.code='P2025'`
-     * if no matches were found.
-     * @param {addressesFindUniqueOrThrowArgs} args - Arguments to find a Addresses
-     * @example
-     * // Get one Addresses
-     * const addresses = await prisma.addresses.findUniqueOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findUniqueOrThrow<T extends addressesFindUniqueOrThrowArgs>(args: SelectSubset<T, addressesFindUniqueOrThrowArgs<ExtArgs>>): Prisma__addressesClient<$Result.GetResult<Prisma.$addressesPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find the first Addresses that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {addressesFindFirstArgs} args - Arguments to find a Addresses
-     * @example
-     * // Get one Addresses
-     * const addresses = await prisma.addresses.findFirst({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findFirst<T extends addressesFindFirstArgs>(args?: SelectSubset<T, addressesFindFirstArgs<ExtArgs>>): Prisma__addressesClient<$Result.GetResult<Prisma.$addressesPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find the first Addresses that matches the filter or
-     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {addressesFindFirstOrThrowArgs} args - Arguments to find a Addresses
-     * @example
-     * // Get one Addresses
-     * const addresses = await prisma.addresses.findFirstOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findFirstOrThrow<T extends addressesFindFirstOrThrowArgs>(args?: SelectSubset<T, addressesFindFirstOrThrowArgs<ExtArgs>>): Prisma__addressesClient<$Result.GetResult<Prisma.$addressesPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find zero or more Addresses that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {addressesFindManyArgs} args - Arguments to filter and select certain fields only.
-     * @example
-     * // Get all Addresses
-     * const addresses = await prisma.addresses.findMany()
-     * 
-     * // Get first 10 Addresses
-     * const addresses = await prisma.addresses.findMany({ take: 10 })
-     * 
-     * // Only select the `id_alamat`
-     * const addressesWithId_alamatOnly = await prisma.addresses.findMany({ select: { id_alamat: true } })
-     * 
-     */
-    findMany<T extends addressesFindManyArgs>(args?: SelectSubset<T, addressesFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$addressesPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
-
-    /**
-     * Create a Addresses.
-     * @param {addressesCreateArgs} args - Arguments to create a Addresses.
-     * @example
-     * // Create one Addresses
-     * const Addresses = await prisma.addresses.create({
-     *   data: {
-     *     // ... data to create a Addresses
-     *   }
-     * })
-     * 
-     */
-    create<T extends addressesCreateArgs>(args: SelectSubset<T, addressesCreateArgs<ExtArgs>>): Prisma__addressesClient<$Result.GetResult<Prisma.$addressesPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Create many Addresses.
-     * @param {addressesCreateManyArgs} args - Arguments to create many Addresses.
-     * @example
-     * // Create many Addresses
-     * const addresses = await prisma.addresses.createMany({
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     *     
-     */
-    createMany<T extends addressesCreateManyArgs>(args?: SelectSubset<T, addressesCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Create many Addresses and returns the data saved in the database.
-     * @param {addressesCreateManyAndReturnArgs} args - Arguments to create many Addresses.
-     * @example
-     * // Create many Addresses
-     * const addresses = await prisma.addresses.createManyAndReturn({
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * 
-     * // Create many Addresses and only return the `id_alamat`
-     * const addressesWithId_alamatOnly = await prisma.addresses.createManyAndReturn({
-     *   select: { id_alamat: true },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * 
-     */
-    createManyAndReturn<T extends addressesCreateManyAndReturnArgs>(args?: SelectSubset<T, addressesCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$addressesPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
-
-    /**
-     * Delete a Addresses.
-     * @param {addressesDeleteArgs} args - Arguments to delete one Addresses.
-     * @example
-     * // Delete one Addresses
-     * const Addresses = await prisma.addresses.delete({
-     *   where: {
-     *     // ... filter to delete one Addresses
-     *   }
-     * })
-     * 
-     */
-    delete<T extends addressesDeleteArgs>(args: SelectSubset<T, addressesDeleteArgs<ExtArgs>>): Prisma__addressesClient<$Result.GetResult<Prisma.$addressesPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Update one Addresses.
-     * @param {addressesUpdateArgs} args - Arguments to update one Addresses.
-     * @example
-     * // Update one Addresses
-     * const addresses = await prisma.addresses.update({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     * 
-     */
-    update<T extends addressesUpdateArgs>(args: SelectSubset<T, addressesUpdateArgs<ExtArgs>>): Prisma__addressesClient<$Result.GetResult<Prisma.$addressesPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Delete zero or more Addresses.
-     * @param {addressesDeleteManyArgs} args - Arguments to filter Addresses to delete.
-     * @example
-     * // Delete a few Addresses
-     * const { count } = await prisma.addresses.deleteMany({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     * 
-     */
-    deleteMany<T extends addressesDeleteManyArgs>(args?: SelectSubset<T, addressesDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Update zero or more Addresses.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {addressesUpdateManyArgs} args - Arguments to update one or more rows.
-     * @example
-     * // Update many Addresses
-     * const addresses = await prisma.addresses.updateMany({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     * 
-     */
-    updateMany<T extends addressesUpdateManyArgs>(args: SelectSubset<T, addressesUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Update zero or more Addresses and returns the data updated in the database.
-     * @param {addressesUpdateManyAndReturnArgs} args - Arguments to update many Addresses.
-     * @example
-     * // Update many Addresses
-     * const addresses = await prisma.addresses.updateManyAndReturn({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * 
-     * // Update zero or more Addresses and only return the `id_alamat`
-     * const addressesWithId_alamatOnly = await prisma.addresses.updateManyAndReturn({
-     *   select: { id_alamat: true },
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * 
-     */
-    updateManyAndReturn<T extends addressesUpdateManyAndReturnArgs>(args: SelectSubset<T, addressesUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$addressesPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
-
-    /**
-     * Create or update one Addresses.
-     * @param {addressesUpsertArgs} args - Arguments to update or create a Addresses.
-     * @example
-     * // Update or create a Addresses
-     * const addresses = await prisma.addresses.upsert({
-     *   create: {
-     *     // ... data to create a Addresses
-     *   },
-     *   update: {
-     *     // ... in case it already exists, update
-     *   },
-     *   where: {
-     *     // ... the filter for the Addresses we want to update
-     *   }
-     * })
-     */
-    upsert<T extends addressesUpsertArgs>(args: SelectSubset<T, addressesUpsertArgs<ExtArgs>>): Prisma__addressesClient<$Result.GetResult<Prisma.$addressesPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-
-    /**
-     * Count the number of Addresses.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {addressesCountArgs} args - Arguments to filter Addresses to count.
-     * @example
-     * // Count the number of Addresses
-     * const count = await prisma.addresses.count({
-     *   where: {
-     *     // ... the filter for the Addresses we want to count
-     *   }
-     * })
-    **/
-    count<T extends addressesCountArgs>(
-      args?: Subset<T, addressesCountArgs>,
-    ): Prisma.PrismaPromise<
-      T extends $Utils.Record<'select', any>
-        ? T['select'] extends true
-          ? number
-          : GetScalarType<T['select'], AddressesCountAggregateOutputType>
-        : number
-    >
-
-    /**
-     * Allows you to perform aggregations operations on a Addresses.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {AddressesAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
-     * @example
-     * // Ordered by age ascending
-     * // Where email contains prisma.io
-     * // Limited to the 10 users
-     * const aggregations = await prisma.user.aggregate({
-     *   _avg: {
-     *     age: true,
-     *   },
-     *   where: {
-     *     email: {
-     *       contains: "prisma.io",
-     *     },
-     *   },
-     *   orderBy: {
-     *     age: "asc",
-     *   },
-     *   take: 10,
-     * })
-    **/
-    aggregate<T extends AddressesAggregateArgs>(args: Subset<T, AddressesAggregateArgs>): Prisma.PrismaPromise<GetAddressesAggregateType<T>>
-
-    /**
-     * Group by Addresses.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {addressesGroupByArgs} args - Group by arguments.
-     * @example
-     * // Group by city, order by createdAt, get count
-     * const result = await prisma.user.groupBy({
-     *   by: ['city', 'createdAt'],
-     *   orderBy: {
-     *     createdAt: true
-     *   },
-     *   _count: {
-     *     _all: true
-     *   },
-     * })
-     * 
-    **/
-    groupBy<
-      T extends addressesGroupByArgs,
-      HasSelectOrTake extends Or<
-        Extends<'skip', Keys<T>>,
-        Extends<'take', Keys<T>>
-      >,
-      OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: addressesGroupByArgs['orderBy'] }
-        : { orderBy?: addressesGroupByArgs['orderBy'] },
-      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
-      ByFields extends MaybeTupleToUnion<T['by']>,
-      ByValid extends Has<ByFields, OrderFields>,
-      HavingFields extends GetHavingFields<T['having']>,
-      HavingValid extends Has<ByFields, HavingFields>,
-      ByEmpty extends T['by'] extends never[] ? True : False,
-      InputErrors extends ByEmpty extends True
-      ? `Error: "by" must not be empty.`
-      : HavingValid extends False
-      ? {
-          [P in HavingFields]: P extends ByFields
-            ? never
-            : P extends string
-            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
-            : [
-                Error,
-                'Field ',
-                P,
-                ` in "having" needs to be provided in "by"`,
-              ]
-        }[HavingFields]
-      : 'take' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "take", you also need to provide "orderBy"'
-      : 'skip' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "skip", you also need to provide "orderBy"'
-      : ByValid extends True
-      ? {}
-      : {
-          [P in OrderFields]: P extends ByFields
-            ? never
-            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-        }[OrderFields]
-    >(args: SubsetIntersection<T, addressesGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetAddressesGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
-  /**
-   * Fields of the addresses model
-   */
-  readonly fields: addressesFieldRefs;
-  }
-
-  /**
-   * The delegate class that acts as a "Promise-like" for addresses.
-   * Why is this prefixed with `Prisma__`?
-   * Because we want to prevent naming conflicts as mentioned in
-   * https://github.com/prisma/prisma-client-js/issues/707
-   */
-  export interface Prisma__addressesClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
-    readonly [Symbol.toStringTag]: "PrismaPromise"
-    cities<T extends addresses$citiesArgs<ExtArgs> = {}>(args?: Subset<T, addresses$citiesArgs<ExtArgs>>): Prisma__citiesClient<$Result.GetResult<Prisma.$citiesPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-    provinces<T extends addresses$provincesArgs<ExtArgs> = {}>(args?: Subset<T, addresses$provincesArgs<ExtArgs>>): Prisma__provincesClient<$Result.GetResult<Prisma.$provincesPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-    user_address<T extends addresses$user_addressArgs<ExtArgs> = {}>(args?: Subset<T, addresses$user_addressArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$user_addressPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-    /**
-     * Attaches callbacks for the resolution and/or rejection of the Promise.
-     * @param onfulfilled The callback to execute when the Promise is resolved.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of which ever callback is executed.
-     */
-    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
-    /**
-     * Attaches a callback for only the rejection of the Promise.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of the callback.
-     */
-    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
-    /**
-     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
-     * resolved value cannot be modified from the callback.
-     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
-     * @returns A Promise for the completion of the callback.
-     */
-    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
-  }
-
-
-
-
-  /**
-   * Fields of the addresses model
-   */
-  interface addressesFieldRefs {
-    readonly id_alamat: FieldRef<"addresses", 'String'>
-    readonly alamat: FieldRef<"addresses", 'String'>
-    readonly latitude: FieldRef<"addresses", 'Decimal'>
-    readonly longitude: FieldRef<"addresses", 'Decimal'>
-    readonly id_kota: FieldRef<"addresses", 'Int'>
-    readonly id_prov: FieldRef<"addresses", 'Int'>
-    readonly created_at: FieldRef<"addresses", 'DateTime'>
-    readonly updated_at: FieldRef<"addresses", 'DateTime'>
-  }
-    
 
   // Custom InputTypes
   /**
-   * addresses findUnique
+   * KecamatanCountOutputType without action
    */
-  export type addressesFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type KecamatanCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the addresses
+     * Select specific fields to fetch from the KecamatanCountOutputType
      */
-    select?: addressesSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the addresses
-     */
-    omit?: addressesOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: addressesInclude<ExtArgs> | null
-    /**
-     * Filter, which addresses to fetch.
-     */
-    where: addressesWhereUniqueInput
+    select?: KecamatanCountOutputTypeSelect<ExtArgs> | null
   }
 
   /**
-   * addresses findUniqueOrThrow
+   * KecamatanCountOutputType without action
    */
-  export type addressesFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the addresses
-     */
-    select?: addressesSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the addresses
-     */
-    omit?: addressesOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: addressesInclude<ExtArgs> | null
-    /**
-     * Filter, which addresses to fetch.
-     */
-    where: addressesWhereUniqueInput
+  export type KecamatanCountOutputTypeCountAlamatArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: alamatWhereInput
   }
 
   /**
-   * addresses findFirst
+   * KecamatanCountOutputType without action
    */
-  export type addressesFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type KecamatanCountOutputTypeCountKelurahanArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: kelurahanWhereInput
+  }
+
+
+  /**
+   * Count Type KelurahanCountOutputType
+   */
+
+  export type KelurahanCountOutputType = {
+    alamat: number
+  }
+
+  export type KelurahanCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    alamat?: boolean | KelurahanCountOutputTypeCountAlamatArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * KelurahanCountOutputType without action
+   */
+  export type KelurahanCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the addresses
+     * Select specific fields to fetch from the KelurahanCountOutputType
      */
-    select?: addressesSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the addresses
-     */
-    omit?: addressesOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: addressesInclude<ExtArgs> | null
-    /**
-     * Filter, which addresses to fetch.
-     */
-    where?: addressesWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of addresses to fetch.
-     */
-    orderBy?: addressesOrderByWithRelationInput | addressesOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for searching for addresses.
-     */
-    cursor?: addressesWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` addresses from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` addresses.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of addresses.
-     */
-    distinct?: AddressesScalarFieldEnum | AddressesScalarFieldEnum[]
+    select?: KelurahanCountOutputTypeSelect<ExtArgs> | null
   }
 
   /**
-   * addresses findFirstOrThrow
+   * KelurahanCountOutputType without action
    */
-  export type addressesFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type KelurahanCountOutputTypeCountAlamatArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: alamatWhereInput
+  }
+
+
+  /**
+   * Count Type Tipe_alamatCountOutputType
+   */
+
+  export type Tipe_alamatCountOutputType = {
+    alamat: number
+  }
+
+  export type Tipe_alamatCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    alamat?: boolean | Tipe_alamatCountOutputTypeCountAlamatArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * Tipe_alamatCountOutputType without action
+   */
+  export type Tipe_alamatCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the addresses
+     * Select specific fields to fetch from the Tipe_alamatCountOutputType
      */
-    select?: addressesSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the addresses
-     */
-    omit?: addressesOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: addressesInclude<ExtArgs> | null
-    /**
-     * Filter, which addresses to fetch.
-     */
-    where?: addressesWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of addresses to fetch.
-     */
-    orderBy?: addressesOrderByWithRelationInput | addressesOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for searching for addresses.
-     */
-    cursor?: addressesWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` addresses from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` addresses.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of addresses.
-     */
-    distinct?: AddressesScalarFieldEnum | AddressesScalarFieldEnum[]
+    select?: Tipe_alamatCountOutputTypeSelect<ExtArgs> | null
   }
 
   /**
-   * addresses findMany
+   * Tipe_alamatCountOutputType without action
    */
-  export type addressesFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the addresses
-     */
-    select?: addressesSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the addresses
-     */
-    omit?: addressesOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: addressesInclude<ExtArgs> | null
-    /**
-     * Filter, which addresses to fetch.
-     */
-    where?: addressesWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of addresses to fetch.
-     */
-    orderBy?: addressesOrderByWithRelationInput | addressesOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for listing addresses.
-     */
-    cursor?: addressesWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` addresses from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` addresses.
-     */
-    skip?: number
-    distinct?: AddressesScalarFieldEnum | AddressesScalarFieldEnum[]
+  export type Tipe_alamatCountOutputTypeCountAlamatArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: alamatWhereInput
   }
+
 
   /**
-   * addresses create
+   * Models
    */
-  export type addressesCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the addresses
-     */
-    select?: addressesSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the addresses
-     */
-    omit?: addressesOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: addressesInclude<ExtArgs> | null
-    /**
-     * The data needed to create a addresses.
-     */
-    data: XOR<addressesCreateInput, addressesUncheckedCreateInput>
-  }
-
-  /**
-   * addresses createMany
-   */
-  export type addressesCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * The data used to create many addresses.
-     */
-    data: addressesCreateManyInput | addressesCreateManyInput[]
-    skipDuplicates?: boolean
-  }
-
-  /**
-   * addresses createManyAndReturn
-   */
-  export type addressesCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the addresses
-     */
-    select?: addressesSelectCreateManyAndReturn<ExtArgs> | null
-    /**
-     * Omit specific fields from the addresses
-     */
-    omit?: addressesOmit<ExtArgs> | null
-    /**
-     * The data used to create many addresses.
-     */
-    data: addressesCreateManyInput | addressesCreateManyInput[]
-    skipDuplicates?: boolean
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: addressesIncludeCreateManyAndReturn<ExtArgs> | null
-  }
-
-  /**
-   * addresses update
-   */
-  export type addressesUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the addresses
-     */
-    select?: addressesSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the addresses
-     */
-    omit?: addressesOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: addressesInclude<ExtArgs> | null
-    /**
-     * The data needed to update a addresses.
-     */
-    data: XOR<addressesUpdateInput, addressesUncheckedUpdateInput>
-    /**
-     * Choose, which addresses to update.
-     */
-    where: addressesWhereUniqueInput
-  }
-
-  /**
-   * addresses updateMany
-   */
-  export type addressesUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * The data used to update addresses.
-     */
-    data: XOR<addressesUpdateManyMutationInput, addressesUncheckedUpdateManyInput>
-    /**
-     * Filter which addresses to update
-     */
-    where?: addressesWhereInput
-    /**
-     * Limit how many addresses to update.
-     */
-    limit?: number
-  }
-
-  /**
-   * addresses updateManyAndReturn
-   */
-  export type addressesUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the addresses
-     */
-    select?: addressesSelectUpdateManyAndReturn<ExtArgs> | null
-    /**
-     * Omit specific fields from the addresses
-     */
-    omit?: addressesOmit<ExtArgs> | null
-    /**
-     * The data used to update addresses.
-     */
-    data: XOR<addressesUpdateManyMutationInput, addressesUncheckedUpdateManyInput>
-    /**
-     * Filter which addresses to update
-     */
-    where?: addressesWhereInput
-    /**
-     * Limit how many addresses to update.
-     */
-    limit?: number
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: addressesIncludeUpdateManyAndReturn<ExtArgs> | null
-  }
-
-  /**
-   * addresses upsert
-   */
-  export type addressesUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the addresses
-     */
-    select?: addressesSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the addresses
-     */
-    omit?: addressesOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: addressesInclude<ExtArgs> | null
-    /**
-     * The filter to search for the addresses to update in case it exists.
-     */
-    where: addressesWhereUniqueInput
-    /**
-     * In case the addresses found by the `where` argument doesn't exist, create a new addresses with this data.
-     */
-    create: XOR<addressesCreateInput, addressesUncheckedCreateInput>
-    /**
-     * In case the addresses was found with the provided `where` argument, update it with this data.
-     */
-    update: XOR<addressesUpdateInput, addressesUncheckedUpdateInput>
-  }
-
-  /**
-   * addresses delete
-   */
-  export type addressesDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the addresses
-     */
-    select?: addressesSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the addresses
-     */
-    omit?: addressesOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: addressesInclude<ExtArgs> | null
-    /**
-     * Filter which addresses to delete.
-     */
-    where: addressesWhereUniqueInput
-  }
-
-  /**
-   * addresses deleteMany
-   */
-  export type addressesDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Filter which addresses to delete
-     */
-    where?: addressesWhereInput
-    /**
-     * Limit how many addresses to delete.
-     */
-    limit?: number
-  }
-
-  /**
-   * addresses.cities
-   */
-  export type addresses$citiesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the cities
-     */
-    select?: citiesSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the cities
-     */
-    omit?: citiesOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: citiesInclude<ExtArgs> | null
-    where?: citiesWhereInput
-  }
-
-  /**
-   * addresses.provinces
-   */
-  export type addresses$provincesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the provinces
-     */
-    select?: provincesSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the provinces
-     */
-    omit?: provincesOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: provincesInclude<ExtArgs> | null
-    where?: provincesWhereInput
-  }
-
-  /**
-   * addresses.user_address
-   */
-  export type addresses$user_addressArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the user_address
-     */
-    select?: user_addressSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the user_address
-     */
-    omit?: user_addressOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: user_addressInclude<ExtArgs> | null
-    where?: user_addressWhereInput
-    orderBy?: user_addressOrderByWithRelationInput | user_addressOrderByWithRelationInput[]
-    cursor?: user_addressWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: User_addressScalarFieldEnum | User_addressScalarFieldEnum[]
-  }
-
-  /**
-   * addresses without action
-   */
-  export type addressesDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the addresses
-     */
-    select?: addressesSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the addresses
-     */
-    omit?: addressesOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: addressesInclude<ExtArgs> | null
-  }
-
 
   /**
    * Model cities
@@ -3261,8 +2304,9 @@ export namespace Prisma {
     id_prov?: boolean
     created_at?: boolean
     updated_at?: boolean
-    addresses?: boolean | cities$addressesArgs<ExtArgs>
+    alamat?: boolean | cities$alamatArgs<ExtArgs>
     provinces?: boolean | provincesDefaultArgs<ExtArgs>
+    kecamatan?: boolean | cities$kecamatanArgs<ExtArgs>
     _count?: boolean | CitiesCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["cities"]>
 
@@ -3294,8 +2338,9 @@ export namespace Prisma {
 
   export type citiesOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id_kota" | "nama_kota" | "id_prov" | "created_at" | "updated_at", ExtArgs["result"]["cities"]>
   export type citiesInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    addresses?: boolean | cities$addressesArgs<ExtArgs>
+    alamat?: boolean | cities$alamatArgs<ExtArgs>
     provinces?: boolean | provincesDefaultArgs<ExtArgs>
+    kecamatan?: boolean | cities$kecamatanArgs<ExtArgs>
     _count?: boolean | CitiesCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type citiesIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -3308,8 +2353,9 @@ export namespace Prisma {
   export type $citiesPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "cities"
     objects: {
-      addresses: Prisma.$addressesPayload<ExtArgs>[]
+      alamat: Prisma.$alamatPayload<ExtArgs>[]
       provinces: Prisma.$provincesPayload<ExtArgs>
+      kecamatan: Prisma.$kecamatanPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id_kota: number
@@ -3711,8 +2757,9 @@ export namespace Prisma {
    */
   export interface Prisma__citiesClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    addresses<T extends cities$addressesArgs<ExtArgs> = {}>(args?: Subset<T, cities$addressesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$addressesPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    alamat<T extends cities$alamatArgs<ExtArgs> = {}>(args?: Subset<T, cities$alamatArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$alamatPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     provinces<T extends provincesDefaultArgs<ExtArgs> = {}>(args?: Subset<T, provincesDefaultArgs<ExtArgs>>): Prisma__provincesClient<$Result.GetResult<Prisma.$provincesPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    kecamatan<T extends cities$kecamatanArgs<ExtArgs> = {}>(args?: Subset<T, cities$kecamatanArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$kecamatanPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -4143,27 +3190,51 @@ export namespace Prisma {
   }
 
   /**
-   * cities.addresses
+   * cities.alamat
    */
-  export type cities$addressesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type cities$alamatArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the addresses
+     * Select specific fields to fetch from the alamat
      */
-    select?: addressesSelect<ExtArgs> | null
+    select?: alamatSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the addresses
+     * Omit specific fields from the alamat
      */
-    omit?: addressesOmit<ExtArgs> | null
+    omit?: alamatOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: addressesInclude<ExtArgs> | null
-    where?: addressesWhereInput
-    orderBy?: addressesOrderByWithRelationInput | addressesOrderByWithRelationInput[]
-    cursor?: addressesWhereUniqueInput
+    include?: alamatInclude<ExtArgs> | null
+    where?: alamatWhereInput
+    orderBy?: alamatOrderByWithRelationInput | alamatOrderByWithRelationInput[]
+    cursor?: alamatWhereUniqueInput
     take?: number
     skip?: number
-    distinct?: AddressesScalarFieldEnum | AddressesScalarFieldEnum[]
+    distinct?: AlamatScalarFieldEnum | AlamatScalarFieldEnum[]
+  }
+
+  /**
+   * cities.kecamatan
+   */
+  export type cities$kecamatanArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the kecamatan
+     */
+    select?: kecamatanSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the kecamatan
+     */
+    omit?: kecamatanOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: kecamatanInclude<ExtArgs> | null
+    where?: kecamatanWhereInput
+    orderBy?: kecamatanOrderByWithRelationInput | kecamatanOrderByWithRelationInput[]
+    cursor?: kecamatanWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: KecamatanScalarFieldEnum | KecamatanScalarFieldEnum[]
   }
 
   /**
@@ -6555,7 +5626,7 @@ export namespace Prisma {
     nama_prov?: boolean
     created_at?: boolean
     updated_at?: boolean
-    addresses?: boolean | provinces$addressesArgs<ExtArgs>
+    alamat?: boolean | provinces$alamatArgs<ExtArgs>
     cities?: boolean | provinces$citiesArgs<ExtArgs>
     _count?: boolean | ProvincesCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["provinces"]>
@@ -6583,7 +5654,7 @@ export namespace Prisma {
 
   export type provincesOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id_prov" | "nama_prov" | "created_at" | "updated_at", ExtArgs["result"]["provinces"]>
   export type provincesInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    addresses?: boolean | provinces$addressesArgs<ExtArgs>
+    alamat?: boolean | provinces$alamatArgs<ExtArgs>
     cities?: boolean | provinces$citiesArgs<ExtArgs>
     _count?: boolean | ProvincesCountOutputTypeDefaultArgs<ExtArgs>
   }
@@ -6593,7 +5664,7 @@ export namespace Prisma {
   export type $provincesPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "provinces"
     objects: {
-      addresses: Prisma.$addressesPayload<ExtArgs>[]
+      alamat: Prisma.$alamatPayload<ExtArgs>[]
       cities: Prisma.$citiesPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
@@ -6995,7 +6066,7 @@ export namespace Prisma {
    */
   export interface Prisma__provincesClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    addresses<T extends provinces$addressesArgs<ExtArgs> = {}>(args?: Subset<T, provinces$addressesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$addressesPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    alamat<T extends provinces$alamatArgs<ExtArgs> = {}>(args?: Subset<T, provinces$alamatArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$alamatPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     cities<T extends provinces$citiesArgs<ExtArgs> = {}>(args?: Subset<T, provinces$citiesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$citiesPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -7418,27 +6489,27 @@ export namespace Prisma {
   }
 
   /**
-   * provinces.addresses
+   * provinces.alamat
    */
-  export type provinces$addressesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type provinces$alamatArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the addresses
+     * Select specific fields to fetch from the alamat
      */
-    select?: addressesSelect<ExtArgs> | null
+    select?: alamatSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the addresses
+     * Omit specific fields from the alamat
      */
-    omit?: addressesOmit<ExtArgs> | null
+    omit?: alamatOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: addressesInclude<ExtArgs> | null
-    where?: addressesWhereInput
-    orderBy?: addressesOrderByWithRelationInput | addressesOrderByWithRelationInput[]
-    cursor?: addressesWhereUniqueInput
+    include?: alamatInclude<ExtArgs> | null
+    where?: alamatWhereInput
+    orderBy?: alamatOrderByWithRelationInput | alamatOrderByWithRelationInput[]
+    cursor?: alamatWhereUniqueInput
     take?: number
     skip?: number
-    distinct?: AddressesScalarFieldEnum | AddressesScalarFieldEnum[]
+    distinct?: AlamatScalarFieldEnum | AlamatScalarFieldEnum[]
   }
 
   /**
@@ -7481,1033 +6552,6 @@ export namespace Prisma {
      * Choose, which related nodes to fetch as well
      */
     include?: provincesInclude<ExtArgs> | null
-  }
-
-
-  /**
-   * Model user_address
-   */
-
-  export type AggregateUser_address = {
-    _count: User_addressCountAggregateOutputType | null
-    _min: User_addressMinAggregateOutputType | null
-    _max: User_addressMaxAggregateOutputType | null
-  }
-
-  export type User_addressMinAggregateOutputType = {
-    id_user: string | null
-    id_alamat: string | null
-  }
-
-  export type User_addressMaxAggregateOutputType = {
-    id_user: string | null
-    id_alamat: string | null
-  }
-
-  export type User_addressCountAggregateOutputType = {
-    id_user: number
-    id_alamat: number
-    _all: number
-  }
-
-
-  export type User_addressMinAggregateInputType = {
-    id_user?: true
-    id_alamat?: true
-  }
-
-  export type User_addressMaxAggregateInputType = {
-    id_user?: true
-    id_alamat?: true
-  }
-
-  export type User_addressCountAggregateInputType = {
-    id_user?: true
-    id_alamat?: true
-    _all?: true
-  }
-
-  export type User_addressAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Filter which user_address to aggregate.
-     */
-    where?: user_addressWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of user_addresses to fetch.
-     */
-    orderBy?: user_addressOrderByWithRelationInput | user_addressOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the start position
-     */
-    cursor?: user_addressWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` user_addresses from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` user_addresses.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Count returned user_addresses
-    **/
-    _count?: true | User_addressCountAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to find the minimum value
-    **/
-    _min?: User_addressMinAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to find the maximum value
-    **/
-    _max?: User_addressMaxAggregateInputType
-  }
-
-  export type GetUser_addressAggregateType<T extends User_addressAggregateArgs> = {
-        [P in keyof T & keyof AggregateUser_address]: P extends '_count' | 'count'
-      ? T[P] extends true
-        ? number
-        : GetScalarType<T[P], AggregateUser_address[P]>
-      : GetScalarType<T[P], AggregateUser_address[P]>
-  }
-
-
-
-
-  export type user_addressGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: user_addressWhereInput
-    orderBy?: user_addressOrderByWithAggregationInput | user_addressOrderByWithAggregationInput[]
-    by: User_addressScalarFieldEnum[] | User_addressScalarFieldEnum
-    having?: user_addressScalarWhereWithAggregatesInput
-    take?: number
-    skip?: number
-    _count?: User_addressCountAggregateInputType | true
-    _min?: User_addressMinAggregateInputType
-    _max?: User_addressMaxAggregateInputType
-  }
-
-  export type User_addressGroupByOutputType = {
-    id_user: string
-    id_alamat: string
-    _count: User_addressCountAggregateOutputType | null
-    _min: User_addressMinAggregateOutputType | null
-    _max: User_addressMaxAggregateOutputType | null
-  }
-
-  type GetUser_addressGroupByPayload<T extends user_addressGroupByArgs> = Prisma.PrismaPromise<
-    Array<
-      PickEnumerable<User_addressGroupByOutputType, T['by']> &
-        {
-          [P in ((keyof T) & (keyof User_addressGroupByOutputType))]: P extends '_count'
-            ? T[P] extends boolean
-              ? number
-              : GetScalarType<T[P], User_addressGroupByOutputType[P]>
-            : GetScalarType<T[P], User_addressGroupByOutputType[P]>
-        }
-      >
-    >
-
-
-  export type user_addressSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id_user?: boolean
-    id_alamat?: boolean
-    addresses?: boolean | addressesDefaultArgs<ExtArgs>
-    users?: boolean | usersDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["user_address"]>
-
-  export type user_addressSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id_user?: boolean
-    id_alamat?: boolean
-    addresses?: boolean | addressesDefaultArgs<ExtArgs>
-    users?: boolean | usersDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["user_address"]>
-
-  export type user_addressSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id_user?: boolean
-    id_alamat?: boolean
-    addresses?: boolean | addressesDefaultArgs<ExtArgs>
-    users?: boolean | usersDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["user_address"]>
-
-  export type user_addressSelectScalar = {
-    id_user?: boolean
-    id_alamat?: boolean
-  }
-
-  export type user_addressOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id_user" | "id_alamat", ExtArgs["result"]["user_address"]>
-  export type user_addressInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    addresses?: boolean | addressesDefaultArgs<ExtArgs>
-    users?: boolean | usersDefaultArgs<ExtArgs>
-  }
-  export type user_addressIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    addresses?: boolean | addressesDefaultArgs<ExtArgs>
-    users?: boolean | usersDefaultArgs<ExtArgs>
-  }
-  export type user_addressIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    addresses?: boolean | addressesDefaultArgs<ExtArgs>
-    users?: boolean | usersDefaultArgs<ExtArgs>
-  }
-
-  export type $user_addressPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    name: "user_address"
-    objects: {
-      addresses: Prisma.$addressesPayload<ExtArgs>
-      users: Prisma.$usersPayload<ExtArgs>
-    }
-    scalars: $Extensions.GetPayloadResult<{
-      id_user: string
-      id_alamat: string
-    }, ExtArgs["result"]["user_address"]>
-    composites: {}
-  }
-
-  type user_addressGetPayload<S extends boolean | null | undefined | user_addressDefaultArgs> = $Result.GetResult<Prisma.$user_addressPayload, S>
-
-  type user_addressCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
-    Omit<user_addressFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
-      select?: User_addressCountAggregateInputType | true
-    }
-
-  export interface user_addressDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['user_address'], meta: { name: 'user_address' } }
-    /**
-     * Find zero or one User_address that matches the filter.
-     * @param {user_addressFindUniqueArgs} args - Arguments to find a User_address
-     * @example
-     * // Get one User_address
-     * const user_address = await prisma.user_address.findUnique({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findUnique<T extends user_addressFindUniqueArgs>(args: SelectSubset<T, user_addressFindUniqueArgs<ExtArgs>>): Prisma__user_addressClient<$Result.GetResult<Prisma.$user_addressPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find one User_address that matches the filter or throw an error with `error.code='P2025'`
-     * if no matches were found.
-     * @param {user_addressFindUniqueOrThrowArgs} args - Arguments to find a User_address
-     * @example
-     * // Get one User_address
-     * const user_address = await prisma.user_address.findUniqueOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findUniqueOrThrow<T extends user_addressFindUniqueOrThrowArgs>(args: SelectSubset<T, user_addressFindUniqueOrThrowArgs<ExtArgs>>): Prisma__user_addressClient<$Result.GetResult<Prisma.$user_addressPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find the first User_address that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {user_addressFindFirstArgs} args - Arguments to find a User_address
-     * @example
-     * // Get one User_address
-     * const user_address = await prisma.user_address.findFirst({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findFirst<T extends user_addressFindFirstArgs>(args?: SelectSubset<T, user_addressFindFirstArgs<ExtArgs>>): Prisma__user_addressClient<$Result.GetResult<Prisma.$user_addressPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find the first User_address that matches the filter or
-     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {user_addressFindFirstOrThrowArgs} args - Arguments to find a User_address
-     * @example
-     * // Get one User_address
-     * const user_address = await prisma.user_address.findFirstOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findFirstOrThrow<T extends user_addressFindFirstOrThrowArgs>(args?: SelectSubset<T, user_addressFindFirstOrThrowArgs<ExtArgs>>): Prisma__user_addressClient<$Result.GetResult<Prisma.$user_addressPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find zero or more User_addresses that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {user_addressFindManyArgs} args - Arguments to filter and select certain fields only.
-     * @example
-     * // Get all User_addresses
-     * const user_addresses = await prisma.user_address.findMany()
-     * 
-     * // Get first 10 User_addresses
-     * const user_addresses = await prisma.user_address.findMany({ take: 10 })
-     * 
-     * // Only select the `id_user`
-     * const user_addressWithId_userOnly = await prisma.user_address.findMany({ select: { id_user: true } })
-     * 
-     */
-    findMany<T extends user_addressFindManyArgs>(args?: SelectSubset<T, user_addressFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$user_addressPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
-
-    /**
-     * Create a User_address.
-     * @param {user_addressCreateArgs} args - Arguments to create a User_address.
-     * @example
-     * // Create one User_address
-     * const User_address = await prisma.user_address.create({
-     *   data: {
-     *     // ... data to create a User_address
-     *   }
-     * })
-     * 
-     */
-    create<T extends user_addressCreateArgs>(args: SelectSubset<T, user_addressCreateArgs<ExtArgs>>): Prisma__user_addressClient<$Result.GetResult<Prisma.$user_addressPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Create many User_addresses.
-     * @param {user_addressCreateManyArgs} args - Arguments to create many User_addresses.
-     * @example
-     * // Create many User_addresses
-     * const user_address = await prisma.user_address.createMany({
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     *     
-     */
-    createMany<T extends user_addressCreateManyArgs>(args?: SelectSubset<T, user_addressCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Create many User_addresses and returns the data saved in the database.
-     * @param {user_addressCreateManyAndReturnArgs} args - Arguments to create many User_addresses.
-     * @example
-     * // Create many User_addresses
-     * const user_address = await prisma.user_address.createManyAndReturn({
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * 
-     * // Create many User_addresses and only return the `id_user`
-     * const user_addressWithId_userOnly = await prisma.user_address.createManyAndReturn({
-     *   select: { id_user: true },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * 
-     */
-    createManyAndReturn<T extends user_addressCreateManyAndReturnArgs>(args?: SelectSubset<T, user_addressCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$user_addressPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
-
-    /**
-     * Delete a User_address.
-     * @param {user_addressDeleteArgs} args - Arguments to delete one User_address.
-     * @example
-     * // Delete one User_address
-     * const User_address = await prisma.user_address.delete({
-     *   where: {
-     *     // ... filter to delete one User_address
-     *   }
-     * })
-     * 
-     */
-    delete<T extends user_addressDeleteArgs>(args: SelectSubset<T, user_addressDeleteArgs<ExtArgs>>): Prisma__user_addressClient<$Result.GetResult<Prisma.$user_addressPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Update one User_address.
-     * @param {user_addressUpdateArgs} args - Arguments to update one User_address.
-     * @example
-     * // Update one User_address
-     * const user_address = await prisma.user_address.update({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     * 
-     */
-    update<T extends user_addressUpdateArgs>(args: SelectSubset<T, user_addressUpdateArgs<ExtArgs>>): Prisma__user_addressClient<$Result.GetResult<Prisma.$user_addressPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Delete zero or more User_addresses.
-     * @param {user_addressDeleteManyArgs} args - Arguments to filter User_addresses to delete.
-     * @example
-     * // Delete a few User_addresses
-     * const { count } = await prisma.user_address.deleteMany({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     * 
-     */
-    deleteMany<T extends user_addressDeleteManyArgs>(args?: SelectSubset<T, user_addressDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Update zero or more User_addresses.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {user_addressUpdateManyArgs} args - Arguments to update one or more rows.
-     * @example
-     * // Update many User_addresses
-     * const user_address = await prisma.user_address.updateMany({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     * 
-     */
-    updateMany<T extends user_addressUpdateManyArgs>(args: SelectSubset<T, user_addressUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Update zero or more User_addresses and returns the data updated in the database.
-     * @param {user_addressUpdateManyAndReturnArgs} args - Arguments to update many User_addresses.
-     * @example
-     * // Update many User_addresses
-     * const user_address = await prisma.user_address.updateManyAndReturn({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * 
-     * // Update zero or more User_addresses and only return the `id_user`
-     * const user_addressWithId_userOnly = await prisma.user_address.updateManyAndReturn({
-     *   select: { id_user: true },
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * 
-     */
-    updateManyAndReturn<T extends user_addressUpdateManyAndReturnArgs>(args: SelectSubset<T, user_addressUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$user_addressPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
-
-    /**
-     * Create or update one User_address.
-     * @param {user_addressUpsertArgs} args - Arguments to update or create a User_address.
-     * @example
-     * // Update or create a User_address
-     * const user_address = await prisma.user_address.upsert({
-     *   create: {
-     *     // ... data to create a User_address
-     *   },
-     *   update: {
-     *     // ... in case it already exists, update
-     *   },
-     *   where: {
-     *     // ... the filter for the User_address we want to update
-     *   }
-     * })
-     */
-    upsert<T extends user_addressUpsertArgs>(args: SelectSubset<T, user_addressUpsertArgs<ExtArgs>>): Prisma__user_addressClient<$Result.GetResult<Prisma.$user_addressPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-
-    /**
-     * Count the number of User_addresses.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {user_addressCountArgs} args - Arguments to filter User_addresses to count.
-     * @example
-     * // Count the number of User_addresses
-     * const count = await prisma.user_address.count({
-     *   where: {
-     *     // ... the filter for the User_addresses we want to count
-     *   }
-     * })
-    **/
-    count<T extends user_addressCountArgs>(
-      args?: Subset<T, user_addressCountArgs>,
-    ): Prisma.PrismaPromise<
-      T extends $Utils.Record<'select', any>
-        ? T['select'] extends true
-          ? number
-          : GetScalarType<T['select'], User_addressCountAggregateOutputType>
-        : number
-    >
-
-    /**
-     * Allows you to perform aggregations operations on a User_address.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {User_addressAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
-     * @example
-     * // Ordered by age ascending
-     * // Where email contains prisma.io
-     * // Limited to the 10 users
-     * const aggregations = await prisma.user.aggregate({
-     *   _avg: {
-     *     age: true,
-     *   },
-     *   where: {
-     *     email: {
-     *       contains: "prisma.io",
-     *     },
-     *   },
-     *   orderBy: {
-     *     age: "asc",
-     *   },
-     *   take: 10,
-     * })
-    **/
-    aggregate<T extends User_addressAggregateArgs>(args: Subset<T, User_addressAggregateArgs>): Prisma.PrismaPromise<GetUser_addressAggregateType<T>>
-
-    /**
-     * Group by User_address.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {user_addressGroupByArgs} args - Group by arguments.
-     * @example
-     * // Group by city, order by createdAt, get count
-     * const result = await prisma.user.groupBy({
-     *   by: ['city', 'createdAt'],
-     *   orderBy: {
-     *     createdAt: true
-     *   },
-     *   _count: {
-     *     _all: true
-     *   },
-     * })
-     * 
-    **/
-    groupBy<
-      T extends user_addressGroupByArgs,
-      HasSelectOrTake extends Or<
-        Extends<'skip', Keys<T>>,
-        Extends<'take', Keys<T>>
-      >,
-      OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: user_addressGroupByArgs['orderBy'] }
-        : { orderBy?: user_addressGroupByArgs['orderBy'] },
-      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
-      ByFields extends MaybeTupleToUnion<T['by']>,
-      ByValid extends Has<ByFields, OrderFields>,
-      HavingFields extends GetHavingFields<T['having']>,
-      HavingValid extends Has<ByFields, HavingFields>,
-      ByEmpty extends T['by'] extends never[] ? True : False,
-      InputErrors extends ByEmpty extends True
-      ? `Error: "by" must not be empty.`
-      : HavingValid extends False
-      ? {
-          [P in HavingFields]: P extends ByFields
-            ? never
-            : P extends string
-            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
-            : [
-                Error,
-                'Field ',
-                P,
-                ` in "having" needs to be provided in "by"`,
-              ]
-        }[HavingFields]
-      : 'take' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "take", you also need to provide "orderBy"'
-      : 'skip' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "skip", you also need to provide "orderBy"'
-      : ByValid extends True
-      ? {}
-      : {
-          [P in OrderFields]: P extends ByFields
-            ? never
-            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-        }[OrderFields]
-    >(args: SubsetIntersection<T, user_addressGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetUser_addressGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
-  /**
-   * Fields of the user_address model
-   */
-  readonly fields: user_addressFieldRefs;
-  }
-
-  /**
-   * The delegate class that acts as a "Promise-like" for user_address.
-   * Why is this prefixed with `Prisma__`?
-   * Because we want to prevent naming conflicts as mentioned in
-   * https://github.com/prisma/prisma-client-js/issues/707
-   */
-  export interface Prisma__user_addressClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
-    readonly [Symbol.toStringTag]: "PrismaPromise"
-    addresses<T extends addressesDefaultArgs<ExtArgs> = {}>(args?: Subset<T, addressesDefaultArgs<ExtArgs>>): Prisma__addressesClient<$Result.GetResult<Prisma.$addressesPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-    users<T extends usersDefaultArgs<ExtArgs> = {}>(args?: Subset<T, usersDefaultArgs<ExtArgs>>): Prisma__usersClient<$Result.GetResult<Prisma.$usersPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-    /**
-     * Attaches callbacks for the resolution and/or rejection of the Promise.
-     * @param onfulfilled The callback to execute when the Promise is resolved.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of which ever callback is executed.
-     */
-    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
-    /**
-     * Attaches a callback for only the rejection of the Promise.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of the callback.
-     */
-    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
-    /**
-     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
-     * resolved value cannot be modified from the callback.
-     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
-     * @returns A Promise for the completion of the callback.
-     */
-    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
-  }
-
-
-
-
-  /**
-   * Fields of the user_address model
-   */
-  interface user_addressFieldRefs {
-    readonly id_user: FieldRef<"user_address", 'String'>
-    readonly id_alamat: FieldRef<"user_address", 'String'>
-  }
-    
-
-  // Custom InputTypes
-  /**
-   * user_address findUnique
-   */
-  export type user_addressFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the user_address
-     */
-    select?: user_addressSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the user_address
-     */
-    omit?: user_addressOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: user_addressInclude<ExtArgs> | null
-    /**
-     * Filter, which user_address to fetch.
-     */
-    where: user_addressWhereUniqueInput
-  }
-
-  /**
-   * user_address findUniqueOrThrow
-   */
-  export type user_addressFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the user_address
-     */
-    select?: user_addressSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the user_address
-     */
-    omit?: user_addressOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: user_addressInclude<ExtArgs> | null
-    /**
-     * Filter, which user_address to fetch.
-     */
-    where: user_addressWhereUniqueInput
-  }
-
-  /**
-   * user_address findFirst
-   */
-  export type user_addressFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the user_address
-     */
-    select?: user_addressSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the user_address
-     */
-    omit?: user_addressOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: user_addressInclude<ExtArgs> | null
-    /**
-     * Filter, which user_address to fetch.
-     */
-    where?: user_addressWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of user_addresses to fetch.
-     */
-    orderBy?: user_addressOrderByWithRelationInput | user_addressOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for searching for user_addresses.
-     */
-    cursor?: user_addressWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` user_addresses from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` user_addresses.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of user_addresses.
-     */
-    distinct?: User_addressScalarFieldEnum | User_addressScalarFieldEnum[]
-  }
-
-  /**
-   * user_address findFirstOrThrow
-   */
-  export type user_addressFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the user_address
-     */
-    select?: user_addressSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the user_address
-     */
-    omit?: user_addressOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: user_addressInclude<ExtArgs> | null
-    /**
-     * Filter, which user_address to fetch.
-     */
-    where?: user_addressWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of user_addresses to fetch.
-     */
-    orderBy?: user_addressOrderByWithRelationInput | user_addressOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for searching for user_addresses.
-     */
-    cursor?: user_addressWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` user_addresses from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` user_addresses.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of user_addresses.
-     */
-    distinct?: User_addressScalarFieldEnum | User_addressScalarFieldEnum[]
-  }
-
-  /**
-   * user_address findMany
-   */
-  export type user_addressFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the user_address
-     */
-    select?: user_addressSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the user_address
-     */
-    omit?: user_addressOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: user_addressInclude<ExtArgs> | null
-    /**
-     * Filter, which user_addresses to fetch.
-     */
-    where?: user_addressWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of user_addresses to fetch.
-     */
-    orderBy?: user_addressOrderByWithRelationInput | user_addressOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for listing user_addresses.
-     */
-    cursor?: user_addressWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` user_addresses from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` user_addresses.
-     */
-    skip?: number
-    distinct?: User_addressScalarFieldEnum | User_addressScalarFieldEnum[]
-  }
-
-  /**
-   * user_address create
-   */
-  export type user_addressCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the user_address
-     */
-    select?: user_addressSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the user_address
-     */
-    omit?: user_addressOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: user_addressInclude<ExtArgs> | null
-    /**
-     * The data needed to create a user_address.
-     */
-    data: XOR<user_addressCreateInput, user_addressUncheckedCreateInput>
-  }
-
-  /**
-   * user_address createMany
-   */
-  export type user_addressCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * The data used to create many user_addresses.
-     */
-    data: user_addressCreateManyInput | user_addressCreateManyInput[]
-    skipDuplicates?: boolean
-  }
-
-  /**
-   * user_address createManyAndReturn
-   */
-  export type user_addressCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the user_address
-     */
-    select?: user_addressSelectCreateManyAndReturn<ExtArgs> | null
-    /**
-     * Omit specific fields from the user_address
-     */
-    omit?: user_addressOmit<ExtArgs> | null
-    /**
-     * The data used to create many user_addresses.
-     */
-    data: user_addressCreateManyInput | user_addressCreateManyInput[]
-    skipDuplicates?: boolean
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: user_addressIncludeCreateManyAndReturn<ExtArgs> | null
-  }
-
-  /**
-   * user_address update
-   */
-  export type user_addressUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the user_address
-     */
-    select?: user_addressSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the user_address
-     */
-    omit?: user_addressOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: user_addressInclude<ExtArgs> | null
-    /**
-     * The data needed to update a user_address.
-     */
-    data: XOR<user_addressUpdateInput, user_addressUncheckedUpdateInput>
-    /**
-     * Choose, which user_address to update.
-     */
-    where: user_addressWhereUniqueInput
-  }
-
-  /**
-   * user_address updateMany
-   */
-  export type user_addressUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * The data used to update user_addresses.
-     */
-    data: XOR<user_addressUpdateManyMutationInput, user_addressUncheckedUpdateManyInput>
-    /**
-     * Filter which user_addresses to update
-     */
-    where?: user_addressWhereInput
-    /**
-     * Limit how many user_addresses to update.
-     */
-    limit?: number
-  }
-
-  /**
-   * user_address updateManyAndReturn
-   */
-  export type user_addressUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the user_address
-     */
-    select?: user_addressSelectUpdateManyAndReturn<ExtArgs> | null
-    /**
-     * Omit specific fields from the user_address
-     */
-    omit?: user_addressOmit<ExtArgs> | null
-    /**
-     * The data used to update user_addresses.
-     */
-    data: XOR<user_addressUpdateManyMutationInput, user_addressUncheckedUpdateManyInput>
-    /**
-     * Filter which user_addresses to update
-     */
-    where?: user_addressWhereInput
-    /**
-     * Limit how many user_addresses to update.
-     */
-    limit?: number
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: user_addressIncludeUpdateManyAndReturn<ExtArgs> | null
-  }
-
-  /**
-   * user_address upsert
-   */
-  export type user_addressUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the user_address
-     */
-    select?: user_addressSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the user_address
-     */
-    omit?: user_addressOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: user_addressInclude<ExtArgs> | null
-    /**
-     * The filter to search for the user_address to update in case it exists.
-     */
-    where: user_addressWhereUniqueInput
-    /**
-     * In case the user_address found by the `where` argument doesn't exist, create a new user_address with this data.
-     */
-    create: XOR<user_addressCreateInput, user_addressUncheckedCreateInput>
-    /**
-     * In case the user_address was found with the provided `where` argument, update it with this data.
-     */
-    update: XOR<user_addressUpdateInput, user_addressUncheckedUpdateInput>
-  }
-
-  /**
-   * user_address delete
-   */
-  export type user_addressDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the user_address
-     */
-    select?: user_addressSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the user_address
-     */
-    omit?: user_addressOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: user_addressInclude<ExtArgs> | null
-    /**
-     * Filter which user_address to delete.
-     */
-    where: user_addressWhereUniqueInput
-  }
-
-  /**
-   * user_address deleteMany
-   */
-  export type user_addressDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Filter which user_addresses to delete
-     */
-    where?: user_addressWhereInput
-    /**
-     * Limit how many user_addresses to delete.
-     */
-    limit?: number
-  }
-
-  /**
-   * user_address without action
-   */
-  export type user_addressDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the user_address
-     */
-    select?: user_addressSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the user_address
-     */
-    omit?: user_addressOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: user_addressInclude<ExtArgs> | null
   }
 
 
@@ -8688,15 +6732,15 @@ export namespace Prisma {
 
   export type UsersGroupByOutputType = {
     id_user: string
-    username: string | null
-    nama: string | null
+    username: string
+    nama: string
     email: string
     sandi: string
-    gender: $Enums.gender_enum | null
-    birth_date: Date | null
+    gender: $Enums.gender_enum
+    birth_date: Date
     foto: Uint8Array | null
     bio: string | null
-    status_user: $Enums.status_user_enum | null
+    status_user: $Enums.status_user_enum
     created_at: Date | null
     updated_at: Date | null
     _count: UsersCountAggregateOutputType | null
@@ -8731,8 +6775,8 @@ export namespace Prisma {
     status_user?: boolean
     created_at?: boolean
     updated_at?: boolean
+    alamat?: boolean | users$alamatArgs<ExtArgs>
     profession_user?: boolean | users$profession_userArgs<ExtArgs>
-    user_address?: boolean | users$user_addressArgs<ExtArgs>
     _count?: boolean | UsersCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["users"]>
 
@@ -8783,8 +6827,8 @@ export namespace Prisma {
 
   export type usersOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id_user" | "username" | "nama" | "email" | "sandi" | "gender" | "birth_date" | "foto" | "bio" | "status_user" | "created_at" | "updated_at", ExtArgs["result"]["users"]>
   export type usersInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    alamat?: boolean | users$alamatArgs<ExtArgs>
     profession_user?: boolean | users$profession_userArgs<ExtArgs>
-    user_address?: boolean | users$user_addressArgs<ExtArgs>
     _count?: boolean | UsersCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type usersIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
@@ -8793,20 +6837,20 @@ export namespace Prisma {
   export type $usersPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "users"
     objects: {
+      alamat: Prisma.$alamatPayload<ExtArgs>[]
       profession_user: Prisma.$profession_userPayload<ExtArgs>[]
-      user_address: Prisma.$user_addressPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id_user: string
-      username: string | null
-      nama: string | null
+      username: string
+      nama: string
       email: string
       sandi: string
-      gender: $Enums.gender_enum | null
-      birth_date: Date | null
+      gender: $Enums.gender_enum
+      birth_date: Date
       foto: Uint8Array | null
       bio: string | null
-      status_user: $Enums.status_user_enum | null
+      status_user: $Enums.status_user_enum
       created_at: Date | null
       updated_at: Date | null
     }, ExtArgs["result"]["users"]>
@@ -9203,8 +7247,8 @@ export namespace Prisma {
    */
   export interface Prisma__usersClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
+    alamat<T extends users$alamatArgs<ExtArgs> = {}>(args?: Subset<T, users$alamatArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$alamatPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     profession_user<T extends users$profession_userArgs<ExtArgs> = {}>(args?: Subset<T, users$profession_userArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$profession_userPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-    user_address<T extends users$user_addressArgs<ExtArgs> = {}>(args?: Subset<T, users$user_addressArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$user_addressPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -9634,6 +7678,30 @@ export namespace Prisma {
   }
 
   /**
+   * users.alamat
+   */
+  export type users$alamatArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the alamat
+     */
+    select?: alamatSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the alamat
+     */
+    omit?: alamatOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: alamatInclude<ExtArgs> | null
+    where?: alamatWhereInput
+    orderBy?: alamatOrderByWithRelationInput | alamatOrderByWithRelationInput[]
+    cursor?: alamatWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: AlamatScalarFieldEnum | AlamatScalarFieldEnum[]
+  }
+
+  /**
    * users.profession_user
    */
   export type users$profession_userArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -9655,30 +7723,6 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: Profession_userScalarFieldEnum | Profession_userScalarFieldEnum[]
-  }
-
-  /**
-   * users.user_address
-   */
-  export type users$user_addressArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the user_address
-     */
-    select?: user_addressSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the user_address
-     */
-    omit?: user_addressOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: user_addressInclude<ExtArgs> | null
-    where?: user_addressWhereInput
-    orderBy?: user_addressOrderByWithRelationInput | user_addressOrderByWithRelationInput[]
-    cursor?: user_addressWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: User_addressScalarFieldEnum | User_addressScalarFieldEnum[]
   }
 
   /**
@@ -11857,6 +9901,4802 @@ export namespace Prisma {
 
 
   /**
+   * Model alamat
+   */
+
+  export type AggregateAlamat = {
+    _count: AlamatCountAggregateOutputType | null
+    _avg: AlamatAvgAggregateOutputType | null
+    _sum: AlamatSumAggregateOutputType | null
+    _min: AlamatMinAggregateOutputType | null
+    _max: AlamatMaxAggregateOutputType | null
+  }
+
+  export type AlamatAvgAggregateOutputType = {
+    latitude: Decimal | null
+    longitude: Decimal | null
+    id_tipe: number | null
+    id_kel: number | null
+    id_kec: number | null
+    id_kota: number | null
+    id_prov: number | null
+  }
+
+  export type AlamatSumAggregateOutputType = {
+    latitude: Decimal | null
+    longitude: Decimal | null
+    id_tipe: bigint | null
+    id_kel: bigint | null
+    id_kec: bigint | null
+    id_kota: number | null
+    id_prov: number | null
+  }
+
+  export type AlamatMinAggregateOutputType = {
+    id_alamat: string | null
+    id_user: string | null
+    alamat: string | null
+    catatan: string | null
+    latitude: Decimal | null
+    longitude: Decimal | null
+    is_default: boolean | null
+    id_tipe: bigint | null
+    id_kel: bigint | null
+    id_kec: bigint | null
+    id_kota: number | null
+    id_prov: number | null
+    created_at: Date | null
+    updated_at: Date | null
+  }
+
+  export type AlamatMaxAggregateOutputType = {
+    id_alamat: string | null
+    id_user: string | null
+    alamat: string | null
+    catatan: string | null
+    latitude: Decimal | null
+    longitude: Decimal | null
+    is_default: boolean | null
+    id_tipe: bigint | null
+    id_kel: bigint | null
+    id_kec: bigint | null
+    id_kota: number | null
+    id_prov: number | null
+    created_at: Date | null
+    updated_at: Date | null
+  }
+
+  export type AlamatCountAggregateOutputType = {
+    id_alamat: number
+    id_user: number
+    alamat: number
+    catatan: number
+    latitude: number
+    longitude: number
+    is_default: number
+    id_tipe: number
+    id_kel: number
+    id_kec: number
+    id_kota: number
+    id_prov: number
+    created_at: number
+    updated_at: number
+    _all: number
+  }
+
+
+  export type AlamatAvgAggregateInputType = {
+    latitude?: true
+    longitude?: true
+    id_tipe?: true
+    id_kel?: true
+    id_kec?: true
+    id_kota?: true
+    id_prov?: true
+  }
+
+  export type AlamatSumAggregateInputType = {
+    latitude?: true
+    longitude?: true
+    id_tipe?: true
+    id_kel?: true
+    id_kec?: true
+    id_kota?: true
+    id_prov?: true
+  }
+
+  export type AlamatMinAggregateInputType = {
+    id_alamat?: true
+    id_user?: true
+    alamat?: true
+    catatan?: true
+    latitude?: true
+    longitude?: true
+    is_default?: true
+    id_tipe?: true
+    id_kel?: true
+    id_kec?: true
+    id_kota?: true
+    id_prov?: true
+    created_at?: true
+    updated_at?: true
+  }
+
+  export type AlamatMaxAggregateInputType = {
+    id_alamat?: true
+    id_user?: true
+    alamat?: true
+    catatan?: true
+    latitude?: true
+    longitude?: true
+    is_default?: true
+    id_tipe?: true
+    id_kel?: true
+    id_kec?: true
+    id_kota?: true
+    id_prov?: true
+    created_at?: true
+    updated_at?: true
+  }
+
+  export type AlamatCountAggregateInputType = {
+    id_alamat?: true
+    id_user?: true
+    alamat?: true
+    catatan?: true
+    latitude?: true
+    longitude?: true
+    is_default?: true
+    id_tipe?: true
+    id_kel?: true
+    id_kec?: true
+    id_kota?: true
+    id_prov?: true
+    created_at?: true
+    updated_at?: true
+    _all?: true
+  }
+
+  export type AlamatAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which alamat to aggregate.
+     */
+    where?: alamatWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of alamats to fetch.
+     */
+    orderBy?: alamatOrderByWithRelationInput | alamatOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: alamatWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` alamats from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` alamats.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned alamats
+    **/
+    _count?: true | AlamatCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: AlamatAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: AlamatSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: AlamatMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: AlamatMaxAggregateInputType
+  }
+
+  export type GetAlamatAggregateType<T extends AlamatAggregateArgs> = {
+        [P in keyof T & keyof AggregateAlamat]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateAlamat[P]>
+      : GetScalarType<T[P], AggregateAlamat[P]>
+  }
+
+
+
+
+  export type alamatGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: alamatWhereInput
+    orderBy?: alamatOrderByWithAggregationInput | alamatOrderByWithAggregationInput[]
+    by: AlamatScalarFieldEnum[] | AlamatScalarFieldEnum
+    having?: alamatScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: AlamatCountAggregateInputType | true
+    _avg?: AlamatAvgAggregateInputType
+    _sum?: AlamatSumAggregateInputType
+    _min?: AlamatMinAggregateInputType
+    _max?: AlamatMaxAggregateInputType
+  }
+
+  export type AlamatGroupByOutputType = {
+    id_alamat: string
+    id_user: string | null
+    alamat: string | null
+    catatan: string | null
+    latitude: Decimal | null
+    longitude: Decimal | null
+    is_default: boolean | null
+    id_tipe: bigint | null
+    id_kel: bigint | null
+    id_kec: bigint | null
+    id_kota: number | null
+    id_prov: number | null
+    created_at: Date | null
+    updated_at: Date | null
+    _count: AlamatCountAggregateOutputType | null
+    _avg: AlamatAvgAggregateOutputType | null
+    _sum: AlamatSumAggregateOutputType | null
+    _min: AlamatMinAggregateOutputType | null
+    _max: AlamatMaxAggregateOutputType | null
+  }
+
+  type GetAlamatGroupByPayload<T extends alamatGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<AlamatGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof AlamatGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], AlamatGroupByOutputType[P]>
+            : GetScalarType<T[P], AlamatGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type alamatSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id_alamat?: boolean
+    id_user?: boolean
+    alamat?: boolean
+    catatan?: boolean
+    latitude?: boolean
+    longitude?: boolean
+    is_default?: boolean
+    id_tipe?: boolean
+    id_kel?: boolean
+    id_kec?: boolean
+    id_kota?: boolean
+    id_prov?: boolean
+    created_at?: boolean
+    updated_at?: boolean
+    kecamatan?: boolean | alamat$kecamatanArgs<ExtArgs>
+    kelurahan?: boolean | alamat$kelurahanArgs<ExtArgs>
+    cities?: boolean | alamat$citiesArgs<ExtArgs>
+    provinces?: boolean | alamat$provincesArgs<ExtArgs>
+    tipe_alamat?: boolean | alamat$tipe_alamatArgs<ExtArgs>
+    users?: boolean | alamat$usersArgs<ExtArgs>
+  }, ExtArgs["result"]["alamat"]>
+
+  export type alamatSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id_alamat?: boolean
+    id_user?: boolean
+    alamat?: boolean
+    catatan?: boolean
+    latitude?: boolean
+    longitude?: boolean
+    is_default?: boolean
+    id_tipe?: boolean
+    id_kel?: boolean
+    id_kec?: boolean
+    id_kota?: boolean
+    id_prov?: boolean
+    created_at?: boolean
+    updated_at?: boolean
+    kecamatan?: boolean | alamat$kecamatanArgs<ExtArgs>
+    kelurahan?: boolean | alamat$kelurahanArgs<ExtArgs>
+    cities?: boolean | alamat$citiesArgs<ExtArgs>
+    provinces?: boolean | alamat$provincesArgs<ExtArgs>
+    tipe_alamat?: boolean | alamat$tipe_alamatArgs<ExtArgs>
+    users?: boolean | alamat$usersArgs<ExtArgs>
+  }, ExtArgs["result"]["alamat"]>
+
+  export type alamatSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id_alamat?: boolean
+    id_user?: boolean
+    alamat?: boolean
+    catatan?: boolean
+    latitude?: boolean
+    longitude?: boolean
+    is_default?: boolean
+    id_tipe?: boolean
+    id_kel?: boolean
+    id_kec?: boolean
+    id_kota?: boolean
+    id_prov?: boolean
+    created_at?: boolean
+    updated_at?: boolean
+    kecamatan?: boolean | alamat$kecamatanArgs<ExtArgs>
+    kelurahan?: boolean | alamat$kelurahanArgs<ExtArgs>
+    cities?: boolean | alamat$citiesArgs<ExtArgs>
+    provinces?: boolean | alamat$provincesArgs<ExtArgs>
+    tipe_alamat?: boolean | alamat$tipe_alamatArgs<ExtArgs>
+    users?: boolean | alamat$usersArgs<ExtArgs>
+  }, ExtArgs["result"]["alamat"]>
+
+  export type alamatSelectScalar = {
+    id_alamat?: boolean
+    id_user?: boolean
+    alamat?: boolean
+    catatan?: boolean
+    latitude?: boolean
+    longitude?: boolean
+    is_default?: boolean
+    id_tipe?: boolean
+    id_kel?: boolean
+    id_kec?: boolean
+    id_kota?: boolean
+    id_prov?: boolean
+    created_at?: boolean
+    updated_at?: boolean
+  }
+
+  export type alamatOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id_alamat" | "id_user" | "alamat" | "catatan" | "latitude" | "longitude" | "is_default" | "id_tipe" | "id_kel" | "id_kec" | "id_kota" | "id_prov" | "created_at" | "updated_at", ExtArgs["result"]["alamat"]>
+  export type alamatInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    kecamatan?: boolean | alamat$kecamatanArgs<ExtArgs>
+    kelurahan?: boolean | alamat$kelurahanArgs<ExtArgs>
+    cities?: boolean | alamat$citiesArgs<ExtArgs>
+    provinces?: boolean | alamat$provincesArgs<ExtArgs>
+    tipe_alamat?: boolean | alamat$tipe_alamatArgs<ExtArgs>
+    users?: boolean | alamat$usersArgs<ExtArgs>
+  }
+  export type alamatIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    kecamatan?: boolean | alamat$kecamatanArgs<ExtArgs>
+    kelurahan?: boolean | alamat$kelurahanArgs<ExtArgs>
+    cities?: boolean | alamat$citiesArgs<ExtArgs>
+    provinces?: boolean | alamat$provincesArgs<ExtArgs>
+    tipe_alamat?: boolean | alamat$tipe_alamatArgs<ExtArgs>
+    users?: boolean | alamat$usersArgs<ExtArgs>
+  }
+  export type alamatIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    kecamatan?: boolean | alamat$kecamatanArgs<ExtArgs>
+    kelurahan?: boolean | alamat$kelurahanArgs<ExtArgs>
+    cities?: boolean | alamat$citiesArgs<ExtArgs>
+    provinces?: boolean | alamat$provincesArgs<ExtArgs>
+    tipe_alamat?: boolean | alamat$tipe_alamatArgs<ExtArgs>
+    users?: boolean | alamat$usersArgs<ExtArgs>
+  }
+
+  export type $alamatPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "alamat"
+    objects: {
+      kecamatan: Prisma.$kecamatanPayload<ExtArgs> | null
+      kelurahan: Prisma.$kelurahanPayload<ExtArgs> | null
+      cities: Prisma.$citiesPayload<ExtArgs> | null
+      provinces: Prisma.$provincesPayload<ExtArgs> | null
+      tipe_alamat: Prisma.$tipe_alamatPayload<ExtArgs> | null
+      users: Prisma.$usersPayload<ExtArgs> | null
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id_alamat: string
+      id_user: string | null
+      alamat: string | null
+      catatan: string | null
+      latitude: Prisma.Decimal | null
+      longitude: Prisma.Decimal | null
+      is_default: boolean | null
+      id_tipe: bigint | null
+      id_kel: bigint | null
+      id_kec: bigint | null
+      id_kota: number | null
+      id_prov: number | null
+      created_at: Date | null
+      updated_at: Date | null
+    }, ExtArgs["result"]["alamat"]>
+    composites: {}
+  }
+
+  type alamatGetPayload<S extends boolean | null | undefined | alamatDefaultArgs> = $Result.GetResult<Prisma.$alamatPayload, S>
+
+  type alamatCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<alamatFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: AlamatCountAggregateInputType | true
+    }
+
+  export interface alamatDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['alamat'], meta: { name: 'alamat' } }
+    /**
+     * Find zero or one Alamat that matches the filter.
+     * @param {alamatFindUniqueArgs} args - Arguments to find a Alamat
+     * @example
+     * // Get one Alamat
+     * const alamat = await prisma.alamat.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends alamatFindUniqueArgs>(args: SelectSubset<T, alamatFindUniqueArgs<ExtArgs>>): Prisma__alamatClient<$Result.GetResult<Prisma.$alamatPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Alamat that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {alamatFindUniqueOrThrowArgs} args - Arguments to find a Alamat
+     * @example
+     * // Get one Alamat
+     * const alamat = await prisma.alamat.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends alamatFindUniqueOrThrowArgs>(args: SelectSubset<T, alamatFindUniqueOrThrowArgs<ExtArgs>>): Prisma__alamatClient<$Result.GetResult<Prisma.$alamatPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Alamat that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {alamatFindFirstArgs} args - Arguments to find a Alamat
+     * @example
+     * // Get one Alamat
+     * const alamat = await prisma.alamat.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends alamatFindFirstArgs>(args?: SelectSubset<T, alamatFindFirstArgs<ExtArgs>>): Prisma__alamatClient<$Result.GetResult<Prisma.$alamatPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Alamat that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {alamatFindFirstOrThrowArgs} args - Arguments to find a Alamat
+     * @example
+     * // Get one Alamat
+     * const alamat = await prisma.alamat.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends alamatFindFirstOrThrowArgs>(args?: SelectSubset<T, alamatFindFirstOrThrowArgs<ExtArgs>>): Prisma__alamatClient<$Result.GetResult<Prisma.$alamatPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Alamats that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {alamatFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Alamats
+     * const alamats = await prisma.alamat.findMany()
+     * 
+     * // Get first 10 Alamats
+     * const alamats = await prisma.alamat.findMany({ take: 10 })
+     * 
+     * // Only select the `id_alamat`
+     * const alamatWithId_alamatOnly = await prisma.alamat.findMany({ select: { id_alamat: true } })
+     * 
+     */
+    findMany<T extends alamatFindManyArgs>(args?: SelectSubset<T, alamatFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$alamatPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Alamat.
+     * @param {alamatCreateArgs} args - Arguments to create a Alamat.
+     * @example
+     * // Create one Alamat
+     * const Alamat = await prisma.alamat.create({
+     *   data: {
+     *     // ... data to create a Alamat
+     *   }
+     * })
+     * 
+     */
+    create<T extends alamatCreateArgs>(args: SelectSubset<T, alamatCreateArgs<ExtArgs>>): Prisma__alamatClient<$Result.GetResult<Prisma.$alamatPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Alamats.
+     * @param {alamatCreateManyArgs} args - Arguments to create many Alamats.
+     * @example
+     * // Create many Alamats
+     * const alamat = await prisma.alamat.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends alamatCreateManyArgs>(args?: SelectSubset<T, alamatCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Alamats and returns the data saved in the database.
+     * @param {alamatCreateManyAndReturnArgs} args - Arguments to create many Alamats.
+     * @example
+     * // Create many Alamats
+     * const alamat = await prisma.alamat.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Alamats and only return the `id_alamat`
+     * const alamatWithId_alamatOnly = await prisma.alamat.createManyAndReturn({
+     *   select: { id_alamat: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends alamatCreateManyAndReturnArgs>(args?: SelectSubset<T, alamatCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$alamatPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a Alamat.
+     * @param {alamatDeleteArgs} args - Arguments to delete one Alamat.
+     * @example
+     * // Delete one Alamat
+     * const Alamat = await prisma.alamat.delete({
+     *   where: {
+     *     // ... filter to delete one Alamat
+     *   }
+     * })
+     * 
+     */
+    delete<T extends alamatDeleteArgs>(args: SelectSubset<T, alamatDeleteArgs<ExtArgs>>): Prisma__alamatClient<$Result.GetResult<Prisma.$alamatPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Alamat.
+     * @param {alamatUpdateArgs} args - Arguments to update one Alamat.
+     * @example
+     * // Update one Alamat
+     * const alamat = await prisma.alamat.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends alamatUpdateArgs>(args: SelectSubset<T, alamatUpdateArgs<ExtArgs>>): Prisma__alamatClient<$Result.GetResult<Prisma.$alamatPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Alamats.
+     * @param {alamatDeleteManyArgs} args - Arguments to filter Alamats to delete.
+     * @example
+     * // Delete a few Alamats
+     * const { count } = await prisma.alamat.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends alamatDeleteManyArgs>(args?: SelectSubset<T, alamatDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Alamats.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {alamatUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Alamats
+     * const alamat = await prisma.alamat.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends alamatUpdateManyArgs>(args: SelectSubset<T, alamatUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Alamats and returns the data updated in the database.
+     * @param {alamatUpdateManyAndReturnArgs} args - Arguments to update many Alamats.
+     * @example
+     * // Update many Alamats
+     * const alamat = await prisma.alamat.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Alamats and only return the `id_alamat`
+     * const alamatWithId_alamatOnly = await prisma.alamat.updateManyAndReturn({
+     *   select: { id_alamat: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends alamatUpdateManyAndReturnArgs>(args: SelectSubset<T, alamatUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$alamatPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one Alamat.
+     * @param {alamatUpsertArgs} args - Arguments to update or create a Alamat.
+     * @example
+     * // Update or create a Alamat
+     * const alamat = await prisma.alamat.upsert({
+     *   create: {
+     *     // ... data to create a Alamat
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Alamat we want to update
+     *   }
+     * })
+     */
+    upsert<T extends alamatUpsertArgs>(args: SelectSubset<T, alamatUpsertArgs<ExtArgs>>): Prisma__alamatClient<$Result.GetResult<Prisma.$alamatPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Alamats.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {alamatCountArgs} args - Arguments to filter Alamats to count.
+     * @example
+     * // Count the number of Alamats
+     * const count = await prisma.alamat.count({
+     *   where: {
+     *     // ... the filter for the Alamats we want to count
+     *   }
+     * })
+    **/
+    count<T extends alamatCountArgs>(
+      args?: Subset<T, alamatCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], AlamatCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Alamat.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AlamatAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends AlamatAggregateArgs>(args: Subset<T, AlamatAggregateArgs>): Prisma.PrismaPromise<GetAlamatAggregateType<T>>
+
+    /**
+     * Group by Alamat.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {alamatGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends alamatGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: alamatGroupByArgs['orderBy'] }
+        : { orderBy?: alamatGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, alamatGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetAlamatGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the alamat model
+   */
+  readonly fields: alamatFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for alamat.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__alamatClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    kecamatan<T extends alamat$kecamatanArgs<ExtArgs> = {}>(args?: Subset<T, alamat$kecamatanArgs<ExtArgs>>): Prisma__kecamatanClient<$Result.GetResult<Prisma.$kecamatanPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    kelurahan<T extends alamat$kelurahanArgs<ExtArgs> = {}>(args?: Subset<T, alamat$kelurahanArgs<ExtArgs>>): Prisma__kelurahanClient<$Result.GetResult<Prisma.$kelurahanPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    cities<T extends alamat$citiesArgs<ExtArgs> = {}>(args?: Subset<T, alamat$citiesArgs<ExtArgs>>): Prisma__citiesClient<$Result.GetResult<Prisma.$citiesPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    provinces<T extends alamat$provincesArgs<ExtArgs> = {}>(args?: Subset<T, alamat$provincesArgs<ExtArgs>>): Prisma__provincesClient<$Result.GetResult<Prisma.$provincesPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    tipe_alamat<T extends alamat$tipe_alamatArgs<ExtArgs> = {}>(args?: Subset<T, alamat$tipe_alamatArgs<ExtArgs>>): Prisma__tipe_alamatClient<$Result.GetResult<Prisma.$tipe_alamatPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    users<T extends alamat$usersArgs<ExtArgs> = {}>(args?: Subset<T, alamat$usersArgs<ExtArgs>>): Prisma__usersClient<$Result.GetResult<Prisma.$usersPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the alamat model
+   */
+  interface alamatFieldRefs {
+    readonly id_alamat: FieldRef<"alamat", 'String'>
+    readonly id_user: FieldRef<"alamat", 'String'>
+    readonly alamat: FieldRef<"alamat", 'String'>
+    readonly catatan: FieldRef<"alamat", 'String'>
+    readonly latitude: FieldRef<"alamat", 'Decimal'>
+    readonly longitude: FieldRef<"alamat", 'Decimal'>
+    readonly is_default: FieldRef<"alamat", 'Boolean'>
+    readonly id_tipe: FieldRef<"alamat", 'BigInt'>
+    readonly id_kel: FieldRef<"alamat", 'BigInt'>
+    readonly id_kec: FieldRef<"alamat", 'BigInt'>
+    readonly id_kota: FieldRef<"alamat", 'Int'>
+    readonly id_prov: FieldRef<"alamat", 'Int'>
+    readonly created_at: FieldRef<"alamat", 'DateTime'>
+    readonly updated_at: FieldRef<"alamat", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * alamat findUnique
+   */
+  export type alamatFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the alamat
+     */
+    select?: alamatSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the alamat
+     */
+    omit?: alamatOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: alamatInclude<ExtArgs> | null
+    /**
+     * Filter, which alamat to fetch.
+     */
+    where: alamatWhereUniqueInput
+  }
+
+  /**
+   * alamat findUniqueOrThrow
+   */
+  export type alamatFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the alamat
+     */
+    select?: alamatSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the alamat
+     */
+    omit?: alamatOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: alamatInclude<ExtArgs> | null
+    /**
+     * Filter, which alamat to fetch.
+     */
+    where: alamatWhereUniqueInput
+  }
+
+  /**
+   * alamat findFirst
+   */
+  export type alamatFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the alamat
+     */
+    select?: alamatSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the alamat
+     */
+    omit?: alamatOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: alamatInclude<ExtArgs> | null
+    /**
+     * Filter, which alamat to fetch.
+     */
+    where?: alamatWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of alamats to fetch.
+     */
+    orderBy?: alamatOrderByWithRelationInput | alamatOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for alamats.
+     */
+    cursor?: alamatWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` alamats from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` alamats.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of alamats.
+     */
+    distinct?: AlamatScalarFieldEnum | AlamatScalarFieldEnum[]
+  }
+
+  /**
+   * alamat findFirstOrThrow
+   */
+  export type alamatFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the alamat
+     */
+    select?: alamatSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the alamat
+     */
+    omit?: alamatOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: alamatInclude<ExtArgs> | null
+    /**
+     * Filter, which alamat to fetch.
+     */
+    where?: alamatWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of alamats to fetch.
+     */
+    orderBy?: alamatOrderByWithRelationInput | alamatOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for alamats.
+     */
+    cursor?: alamatWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` alamats from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` alamats.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of alamats.
+     */
+    distinct?: AlamatScalarFieldEnum | AlamatScalarFieldEnum[]
+  }
+
+  /**
+   * alamat findMany
+   */
+  export type alamatFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the alamat
+     */
+    select?: alamatSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the alamat
+     */
+    omit?: alamatOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: alamatInclude<ExtArgs> | null
+    /**
+     * Filter, which alamats to fetch.
+     */
+    where?: alamatWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of alamats to fetch.
+     */
+    orderBy?: alamatOrderByWithRelationInput | alamatOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing alamats.
+     */
+    cursor?: alamatWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` alamats from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` alamats.
+     */
+    skip?: number
+    distinct?: AlamatScalarFieldEnum | AlamatScalarFieldEnum[]
+  }
+
+  /**
+   * alamat create
+   */
+  export type alamatCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the alamat
+     */
+    select?: alamatSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the alamat
+     */
+    omit?: alamatOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: alamatInclude<ExtArgs> | null
+    /**
+     * The data needed to create a alamat.
+     */
+    data: XOR<alamatCreateInput, alamatUncheckedCreateInput>
+  }
+
+  /**
+   * alamat createMany
+   */
+  export type alamatCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many alamats.
+     */
+    data: alamatCreateManyInput | alamatCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * alamat createManyAndReturn
+   */
+  export type alamatCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the alamat
+     */
+    select?: alamatSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the alamat
+     */
+    omit?: alamatOmit<ExtArgs> | null
+    /**
+     * The data used to create many alamats.
+     */
+    data: alamatCreateManyInput | alamatCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: alamatIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * alamat update
+   */
+  export type alamatUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the alamat
+     */
+    select?: alamatSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the alamat
+     */
+    omit?: alamatOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: alamatInclude<ExtArgs> | null
+    /**
+     * The data needed to update a alamat.
+     */
+    data: XOR<alamatUpdateInput, alamatUncheckedUpdateInput>
+    /**
+     * Choose, which alamat to update.
+     */
+    where: alamatWhereUniqueInput
+  }
+
+  /**
+   * alamat updateMany
+   */
+  export type alamatUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update alamats.
+     */
+    data: XOR<alamatUpdateManyMutationInput, alamatUncheckedUpdateManyInput>
+    /**
+     * Filter which alamats to update
+     */
+    where?: alamatWhereInput
+    /**
+     * Limit how many alamats to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * alamat updateManyAndReturn
+   */
+  export type alamatUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the alamat
+     */
+    select?: alamatSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the alamat
+     */
+    omit?: alamatOmit<ExtArgs> | null
+    /**
+     * The data used to update alamats.
+     */
+    data: XOR<alamatUpdateManyMutationInput, alamatUncheckedUpdateManyInput>
+    /**
+     * Filter which alamats to update
+     */
+    where?: alamatWhereInput
+    /**
+     * Limit how many alamats to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: alamatIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * alamat upsert
+   */
+  export type alamatUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the alamat
+     */
+    select?: alamatSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the alamat
+     */
+    omit?: alamatOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: alamatInclude<ExtArgs> | null
+    /**
+     * The filter to search for the alamat to update in case it exists.
+     */
+    where: alamatWhereUniqueInput
+    /**
+     * In case the alamat found by the `where` argument doesn't exist, create a new alamat with this data.
+     */
+    create: XOR<alamatCreateInput, alamatUncheckedCreateInput>
+    /**
+     * In case the alamat was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<alamatUpdateInput, alamatUncheckedUpdateInput>
+  }
+
+  /**
+   * alamat delete
+   */
+  export type alamatDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the alamat
+     */
+    select?: alamatSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the alamat
+     */
+    omit?: alamatOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: alamatInclude<ExtArgs> | null
+    /**
+     * Filter which alamat to delete.
+     */
+    where: alamatWhereUniqueInput
+  }
+
+  /**
+   * alamat deleteMany
+   */
+  export type alamatDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which alamats to delete
+     */
+    where?: alamatWhereInput
+    /**
+     * Limit how many alamats to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * alamat.kecamatan
+   */
+  export type alamat$kecamatanArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the kecamatan
+     */
+    select?: kecamatanSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the kecamatan
+     */
+    omit?: kecamatanOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: kecamatanInclude<ExtArgs> | null
+    where?: kecamatanWhereInput
+  }
+
+  /**
+   * alamat.kelurahan
+   */
+  export type alamat$kelurahanArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the kelurahan
+     */
+    select?: kelurahanSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the kelurahan
+     */
+    omit?: kelurahanOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: kelurahanInclude<ExtArgs> | null
+    where?: kelurahanWhereInput
+  }
+
+  /**
+   * alamat.cities
+   */
+  export type alamat$citiesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the cities
+     */
+    select?: citiesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the cities
+     */
+    omit?: citiesOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: citiesInclude<ExtArgs> | null
+    where?: citiesWhereInput
+  }
+
+  /**
+   * alamat.provinces
+   */
+  export type alamat$provincesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the provinces
+     */
+    select?: provincesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the provinces
+     */
+    omit?: provincesOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: provincesInclude<ExtArgs> | null
+    where?: provincesWhereInput
+  }
+
+  /**
+   * alamat.tipe_alamat
+   */
+  export type alamat$tipe_alamatArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the tipe_alamat
+     */
+    select?: tipe_alamatSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the tipe_alamat
+     */
+    omit?: tipe_alamatOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: tipe_alamatInclude<ExtArgs> | null
+    where?: tipe_alamatWhereInput
+  }
+
+  /**
+   * alamat.users
+   */
+  export type alamat$usersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the users
+     */
+    select?: usersSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the users
+     */
+    omit?: usersOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: usersInclude<ExtArgs> | null
+    where?: usersWhereInput
+  }
+
+  /**
+   * alamat without action
+   */
+  export type alamatDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the alamat
+     */
+    select?: alamatSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the alamat
+     */
+    omit?: alamatOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: alamatInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model kecamatan
+   */
+
+  export type AggregateKecamatan = {
+    _count: KecamatanCountAggregateOutputType | null
+    _avg: KecamatanAvgAggregateOutputType | null
+    _sum: KecamatanSumAggregateOutputType | null
+    _min: KecamatanMinAggregateOutputType | null
+    _max: KecamatanMaxAggregateOutputType | null
+  }
+
+  export type KecamatanAvgAggregateOutputType = {
+    id_kec: number | null
+    id_kota: number | null
+  }
+
+  export type KecamatanSumAggregateOutputType = {
+    id_kec: bigint | null
+    id_kota: number | null
+  }
+
+  export type KecamatanMinAggregateOutputType = {
+    id_kec: bigint | null
+    kecamatan: string | null
+    id_kota: number | null
+    created_at: Date | null
+    updated_at: Date | null
+  }
+
+  export type KecamatanMaxAggregateOutputType = {
+    id_kec: bigint | null
+    kecamatan: string | null
+    id_kota: number | null
+    created_at: Date | null
+    updated_at: Date | null
+  }
+
+  export type KecamatanCountAggregateOutputType = {
+    id_kec: number
+    kecamatan: number
+    id_kota: number
+    created_at: number
+    updated_at: number
+    _all: number
+  }
+
+
+  export type KecamatanAvgAggregateInputType = {
+    id_kec?: true
+    id_kota?: true
+  }
+
+  export type KecamatanSumAggregateInputType = {
+    id_kec?: true
+    id_kota?: true
+  }
+
+  export type KecamatanMinAggregateInputType = {
+    id_kec?: true
+    kecamatan?: true
+    id_kota?: true
+    created_at?: true
+    updated_at?: true
+  }
+
+  export type KecamatanMaxAggregateInputType = {
+    id_kec?: true
+    kecamatan?: true
+    id_kota?: true
+    created_at?: true
+    updated_at?: true
+  }
+
+  export type KecamatanCountAggregateInputType = {
+    id_kec?: true
+    kecamatan?: true
+    id_kota?: true
+    created_at?: true
+    updated_at?: true
+    _all?: true
+  }
+
+  export type KecamatanAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which kecamatan to aggregate.
+     */
+    where?: kecamatanWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of kecamatans to fetch.
+     */
+    orderBy?: kecamatanOrderByWithRelationInput | kecamatanOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: kecamatanWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` kecamatans from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` kecamatans.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned kecamatans
+    **/
+    _count?: true | KecamatanCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: KecamatanAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: KecamatanSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: KecamatanMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: KecamatanMaxAggregateInputType
+  }
+
+  export type GetKecamatanAggregateType<T extends KecamatanAggregateArgs> = {
+        [P in keyof T & keyof AggregateKecamatan]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateKecamatan[P]>
+      : GetScalarType<T[P], AggregateKecamatan[P]>
+  }
+
+
+
+
+  export type kecamatanGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: kecamatanWhereInput
+    orderBy?: kecamatanOrderByWithAggregationInput | kecamatanOrderByWithAggregationInput[]
+    by: KecamatanScalarFieldEnum[] | KecamatanScalarFieldEnum
+    having?: kecamatanScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: KecamatanCountAggregateInputType | true
+    _avg?: KecamatanAvgAggregateInputType
+    _sum?: KecamatanSumAggregateInputType
+    _min?: KecamatanMinAggregateInputType
+    _max?: KecamatanMaxAggregateInputType
+  }
+
+  export type KecamatanGroupByOutputType = {
+    id_kec: bigint
+    kecamatan: string | null
+    id_kota: number | null
+    created_at: Date | null
+    updated_at: Date | null
+    _count: KecamatanCountAggregateOutputType | null
+    _avg: KecamatanAvgAggregateOutputType | null
+    _sum: KecamatanSumAggregateOutputType | null
+    _min: KecamatanMinAggregateOutputType | null
+    _max: KecamatanMaxAggregateOutputType | null
+  }
+
+  type GetKecamatanGroupByPayload<T extends kecamatanGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<KecamatanGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof KecamatanGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], KecamatanGroupByOutputType[P]>
+            : GetScalarType<T[P], KecamatanGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type kecamatanSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id_kec?: boolean
+    kecamatan?: boolean
+    id_kota?: boolean
+    created_at?: boolean
+    updated_at?: boolean
+    alamat?: boolean | kecamatan$alamatArgs<ExtArgs>
+    cities?: boolean | kecamatan$citiesArgs<ExtArgs>
+    kelurahan?: boolean | kecamatan$kelurahanArgs<ExtArgs>
+    _count?: boolean | KecamatanCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["kecamatan"]>
+
+  export type kecamatanSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id_kec?: boolean
+    kecamatan?: boolean
+    id_kota?: boolean
+    created_at?: boolean
+    updated_at?: boolean
+    cities?: boolean | kecamatan$citiesArgs<ExtArgs>
+  }, ExtArgs["result"]["kecamatan"]>
+
+  export type kecamatanSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id_kec?: boolean
+    kecamatan?: boolean
+    id_kota?: boolean
+    created_at?: boolean
+    updated_at?: boolean
+    cities?: boolean | kecamatan$citiesArgs<ExtArgs>
+  }, ExtArgs["result"]["kecamatan"]>
+
+  export type kecamatanSelectScalar = {
+    id_kec?: boolean
+    kecamatan?: boolean
+    id_kota?: boolean
+    created_at?: boolean
+    updated_at?: boolean
+  }
+
+  export type kecamatanOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id_kec" | "kecamatan" | "id_kota" | "created_at" | "updated_at", ExtArgs["result"]["kecamatan"]>
+  export type kecamatanInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    alamat?: boolean | kecamatan$alamatArgs<ExtArgs>
+    cities?: boolean | kecamatan$citiesArgs<ExtArgs>
+    kelurahan?: boolean | kecamatan$kelurahanArgs<ExtArgs>
+    _count?: boolean | KecamatanCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type kecamatanIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    cities?: boolean | kecamatan$citiesArgs<ExtArgs>
+  }
+  export type kecamatanIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    cities?: boolean | kecamatan$citiesArgs<ExtArgs>
+  }
+
+  export type $kecamatanPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "kecamatan"
+    objects: {
+      alamat: Prisma.$alamatPayload<ExtArgs>[]
+      cities: Prisma.$citiesPayload<ExtArgs> | null
+      kelurahan: Prisma.$kelurahanPayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id_kec: bigint
+      kecamatan: string | null
+      id_kota: number | null
+      created_at: Date | null
+      updated_at: Date | null
+    }, ExtArgs["result"]["kecamatan"]>
+    composites: {}
+  }
+
+  type kecamatanGetPayload<S extends boolean | null | undefined | kecamatanDefaultArgs> = $Result.GetResult<Prisma.$kecamatanPayload, S>
+
+  type kecamatanCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<kecamatanFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: KecamatanCountAggregateInputType | true
+    }
+
+  export interface kecamatanDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['kecamatan'], meta: { name: 'kecamatan' } }
+    /**
+     * Find zero or one Kecamatan that matches the filter.
+     * @param {kecamatanFindUniqueArgs} args - Arguments to find a Kecamatan
+     * @example
+     * // Get one Kecamatan
+     * const kecamatan = await prisma.kecamatan.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends kecamatanFindUniqueArgs>(args: SelectSubset<T, kecamatanFindUniqueArgs<ExtArgs>>): Prisma__kecamatanClient<$Result.GetResult<Prisma.$kecamatanPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Kecamatan that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {kecamatanFindUniqueOrThrowArgs} args - Arguments to find a Kecamatan
+     * @example
+     * // Get one Kecamatan
+     * const kecamatan = await prisma.kecamatan.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends kecamatanFindUniqueOrThrowArgs>(args: SelectSubset<T, kecamatanFindUniqueOrThrowArgs<ExtArgs>>): Prisma__kecamatanClient<$Result.GetResult<Prisma.$kecamatanPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Kecamatan that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {kecamatanFindFirstArgs} args - Arguments to find a Kecamatan
+     * @example
+     * // Get one Kecamatan
+     * const kecamatan = await prisma.kecamatan.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends kecamatanFindFirstArgs>(args?: SelectSubset<T, kecamatanFindFirstArgs<ExtArgs>>): Prisma__kecamatanClient<$Result.GetResult<Prisma.$kecamatanPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Kecamatan that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {kecamatanFindFirstOrThrowArgs} args - Arguments to find a Kecamatan
+     * @example
+     * // Get one Kecamatan
+     * const kecamatan = await prisma.kecamatan.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends kecamatanFindFirstOrThrowArgs>(args?: SelectSubset<T, kecamatanFindFirstOrThrowArgs<ExtArgs>>): Prisma__kecamatanClient<$Result.GetResult<Prisma.$kecamatanPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Kecamatans that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {kecamatanFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Kecamatans
+     * const kecamatans = await prisma.kecamatan.findMany()
+     * 
+     * // Get first 10 Kecamatans
+     * const kecamatans = await prisma.kecamatan.findMany({ take: 10 })
+     * 
+     * // Only select the `id_kec`
+     * const kecamatanWithId_kecOnly = await prisma.kecamatan.findMany({ select: { id_kec: true } })
+     * 
+     */
+    findMany<T extends kecamatanFindManyArgs>(args?: SelectSubset<T, kecamatanFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$kecamatanPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Kecamatan.
+     * @param {kecamatanCreateArgs} args - Arguments to create a Kecamatan.
+     * @example
+     * // Create one Kecamatan
+     * const Kecamatan = await prisma.kecamatan.create({
+     *   data: {
+     *     // ... data to create a Kecamatan
+     *   }
+     * })
+     * 
+     */
+    create<T extends kecamatanCreateArgs>(args: SelectSubset<T, kecamatanCreateArgs<ExtArgs>>): Prisma__kecamatanClient<$Result.GetResult<Prisma.$kecamatanPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Kecamatans.
+     * @param {kecamatanCreateManyArgs} args - Arguments to create many Kecamatans.
+     * @example
+     * // Create many Kecamatans
+     * const kecamatan = await prisma.kecamatan.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends kecamatanCreateManyArgs>(args?: SelectSubset<T, kecamatanCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Kecamatans and returns the data saved in the database.
+     * @param {kecamatanCreateManyAndReturnArgs} args - Arguments to create many Kecamatans.
+     * @example
+     * // Create many Kecamatans
+     * const kecamatan = await prisma.kecamatan.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Kecamatans and only return the `id_kec`
+     * const kecamatanWithId_kecOnly = await prisma.kecamatan.createManyAndReturn({
+     *   select: { id_kec: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends kecamatanCreateManyAndReturnArgs>(args?: SelectSubset<T, kecamatanCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$kecamatanPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a Kecamatan.
+     * @param {kecamatanDeleteArgs} args - Arguments to delete one Kecamatan.
+     * @example
+     * // Delete one Kecamatan
+     * const Kecamatan = await prisma.kecamatan.delete({
+     *   where: {
+     *     // ... filter to delete one Kecamatan
+     *   }
+     * })
+     * 
+     */
+    delete<T extends kecamatanDeleteArgs>(args: SelectSubset<T, kecamatanDeleteArgs<ExtArgs>>): Prisma__kecamatanClient<$Result.GetResult<Prisma.$kecamatanPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Kecamatan.
+     * @param {kecamatanUpdateArgs} args - Arguments to update one Kecamatan.
+     * @example
+     * // Update one Kecamatan
+     * const kecamatan = await prisma.kecamatan.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends kecamatanUpdateArgs>(args: SelectSubset<T, kecamatanUpdateArgs<ExtArgs>>): Prisma__kecamatanClient<$Result.GetResult<Prisma.$kecamatanPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Kecamatans.
+     * @param {kecamatanDeleteManyArgs} args - Arguments to filter Kecamatans to delete.
+     * @example
+     * // Delete a few Kecamatans
+     * const { count } = await prisma.kecamatan.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends kecamatanDeleteManyArgs>(args?: SelectSubset<T, kecamatanDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Kecamatans.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {kecamatanUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Kecamatans
+     * const kecamatan = await prisma.kecamatan.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends kecamatanUpdateManyArgs>(args: SelectSubset<T, kecamatanUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Kecamatans and returns the data updated in the database.
+     * @param {kecamatanUpdateManyAndReturnArgs} args - Arguments to update many Kecamatans.
+     * @example
+     * // Update many Kecamatans
+     * const kecamatan = await prisma.kecamatan.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Kecamatans and only return the `id_kec`
+     * const kecamatanWithId_kecOnly = await prisma.kecamatan.updateManyAndReturn({
+     *   select: { id_kec: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends kecamatanUpdateManyAndReturnArgs>(args: SelectSubset<T, kecamatanUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$kecamatanPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one Kecamatan.
+     * @param {kecamatanUpsertArgs} args - Arguments to update or create a Kecamatan.
+     * @example
+     * // Update or create a Kecamatan
+     * const kecamatan = await prisma.kecamatan.upsert({
+     *   create: {
+     *     // ... data to create a Kecamatan
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Kecamatan we want to update
+     *   }
+     * })
+     */
+    upsert<T extends kecamatanUpsertArgs>(args: SelectSubset<T, kecamatanUpsertArgs<ExtArgs>>): Prisma__kecamatanClient<$Result.GetResult<Prisma.$kecamatanPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Kecamatans.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {kecamatanCountArgs} args - Arguments to filter Kecamatans to count.
+     * @example
+     * // Count the number of Kecamatans
+     * const count = await prisma.kecamatan.count({
+     *   where: {
+     *     // ... the filter for the Kecamatans we want to count
+     *   }
+     * })
+    **/
+    count<T extends kecamatanCountArgs>(
+      args?: Subset<T, kecamatanCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], KecamatanCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Kecamatan.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {KecamatanAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends KecamatanAggregateArgs>(args: Subset<T, KecamatanAggregateArgs>): Prisma.PrismaPromise<GetKecamatanAggregateType<T>>
+
+    /**
+     * Group by Kecamatan.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {kecamatanGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends kecamatanGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: kecamatanGroupByArgs['orderBy'] }
+        : { orderBy?: kecamatanGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, kecamatanGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetKecamatanGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the kecamatan model
+   */
+  readonly fields: kecamatanFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for kecamatan.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__kecamatanClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    alamat<T extends kecamatan$alamatArgs<ExtArgs> = {}>(args?: Subset<T, kecamatan$alamatArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$alamatPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    cities<T extends kecamatan$citiesArgs<ExtArgs> = {}>(args?: Subset<T, kecamatan$citiesArgs<ExtArgs>>): Prisma__citiesClient<$Result.GetResult<Prisma.$citiesPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    kelurahan<T extends kecamatan$kelurahanArgs<ExtArgs> = {}>(args?: Subset<T, kecamatan$kelurahanArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$kelurahanPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the kecamatan model
+   */
+  interface kecamatanFieldRefs {
+    readonly id_kec: FieldRef<"kecamatan", 'BigInt'>
+    readonly kecamatan: FieldRef<"kecamatan", 'String'>
+    readonly id_kota: FieldRef<"kecamatan", 'Int'>
+    readonly created_at: FieldRef<"kecamatan", 'DateTime'>
+    readonly updated_at: FieldRef<"kecamatan", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * kecamatan findUnique
+   */
+  export type kecamatanFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the kecamatan
+     */
+    select?: kecamatanSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the kecamatan
+     */
+    omit?: kecamatanOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: kecamatanInclude<ExtArgs> | null
+    /**
+     * Filter, which kecamatan to fetch.
+     */
+    where: kecamatanWhereUniqueInput
+  }
+
+  /**
+   * kecamatan findUniqueOrThrow
+   */
+  export type kecamatanFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the kecamatan
+     */
+    select?: kecamatanSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the kecamatan
+     */
+    omit?: kecamatanOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: kecamatanInclude<ExtArgs> | null
+    /**
+     * Filter, which kecamatan to fetch.
+     */
+    where: kecamatanWhereUniqueInput
+  }
+
+  /**
+   * kecamatan findFirst
+   */
+  export type kecamatanFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the kecamatan
+     */
+    select?: kecamatanSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the kecamatan
+     */
+    omit?: kecamatanOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: kecamatanInclude<ExtArgs> | null
+    /**
+     * Filter, which kecamatan to fetch.
+     */
+    where?: kecamatanWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of kecamatans to fetch.
+     */
+    orderBy?: kecamatanOrderByWithRelationInput | kecamatanOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for kecamatans.
+     */
+    cursor?: kecamatanWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` kecamatans from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` kecamatans.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of kecamatans.
+     */
+    distinct?: KecamatanScalarFieldEnum | KecamatanScalarFieldEnum[]
+  }
+
+  /**
+   * kecamatan findFirstOrThrow
+   */
+  export type kecamatanFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the kecamatan
+     */
+    select?: kecamatanSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the kecamatan
+     */
+    omit?: kecamatanOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: kecamatanInclude<ExtArgs> | null
+    /**
+     * Filter, which kecamatan to fetch.
+     */
+    where?: kecamatanWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of kecamatans to fetch.
+     */
+    orderBy?: kecamatanOrderByWithRelationInput | kecamatanOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for kecamatans.
+     */
+    cursor?: kecamatanWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` kecamatans from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` kecamatans.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of kecamatans.
+     */
+    distinct?: KecamatanScalarFieldEnum | KecamatanScalarFieldEnum[]
+  }
+
+  /**
+   * kecamatan findMany
+   */
+  export type kecamatanFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the kecamatan
+     */
+    select?: kecamatanSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the kecamatan
+     */
+    omit?: kecamatanOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: kecamatanInclude<ExtArgs> | null
+    /**
+     * Filter, which kecamatans to fetch.
+     */
+    where?: kecamatanWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of kecamatans to fetch.
+     */
+    orderBy?: kecamatanOrderByWithRelationInput | kecamatanOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing kecamatans.
+     */
+    cursor?: kecamatanWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` kecamatans from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` kecamatans.
+     */
+    skip?: number
+    distinct?: KecamatanScalarFieldEnum | KecamatanScalarFieldEnum[]
+  }
+
+  /**
+   * kecamatan create
+   */
+  export type kecamatanCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the kecamatan
+     */
+    select?: kecamatanSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the kecamatan
+     */
+    omit?: kecamatanOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: kecamatanInclude<ExtArgs> | null
+    /**
+     * The data needed to create a kecamatan.
+     */
+    data?: XOR<kecamatanCreateInput, kecamatanUncheckedCreateInput>
+  }
+
+  /**
+   * kecamatan createMany
+   */
+  export type kecamatanCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many kecamatans.
+     */
+    data: kecamatanCreateManyInput | kecamatanCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * kecamatan createManyAndReturn
+   */
+  export type kecamatanCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the kecamatan
+     */
+    select?: kecamatanSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the kecamatan
+     */
+    omit?: kecamatanOmit<ExtArgs> | null
+    /**
+     * The data used to create many kecamatans.
+     */
+    data: kecamatanCreateManyInput | kecamatanCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: kecamatanIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * kecamatan update
+   */
+  export type kecamatanUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the kecamatan
+     */
+    select?: kecamatanSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the kecamatan
+     */
+    omit?: kecamatanOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: kecamatanInclude<ExtArgs> | null
+    /**
+     * The data needed to update a kecamatan.
+     */
+    data: XOR<kecamatanUpdateInput, kecamatanUncheckedUpdateInput>
+    /**
+     * Choose, which kecamatan to update.
+     */
+    where: kecamatanWhereUniqueInput
+  }
+
+  /**
+   * kecamatan updateMany
+   */
+  export type kecamatanUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update kecamatans.
+     */
+    data: XOR<kecamatanUpdateManyMutationInput, kecamatanUncheckedUpdateManyInput>
+    /**
+     * Filter which kecamatans to update
+     */
+    where?: kecamatanWhereInput
+    /**
+     * Limit how many kecamatans to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * kecamatan updateManyAndReturn
+   */
+  export type kecamatanUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the kecamatan
+     */
+    select?: kecamatanSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the kecamatan
+     */
+    omit?: kecamatanOmit<ExtArgs> | null
+    /**
+     * The data used to update kecamatans.
+     */
+    data: XOR<kecamatanUpdateManyMutationInput, kecamatanUncheckedUpdateManyInput>
+    /**
+     * Filter which kecamatans to update
+     */
+    where?: kecamatanWhereInput
+    /**
+     * Limit how many kecamatans to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: kecamatanIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * kecamatan upsert
+   */
+  export type kecamatanUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the kecamatan
+     */
+    select?: kecamatanSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the kecamatan
+     */
+    omit?: kecamatanOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: kecamatanInclude<ExtArgs> | null
+    /**
+     * The filter to search for the kecamatan to update in case it exists.
+     */
+    where: kecamatanWhereUniqueInput
+    /**
+     * In case the kecamatan found by the `where` argument doesn't exist, create a new kecamatan with this data.
+     */
+    create: XOR<kecamatanCreateInput, kecamatanUncheckedCreateInput>
+    /**
+     * In case the kecamatan was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<kecamatanUpdateInput, kecamatanUncheckedUpdateInput>
+  }
+
+  /**
+   * kecamatan delete
+   */
+  export type kecamatanDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the kecamatan
+     */
+    select?: kecamatanSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the kecamatan
+     */
+    omit?: kecamatanOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: kecamatanInclude<ExtArgs> | null
+    /**
+     * Filter which kecamatan to delete.
+     */
+    where: kecamatanWhereUniqueInput
+  }
+
+  /**
+   * kecamatan deleteMany
+   */
+  export type kecamatanDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which kecamatans to delete
+     */
+    where?: kecamatanWhereInput
+    /**
+     * Limit how many kecamatans to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * kecamatan.alamat
+   */
+  export type kecamatan$alamatArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the alamat
+     */
+    select?: alamatSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the alamat
+     */
+    omit?: alamatOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: alamatInclude<ExtArgs> | null
+    where?: alamatWhereInput
+    orderBy?: alamatOrderByWithRelationInput | alamatOrderByWithRelationInput[]
+    cursor?: alamatWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: AlamatScalarFieldEnum | AlamatScalarFieldEnum[]
+  }
+
+  /**
+   * kecamatan.cities
+   */
+  export type kecamatan$citiesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the cities
+     */
+    select?: citiesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the cities
+     */
+    omit?: citiesOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: citiesInclude<ExtArgs> | null
+    where?: citiesWhereInput
+  }
+
+  /**
+   * kecamatan.kelurahan
+   */
+  export type kecamatan$kelurahanArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the kelurahan
+     */
+    select?: kelurahanSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the kelurahan
+     */
+    omit?: kelurahanOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: kelurahanInclude<ExtArgs> | null
+    where?: kelurahanWhereInput
+    orderBy?: kelurahanOrderByWithRelationInput | kelurahanOrderByWithRelationInput[]
+    cursor?: kelurahanWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: KelurahanScalarFieldEnum | KelurahanScalarFieldEnum[]
+  }
+
+  /**
+   * kecamatan without action
+   */
+  export type kecamatanDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the kecamatan
+     */
+    select?: kecamatanSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the kecamatan
+     */
+    omit?: kecamatanOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: kecamatanInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model kelurahan
+   */
+
+  export type AggregateKelurahan = {
+    _count: KelurahanCountAggregateOutputType | null
+    _avg: KelurahanAvgAggregateOutputType | null
+    _sum: KelurahanSumAggregateOutputType | null
+    _min: KelurahanMinAggregateOutputType | null
+    _max: KelurahanMaxAggregateOutputType | null
+  }
+
+  export type KelurahanAvgAggregateOutputType = {
+    id_kel: number | null
+    id_kec: number | null
+  }
+
+  export type KelurahanSumAggregateOutputType = {
+    id_kel: bigint | null
+    id_kec: bigint | null
+  }
+
+  export type KelurahanMinAggregateOutputType = {
+    id_kel: bigint | null
+    kelurahan: string | null
+    id_kec: bigint | null
+    created_at: Date | null
+    updated_at: Date | null
+  }
+
+  export type KelurahanMaxAggregateOutputType = {
+    id_kel: bigint | null
+    kelurahan: string | null
+    id_kec: bigint | null
+    created_at: Date | null
+    updated_at: Date | null
+  }
+
+  export type KelurahanCountAggregateOutputType = {
+    id_kel: number
+    kelurahan: number
+    id_kec: number
+    created_at: number
+    updated_at: number
+    _all: number
+  }
+
+
+  export type KelurahanAvgAggregateInputType = {
+    id_kel?: true
+    id_kec?: true
+  }
+
+  export type KelurahanSumAggregateInputType = {
+    id_kel?: true
+    id_kec?: true
+  }
+
+  export type KelurahanMinAggregateInputType = {
+    id_kel?: true
+    kelurahan?: true
+    id_kec?: true
+    created_at?: true
+    updated_at?: true
+  }
+
+  export type KelurahanMaxAggregateInputType = {
+    id_kel?: true
+    kelurahan?: true
+    id_kec?: true
+    created_at?: true
+    updated_at?: true
+  }
+
+  export type KelurahanCountAggregateInputType = {
+    id_kel?: true
+    kelurahan?: true
+    id_kec?: true
+    created_at?: true
+    updated_at?: true
+    _all?: true
+  }
+
+  export type KelurahanAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which kelurahan to aggregate.
+     */
+    where?: kelurahanWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of kelurahans to fetch.
+     */
+    orderBy?: kelurahanOrderByWithRelationInput | kelurahanOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: kelurahanWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` kelurahans from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` kelurahans.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned kelurahans
+    **/
+    _count?: true | KelurahanCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: KelurahanAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: KelurahanSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: KelurahanMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: KelurahanMaxAggregateInputType
+  }
+
+  export type GetKelurahanAggregateType<T extends KelurahanAggregateArgs> = {
+        [P in keyof T & keyof AggregateKelurahan]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateKelurahan[P]>
+      : GetScalarType<T[P], AggregateKelurahan[P]>
+  }
+
+
+
+
+  export type kelurahanGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: kelurahanWhereInput
+    orderBy?: kelurahanOrderByWithAggregationInput | kelurahanOrderByWithAggregationInput[]
+    by: KelurahanScalarFieldEnum[] | KelurahanScalarFieldEnum
+    having?: kelurahanScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: KelurahanCountAggregateInputType | true
+    _avg?: KelurahanAvgAggregateInputType
+    _sum?: KelurahanSumAggregateInputType
+    _min?: KelurahanMinAggregateInputType
+    _max?: KelurahanMaxAggregateInputType
+  }
+
+  export type KelurahanGroupByOutputType = {
+    id_kel: bigint
+    kelurahan: string | null
+    id_kec: bigint | null
+    created_at: Date | null
+    updated_at: Date | null
+    _count: KelurahanCountAggregateOutputType | null
+    _avg: KelurahanAvgAggregateOutputType | null
+    _sum: KelurahanSumAggregateOutputType | null
+    _min: KelurahanMinAggregateOutputType | null
+    _max: KelurahanMaxAggregateOutputType | null
+  }
+
+  type GetKelurahanGroupByPayload<T extends kelurahanGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<KelurahanGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof KelurahanGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], KelurahanGroupByOutputType[P]>
+            : GetScalarType<T[P], KelurahanGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type kelurahanSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id_kel?: boolean
+    kelurahan?: boolean
+    id_kec?: boolean
+    created_at?: boolean
+    updated_at?: boolean
+    alamat?: boolean | kelurahan$alamatArgs<ExtArgs>
+    kecamatan?: boolean | kelurahan$kecamatanArgs<ExtArgs>
+    _count?: boolean | KelurahanCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["kelurahan"]>
+
+  export type kelurahanSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id_kel?: boolean
+    kelurahan?: boolean
+    id_kec?: boolean
+    created_at?: boolean
+    updated_at?: boolean
+    kecamatan?: boolean | kelurahan$kecamatanArgs<ExtArgs>
+  }, ExtArgs["result"]["kelurahan"]>
+
+  export type kelurahanSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id_kel?: boolean
+    kelurahan?: boolean
+    id_kec?: boolean
+    created_at?: boolean
+    updated_at?: boolean
+    kecamatan?: boolean | kelurahan$kecamatanArgs<ExtArgs>
+  }, ExtArgs["result"]["kelurahan"]>
+
+  export type kelurahanSelectScalar = {
+    id_kel?: boolean
+    kelurahan?: boolean
+    id_kec?: boolean
+    created_at?: boolean
+    updated_at?: boolean
+  }
+
+  export type kelurahanOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id_kel" | "kelurahan" | "id_kec" | "created_at" | "updated_at", ExtArgs["result"]["kelurahan"]>
+  export type kelurahanInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    alamat?: boolean | kelurahan$alamatArgs<ExtArgs>
+    kecamatan?: boolean | kelurahan$kecamatanArgs<ExtArgs>
+    _count?: boolean | KelurahanCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type kelurahanIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    kecamatan?: boolean | kelurahan$kecamatanArgs<ExtArgs>
+  }
+  export type kelurahanIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    kecamatan?: boolean | kelurahan$kecamatanArgs<ExtArgs>
+  }
+
+  export type $kelurahanPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "kelurahan"
+    objects: {
+      alamat: Prisma.$alamatPayload<ExtArgs>[]
+      kecamatan: Prisma.$kecamatanPayload<ExtArgs> | null
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id_kel: bigint
+      kelurahan: string | null
+      id_kec: bigint | null
+      created_at: Date | null
+      updated_at: Date | null
+    }, ExtArgs["result"]["kelurahan"]>
+    composites: {}
+  }
+
+  type kelurahanGetPayload<S extends boolean | null | undefined | kelurahanDefaultArgs> = $Result.GetResult<Prisma.$kelurahanPayload, S>
+
+  type kelurahanCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<kelurahanFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: KelurahanCountAggregateInputType | true
+    }
+
+  export interface kelurahanDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['kelurahan'], meta: { name: 'kelurahan' } }
+    /**
+     * Find zero or one Kelurahan that matches the filter.
+     * @param {kelurahanFindUniqueArgs} args - Arguments to find a Kelurahan
+     * @example
+     * // Get one Kelurahan
+     * const kelurahan = await prisma.kelurahan.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends kelurahanFindUniqueArgs>(args: SelectSubset<T, kelurahanFindUniqueArgs<ExtArgs>>): Prisma__kelurahanClient<$Result.GetResult<Prisma.$kelurahanPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Kelurahan that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {kelurahanFindUniqueOrThrowArgs} args - Arguments to find a Kelurahan
+     * @example
+     * // Get one Kelurahan
+     * const kelurahan = await prisma.kelurahan.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends kelurahanFindUniqueOrThrowArgs>(args: SelectSubset<T, kelurahanFindUniqueOrThrowArgs<ExtArgs>>): Prisma__kelurahanClient<$Result.GetResult<Prisma.$kelurahanPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Kelurahan that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {kelurahanFindFirstArgs} args - Arguments to find a Kelurahan
+     * @example
+     * // Get one Kelurahan
+     * const kelurahan = await prisma.kelurahan.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends kelurahanFindFirstArgs>(args?: SelectSubset<T, kelurahanFindFirstArgs<ExtArgs>>): Prisma__kelurahanClient<$Result.GetResult<Prisma.$kelurahanPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Kelurahan that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {kelurahanFindFirstOrThrowArgs} args - Arguments to find a Kelurahan
+     * @example
+     * // Get one Kelurahan
+     * const kelurahan = await prisma.kelurahan.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends kelurahanFindFirstOrThrowArgs>(args?: SelectSubset<T, kelurahanFindFirstOrThrowArgs<ExtArgs>>): Prisma__kelurahanClient<$Result.GetResult<Prisma.$kelurahanPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Kelurahans that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {kelurahanFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Kelurahans
+     * const kelurahans = await prisma.kelurahan.findMany()
+     * 
+     * // Get first 10 Kelurahans
+     * const kelurahans = await prisma.kelurahan.findMany({ take: 10 })
+     * 
+     * // Only select the `id_kel`
+     * const kelurahanWithId_kelOnly = await prisma.kelurahan.findMany({ select: { id_kel: true } })
+     * 
+     */
+    findMany<T extends kelurahanFindManyArgs>(args?: SelectSubset<T, kelurahanFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$kelurahanPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Kelurahan.
+     * @param {kelurahanCreateArgs} args - Arguments to create a Kelurahan.
+     * @example
+     * // Create one Kelurahan
+     * const Kelurahan = await prisma.kelurahan.create({
+     *   data: {
+     *     // ... data to create a Kelurahan
+     *   }
+     * })
+     * 
+     */
+    create<T extends kelurahanCreateArgs>(args: SelectSubset<T, kelurahanCreateArgs<ExtArgs>>): Prisma__kelurahanClient<$Result.GetResult<Prisma.$kelurahanPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Kelurahans.
+     * @param {kelurahanCreateManyArgs} args - Arguments to create many Kelurahans.
+     * @example
+     * // Create many Kelurahans
+     * const kelurahan = await prisma.kelurahan.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends kelurahanCreateManyArgs>(args?: SelectSubset<T, kelurahanCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Kelurahans and returns the data saved in the database.
+     * @param {kelurahanCreateManyAndReturnArgs} args - Arguments to create many Kelurahans.
+     * @example
+     * // Create many Kelurahans
+     * const kelurahan = await prisma.kelurahan.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Kelurahans and only return the `id_kel`
+     * const kelurahanWithId_kelOnly = await prisma.kelurahan.createManyAndReturn({
+     *   select: { id_kel: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends kelurahanCreateManyAndReturnArgs>(args?: SelectSubset<T, kelurahanCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$kelurahanPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a Kelurahan.
+     * @param {kelurahanDeleteArgs} args - Arguments to delete one Kelurahan.
+     * @example
+     * // Delete one Kelurahan
+     * const Kelurahan = await prisma.kelurahan.delete({
+     *   where: {
+     *     // ... filter to delete one Kelurahan
+     *   }
+     * })
+     * 
+     */
+    delete<T extends kelurahanDeleteArgs>(args: SelectSubset<T, kelurahanDeleteArgs<ExtArgs>>): Prisma__kelurahanClient<$Result.GetResult<Prisma.$kelurahanPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Kelurahan.
+     * @param {kelurahanUpdateArgs} args - Arguments to update one Kelurahan.
+     * @example
+     * // Update one Kelurahan
+     * const kelurahan = await prisma.kelurahan.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends kelurahanUpdateArgs>(args: SelectSubset<T, kelurahanUpdateArgs<ExtArgs>>): Prisma__kelurahanClient<$Result.GetResult<Prisma.$kelurahanPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Kelurahans.
+     * @param {kelurahanDeleteManyArgs} args - Arguments to filter Kelurahans to delete.
+     * @example
+     * // Delete a few Kelurahans
+     * const { count } = await prisma.kelurahan.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends kelurahanDeleteManyArgs>(args?: SelectSubset<T, kelurahanDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Kelurahans.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {kelurahanUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Kelurahans
+     * const kelurahan = await prisma.kelurahan.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends kelurahanUpdateManyArgs>(args: SelectSubset<T, kelurahanUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Kelurahans and returns the data updated in the database.
+     * @param {kelurahanUpdateManyAndReturnArgs} args - Arguments to update many Kelurahans.
+     * @example
+     * // Update many Kelurahans
+     * const kelurahan = await prisma.kelurahan.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Kelurahans and only return the `id_kel`
+     * const kelurahanWithId_kelOnly = await prisma.kelurahan.updateManyAndReturn({
+     *   select: { id_kel: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends kelurahanUpdateManyAndReturnArgs>(args: SelectSubset<T, kelurahanUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$kelurahanPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one Kelurahan.
+     * @param {kelurahanUpsertArgs} args - Arguments to update or create a Kelurahan.
+     * @example
+     * // Update or create a Kelurahan
+     * const kelurahan = await prisma.kelurahan.upsert({
+     *   create: {
+     *     // ... data to create a Kelurahan
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Kelurahan we want to update
+     *   }
+     * })
+     */
+    upsert<T extends kelurahanUpsertArgs>(args: SelectSubset<T, kelurahanUpsertArgs<ExtArgs>>): Prisma__kelurahanClient<$Result.GetResult<Prisma.$kelurahanPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Kelurahans.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {kelurahanCountArgs} args - Arguments to filter Kelurahans to count.
+     * @example
+     * // Count the number of Kelurahans
+     * const count = await prisma.kelurahan.count({
+     *   where: {
+     *     // ... the filter for the Kelurahans we want to count
+     *   }
+     * })
+    **/
+    count<T extends kelurahanCountArgs>(
+      args?: Subset<T, kelurahanCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], KelurahanCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Kelurahan.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {KelurahanAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends KelurahanAggregateArgs>(args: Subset<T, KelurahanAggregateArgs>): Prisma.PrismaPromise<GetKelurahanAggregateType<T>>
+
+    /**
+     * Group by Kelurahan.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {kelurahanGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends kelurahanGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: kelurahanGroupByArgs['orderBy'] }
+        : { orderBy?: kelurahanGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, kelurahanGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetKelurahanGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the kelurahan model
+   */
+  readonly fields: kelurahanFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for kelurahan.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__kelurahanClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    alamat<T extends kelurahan$alamatArgs<ExtArgs> = {}>(args?: Subset<T, kelurahan$alamatArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$alamatPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    kecamatan<T extends kelurahan$kecamatanArgs<ExtArgs> = {}>(args?: Subset<T, kelurahan$kecamatanArgs<ExtArgs>>): Prisma__kecamatanClient<$Result.GetResult<Prisma.$kecamatanPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the kelurahan model
+   */
+  interface kelurahanFieldRefs {
+    readonly id_kel: FieldRef<"kelurahan", 'BigInt'>
+    readonly kelurahan: FieldRef<"kelurahan", 'String'>
+    readonly id_kec: FieldRef<"kelurahan", 'BigInt'>
+    readonly created_at: FieldRef<"kelurahan", 'DateTime'>
+    readonly updated_at: FieldRef<"kelurahan", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * kelurahan findUnique
+   */
+  export type kelurahanFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the kelurahan
+     */
+    select?: kelurahanSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the kelurahan
+     */
+    omit?: kelurahanOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: kelurahanInclude<ExtArgs> | null
+    /**
+     * Filter, which kelurahan to fetch.
+     */
+    where: kelurahanWhereUniqueInput
+  }
+
+  /**
+   * kelurahan findUniqueOrThrow
+   */
+  export type kelurahanFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the kelurahan
+     */
+    select?: kelurahanSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the kelurahan
+     */
+    omit?: kelurahanOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: kelurahanInclude<ExtArgs> | null
+    /**
+     * Filter, which kelurahan to fetch.
+     */
+    where: kelurahanWhereUniqueInput
+  }
+
+  /**
+   * kelurahan findFirst
+   */
+  export type kelurahanFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the kelurahan
+     */
+    select?: kelurahanSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the kelurahan
+     */
+    omit?: kelurahanOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: kelurahanInclude<ExtArgs> | null
+    /**
+     * Filter, which kelurahan to fetch.
+     */
+    where?: kelurahanWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of kelurahans to fetch.
+     */
+    orderBy?: kelurahanOrderByWithRelationInput | kelurahanOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for kelurahans.
+     */
+    cursor?: kelurahanWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` kelurahans from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` kelurahans.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of kelurahans.
+     */
+    distinct?: KelurahanScalarFieldEnum | KelurahanScalarFieldEnum[]
+  }
+
+  /**
+   * kelurahan findFirstOrThrow
+   */
+  export type kelurahanFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the kelurahan
+     */
+    select?: kelurahanSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the kelurahan
+     */
+    omit?: kelurahanOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: kelurahanInclude<ExtArgs> | null
+    /**
+     * Filter, which kelurahan to fetch.
+     */
+    where?: kelurahanWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of kelurahans to fetch.
+     */
+    orderBy?: kelurahanOrderByWithRelationInput | kelurahanOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for kelurahans.
+     */
+    cursor?: kelurahanWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` kelurahans from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` kelurahans.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of kelurahans.
+     */
+    distinct?: KelurahanScalarFieldEnum | KelurahanScalarFieldEnum[]
+  }
+
+  /**
+   * kelurahan findMany
+   */
+  export type kelurahanFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the kelurahan
+     */
+    select?: kelurahanSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the kelurahan
+     */
+    omit?: kelurahanOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: kelurahanInclude<ExtArgs> | null
+    /**
+     * Filter, which kelurahans to fetch.
+     */
+    where?: kelurahanWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of kelurahans to fetch.
+     */
+    orderBy?: kelurahanOrderByWithRelationInput | kelurahanOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing kelurahans.
+     */
+    cursor?: kelurahanWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` kelurahans from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` kelurahans.
+     */
+    skip?: number
+    distinct?: KelurahanScalarFieldEnum | KelurahanScalarFieldEnum[]
+  }
+
+  /**
+   * kelurahan create
+   */
+  export type kelurahanCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the kelurahan
+     */
+    select?: kelurahanSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the kelurahan
+     */
+    omit?: kelurahanOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: kelurahanInclude<ExtArgs> | null
+    /**
+     * The data needed to create a kelurahan.
+     */
+    data?: XOR<kelurahanCreateInput, kelurahanUncheckedCreateInput>
+  }
+
+  /**
+   * kelurahan createMany
+   */
+  export type kelurahanCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many kelurahans.
+     */
+    data: kelurahanCreateManyInput | kelurahanCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * kelurahan createManyAndReturn
+   */
+  export type kelurahanCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the kelurahan
+     */
+    select?: kelurahanSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the kelurahan
+     */
+    omit?: kelurahanOmit<ExtArgs> | null
+    /**
+     * The data used to create many kelurahans.
+     */
+    data: kelurahanCreateManyInput | kelurahanCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: kelurahanIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * kelurahan update
+   */
+  export type kelurahanUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the kelurahan
+     */
+    select?: kelurahanSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the kelurahan
+     */
+    omit?: kelurahanOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: kelurahanInclude<ExtArgs> | null
+    /**
+     * The data needed to update a kelurahan.
+     */
+    data: XOR<kelurahanUpdateInput, kelurahanUncheckedUpdateInput>
+    /**
+     * Choose, which kelurahan to update.
+     */
+    where: kelurahanWhereUniqueInput
+  }
+
+  /**
+   * kelurahan updateMany
+   */
+  export type kelurahanUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update kelurahans.
+     */
+    data: XOR<kelurahanUpdateManyMutationInput, kelurahanUncheckedUpdateManyInput>
+    /**
+     * Filter which kelurahans to update
+     */
+    where?: kelurahanWhereInput
+    /**
+     * Limit how many kelurahans to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * kelurahan updateManyAndReturn
+   */
+  export type kelurahanUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the kelurahan
+     */
+    select?: kelurahanSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the kelurahan
+     */
+    omit?: kelurahanOmit<ExtArgs> | null
+    /**
+     * The data used to update kelurahans.
+     */
+    data: XOR<kelurahanUpdateManyMutationInput, kelurahanUncheckedUpdateManyInput>
+    /**
+     * Filter which kelurahans to update
+     */
+    where?: kelurahanWhereInput
+    /**
+     * Limit how many kelurahans to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: kelurahanIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * kelurahan upsert
+   */
+  export type kelurahanUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the kelurahan
+     */
+    select?: kelurahanSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the kelurahan
+     */
+    omit?: kelurahanOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: kelurahanInclude<ExtArgs> | null
+    /**
+     * The filter to search for the kelurahan to update in case it exists.
+     */
+    where: kelurahanWhereUniqueInput
+    /**
+     * In case the kelurahan found by the `where` argument doesn't exist, create a new kelurahan with this data.
+     */
+    create: XOR<kelurahanCreateInput, kelurahanUncheckedCreateInput>
+    /**
+     * In case the kelurahan was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<kelurahanUpdateInput, kelurahanUncheckedUpdateInput>
+  }
+
+  /**
+   * kelurahan delete
+   */
+  export type kelurahanDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the kelurahan
+     */
+    select?: kelurahanSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the kelurahan
+     */
+    omit?: kelurahanOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: kelurahanInclude<ExtArgs> | null
+    /**
+     * Filter which kelurahan to delete.
+     */
+    where: kelurahanWhereUniqueInput
+  }
+
+  /**
+   * kelurahan deleteMany
+   */
+  export type kelurahanDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which kelurahans to delete
+     */
+    where?: kelurahanWhereInput
+    /**
+     * Limit how many kelurahans to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * kelurahan.alamat
+   */
+  export type kelurahan$alamatArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the alamat
+     */
+    select?: alamatSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the alamat
+     */
+    omit?: alamatOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: alamatInclude<ExtArgs> | null
+    where?: alamatWhereInput
+    orderBy?: alamatOrderByWithRelationInput | alamatOrderByWithRelationInput[]
+    cursor?: alamatWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: AlamatScalarFieldEnum | AlamatScalarFieldEnum[]
+  }
+
+  /**
+   * kelurahan.kecamatan
+   */
+  export type kelurahan$kecamatanArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the kecamatan
+     */
+    select?: kecamatanSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the kecamatan
+     */
+    omit?: kecamatanOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: kecamatanInclude<ExtArgs> | null
+    where?: kecamatanWhereInput
+  }
+
+  /**
+   * kelurahan without action
+   */
+  export type kelurahanDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the kelurahan
+     */
+    select?: kelurahanSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the kelurahan
+     */
+    omit?: kelurahanOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: kelurahanInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model tipe_alamat
+   */
+
+  export type AggregateTipe_alamat = {
+    _count: Tipe_alamatCountAggregateOutputType | null
+    _avg: Tipe_alamatAvgAggregateOutputType | null
+    _sum: Tipe_alamatSumAggregateOutputType | null
+    _min: Tipe_alamatMinAggregateOutputType | null
+    _max: Tipe_alamatMaxAggregateOutputType | null
+  }
+
+  export type Tipe_alamatAvgAggregateOutputType = {
+    id_tipe: number | null
+  }
+
+  export type Tipe_alamatSumAggregateOutputType = {
+    id_tipe: bigint | null
+  }
+
+  export type Tipe_alamatMinAggregateOutputType = {
+    id_tipe: bigint | null
+    tipe_alamat: string | null
+    created_at: Date | null
+    updated_at: Date | null
+  }
+
+  export type Tipe_alamatMaxAggregateOutputType = {
+    id_tipe: bigint | null
+    tipe_alamat: string | null
+    created_at: Date | null
+    updated_at: Date | null
+  }
+
+  export type Tipe_alamatCountAggregateOutputType = {
+    id_tipe: number
+    tipe_alamat: number
+    created_at: number
+    updated_at: number
+    _all: number
+  }
+
+
+  export type Tipe_alamatAvgAggregateInputType = {
+    id_tipe?: true
+  }
+
+  export type Tipe_alamatSumAggregateInputType = {
+    id_tipe?: true
+  }
+
+  export type Tipe_alamatMinAggregateInputType = {
+    id_tipe?: true
+    tipe_alamat?: true
+    created_at?: true
+    updated_at?: true
+  }
+
+  export type Tipe_alamatMaxAggregateInputType = {
+    id_tipe?: true
+    tipe_alamat?: true
+    created_at?: true
+    updated_at?: true
+  }
+
+  export type Tipe_alamatCountAggregateInputType = {
+    id_tipe?: true
+    tipe_alamat?: true
+    created_at?: true
+    updated_at?: true
+    _all?: true
+  }
+
+  export type Tipe_alamatAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which tipe_alamat to aggregate.
+     */
+    where?: tipe_alamatWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of tipe_alamats to fetch.
+     */
+    orderBy?: tipe_alamatOrderByWithRelationInput | tipe_alamatOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: tipe_alamatWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` tipe_alamats from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` tipe_alamats.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned tipe_alamats
+    **/
+    _count?: true | Tipe_alamatCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: Tipe_alamatAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: Tipe_alamatSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: Tipe_alamatMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: Tipe_alamatMaxAggregateInputType
+  }
+
+  export type GetTipe_alamatAggregateType<T extends Tipe_alamatAggregateArgs> = {
+        [P in keyof T & keyof AggregateTipe_alamat]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateTipe_alamat[P]>
+      : GetScalarType<T[P], AggregateTipe_alamat[P]>
+  }
+
+
+
+
+  export type tipe_alamatGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: tipe_alamatWhereInput
+    orderBy?: tipe_alamatOrderByWithAggregationInput | tipe_alamatOrderByWithAggregationInput[]
+    by: Tipe_alamatScalarFieldEnum[] | Tipe_alamatScalarFieldEnum
+    having?: tipe_alamatScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: Tipe_alamatCountAggregateInputType | true
+    _avg?: Tipe_alamatAvgAggregateInputType
+    _sum?: Tipe_alamatSumAggregateInputType
+    _min?: Tipe_alamatMinAggregateInputType
+    _max?: Tipe_alamatMaxAggregateInputType
+  }
+
+  export type Tipe_alamatGroupByOutputType = {
+    id_tipe: bigint
+    tipe_alamat: string | null
+    created_at: Date | null
+    updated_at: Date | null
+    _count: Tipe_alamatCountAggregateOutputType | null
+    _avg: Tipe_alamatAvgAggregateOutputType | null
+    _sum: Tipe_alamatSumAggregateOutputType | null
+    _min: Tipe_alamatMinAggregateOutputType | null
+    _max: Tipe_alamatMaxAggregateOutputType | null
+  }
+
+  type GetTipe_alamatGroupByPayload<T extends tipe_alamatGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<Tipe_alamatGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof Tipe_alamatGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], Tipe_alamatGroupByOutputType[P]>
+            : GetScalarType<T[P], Tipe_alamatGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type tipe_alamatSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id_tipe?: boolean
+    tipe_alamat?: boolean
+    created_at?: boolean
+    updated_at?: boolean
+    alamat?: boolean | tipe_alamat$alamatArgs<ExtArgs>
+    _count?: boolean | Tipe_alamatCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["tipe_alamat"]>
+
+  export type tipe_alamatSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id_tipe?: boolean
+    tipe_alamat?: boolean
+    created_at?: boolean
+    updated_at?: boolean
+  }, ExtArgs["result"]["tipe_alamat"]>
+
+  export type tipe_alamatSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id_tipe?: boolean
+    tipe_alamat?: boolean
+    created_at?: boolean
+    updated_at?: boolean
+  }, ExtArgs["result"]["tipe_alamat"]>
+
+  export type tipe_alamatSelectScalar = {
+    id_tipe?: boolean
+    tipe_alamat?: boolean
+    created_at?: boolean
+    updated_at?: boolean
+  }
+
+  export type tipe_alamatOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id_tipe" | "tipe_alamat" | "created_at" | "updated_at", ExtArgs["result"]["tipe_alamat"]>
+  export type tipe_alamatInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    alamat?: boolean | tipe_alamat$alamatArgs<ExtArgs>
+    _count?: boolean | Tipe_alamatCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type tipe_alamatIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+  export type tipe_alamatIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+
+  export type $tipe_alamatPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "tipe_alamat"
+    objects: {
+      alamat: Prisma.$alamatPayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id_tipe: bigint
+      tipe_alamat: string | null
+      created_at: Date | null
+      updated_at: Date | null
+    }, ExtArgs["result"]["tipe_alamat"]>
+    composites: {}
+  }
+
+  type tipe_alamatGetPayload<S extends boolean | null | undefined | tipe_alamatDefaultArgs> = $Result.GetResult<Prisma.$tipe_alamatPayload, S>
+
+  type tipe_alamatCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<tipe_alamatFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: Tipe_alamatCountAggregateInputType | true
+    }
+
+  export interface tipe_alamatDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['tipe_alamat'], meta: { name: 'tipe_alamat' } }
+    /**
+     * Find zero or one Tipe_alamat that matches the filter.
+     * @param {tipe_alamatFindUniqueArgs} args - Arguments to find a Tipe_alamat
+     * @example
+     * // Get one Tipe_alamat
+     * const tipe_alamat = await prisma.tipe_alamat.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends tipe_alamatFindUniqueArgs>(args: SelectSubset<T, tipe_alamatFindUniqueArgs<ExtArgs>>): Prisma__tipe_alamatClient<$Result.GetResult<Prisma.$tipe_alamatPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Tipe_alamat that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {tipe_alamatFindUniqueOrThrowArgs} args - Arguments to find a Tipe_alamat
+     * @example
+     * // Get one Tipe_alamat
+     * const tipe_alamat = await prisma.tipe_alamat.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends tipe_alamatFindUniqueOrThrowArgs>(args: SelectSubset<T, tipe_alamatFindUniqueOrThrowArgs<ExtArgs>>): Prisma__tipe_alamatClient<$Result.GetResult<Prisma.$tipe_alamatPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Tipe_alamat that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {tipe_alamatFindFirstArgs} args - Arguments to find a Tipe_alamat
+     * @example
+     * // Get one Tipe_alamat
+     * const tipe_alamat = await prisma.tipe_alamat.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends tipe_alamatFindFirstArgs>(args?: SelectSubset<T, tipe_alamatFindFirstArgs<ExtArgs>>): Prisma__tipe_alamatClient<$Result.GetResult<Prisma.$tipe_alamatPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Tipe_alamat that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {tipe_alamatFindFirstOrThrowArgs} args - Arguments to find a Tipe_alamat
+     * @example
+     * // Get one Tipe_alamat
+     * const tipe_alamat = await prisma.tipe_alamat.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends tipe_alamatFindFirstOrThrowArgs>(args?: SelectSubset<T, tipe_alamatFindFirstOrThrowArgs<ExtArgs>>): Prisma__tipe_alamatClient<$Result.GetResult<Prisma.$tipe_alamatPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Tipe_alamats that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {tipe_alamatFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Tipe_alamats
+     * const tipe_alamats = await prisma.tipe_alamat.findMany()
+     * 
+     * // Get first 10 Tipe_alamats
+     * const tipe_alamats = await prisma.tipe_alamat.findMany({ take: 10 })
+     * 
+     * // Only select the `id_tipe`
+     * const tipe_alamatWithId_tipeOnly = await prisma.tipe_alamat.findMany({ select: { id_tipe: true } })
+     * 
+     */
+    findMany<T extends tipe_alamatFindManyArgs>(args?: SelectSubset<T, tipe_alamatFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$tipe_alamatPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Tipe_alamat.
+     * @param {tipe_alamatCreateArgs} args - Arguments to create a Tipe_alamat.
+     * @example
+     * // Create one Tipe_alamat
+     * const Tipe_alamat = await prisma.tipe_alamat.create({
+     *   data: {
+     *     // ... data to create a Tipe_alamat
+     *   }
+     * })
+     * 
+     */
+    create<T extends tipe_alamatCreateArgs>(args: SelectSubset<T, tipe_alamatCreateArgs<ExtArgs>>): Prisma__tipe_alamatClient<$Result.GetResult<Prisma.$tipe_alamatPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Tipe_alamats.
+     * @param {tipe_alamatCreateManyArgs} args - Arguments to create many Tipe_alamats.
+     * @example
+     * // Create many Tipe_alamats
+     * const tipe_alamat = await prisma.tipe_alamat.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends tipe_alamatCreateManyArgs>(args?: SelectSubset<T, tipe_alamatCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Tipe_alamats and returns the data saved in the database.
+     * @param {tipe_alamatCreateManyAndReturnArgs} args - Arguments to create many Tipe_alamats.
+     * @example
+     * // Create many Tipe_alamats
+     * const tipe_alamat = await prisma.tipe_alamat.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Tipe_alamats and only return the `id_tipe`
+     * const tipe_alamatWithId_tipeOnly = await prisma.tipe_alamat.createManyAndReturn({
+     *   select: { id_tipe: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends tipe_alamatCreateManyAndReturnArgs>(args?: SelectSubset<T, tipe_alamatCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$tipe_alamatPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a Tipe_alamat.
+     * @param {tipe_alamatDeleteArgs} args - Arguments to delete one Tipe_alamat.
+     * @example
+     * // Delete one Tipe_alamat
+     * const Tipe_alamat = await prisma.tipe_alamat.delete({
+     *   where: {
+     *     // ... filter to delete one Tipe_alamat
+     *   }
+     * })
+     * 
+     */
+    delete<T extends tipe_alamatDeleteArgs>(args: SelectSubset<T, tipe_alamatDeleteArgs<ExtArgs>>): Prisma__tipe_alamatClient<$Result.GetResult<Prisma.$tipe_alamatPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Tipe_alamat.
+     * @param {tipe_alamatUpdateArgs} args - Arguments to update one Tipe_alamat.
+     * @example
+     * // Update one Tipe_alamat
+     * const tipe_alamat = await prisma.tipe_alamat.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends tipe_alamatUpdateArgs>(args: SelectSubset<T, tipe_alamatUpdateArgs<ExtArgs>>): Prisma__tipe_alamatClient<$Result.GetResult<Prisma.$tipe_alamatPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Tipe_alamats.
+     * @param {tipe_alamatDeleteManyArgs} args - Arguments to filter Tipe_alamats to delete.
+     * @example
+     * // Delete a few Tipe_alamats
+     * const { count } = await prisma.tipe_alamat.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends tipe_alamatDeleteManyArgs>(args?: SelectSubset<T, tipe_alamatDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Tipe_alamats.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {tipe_alamatUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Tipe_alamats
+     * const tipe_alamat = await prisma.tipe_alamat.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends tipe_alamatUpdateManyArgs>(args: SelectSubset<T, tipe_alamatUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Tipe_alamats and returns the data updated in the database.
+     * @param {tipe_alamatUpdateManyAndReturnArgs} args - Arguments to update many Tipe_alamats.
+     * @example
+     * // Update many Tipe_alamats
+     * const tipe_alamat = await prisma.tipe_alamat.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Tipe_alamats and only return the `id_tipe`
+     * const tipe_alamatWithId_tipeOnly = await prisma.tipe_alamat.updateManyAndReturn({
+     *   select: { id_tipe: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends tipe_alamatUpdateManyAndReturnArgs>(args: SelectSubset<T, tipe_alamatUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$tipe_alamatPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one Tipe_alamat.
+     * @param {tipe_alamatUpsertArgs} args - Arguments to update or create a Tipe_alamat.
+     * @example
+     * // Update or create a Tipe_alamat
+     * const tipe_alamat = await prisma.tipe_alamat.upsert({
+     *   create: {
+     *     // ... data to create a Tipe_alamat
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Tipe_alamat we want to update
+     *   }
+     * })
+     */
+    upsert<T extends tipe_alamatUpsertArgs>(args: SelectSubset<T, tipe_alamatUpsertArgs<ExtArgs>>): Prisma__tipe_alamatClient<$Result.GetResult<Prisma.$tipe_alamatPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Tipe_alamats.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {tipe_alamatCountArgs} args - Arguments to filter Tipe_alamats to count.
+     * @example
+     * // Count the number of Tipe_alamats
+     * const count = await prisma.tipe_alamat.count({
+     *   where: {
+     *     // ... the filter for the Tipe_alamats we want to count
+     *   }
+     * })
+    **/
+    count<T extends tipe_alamatCountArgs>(
+      args?: Subset<T, tipe_alamatCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], Tipe_alamatCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Tipe_alamat.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {Tipe_alamatAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends Tipe_alamatAggregateArgs>(args: Subset<T, Tipe_alamatAggregateArgs>): Prisma.PrismaPromise<GetTipe_alamatAggregateType<T>>
+
+    /**
+     * Group by Tipe_alamat.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {tipe_alamatGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends tipe_alamatGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: tipe_alamatGroupByArgs['orderBy'] }
+        : { orderBy?: tipe_alamatGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, tipe_alamatGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetTipe_alamatGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the tipe_alamat model
+   */
+  readonly fields: tipe_alamatFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for tipe_alamat.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__tipe_alamatClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    alamat<T extends tipe_alamat$alamatArgs<ExtArgs> = {}>(args?: Subset<T, tipe_alamat$alamatArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$alamatPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the tipe_alamat model
+   */
+  interface tipe_alamatFieldRefs {
+    readonly id_tipe: FieldRef<"tipe_alamat", 'BigInt'>
+    readonly tipe_alamat: FieldRef<"tipe_alamat", 'String'>
+    readonly created_at: FieldRef<"tipe_alamat", 'DateTime'>
+    readonly updated_at: FieldRef<"tipe_alamat", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * tipe_alamat findUnique
+   */
+  export type tipe_alamatFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the tipe_alamat
+     */
+    select?: tipe_alamatSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the tipe_alamat
+     */
+    omit?: tipe_alamatOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: tipe_alamatInclude<ExtArgs> | null
+    /**
+     * Filter, which tipe_alamat to fetch.
+     */
+    where: tipe_alamatWhereUniqueInput
+  }
+
+  /**
+   * tipe_alamat findUniqueOrThrow
+   */
+  export type tipe_alamatFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the tipe_alamat
+     */
+    select?: tipe_alamatSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the tipe_alamat
+     */
+    omit?: tipe_alamatOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: tipe_alamatInclude<ExtArgs> | null
+    /**
+     * Filter, which tipe_alamat to fetch.
+     */
+    where: tipe_alamatWhereUniqueInput
+  }
+
+  /**
+   * tipe_alamat findFirst
+   */
+  export type tipe_alamatFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the tipe_alamat
+     */
+    select?: tipe_alamatSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the tipe_alamat
+     */
+    omit?: tipe_alamatOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: tipe_alamatInclude<ExtArgs> | null
+    /**
+     * Filter, which tipe_alamat to fetch.
+     */
+    where?: tipe_alamatWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of tipe_alamats to fetch.
+     */
+    orderBy?: tipe_alamatOrderByWithRelationInput | tipe_alamatOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for tipe_alamats.
+     */
+    cursor?: tipe_alamatWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` tipe_alamats from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` tipe_alamats.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of tipe_alamats.
+     */
+    distinct?: Tipe_alamatScalarFieldEnum | Tipe_alamatScalarFieldEnum[]
+  }
+
+  /**
+   * tipe_alamat findFirstOrThrow
+   */
+  export type tipe_alamatFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the tipe_alamat
+     */
+    select?: tipe_alamatSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the tipe_alamat
+     */
+    omit?: tipe_alamatOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: tipe_alamatInclude<ExtArgs> | null
+    /**
+     * Filter, which tipe_alamat to fetch.
+     */
+    where?: tipe_alamatWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of tipe_alamats to fetch.
+     */
+    orderBy?: tipe_alamatOrderByWithRelationInput | tipe_alamatOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for tipe_alamats.
+     */
+    cursor?: tipe_alamatWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` tipe_alamats from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` tipe_alamats.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of tipe_alamats.
+     */
+    distinct?: Tipe_alamatScalarFieldEnum | Tipe_alamatScalarFieldEnum[]
+  }
+
+  /**
+   * tipe_alamat findMany
+   */
+  export type tipe_alamatFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the tipe_alamat
+     */
+    select?: tipe_alamatSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the tipe_alamat
+     */
+    omit?: tipe_alamatOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: tipe_alamatInclude<ExtArgs> | null
+    /**
+     * Filter, which tipe_alamats to fetch.
+     */
+    where?: tipe_alamatWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of tipe_alamats to fetch.
+     */
+    orderBy?: tipe_alamatOrderByWithRelationInput | tipe_alamatOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing tipe_alamats.
+     */
+    cursor?: tipe_alamatWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` tipe_alamats from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` tipe_alamats.
+     */
+    skip?: number
+    distinct?: Tipe_alamatScalarFieldEnum | Tipe_alamatScalarFieldEnum[]
+  }
+
+  /**
+   * tipe_alamat create
+   */
+  export type tipe_alamatCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the tipe_alamat
+     */
+    select?: tipe_alamatSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the tipe_alamat
+     */
+    omit?: tipe_alamatOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: tipe_alamatInclude<ExtArgs> | null
+    /**
+     * The data needed to create a tipe_alamat.
+     */
+    data?: XOR<tipe_alamatCreateInput, tipe_alamatUncheckedCreateInput>
+  }
+
+  /**
+   * tipe_alamat createMany
+   */
+  export type tipe_alamatCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many tipe_alamats.
+     */
+    data: tipe_alamatCreateManyInput | tipe_alamatCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * tipe_alamat createManyAndReturn
+   */
+  export type tipe_alamatCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the tipe_alamat
+     */
+    select?: tipe_alamatSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the tipe_alamat
+     */
+    omit?: tipe_alamatOmit<ExtArgs> | null
+    /**
+     * The data used to create many tipe_alamats.
+     */
+    data: tipe_alamatCreateManyInput | tipe_alamatCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * tipe_alamat update
+   */
+  export type tipe_alamatUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the tipe_alamat
+     */
+    select?: tipe_alamatSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the tipe_alamat
+     */
+    omit?: tipe_alamatOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: tipe_alamatInclude<ExtArgs> | null
+    /**
+     * The data needed to update a tipe_alamat.
+     */
+    data: XOR<tipe_alamatUpdateInput, tipe_alamatUncheckedUpdateInput>
+    /**
+     * Choose, which tipe_alamat to update.
+     */
+    where: tipe_alamatWhereUniqueInput
+  }
+
+  /**
+   * tipe_alamat updateMany
+   */
+  export type tipe_alamatUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update tipe_alamats.
+     */
+    data: XOR<tipe_alamatUpdateManyMutationInput, tipe_alamatUncheckedUpdateManyInput>
+    /**
+     * Filter which tipe_alamats to update
+     */
+    where?: tipe_alamatWhereInput
+    /**
+     * Limit how many tipe_alamats to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * tipe_alamat updateManyAndReturn
+   */
+  export type tipe_alamatUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the tipe_alamat
+     */
+    select?: tipe_alamatSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the tipe_alamat
+     */
+    omit?: tipe_alamatOmit<ExtArgs> | null
+    /**
+     * The data used to update tipe_alamats.
+     */
+    data: XOR<tipe_alamatUpdateManyMutationInput, tipe_alamatUncheckedUpdateManyInput>
+    /**
+     * Filter which tipe_alamats to update
+     */
+    where?: tipe_alamatWhereInput
+    /**
+     * Limit how many tipe_alamats to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * tipe_alamat upsert
+   */
+  export type tipe_alamatUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the tipe_alamat
+     */
+    select?: tipe_alamatSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the tipe_alamat
+     */
+    omit?: tipe_alamatOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: tipe_alamatInclude<ExtArgs> | null
+    /**
+     * The filter to search for the tipe_alamat to update in case it exists.
+     */
+    where: tipe_alamatWhereUniqueInput
+    /**
+     * In case the tipe_alamat found by the `where` argument doesn't exist, create a new tipe_alamat with this data.
+     */
+    create: XOR<tipe_alamatCreateInput, tipe_alamatUncheckedCreateInput>
+    /**
+     * In case the tipe_alamat was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<tipe_alamatUpdateInput, tipe_alamatUncheckedUpdateInput>
+  }
+
+  /**
+   * tipe_alamat delete
+   */
+  export type tipe_alamatDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the tipe_alamat
+     */
+    select?: tipe_alamatSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the tipe_alamat
+     */
+    omit?: tipe_alamatOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: tipe_alamatInclude<ExtArgs> | null
+    /**
+     * Filter which tipe_alamat to delete.
+     */
+    where: tipe_alamatWhereUniqueInput
+  }
+
+  /**
+   * tipe_alamat deleteMany
+   */
+  export type tipe_alamatDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which tipe_alamats to delete
+     */
+    where?: tipe_alamatWhereInput
+    /**
+     * Limit how many tipe_alamats to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * tipe_alamat.alamat
+   */
+  export type tipe_alamat$alamatArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the alamat
+     */
+    select?: alamatSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the alamat
+     */
+    omit?: alamatOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: alamatInclude<ExtArgs> | null
+    where?: alamatWhereInput
+    orderBy?: alamatOrderByWithRelationInput | alamatOrderByWithRelationInput[]
+    cursor?: alamatWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: AlamatScalarFieldEnum | AlamatScalarFieldEnum[]
+  }
+
+  /**
+   * tipe_alamat without action
+   */
+  export type tipe_alamatDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the tipe_alamat
+     */
+    select?: tipe_alamatSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the tipe_alamat
+     */
+    omit?: tipe_alamatOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: tipe_alamatInclude<ExtArgs> | null
+  }
+
+
+  /**
    * Enums
    */
 
@@ -11868,20 +14708,6 @@ export namespace Prisma {
   };
 
   export type TransactionIsolationLevel = (typeof TransactionIsolationLevel)[keyof typeof TransactionIsolationLevel]
-
-
-  export const AddressesScalarFieldEnum: {
-    id_alamat: 'id_alamat',
-    alamat: 'alamat',
-    latitude: 'latitude',
-    longitude: 'longitude',
-    id_kota: 'id_kota',
-    id_prov: 'id_prov',
-    created_at: 'created_at',
-    updated_at: 'updated_at'
-  };
-
-  export type AddressesScalarFieldEnum = (typeof AddressesScalarFieldEnum)[keyof typeof AddressesScalarFieldEnum]
 
 
   export const CitiesScalarFieldEnum: {
@@ -11923,14 +14749,6 @@ export namespace Prisma {
   export type ProvincesScalarFieldEnum = (typeof ProvincesScalarFieldEnum)[keyof typeof ProvincesScalarFieldEnum]
 
 
-  export const User_addressScalarFieldEnum: {
-    id_user: 'id_user',
-    id_alamat: 'id_alamat'
-  };
-
-  export type User_addressScalarFieldEnum = (typeof User_addressScalarFieldEnum)[keyof typeof User_addressScalarFieldEnum]
-
-
   export const UsersScalarFieldEnum: {
     id_user: 'id_user',
     username: 'username',
@@ -11967,6 +14785,58 @@ export namespace Prisma {
   export type Profession_detailScalarFieldEnum = (typeof Profession_detailScalarFieldEnum)[keyof typeof Profession_detailScalarFieldEnum]
 
 
+  export const AlamatScalarFieldEnum: {
+    id_alamat: 'id_alamat',
+    id_user: 'id_user',
+    alamat: 'alamat',
+    catatan: 'catatan',
+    latitude: 'latitude',
+    longitude: 'longitude',
+    is_default: 'is_default',
+    id_tipe: 'id_tipe',
+    id_kel: 'id_kel',
+    id_kec: 'id_kec',
+    id_kota: 'id_kota',
+    id_prov: 'id_prov',
+    created_at: 'created_at',
+    updated_at: 'updated_at'
+  };
+
+  export type AlamatScalarFieldEnum = (typeof AlamatScalarFieldEnum)[keyof typeof AlamatScalarFieldEnum]
+
+
+  export const KecamatanScalarFieldEnum: {
+    id_kec: 'id_kec',
+    kecamatan: 'kecamatan',
+    id_kota: 'id_kota',
+    created_at: 'created_at',
+    updated_at: 'updated_at'
+  };
+
+  export type KecamatanScalarFieldEnum = (typeof KecamatanScalarFieldEnum)[keyof typeof KecamatanScalarFieldEnum]
+
+
+  export const KelurahanScalarFieldEnum: {
+    id_kel: 'id_kel',
+    kelurahan: 'kelurahan',
+    id_kec: 'id_kec',
+    created_at: 'created_at',
+    updated_at: 'updated_at'
+  };
+
+  export type KelurahanScalarFieldEnum = (typeof KelurahanScalarFieldEnum)[keyof typeof KelurahanScalarFieldEnum]
+
+
+  export const Tipe_alamatScalarFieldEnum: {
+    id_tipe: 'id_tipe',
+    tipe_alamat: 'tipe_alamat',
+    created_at: 'created_at',
+    updated_at: 'updated_at'
+  };
+
+  export type Tipe_alamatScalarFieldEnum = (typeof Tipe_alamatScalarFieldEnum)[keyof typeof Tipe_alamatScalarFieldEnum]
+
+
   export const SortOrder: {
     asc: 'asc',
     desc: 'desc'
@@ -11997,34 +14867,6 @@ export namespace Prisma {
 
 
   /**
-   * Reference to a field of type 'String'
-   */
-  export type StringFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'String'>
-    
-
-
-  /**
-   * Reference to a field of type 'String[]'
-   */
-  export type ListStringFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'String[]'>
-    
-
-
-  /**
-   * Reference to a field of type 'Decimal'
-   */
-  export type DecimalFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Decimal'>
-    
-
-
-  /**
-   * Reference to a field of type 'Decimal[]'
-   */
-  export type ListDecimalFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Decimal[]'>
-    
-
-
-  /**
    * Reference to a field of type 'Int'
    */
   export type IntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int'>
@@ -12035,6 +14877,20 @@ export namespace Prisma {
    * Reference to a field of type 'Int[]'
    */
   export type ListIntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int[]'>
+    
+
+
+  /**
+   * Reference to a field of type 'String'
+   */
+  export type StringFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'String'>
+    
+
+
+  /**
+   * Reference to a field of type 'String[]'
+   */
+  export type ListStringFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'String[]'>
     
 
 
@@ -12109,6 +14965,27 @@ export namespace Prisma {
 
 
   /**
+   * Reference to a field of type 'Decimal'
+   */
+  export type DecimalFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Decimal'>
+    
+
+
+  /**
+   * Reference to a field of type 'Decimal[]'
+   */
+  export type ListDecimalFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Decimal[]'>
+    
+
+
+  /**
+   * Reference to a field of type 'Boolean'
+   */
+  export type BooleanFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Boolean'>
+    
+
+
+  /**
    * Reference to a field of type 'Float'
    */
   export type FloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float'>
@@ -12125,84 +15002,6 @@ export namespace Prisma {
    */
 
 
-  export type addressesWhereInput = {
-    AND?: addressesWhereInput | addressesWhereInput[]
-    OR?: addressesWhereInput[]
-    NOT?: addressesWhereInput | addressesWhereInput[]
-    id_alamat?: StringFilter<"addresses"> | string
-    alamat?: StringFilter<"addresses"> | string
-    latitude?: DecimalFilter<"addresses"> | Decimal | DecimalJsLike | number | string
-    longitude?: DecimalFilter<"addresses"> | Decimal | DecimalJsLike | number | string
-    id_kota?: IntNullableFilter<"addresses"> | number | null
-    id_prov?: IntNullableFilter<"addresses"> | number | null
-    created_at?: DateTimeNullableFilter<"addresses"> | Date | string | null
-    updated_at?: DateTimeNullableFilter<"addresses"> | Date | string | null
-    cities?: XOR<CitiesNullableScalarRelationFilter, citiesWhereInput> | null
-    provinces?: XOR<ProvincesNullableScalarRelationFilter, provincesWhereInput> | null
-    user_address?: User_addressListRelationFilter
-  }
-
-  export type addressesOrderByWithRelationInput = {
-    id_alamat?: SortOrder
-    alamat?: SortOrder
-    latitude?: SortOrder
-    longitude?: SortOrder
-    id_kota?: SortOrderInput | SortOrder
-    id_prov?: SortOrderInput | SortOrder
-    created_at?: SortOrderInput | SortOrder
-    updated_at?: SortOrderInput | SortOrder
-    cities?: citiesOrderByWithRelationInput
-    provinces?: provincesOrderByWithRelationInput
-    user_address?: user_addressOrderByRelationAggregateInput
-  }
-
-  export type addressesWhereUniqueInput = Prisma.AtLeast<{
-    id_alamat?: string
-    AND?: addressesWhereInput | addressesWhereInput[]
-    OR?: addressesWhereInput[]
-    NOT?: addressesWhereInput | addressesWhereInput[]
-    alamat?: StringFilter<"addresses"> | string
-    latitude?: DecimalFilter<"addresses"> | Decimal | DecimalJsLike | number | string
-    longitude?: DecimalFilter<"addresses"> | Decimal | DecimalJsLike | number | string
-    id_kota?: IntNullableFilter<"addresses"> | number | null
-    id_prov?: IntNullableFilter<"addresses"> | number | null
-    created_at?: DateTimeNullableFilter<"addresses"> | Date | string | null
-    updated_at?: DateTimeNullableFilter<"addresses"> | Date | string | null
-    cities?: XOR<CitiesNullableScalarRelationFilter, citiesWhereInput> | null
-    provinces?: XOR<ProvincesNullableScalarRelationFilter, provincesWhereInput> | null
-    user_address?: User_addressListRelationFilter
-  }, "id_alamat">
-
-  export type addressesOrderByWithAggregationInput = {
-    id_alamat?: SortOrder
-    alamat?: SortOrder
-    latitude?: SortOrder
-    longitude?: SortOrder
-    id_kota?: SortOrderInput | SortOrder
-    id_prov?: SortOrderInput | SortOrder
-    created_at?: SortOrderInput | SortOrder
-    updated_at?: SortOrderInput | SortOrder
-    _count?: addressesCountOrderByAggregateInput
-    _avg?: addressesAvgOrderByAggregateInput
-    _max?: addressesMaxOrderByAggregateInput
-    _min?: addressesMinOrderByAggregateInput
-    _sum?: addressesSumOrderByAggregateInput
-  }
-
-  export type addressesScalarWhereWithAggregatesInput = {
-    AND?: addressesScalarWhereWithAggregatesInput | addressesScalarWhereWithAggregatesInput[]
-    OR?: addressesScalarWhereWithAggregatesInput[]
-    NOT?: addressesScalarWhereWithAggregatesInput | addressesScalarWhereWithAggregatesInput[]
-    id_alamat?: StringWithAggregatesFilter<"addresses"> | string
-    alamat?: StringWithAggregatesFilter<"addresses"> | string
-    latitude?: DecimalWithAggregatesFilter<"addresses"> | Decimal | DecimalJsLike | number | string
-    longitude?: DecimalWithAggregatesFilter<"addresses"> | Decimal | DecimalJsLike | number | string
-    id_kota?: IntNullableWithAggregatesFilter<"addresses"> | number | null
-    id_prov?: IntNullableWithAggregatesFilter<"addresses"> | number | null
-    created_at?: DateTimeNullableWithAggregatesFilter<"addresses"> | Date | string | null
-    updated_at?: DateTimeNullableWithAggregatesFilter<"addresses"> | Date | string | null
-  }
-
   export type citiesWhereInput = {
     AND?: citiesWhereInput | citiesWhereInput[]
     OR?: citiesWhereInput[]
@@ -12212,8 +15011,9 @@ export namespace Prisma {
     id_prov?: IntFilter<"cities"> | number
     created_at?: DateTimeNullableFilter<"cities"> | Date | string | null
     updated_at?: DateTimeNullableFilter<"cities"> | Date | string | null
-    addresses?: AddressesListRelationFilter
+    alamat?: AlamatListRelationFilter
     provinces?: XOR<ProvincesScalarRelationFilter, provincesWhereInput>
+    kecamatan?: KecamatanListRelationFilter
   }
 
   export type citiesOrderByWithRelationInput = {
@@ -12222,8 +15022,9 @@ export namespace Prisma {
     id_prov?: SortOrder
     created_at?: SortOrderInput | SortOrder
     updated_at?: SortOrderInput | SortOrder
-    addresses?: addressesOrderByRelationAggregateInput
+    alamat?: alamatOrderByRelationAggregateInput
     provinces?: provincesOrderByWithRelationInput
+    kecamatan?: kecamatanOrderByRelationAggregateInput
   }
 
   export type citiesWhereUniqueInput = Prisma.AtLeast<{
@@ -12235,8 +15036,9 @@ export namespace Prisma {
     id_prov?: IntFilter<"cities"> | number
     created_at?: DateTimeNullableFilter<"cities"> | Date | string | null
     updated_at?: DateTimeNullableFilter<"cities"> | Date | string | null
-    addresses?: AddressesListRelationFilter
+    alamat?: AlamatListRelationFilter
     provinces?: XOR<ProvincesScalarRelationFilter, provincesWhereInput>
+    kecamatan?: KecamatanListRelationFilter
   }, "id_kota">
 
   export type citiesOrderByWithAggregationInput = {
@@ -12372,7 +15174,7 @@ export namespace Prisma {
     nama_prov?: StringFilter<"provinces"> | string
     created_at?: DateTimeNullableFilter<"provinces"> | Date | string | null
     updated_at?: DateTimeNullableFilter<"provinces"> | Date | string | null
-    addresses?: AddressesListRelationFilter
+    alamat?: AlamatListRelationFilter
     cities?: CitiesListRelationFilter
   }
 
@@ -12381,7 +15183,7 @@ export namespace Prisma {
     nama_prov?: SortOrder
     created_at?: SortOrderInput | SortOrder
     updated_at?: SortOrderInput | SortOrder
-    addresses?: addressesOrderByRelationAggregateInput
+    alamat?: alamatOrderByRelationAggregateInput
     cities?: citiesOrderByRelationAggregateInput
   }
 
@@ -12393,7 +15195,7 @@ export namespace Prisma {
     nama_prov?: StringFilter<"provinces"> | string
     created_at?: DateTimeNullableFilter<"provinces"> | Date | string | null
     updated_at?: DateTimeNullableFilter<"provinces"> | Date | string | null
-    addresses?: AddressesListRelationFilter
+    alamat?: AlamatListRelationFilter
     cities?: CitiesListRelationFilter
   }, "id_prov">
 
@@ -12419,85 +15221,41 @@ export namespace Prisma {
     updated_at?: DateTimeNullableWithAggregatesFilter<"provinces"> | Date | string | null
   }
 
-  export type user_addressWhereInput = {
-    AND?: user_addressWhereInput | user_addressWhereInput[]
-    OR?: user_addressWhereInput[]
-    NOT?: user_addressWhereInput | user_addressWhereInput[]
-    id_user?: StringFilter<"user_address"> | string
-    id_alamat?: StringFilter<"user_address"> | string
-    addresses?: XOR<AddressesScalarRelationFilter, addressesWhereInput>
-    users?: XOR<UsersScalarRelationFilter, usersWhereInput>
-  }
-
-  export type user_addressOrderByWithRelationInput = {
-    id_user?: SortOrder
-    id_alamat?: SortOrder
-    addresses?: addressesOrderByWithRelationInput
-    users?: usersOrderByWithRelationInput
-  }
-
-  export type user_addressWhereUniqueInput = Prisma.AtLeast<{
-    id_user_id_alamat?: user_addressId_userId_alamatCompoundUniqueInput
-    AND?: user_addressWhereInput | user_addressWhereInput[]
-    OR?: user_addressWhereInput[]
-    NOT?: user_addressWhereInput | user_addressWhereInput[]
-    id_user?: StringFilter<"user_address"> | string
-    id_alamat?: StringFilter<"user_address"> | string
-    addresses?: XOR<AddressesScalarRelationFilter, addressesWhereInput>
-    users?: XOR<UsersScalarRelationFilter, usersWhereInput>
-  }, "id_user_id_alamat">
-
-  export type user_addressOrderByWithAggregationInput = {
-    id_user?: SortOrder
-    id_alamat?: SortOrder
-    _count?: user_addressCountOrderByAggregateInput
-    _max?: user_addressMaxOrderByAggregateInput
-    _min?: user_addressMinOrderByAggregateInput
-  }
-
-  export type user_addressScalarWhereWithAggregatesInput = {
-    AND?: user_addressScalarWhereWithAggregatesInput | user_addressScalarWhereWithAggregatesInput[]
-    OR?: user_addressScalarWhereWithAggregatesInput[]
-    NOT?: user_addressScalarWhereWithAggregatesInput | user_addressScalarWhereWithAggregatesInput[]
-    id_user?: StringWithAggregatesFilter<"user_address"> | string
-    id_alamat?: StringWithAggregatesFilter<"user_address"> | string
-  }
-
   export type usersWhereInput = {
     AND?: usersWhereInput | usersWhereInput[]
     OR?: usersWhereInput[]
     NOT?: usersWhereInput | usersWhereInput[]
     id_user?: StringFilter<"users"> | string
-    username?: StringNullableFilter<"users"> | string | null
-    nama?: StringNullableFilter<"users"> | string | null
+    username?: StringFilter<"users"> | string
+    nama?: StringFilter<"users"> | string
     email?: StringFilter<"users"> | string
     sandi?: StringFilter<"users"> | string
-    gender?: Enumgender_enumNullableFilter<"users"> | $Enums.gender_enum | null
-    birth_date?: DateTimeNullableFilter<"users"> | Date | string | null
+    gender?: Enumgender_enumFilter<"users"> | $Enums.gender_enum
+    birth_date?: DateTimeFilter<"users"> | Date | string
     foto?: BytesNullableFilter<"users"> | Uint8Array | null
     bio?: StringNullableFilter<"users"> | string | null
-    status_user?: Enumstatus_user_enumNullableFilter<"users"> | $Enums.status_user_enum | null
+    status_user?: Enumstatus_user_enumFilter<"users"> | $Enums.status_user_enum
     created_at?: DateTimeNullableFilter<"users"> | Date | string | null
     updated_at?: DateTimeNullableFilter<"users"> | Date | string | null
+    alamat?: AlamatListRelationFilter
     profession_user?: Profession_userListRelationFilter
-    user_address?: User_addressListRelationFilter
   }
 
   export type usersOrderByWithRelationInput = {
     id_user?: SortOrder
-    username?: SortOrderInput | SortOrder
-    nama?: SortOrderInput | SortOrder
+    username?: SortOrder
+    nama?: SortOrder
     email?: SortOrder
     sandi?: SortOrder
-    gender?: SortOrderInput | SortOrder
-    birth_date?: SortOrderInput | SortOrder
+    gender?: SortOrder
+    birth_date?: SortOrder
     foto?: SortOrderInput | SortOrder
     bio?: SortOrderInput | SortOrder
-    status_user?: SortOrderInput | SortOrder
+    status_user?: SortOrder
     created_at?: SortOrderInput | SortOrder
     updated_at?: SortOrderInput | SortOrder
+    alamat?: alamatOrderByRelationAggregateInput
     profession_user?: profession_userOrderByRelationAggregateInput
-    user_address?: user_addressOrderByRelationAggregateInput
   }
 
   export type usersWhereUniqueInput = Prisma.AtLeast<{
@@ -12507,30 +15265,30 @@ export namespace Prisma {
     AND?: usersWhereInput | usersWhereInput[]
     OR?: usersWhereInput[]
     NOT?: usersWhereInput | usersWhereInput[]
-    nama?: StringNullableFilter<"users"> | string | null
+    nama?: StringFilter<"users"> | string
     sandi?: StringFilter<"users"> | string
-    gender?: Enumgender_enumNullableFilter<"users"> | $Enums.gender_enum | null
-    birth_date?: DateTimeNullableFilter<"users"> | Date | string | null
+    gender?: Enumgender_enumFilter<"users"> | $Enums.gender_enum
+    birth_date?: DateTimeFilter<"users"> | Date | string
     foto?: BytesNullableFilter<"users"> | Uint8Array | null
     bio?: StringNullableFilter<"users"> | string | null
-    status_user?: Enumstatus_user_enumNullableFilter<"users"> | $Enums.status_user_enum | null
+    status_user?: Enumstatus_user_enumFilter<"users"> | $Enums.status_user_enum
     created_at?: DateTimeNullableFilter<"users"> | Date | string | null
     updated_at?: DateTimeNullableFilter<"users"> | Date | string | null
+    alamat?: AlamatListRelationFilter
     profession_user?: Profession_userListRelationFilter
-    user_address?: User_addressListRelationFilter
   }, "id_user" | "username" | "email">
 
   export type usersOrderByWithAggregationInput = {
     id_user?: SortOrder
-    username?: SortOrderInput | SortOrder
-    nama?: SortOrderInput | SortOrder
+    username?: SortOrder
+    nama?: SortOrder
     email?: SortOrder
     sandi?: SortOrder
-    gender?: SortOrderInput | SortOrder
-    birth_date?: SortOrderInput | SortOrder
+    gender?: SortOrder
+    birth_date?: SortOrder
     foto?: SortOrderInput | SortOrder
     bio?: SortOrderInput | SortOrder
-    status_user?: SortOrderInput | SortOrder
+    status_user?: SortOrder
     created_at?: SortOrderInput | SortOrder
     updated_at?: SortOrderInput | SortOrder
     _count?: usersCountOrderByAggregateInput
@@ -12543,15 +15301,15 @@ export namespace Prisma {
     OR?: usersScalarWhereWithAggregatesInput[]
     NOT?: usersScalarWhereWithAggregatesInput | usersScalarWhereWithAggregatesInput[]
     id_user?: StringWithAggregatesFilter<"users"> | string
-    username?: StringNullableWithAggregatesFilter<"users"> | string | null
-    nama?: StringNullableWithAggregatesFilter<"users"> | string | null
+    username?: StringWithAggregatesFilter<"users"> | string
+    nama?: StringWithAggregatesFilter<"users"> | string
     email?: StringWithAggregatesFilter<"users"> | string
     sandi?: StringWithAggregatesFilter<"users"> | string
-    gender?: Enumgender_enumNullableWithAggregatesFilter<"users"> | $Enums.gender_enum | null
-    birth_date?: DateTimeNullableWithAggregatesFilter<"users"> | Date | string | null
+    gender?: Enumgender_enumWithAggregatesFilter<"users"> | $Enums.gender_enum
+    birth_date?: DateTimeWithAggregatesFilter<"users"> | Date | string
     foto?: BytesNullableWithAggregatesFilter<"users"> | Uint8Array | null
     bio?: StringNullableWithAggregatesFilter<"users"> | string | null
-    status_user?: Enumstatus_user_enumNullableWithAggregatesFilter<"users"> | $Enums.status_user_enum | null
+    status_user?: Enumstatus_user_enumWithAggregatesFilter<"users"> | $Enums.status_user_enum
     created_at?: DateTimeNullableWithAggregatesFilter<"users"> | Date | string | null
     updated_at?: DateTimeNullableWithAggregatesFilter<"users"> | Date | string | null
   }
@@ -12654,91 +15412,305 @@ export namespace Prisma {
     id_prof_cat?: BigIntWithAggregatesFilter<"profession_detail"> | bigint | number
   }
 
-  export type addressesCreateInput = {
-    id_alamat: string
-    alamat: string
-    latitude: Decimal | DecimalJsLike | number | string
-    longitude: Decimal | DecimalJsLike | number | string
-    created_at?: Date | string | null
-    updated_at?: Date | string | null
-    cities?: citiesCreateNestedOneWithoutAddressesInput
-    provinces?: provincesCreateNestedOneWithoutAddressesInput
-    user_address?: user_addressCreateNestedManyWithoutAddressesInput
+  export type alamatWhereInput = {
+    AND?: alamatWhereInput | alamatWhereInput[]
+    OR?: alamatWhereInput[]
+    NOT?: alamatWhereInput | alamatWhereInput[]
+    id_alamat?: UuidFilter<"alamat"> | string
+    id_user?: StringNullableFilter<"alamat"> | string | null
+    alamat?: StringNullableFilter<"alamat"> | string | null
+    catatan?: StringNullableFilter<"alamat"> | string | null
+    latitude?: DecimalNullableFilter<"alamat"> | Decimal | DecimalJsLike | number | string | null
+    longitude?: DecimalNullableFilter<"alamat"> | Decimal | DecimalJsLike | number | string | null
+    is_default?: BoolNullableFilter<"alamat"> | boolean | null
+    id_tipe?: BigIntNullableFilter<"alamat"> | bigint | number | null
+    id_kel?: BigIntNullableFilter<"alamat"> | bigint | number | null
+    id_kec?: BigIntNullableFilter<"alamat"> | bigint | number | null
+    id_kota?: IntNullableFilter<"alamat"> | number | null
+    id_prov?: IntNullableFilter<"alamat"> | number | null
+    created_at?: DateTimeNullableFilter<"alamat"> | Date | string | null
+    updated_at?: DateTimeNullableFilter<"alamat"> | Date | string | null
+    kecamatan?: XOR<KecamatanNullableScalarRelationFilter, kecamatanWhereInput> | null
+    kelurahan?: XOR<KelurahanNullableScalarRelationFilter, kelurahanWhereInput> | null
+    cities?: XOR<CitiesNullableScalarRelationFilter, citiesWhereInput> | null
+    provinces?: XOR<ProvincesNullableScalarRelationFilter, provincesWhereInput> | null
+    tipe_alamat?: XOR<Tipe_alamatNullableScalarRelationFilter, tipe_alamatWhereInput> | null
+    users?: XOR<UsersNullableScalarRelationFilter, usersWhereInput> | null
   }
 
-  export type addressesUncheckedCreateInput = {
-    id_alamat: string
-    alamat: string
-    latitude: Decimal | DecimalJsLike | number | string
-    longitude: Decimal | DecimalJsLike | number | string
-    id_kota?: number | null
-    id_prov?: number | null
-    created_at?: Date | string | null
-    updated_at?: Date | string | null
-    user_address?: user_addressUncheckedCreateNestedManyWithoutAddressesInput
+  export type alamatOrderByWithRelationInput = {
+    id_alamat?: SortOrder
+    id_user?: SortOrderInput | SortOrder
+    alamat?: SortOrderInput | SortOrder
+    catatan?: SortOrderInput | SortOrder
+    latitude?: SortOrderInput | SortOrder
+    longitude?: SortOrderInput | SortOrder
+    is_default?: SortOrderInput | SortOrder
+    id_tipe?: SortOrderInput | SortOrder
+    id_kel?: SortOrderInput | SortOrder
+    id_kec?: SortOrderInput | SortOrder
+    id_kota?: SortOrderInput | SortOrder
+    id_prov?: SortOrderInput | SortOrder
+    created_at?: SortOrderInput | SortOrder
+    updated_at?: SortOrderInput | SortOrder
+    kecamatan?: kecamatanOrderByWithRelationInput
+    kelurahan?: kelurahanOrderByWithRelationInput
+    cities?: citiesOrderByWithRelationInput
+    provinces?: provincesOrderByWithRelationInput
+    tipe_alamat?: tipe_alamatOrderByWithRelationInput
+    users?: usersOrderByWithRelationInput
   }
 
-  export type addressesUpdateInput = {
-    id_alamat?: StringFieldUpdateOperationsInput | string
-    alamat?: StringFieldUpdateOperationsInput | string
-    latitude?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
-    longitude?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
-    created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    cities?: citiesUpdateOneWithoutAddressesNestedInput
-    provinces?: provincesUpdateOneWithoutAddressesNestedInput
-    user_address?: user_addressUpdateManyWithoutAddressesNestedInput
+  export type alamatWhereUniqueInput = Prisma.AtLeast<{
+    id_alamat?: string
+    AND?: alamatWhereInput | alamatWhereInput[]
+    OR?: alamatWhereInput[]
+    NOT?: alamatWhereInput | alamatWhereInput[]
+    id_user?: StringNullableFilter<"alamat"> | string | null
+    alamat?: StringNullableFilter<"alamat"> | string | null
+    catatan?: StringNullableFilter<"alamat"> | string | null
+    latitude?: DecimalNullableFilter<"alamat"> | Decimal | DecimalJsLike | number | string | null
+    longitude?: DecimalNullableFilter<"alamat"> | Decimal | DecimalJsLike | number | string | null
+    is_default?: BoolNullableFilter<"alamat"> | boolean | null
+    id_tipe?: BigIntNullableFilter<"alamat"> | bigint | number | null
+    id_kel?: BigIntNullableFilter<"alamat"> | bigint | number | null
+    id_kec?: BigIntNullableFilter<"alamat"> | bigint | number | null
+    id_kota?: IntNullableFilter<"alamat"> | number | null
+    id_prov?: IntNullableFilter<"alamat"> | number | null
+    created_at?: DateTimeNullableFilter<"alamat"> | Date | string | null
+    updated_at?: DateTimeNullableFilter<"alamat"> | Date | string | null
+    kecamatan?: XOR<KecamatanNullableScalarRelationFilter, kecamatanWhereInput> | null
+    kelurahan?: XOR<KelurahanNullableScalarRelationFilter, kelurahanWhereInput> | null
+    cities?: XOR<CitiesNullableScalarRelationFilter, citiesWhereInput> | null
+    provinces?: XOR<ProvincesNullableScalarRelationFilter, provincesWhereInput> | null
+    tipe_alamat?: XOR<Tipe_alamatNullableScalarRelationFilter, tipe_alamatWhereInput> | null
+    users?: XOR<UsersNullableScalarRelationFilter, usersWhereInput> | null
+  }, "id_alamat">
+
+  export type alamatOrderByWithAggregationInput = {
+    id_alamat?: SortOrder
+    id_user?: SortOrderInput | SortOrder
+    alamat?: SortOrderInput | SortOrder
+    catatan?: SortOrderInput | SortOrder
+    latitude?: SortOrderInput | SortOrder
+    longitude?: SortOrderInput | SortOrder
+    is_default?: SortOrderInput | SortOrder
+    id_tipe?: SortOrderInput | SortOrder
+    id_kel?: SortOrderInput | SortOrder
+    id_kec?: SortOrderInput | SortOrder
+    id_kota?: SortOrderInput | SortOrder
+    id_prov?: SortOrderInput | SortOrder
+    created_at?: SortOrderInput | SortOrder
+    updated_at?: SortOrderInput | SortOrder
+    _count?: alamatCountOrderByAggregateInput
+    _avg?: alamatAvgOrderByAggregateInput
+    _max?: alamatMaxOrderByAggregateInput
+    _min?: alamatMinOrderByAggregateInput
+    _sum?: alamatSumOrderByAggregateInput
   }
 
-  export type addressesUncheckedUpdateInput = {
-    id_alamat?: StringFieldUpdateOperationsInput | string
-    alamat?: StringFieldUpdateOperationsInput | string
-    latitude?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
-    longitude?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
-    id_kota?: NullableIntFieldUpdateOperationsInput | number | null
-    id_prov?: NullableIntFieldUpdateOperationsInput | number | null
-    created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    user_address?: user_addressUncheckedUpdateManyWithoutAddressesNestedInput
+  export type alamatScalarWhereWithAggregatesInput = {
+    AND?: alamatScalarWhereWithAggregatesInput | alamatScalarWhereWithAggregatesInput[]
+    OR?: alamatScalarWhereWithAggregatesInput[]
+    NOT?: alamatScalarWhereWithAggregatesInput | alamatScalarWhereWithAggregatesInput[]
+    id_alamat?: UuidWithAggregatesFilter<"alamat"> | string
+    id_user?: StringNullableWithAggregatesFilter<"alamat"> | string | null
+    alamat?: StringNullableWithAggregatesFilter<"alamat"> | string | null
+    catatan?: StringNullableWithAggregatesFilter<"alamat"> | string | null
+    latitude?: DecimalNullableWithAggregatesFilter<"alamat"> | Decimal | DecimalJsLike | number | string | null
+    longitude?: DecimalNullableWithAggregatesFilter<"alamat"> | Decimal | DecimalJsLike | number | string | null
+    is_default?: BoolNullableWithAggregatesFilter<"alamat"> | boolean | null
+    id_tipe?: BigIntNullableWithAggregatesFilter<"alamat"> | bigint | number | null
+    id_kel?: BigIntNullableWithAggregatesFilter<"alamat"> | bigint | number | null
+    id_kec?: BigIntNullableWithAggregatesFilter<"alamat"> | bigint | number | null
+    id_kota?: IntNullableWithAggregatesFilter<"alamat"> | number | null
+    id_prov?: IntNullableWithAggregatesFilter<"alamat"> | number | null
+    created_at?: DateTimeNullableWithAggregatesFilter<"alamat"> | Date | string | null
+    updated_at?: DateTimeNullableWithAggregatesFilter<"alamat"> | Date | string | null
   }
 
-  export type addressesCreateManyInput = {
-    id_alamat: string
-    alamat: string
-    latitude: Decimal | DecimalJsLike | number | string
-    longitude: Decimal | DecimalJsLike | number | string
-    id_kota?: number | null
-    id_prov?: number | null
-    created_at?: Date | string | null
-    updated_at?: Date | string | null
+  export type kecamatanWhereInput = {
+    AND?: kecamatanWhereInput | kecamatanWhereInput[]
+    OR?: kecamatanWhereInput[]
+    NOT?: kecamatanWhereInput | kecamatanWhereInput[]
+    id_kec?: BigIntFilter<"kecamatan"> | bigint | number
+    kecamatan?: StringNullableFilter<"kecamatan"> | string | null
+    id_kota?: IntNullableFilter<"kecamatan"> | number | null
+    created_at?: DateTimeNullableFilter<"kecamatan"> | Date | string | null
+    updated_at?: DateTimeNullableFilter<"kecamatan"> | Date | string | null
+    alamat?: AlamatListRelationFilter
+    cities?: XOR<CitiesNullableScalarRelationFilter, citiesWhereInput> | null
+    kelurahan?: KelurahanListRelationFilter
   }
 
-  export type addressesUpdateManyMutationInput = {
-    id_alamat?: StringFieldUpdateOperationsInput | string
-    alamat?: StringFieldUpdateOperationsInput | string
-    latitude?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
-    longitude?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
-    created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  export type kecamatanOrderByWithRelationInput = {
+    id_kec?: SortOrder
+    kecamatan?: SortOrderInput | SortOrder
+    id_kota?: SortOrderInput | SortOrder
+    created_at?: SortOrderInput | SortOrder
+    updated_at?: SortOrderInput | SortOrder
+    alamat?: alamatOrderByRelationAggregateInput
+    cities?: citiesOrderByWithRelationInput
+    kelurahan?: kelurahanOrderByRelationAggregateInput
   }
 
-  export type addressesUncheckedUpdateManyInput = {
-    id_alamat?: StringFieldUpdateOperationsInput | string
-    alamat?: StringFieldUpdateOperationsInput | string
-    latitude?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
-    longitude?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
-    id_kota?: NullableIntFieldUpdateOperationsInput | number | null
-    id_prov?: NullableIntFieldUpdateOperationsInput | number | null
-    created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  export type kecamatanWhereUniqueInput = Prisma.AtLeast<{
+    id_kec?: bigint | number
+    AND?: kecamatanWhereInput | kecamatanWhereInput[]
+    OR?: kecamatanWhereInput[]
+    NOT?: kecamatanWhereInput | kecamatanWhereInput[]
+    kecamatan?: StringNullableFilter<"kecamatan"> | string | null
+    id_kota?: IntNullableFilter<"kecamatan"> | number | null
+    created_at?: DateTimeNullableFilter<"kecamatan"> | Date | string | null
+    updated_at?: DateTimeNullableFilter<"kecamatan"> | Date | string | null
+    alamat?: AlamatListRelationFilter
+    cities?: XOR<CitiesNullableScalarRelationFilter, citiesWhereInput> | null
+    kelurahan?: KelurahanListRelationFilter
+  }, "id_kec">
+
+  export type kecamatanOrderByWithAggregationInput = {
+    id_kec?: SortOrder
+    kecamatan?: SortOrderInput | SortOrder
+    id_kota?: SortOrderInput | SortOrder
+    created_at?: SortOrderInput | SortOrder
+    updated_at?: SortOrderInput | SortOrder
+    _count?: kecamatanCountOrderByAggregateInput
+    _avg?: kecamatanAvgOrderByAggregateInput
+    _max?: kecamatanMaxOrderByAggregateInput
+    _min?: kecamatanMinOrderByAggregateInput
+    _sum?: kecamatanSumOrderByAggregateInput
+  }
+
+  export type kecamatanScalarWhereWithAggregatesInput = {
+    AND?: kecamatanScalarWhereWithAggregatesInput | kecamatanScalarWhereWithAggregatesInput[]
+    OR?: kecamatanScalarWhereWithAggregatesInput[]
+    NOT?: kecamatanScalarWhereWithAggregatesInput | kecamatanScalarWhereWithAggregatesInput[]
+    id_kec?: BigIntWithAggregatesFilter<"kecamatan"> | bigint | number
+    kecamatan?: StringNullableWithAggregatesFilter<"kecamatan"> | string | null
+    id_kota?: IntNullableWithAggregatesFilter<"kecamatan"> | number | null
+    created_at?: DateTimeNullableWithAggregatesFilter<"kecamatan"> | Date | string | null
+    updated_at?: DateTimeNullableWithAggregatesFilter<"kecamatan"> | Date | string | null
+  }
+
+  export type kelurahanWhereInput = {
+    AND?: kelurahanWhereInput | kelurahanWhereInput[]
+    OR?: kelurahanWhereInput[]
+    NOT?: kelurahanWhereInput | kelurahanWhereInput[]
+    id_kel?: BigIntFilter<"kelurahan"> | bigint | number
+    kelurahan?: StringNullableFilter<"kelurahan"> | string | null
+    id_kec?: BigIntNullableFilter<"kelurahan"> | bigint | number | null
+    created_at?: DateTimeNullableFilter<"kelurahan"> | Date | string | null
+    updated_at?: DateTimeNullableFilter<"kelurahan"> | Date | string | null
+    alamat?: AlamatListRelationFilter
+    kecamatan?: XOR<KecamatanNullableScalarRelationFilter, kecamatanWhereInput> | null
+  }
+
+  export type kelurahanOrderByWithRelationInput = {
+    id_kel?: SortOrder
+    kelurahan?: SortOrderInput | SortOrder
+    id_kec?: SortOrderInput | SortOrder
+    created_at?: SortOrderInput | SortOrder
+    updated_at?: SortOrderInput | SortOrder
+    alamat?: alamatOrderByRelationAggregateInput
+    kecamatan?: kecamatanOrderByWithRelationInput
+  }
+
+  export type kelurahanWhereUniqueInput = Prisma.AtLeast<{
+    id_kel?: bigint | number
+    AND?: kelurahanWhereInput | kelurahanWhereInput[]
+    OR?: kelurahanWhereInput[]
+    NOT?: kelurahanWhereInput | kelurahanWhereInput[]
+    kelurahan?: StringNullableFilter<"kelurahan"> | string | null
+    id_kec?: BigIntNullableFilter<"kelurahan"> | bigint | number | null
+    created_at?: DateTimeNullableFilter<"kelurahan"> | Date | string | null
+    updated_at?: DateTimeNullableFilter<"kelurahan"> | Date | string | null
+    alamat?: AlamatListRelationFilter
+    kecamatan?: XOR<KecamatanNullableScalarRelationFilter, kecamatanWhereInput> | null
+  }, "id_kel">
+
+  export type kelurahanOrderByWithAggregationInput = {
+    id_kel?: SortOrder
+    kelurahan?: SortOrderInput | SortOrder
+    id_kec?: SortOrderInput | SortOrder
+    created_at?: SortOrderInput | SortOrder
+    updated_at?: SortOrderInput | SortOrder
+    _count?: kelurahanCountOrderByAggregateInput
+    _avg?: kelurahanAvgOrderByAggregateInput
+    _max?: kelurahanMaxOrderByAggregateInput
+    _min?: kelurahanMinOrderByAggregateInput
+    _sum?: kelurahanSumOrderByAggregateInput
+  }
+
+  export type kelurahanScalarWhereWithAggregatesInput = {
+    AND?: kelurahanScalarWhereWithAggregatesInput | kelurahanScalarWhereWithAggregatesInput[]
+    OR?: kelurahanScalarWhereWithAggregatesInput[]
+    NOT?: kelurahanScalarWhereWithAggregatesInput | kelurahanScalarWhereWithAggregatesInput[]
+    id_kel?: BigIntWithAggregatesFilter<"kelurahan"> | bigint | number
+    kelurahan?: StringNullableWithAggregatesFilter<"kelurahan"> | string | null
+    id_kec?: BigIntNullableWithAggregatesFilter<"kelurahan"> | bigint | number | null
+    created_at?: DateTimeNullableWithAggregatesFilter<"kelurahan"> | Date | string | null
+    updated_at?: DateTimeNullableWithAggregatesFilter<"kelurahan"> | Date | string | null
+  }
+
+  export type tipe_alamatWhereInput = {
+    AND?: tipe_alamatWhereInput | tipe_alamatWhereInput[]
+    OR?: tipe_alamatWhereInput[]
+    NOT?: tipe_alamatWhereInput | tipe_alamatWhereInput[]
+    id_tipe?: BigIntFilter<"tipe_alamat"> | bigint | number
+    tipe_alamat?: StringNullableFilter<"tipe_alamat"> | string | null
+    created_at?: DateTimeNullableFilter<"tipe_alamat"> | Date | string | null
+    updated_at?: DateTimeNullableFilter<"tipe_alamat"> | Date | string | null
+    alamat?: AlamatListRelationFilter
+  }
+
+  export type tipe_alamatOrderByWithRelationInput = {
+    id_tipe?: SortOrder
+    tipe_alamat?: SortOrderInput | SortOrder
+    created_at?: SortOrderInput | SortOrder
+    updated_at?: SortOrderInput | SortOrder
+    alamat?: alamatOrderByRelationAggregateInput
+  }
+
+  export type tipe_alamatWhereUniqueInput = Prisma.AtLeast<{
+    id_tipe?: bigint | number
+    AND?: tipe_alamatWhereInput | tipe_alamatWhereInput[]
+    OR?: tipe_alamatWhereInput[]
+    NOT?: tipe_alamatWhereInput | tipe_alamatWhereInput[]
+    tipe_alamat?: StringNullableFilter<"tipe_alamat"> | string | null
+    created_at?: DateTimeNullableFilter<"tipe_alamat"> | Date | string | null
+    updated_at?: DateTimeNullableFilter<"tipe_alamat"> | Date | string | null
+    alamat?: AlamatListRelationFilter
+  }, "id_tipe">
+
+  export type tipe_alamatOrderByWithAggregationInput = {
+    id_tipe?: SortOrder
+    tipe_alamat?: SortOrderInput | SortOrder
+    created_at?: SortOrderInput | SortOrder
+    updated_at?: SortOrderInput | SortOrder
+    _count?: tipe_alamatCountOrderByAggregateInput
+    _avg?: tipe_alamatAvgOrderByAggregateInput
+    _max?: tipe_alamatMaxOrderByAggregateInput
+    _min?: tipe_alamatMinOrderByAggregateInput
+    _sum?: tipe_alamatSumOrderByAggregateInput
+  }
+
+  export type tipe_alamatScalarWhereWithAggregatesInput = {
+    AND?: tipe_alamatScalarWhereWithAggregatesInput | tipe_alamatScalarWhereWithAggregatesInput[]
+    OR?: tipe_alamatScalarWhereWithAggregatesInput[]
+    NOT?: tipe_alamatScalarWhereWithAggregatesInput | tipe_alamatScalarWhereWithAggregatesInput[]
+    id_tipe?: BigIntWithAggregatesFilter<"tipe_alamat"> | bigint | number
+    tipe_alamat?: StringNullableWithAggregatesFilter<"tipe_alamat"> | string | null
+    created_at?: DateTimeNullableWithAggregatesFilter<"tipe_alamat"> | Date | string | null
+    updated_at?: DateTimeNullableWithAggregatesFilter<"tipe_alamat"> | Date | string | null
   }
 
   export type citiesCreateInput = {
     nama_kota: string
     created_at?: Date | string | null
     updated_at?: Date | string | null
-    addresses?: addressesCreateNestedManyWithoutCitiesInput
+    alamat?: alamatCreateNestedManyWithoutCitiesInput
     provinces: provincesCreateNestedOneWithoutCitiesInput
+    kecamatan?: kecamatanCreateNestedManyWithoutCitiesInput
   }
 
   export type citiesUncheckedCreateInput = {
@@ -12747,15 +15719,17 @@ export namespace Prisma {
     id_prov: number
     created_at?: Date | string | null
     updated_at?: Date | string | null
-    addresses?: addressesUncheckedCreateNestedManyWithoutCitiesInput
+    alamat?: alamatUncheckedCreateNestedManyWithoutCitiesInput
+    kecamatan?: kecamatanUncheckedCreateNestedManyWithoutCitiesInput
   }
 
   export type citiesUpdateInput = {
     nama_kota?: StringFieldUpdateOperationsInput | string
     created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    addresses?: addressesUpdateManyWithoutCitiesNestedInput
+    alamat?: alamatUpdateManyWithoutCitiesNestedInput
     provinces?: provincesUpdateOneRequiredWithoutCitiesNestedInput
+    kecamatan?: kecamatanUpdateManyWithoutCitiesNestedInput
   }
 
   export type citiesUncheckedUpdateInput = {
@@ -12764,7 +15738,8 @@ export namespace Prisma {
     id_prov?: IntFieldUpdateOperationsInput | number
     created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    addresses?: addressesUncheckedUpdateManyWithoutCitiesNestedInput
+    alamat?: alamatUncheckedUpdateManyWithoutCitiesNestedInput
+    kecamatan?: kecamatanUncheckedUpdateManyWithoutCitiesNestedInput
   }
 
   export type citiesCreateManyInput = {
@@ -12884,7 +15859,7 @@ export namespace Prisma {
     nama_prov: string
     created_at?: Date | string | null
     updated_at?: Date | string | null
-    addresses?: addressesCreateNestedManyWithoutProvincesInput
+    alamat?: alamatCreateNestedManyWithoutProvincesInput
     cities?: citiesCreateNestedManyWithoutProvincesInput
   }
 
@@ -12893,7 +15868,7 @@ export namespace Prisma {
     nama_prov: string
     created_at?: Date | string | null
     updated_at?: Date | string | null
-    addresses?: addressesUncheckedCreateNestedManyWithoutProvincesInput
+    alamat?: alamatUncheckedCreateNestedManyWithoutProvincesInput
     cities?: citiesUncheckedCreateNestedManyWithoutProvincesInput
   }
 
@@ -12901,7 +15876,7 @@ export namespace Prisma {
     nama_prov?: StringFieldUpdateOperationsInput | string
     created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    addresses?: addressesUpdateManyWithoutProvincesNestedInput
+    alamat?: alamatUpdateManyWithoutProvincesNestedInput
     cities?: citiesUpdateManyWithoutProvincesNestedInput
   }
 
@@ -12910,7 +15885,7 @@ export namespace Prisma {
     nama_prov?: StringFieldUpdateOperationsInput | string
     created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    addresses?: addressesUncheckedUpdateManyWithoutProvincesNestedInput
+    alamat?: alamatUncheckedUpdateManyWithoutProvincesNestedInput
     cities?: citiesUncheckedUpdateManyWithoutProvincesNestedInput
   }
 
@@ -12934,149 +15909,115 @@ export namespace Prisma {
     updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
-  export type user_addressCreateInput = {
-    addresses: addressesCreateNestedOneWithoutUser_addressInput
-    users: usersCreateNestedOneWithoutUser_addressInput
-  }
-
-  export type user_addressUncheckedCreateInput = {
-    id_user: string
-    id_alamat: string
-  }
-
-  export type user_addressUpdateInput = {
-    addresses?: addressesUpdateOneRequiredWithoutUser_addressNestedInput
-    users?: usersUpdateOneRequiredWithoutUser_addressNestedInput
-  }
-
-  export type user_addressUncheckedUpdateInput = {
-    id_user?: StringFieldUpdateOperationsInput | string
-    id_alamat?: StringFieldUpdateOperationsInput | string
-  }
-
-  export type user_addressCreateManyInput = {
-    id_user: string
-    id_alamat: string
-  }
-
-  export type user_addressUpdateManyMutationInput = {
-
-  }
-
-  export type user_addressUncheckedUpdateManyInput = {
-    id_user?: StringFieldUpdateOperationsInput | string
-    id_alamat?: StringFieldUpdateOperationsInput | string
-  }
-
   export type usersCreateInput = {
     id_user: string
-    username?: string | null
-    nama?: string | null
+    username: string
+    nama: string
     email: string
     sandi: string
-    gender?: $Enums.gender_enum | null
-    birth_date?: Date | string | null
+    gender: $Enums.gender_enum
+    birth_date: Date | string
     foto?: Uint8Array | null
     bio?: string | null
-    status_user?: $Enums.status_user_enum | null
+    status_user: $Enums.status_user_enum
     created_at?: Date | string | null
     updated_at?: Date | string | null
+    alamat?: alamatCreateNestedManyWithoutUsersInput
     profession_user?: profession_userCreateNestedManyWithoutUsersInput
-    user_address?: user_addressCreateNestedManyWithoutUsersInput
   }
 
   export type usersUncheckedCreateInput = {
     id_user: string
-    username?: string | null
-    nama?: string | null
+    username: string
+    nama: string
     email: string
     sandi: string
-    gender?: $Enums.gender_enum | null
-    birth_date?: Date | string | null
+    gender: $Enums.gender_enum
+    birth_date: Date | string
     foto?: Uint8Array | null
     bio?: string | null
-    status_user?: $Enums.status_user_enum | null
+    status_user: $Enums.status_user_enum
     created_at?: Date | string | null
     updated_at?: Date | string | null
+    alamat?: alamatUncheckedCreateNestedManyWithoutUsersInput
     profession_user?: profession_userUncheckedCreateNestedManyWithoutUsersInput
-    user_address?: user_addressUncheckedCreateNestedManyWithoutUsersInput
   }
 
   export type usersUpdateInput = {
     id_user?: StringFieldUpdateOperationsInput | string
-    username?: NullableStringFieldUpdateOperationsInput | string | null
-    nama?: NullableStringFieldUpdateOperationsInput | string | null
+    username?: StringFieldUpdateOperationsInput | string
+    nama?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     sandi?: StringFieldUpdateOperationsInput | string
-    gender?: NullableEnumgender_enumFieldUpdateOperationsInput | $Enums.gender_enum | null
-    birth_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    gender?: Enumgender_enumFieldUpdateOperationsInput | $Enums.gender_enum
+    birth_date?: DateTimeFieldUpdateOperationsInput | Date | string
     foto?: NullableBytesFieldUpdateOperationsInput | Uint8Array | null
     bio?: NullableStringFieldUpdateOperationsInput | string | null
-    status_user?: NullableEnumstatus_user_enumFieldUpdateOperationsInput | $Enums.status_user_enum | null
+    status_user?: Enumstatus_user_enumFieldUpdateOperationsInput | $Enums.status_user_enum
     created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    alamat?: alamatUpdateManyWithoutUsersNestedInput
     profession_user?: profession_userUpdateManyWithoutUsersNestedInput
-    user_address?: user_addressUpdateManyWithoutUsersNestedInput
   }
 
   export type usersUncheckedUpdateInput = {
     id_user?: StringFieldUpdateOperationsInput | string
-    username?: NullableStringFieldUpdateOperationsInput | string | null
-    nama?: NullableStringFieldUpdateOperationsInput | string | null
+    username?: StringFieldUpdateOperationsInput | string
+    nama?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     sandi?: StringFieldUpdateOperationsInput | string
-    gender?: NullableEnumgender_enumFieldUpdateOperationsInput | $Enums.gender_enum | null
-    birth_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    gender?: Enumgender_enumFieldUpdateOperationsInput | $Enums.gender_enum
+    birth_date?: DateTimeFieldUpdateOperationsInput | Date | string
     foto?: NullableBytesFieldUpdateOperationsInput | Uint8Array | null
     bio?: NullableStringFieldUpdateOperationsInput | string | null
-    status_user?: NullableEnumstatus_user_enumFieldUpdateOperationsInput | $Enums.status_user_enum | null
+    status_user?: Enumstatus_user_enumFieldUpdateOperationsInput | $Enums.status_user_enum
     created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    alamat?: alamatUncheckedUpdateManyWithoutUsersNestedInput
     profession_user?: profession_userUncheckedUpdateManyWithoutUsersNestedInput
-    user_address?: user_addressUncheckedUpdateManyWithoutUsersNestedInput
   }
 
   export type usersCreateManyInput = {
     id_user: string
-    username?: string | null
-    nama?: string | null
+    username: string
+    nama: string
     email: string
     sandi: string
-    gender?: $Enums.gender_enum | null
-    birth_date?: Date | string | null
+    gender: $Enums.gender_enum
+    birth_date: Date | string
     foto?: Uint8Array | null
     bio?: string | null
-    status_user?: $Enums.status_user_enum | null
+    status_user: $Enums.status_user_enum
     created_at?: Date | string | null
     updated_at?: Date | string | null
   }
 
   export type usersUpdateManyMutationInput = {
     id_user?: StringFieldUpdateOperationsInput | string
-    username?: NullableStringFieldUpdateOperationsInput | string | null
-    nama?: NullableStringFieldUpdateOperationsInput | string | null
+    username?: StringFieldUpdateOperationsInput | string
+    nama?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     sandi?: StringFieldUpdateOperationsInput | string
-    gender?: NullableEnumgender_enumFieldUpdateOperationsInput | $Enums.gender_enum | null
-    birth_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    gender?: Enumgender_enumFieldUpdateOperationsInput | $Enums.gender_enum
+    birth_date?: DateTimeFieldUpdateOperationsInput | Date | string
     foto?: NullableBytesFieldUpdateOperationsInput | Uint8Array | null
     bio?: NullableStringFieldUpdateOperationsInput | string | null
-    status_user?: NullableEnumstatus_user_enumFieldUpdateOperationsInput | $Enums.status_user_enum | null
+    status_user?: Enumstatus_user_enumFieldUpdateOperationsInput | $Enums.status_user_enum
     created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type usersUncheckedUpdateManyInput = {
     id_user?: StringFieldUpdateOperationsInput | string
-    username?: NullableStringFieldUpdateOperationsInput | string | null
-    nama?: NullableStringFieldUpdateOperationsInput | string | null
+    username?: StringFieldUpdateOperationsInput | string
+    nama?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     sandi?: StringFieldUpdateOperationsInput | string
-    gender?: NullableEnumgender_enumFieldUpdateOperationsInput | $Enums.gender_enum | null
-    birth_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    gender?: Enumgender_enumFieldUpdateOperationsInput | $Enums.gender_enum
+    birth_date?: DateTimeFieldUpdateOperationsInput | Date | string
     foto?: NullableBytesFieldUpdateOperationsInput | Uint8Array | null
     bio?: NullableStringFieldUpdateOperationsInput | string | null
-    status_user?: NullableEnumstatus_user_enumFieldUpdateOperationsInput | $Enums.status_user_enum | null
+    status_user?: Enumstatus_user_enumFieldUpdateOperationsInput | $Enums.status_user_enum
     created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
@@ -13168,6 +16109,305 @@ export namespace Prisma {
     id_prof_cat?: BigIntFieldUpdateOperationsInput | bigint | number
   }
 
+  export type alamatCreateInput = {
+    id_alamat: string
+    alamat?: string | null
+    catatan?: string | null
+    latitude?: Decimal | DecimalJsLike | number | string | null
+    longitude?: Decimal | DecimalJsLike | number | string | null
+    is_default?: boolean | null
+    created_at?: Date | string | null
+    updated_at?: Date | string | null
+    kecamatan?: kecamatanCreateNestedOneWithoutAlamatInput
+    kelurahan?: kelurahanCreateNestedOneWithoutAlamatInput
+    cities?: citiesCreateNestedOneWithoutAlamatInput
+    provinces?: provincesCreateNestedOneWithoutAlamatInput
+    tipe_alamat?: tipe_alamatCreateNestedOneWithoutAlamatInput
+    users?: usersCreateNestedOneWithoutAlamatInput
+  }
+
+  export type alamatUncheckedCreateInput = {
+    id_alamat: string
+    id_user?: string | null
+    alamat?: string | null
+    catatan?: string | null
+    latitude?: Decimal | DecimalJsLike | number | string | null
+    longitude?: Decimal | DecimalJsLike | number | string | null
+    is_default?: boolean | null
+    id_tipe?: bigint | number | null
+    id_kel?: bigint | number | null
+    id_kec?: bigint | number | null
+    id_kota?: number | null
+    id_prov?: number | null
+    created_at?: Date | string | null
+    updated_at?: Date | string | null
+  }
+
+  export type alamatUpdateInput = {
+    id_alamat?: StringFieldUpdateOperationsInput | string
+    alamat?: NullableStringFieldUpdateOperationsInput | string | null
+    catatan?: NullableStringFieldUpdateOperationsInput | string | null
+    latitude?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    longitude?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    is_default?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    kecamatan?: kecamatanUpdateOneWithoutAlamatNestedInput
+    kelurahan?: kelurahanUpdateOneWithoutAlamatNestedInput
+    cities?: citiesUpdateOneWithoutAlamatNestedInput
+    provinces?: provincesUpdateOneWithoutAlamatNestedInput
+    tipe_alamat?: tipe_alamatUpdateOneWithoutAlamatNestedInput
+    users?: usersUpdateOneWithoutAlamatNestedInput
+  }
+
+  export type alamatUncheckedUpdateInput = {
+    id_alamat?: StringFieldUpdateOperationsInput | string
+    id_user?: NullableStringFieldUpdateOperationsInput | string | null
+    alamat?: NullableStringFieldUpdateOperationsInput | string | null
+    catatan?: NullableStringFieldUpdateOperationsInput | string | null
+    latitude?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    longitude?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    is_default?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    id_tipe?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+    id_kel?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+    id_kec?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+    id_kota?: NullableIntFieldUpdateOperationsInput | number | null
+    id_prov?: NullableIntFieldUpdateOperationsInput | number | null
+    created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type alamatCreateManyInput = {
+    id_alamat: string
+    id_user?: string | null
+    alamat?: string | null
+    catatan?: string | null
+    latitude?: Decimal | DecimalJsLike | number | string | null
+    longitude?: Decimal | DecimalJsLike | number | string | null
+    is_default?: boolean | null
+    id_tipe?: bigint | number | null
+    id_kel?: bigint | number | null
+    id_kec?: bigint | number | null
+    id_kota?: number | null
+    id_prov?: number | null
+    created_at?: Date | string | null
+    updated_at?: Date | string | null
+  }
+
+  export type alamatUpdateManyMutationInput = {
+    id_alamat?: StringFieldUpdateOperationsInput | string
+    alamat?: NullableStringFieldUpdateOperationsInput | string | null
+    catatan?: NullableStringFieldUpdateOperationsInput | string | null
+    latitude?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    longitude?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    is_default?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type alamatUncheckedUpdateManyInput = {
+    id_alamat?: StringFieldUpdateOperationsInput | string
+    id_user?: NullableStringFieldUpdateOperationsInput | string | null
+    alamat?: NullableStringFieldUpdateOperationsInput | string | null
+    catatan?: NullableStringFieldUpdateOperationsInput | string | null
+    latitude?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    longitude?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    is_default?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    id_tipe?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+    id_kel?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+    id_kec?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+    id_kota?: NullableIntFieldUpdateOperationsInput | number | null
+    id_prov?: NullableIntFieldUpdateOperationsInput | number | null
+    created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type kecamatanCreateInput = {
+    id_kec?: bigint | number
+    kecamatan?: string | null
+    created_at?: Date | string | null
+    updated_at?: Date | string | null
+    alamat?: alamatCreateNestedManyWithoutKecamatanInput
+    cities?: citiesCreateNestedOneWithoutKecamatanInput
+    kelurahan?: kelurahanCreateNestedManyWithoutKecamatanInput
+  }
+
+  export type kecamatanUncheckedCreateInput = {
+    id_kec?: bigint | number
+    kecamatan?: string | null
+    id_kota?: number | null
+    created_at?: Date | string | null
+    updated_at?: Date | string | null
+    alamat?: alamatUncheckedCreateNestedManyWithoutKecamatanInput
+    kelurahan?: kelurahanUncheckedCreateNestedManyWithoutKecamatanInput
+  }
+
+  export type kecamatanUpdateInput = {
+    id_kec?: BigIntFieldUpdateOperationsInput | bigint | number
+    kecamatan?: NullableStringFieldUpdateOperationsInput | string | null
+    created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    alamat?: alamatUpdateManyWithoutKecamatanNestedInput
+    cities?: citiesUpdateOneWithoutKecamatanNestedInput
+    kelurahan?: kelurahanUpdateManyWithoutKecamatanNestedInput
+  }
+
+  export type kecamatanUncheckedUpdateInput = {
+    id_kec?: BigIntFieldUpdateOperationsInput | bigint | number
+    kecamatan?: NullableStringFieldUpdateOperationsInput | string | null
+    id_kota?: NullableIntFieldUpdateOperationsInput | number | null
+    created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    alamat?: alamatUncheckedUpdateManyWithoutKecamatanNestedInput
+    kelurahan?: kelurahanUncheckedUpdateManyWithoutKecamatanNestedInput
+  }
+
+  export type kecamatanCreateManyInput = {
+    id_kec?: bigint | number
+    kecamatan?: string | null
+    id_kota?: number | null
+    created_at?: Date | string | null
+    updated_at?: Date | string | null
+  }
+
+  export type kecamatanUpdateManyMutationInput = {
+    id_kec?: BigIntFieldUpdateOperationsInput | bigint | number
+    kecamatan?: NullableStringFieldUpdateOperationsInput | string | null
+    created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type kecamatanUncheckedUpdateManyInput = {
+    id_kec?: BigIntFieldUpdateOperationsInput | bigint | number
+    kecamatan?: NullableStringFieldUpdateOperationsInput | string | null
+    id_kota?: NullableIntFieldUpdateOperationsInput | number | null
+    created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type kelurahanCreateInput = {
+    id_kel?: bigint | number
+    kelurahan?: string | null
+    created_at?: Date | string | null
+    updated_at?: Date | string | null
+    alamat?: alamatCreateNestedManyWithoutKelurahanInput
+    kecamatan?: kecamatanCreateNestedOneWithoutKelurahanInput
+  }
+
+  export type kelurahanUncheckedCreateInput = {
+    id_kel?: bigint | number
+    kelurahan?: string | null
+    id_kec?: bigint | number | null
+    created_at?: Date | string | null
+    updated_at?: Date | string | null
+    alamat?: alamatUncheckedCreateNestedManyWithoutKelurahanInput
+  }
+
+  export type kelurahanUpdateInput = {
+    id_kel?: BigIntFieldUpdateOperationsInput | bigint | number
+    kelurahan?: NullableStringFieldUpdateOperationsInput | string | null
+    created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    alamat?: alamatUpdateManyWithoutKelurahanNestedInput
+    kecamatan?: kecamatanUpdateOneWithoutKelurahanNestedInput
+  }
+
+  export type kelurahanUncheckedUpdateInput = {
+    id_kel?: BigIntFieldUpdateOperationsInput | bigint | number
+    kelurahan?: NullableStringFieldUpdateOperationsInput | string | null
+    id_kec?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+    created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    alamat?: alamatUncheckedUpdateManyWithoutKelurahanNestedInput
+  }
+
+  export type kelurahanCreateManyInput = {
+    id_kel?: bigint | number
+    kelurahan?: string | null
+    id_kec?: bigint | number | null
+    created_at?: Date | string | null
+    updated_at?: Date | string | null
+  }
+
+  export type kelurahanUpdateManyMutationInput = {
+    id_kel?: BigIntFieldUpdateOperationsInput | bigint | number
+    kelurahan?: NullableStringFieldUpdateOperationsInput | string | null
+    created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type kelurahanUncheckedUpdateManyInput = {
+    id_kel?: BigIntFieldUpdateOperationsInput | bigint | number
+    kelurahan?: NullableStringFieldUpdateOperationsInput | string | null
+    id_kec?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+    created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type tipe_alamatCreateInput = {
+    id_tipe?: bigint | number
+    tipe_alamat?: string | null
+    created_at?: Date | string | null
+    updated_at?: Date | string | null
+    alamat?: alamatCreateNestedManyWithoutTipe_alamatInput
+  }
+
+  export type tipe_alamatUncheckedCreateInput = {
+    id_tipe?: bigint | number
+    tipe_alamat?: string | null
+    created_at?: Date | string | null
+    updated_at?: Date | string | null
+    alamat?: alamatUncheckedCreateNestedManyWithoutTipe_alamatInput
+  }
+
+  export type tipe_alamatUpdateInput = {
+    id_tipe?: BigIntFieldUpdateOperationsInput | bigint | number
+    tipe_alamat?: NullableStringFieldUpdateOperationsInput | string | null
+    created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    alamat?: alamatUpdateManyWithoutTipe_alamatNestedInput
+  }
+
+  export type tipe_alamatUncheckedUpdateInput = {
+    id_tipe?: BigIntFieldUpdateOperationsInput | bigint | number
+    tipe_alamat?: NullableStringFieldUpdateOperationsInput | string | null
+    created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    alamat?: alamatUncheckedUpdateManyWithoutTipe_alamatNestedInput
+  }
+
+  export type tipe_alamatCreateManyInput = {
+    id_tipe?: bigint | number
+    tipe_alamat?: string | null
+    created_at?: Date | string | null
+    updated_at?: Date | string | null
+  }
+
+  export type tipe_alamatUpdateManyMutationInput = {
+    id_tipe?: BigIntFieldUpdateOperationsInput | bigint | number
+    tipe_alamat?: NullableStringFieldUpdateOperationsInput | string | null
+    created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type tipe_alamatUncheckedUpdateManyInput = {
+    id_tipe?: BigIntFieldUpdateOperationsInput | bigint | number
+    tipe_alamat?: NullableStringFieldUpdateOperationsInput | string | null
+    created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type IntFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntFilter<$PrismaModel> | number
+  }
+
   export type StringFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel>
     in?: string[] | ListStringFieldRefInput<$PrismaModel>
@@ -13183,28 +16423,6 @@ export namespace Prisma {
     not?: NestedStringFilter<$PrismaModel> | string
   }
 
-  export type DecimalFilter<$PrismaModel = never> = {
-    equals?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    in?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel>
-    notIn?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel>
-    lt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    lte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    gt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    gte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    not?: NestedDecimalFilter<$PrismaModel> | Decimal | DecimalJsLike | number | string
-  }
-
-  export type IntNullableFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel> | null
-    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntNullableFilter<$PrismaModel> | number | null
-  }
-
   export type DateTimeNullableFilter<$PrismaModel = never> = {
     equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
     in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
@@ -13216,157 +16434,10 @@ export namespace Prisma {
     not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
   }
 
-  export type CitiesNullableScalarRelationFilter = {
-    is?: citiesWhereInput | null
-    isNot?: citiesWhereInput | null
-  }
-
-  export type ProvincesNullableScalarRelationFilter = {
-    is?: provincesWhereInput | null
-    isNot?: provincesWhereInput | null
-  }
-
-  export type User_addressListRelationFilter = {
-    every?: user_addressWhereInput
-    some?: user_addressWhereInput
-    none?: user_addressWhereInput
-  }
-
-  export type SortOrderInput = {
-    sort: SortOrder
-    nulls?: NullsOrder
-  }
-
-  export type user_addressOrderByRelationAggregateInput = {
-    _count?: SortOrder
-  }
-
-  export type addressesCountOrderByAggregateInput = {
-    id_alamat?: SortOrder
-    alamat?: SortOrder
-    latitude?: SortOrder
-    longitude?: SortOrder
-    id_kota?: SortOrder
-    id_prov?: SortOrder
-    created_at?: SortOrder
-    updated_at?: SortOrder
-  }
-
-  export type addressesAvgOrderByAggregateInput = {
-    latitude?: SortOrder
-    longitude?: SortOrder
-    id_kota?: SortOrder
-    id_prov?: SortOrder
-  }
-
-  export type addressesMaxOrderByAggregateInput = {
-    id_alamat?: SortOrder
-    alamat?: SortOrder
-    latitude?: SortOrder
-    longitude?: SortOrder
-    id_kota?: SortOrder
-    id_prov?: SortOrder
-    created_at?: SortOrder
-    updated_at?: SortOrder
-  }
-
-  export type addressesMinOrderByAggregateInput = {
-    id_alamat?: SortOrder
-    alamat?: SortOrder
-    latitude?: SortOrder
-    longitude?: SortOrder
-    id_kota?: SortOrder
-    id_prov?: SortOrder
-    created_at?: SortOrder
-    updated_at?: SortOrder
-  }
-
-  export type addressesSumOrderByAggregateInput = {
-    latitude?: SortOrder
-    longitude?: SortOrder
-    id_kota?: SortOrder
-    id_prov?: SortOrder
-  }
-
-  export type StringWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: string | StringFieldRefInput<$PrismaModel>
-    in?: string[] | ListStringFieldRefInput<$PrismaModel>
-    notIn?: string[] | ListStringFieldRefInput<$PrismaModel>
-    lt?: string | StringFieldRefInput<$PrismaModel>
-    lte?: string | StringFieldRefInput<$PrismaModel>
-    gt?: string | StringFieldRefInput<$PrismaModel>
-    gte?: string | StringFieldRefInput<$PrismaModel>
-    contains?: string | StringFieldRefInput<$PrismaModel>
-    startsWith?: string | StringFieldRefInput<$PrismaModel>
-    endsWith?: string | StringFieldRefInput<$PrismaModel>
-    mode?: QueryMode
-    not?: NestedStringWithAggregatesFilter<$PrismaModel> | string
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedStringFilter<$PrismaModel>
-    _max?: NestedStringFilter<$PrismaModel>
-  }
-
-  export type DecimalWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    in?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel>
-    notIn?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel>
-    lt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    lte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    gt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    gte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    not?: NestedDecimalWithAggregatesFilter<$PrismaModel> | Decimal | DecimalJsLike | number | string
-    _count?: NestedIntFilter<$PrismaModel>
-    _avg?: NestedDecimalFilter<$PrismaModel>
-    _sum?: NestedDecimalFilter<$PrismaModel>
-    _min?: NestedDecimalFilter<$PrismaModel>
-    _max?: NestedDecimalFilter<$PrismaModel>
-  }
-
-  export type IntNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel> | null
-    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntNullableWithAggregatesFilter<$PrismaModel> | number | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _avg?: NestedFloatNullableFilter<$PrismaModel>
-    _sum?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedIntNullableFilter<$PrismaModel>
-    _max?: NestedIntNullableFilter<$PrismaModel>
-  }
-
-  export type DateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
-    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
-    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
-    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeNullableWithAggregatesFilter<$PrismaModel> | Date | string | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedDateTimeNullableFilter<$PrismaModel>
-    _max?: NestedDateTimeNullableFilter<$PrismaModel>
-  }
-
-  export type IntFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel>
-    in?: number[] | ListIntFieldRefInput<$PrismaModel>
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntFilter<$PrismaModel> | number
-  }
-
-  export type AddressesListRelationFilter = {
-    every?: addressesWhereInput
-    some?: addressesWhereInput
-    none?: addressesWhereInput
+  export type AlamatListRelationFilter = {
+    every?: alamatWhereInput
+    some?: alamatWhereInput
+    none?: alamatWhereInput
   }
 
   export type ProvincesScalarRelationFilter = {
@@ -13374,7 +16445,22 @@ export namespace Prisma {
     isNot?: provincesWhereInput
   }
 
-  export type addressesOrderByRelationAggregateInput = {
+  export type KecamatanListRelationFilter = {
+    every?: kecamatanWhereInput
+    some?: kecamatanWhereInput
+    none?: kecamatanWhereInput
+  }
+
+  export type SortOrderInput = {
+    sort: SortOrder
+    nulls?: NullsOrder
+  }
+
+  export type alamatOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type kecamatanOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -13426,6 +16512,38 @@ export namespace Prisma {
     _sum?: NestedIntFilter<$PrismaModel>
     _min?: NestedIntFilter<$PrismaModel>
     _max?: NestedIntFilter<$PrismaModel>
+  }
+
+  export type StringWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel>
+    in?: string[] | ListStringFieldRefInput<$PrismaModel>
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel>
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    mode?: QueryMode
+    not?: NestedStringWithAggregatesFilter<$PrismaModel> | string
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedStringFilter<$PrismaModel>
+    _max?: NestedStringFilter<$PrismaModel>
+  }
+
+  export type DateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableWithAggregatesFilter<$PrismaModel> | Date | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedDateTimeNullableFilter<$PrismaModel>
+    _max?: NestedDateTimeNullableFilter<$PrismaModel>
   }
 
   export type BigIntFilter<$PrismaModel = never> = {
@@ -13581,29 +16699,29 @@ export namespace Prisma {
     id_prov?: SortOrder
   }
 
-  export type AddressesScalarRelationFilter = {
-    is?: addressesWhereInput
-    isNot?: addressesWhereInput
+  export type Enumgender_enumFilter<$PrismaModel = never> = {
+    equals?: $Enums.gender_enum | Enumgender_enumFieldRefInput<$PrismaModel>
+    in?: $Enums.gender_enum[] | ListEnumgender_enumFieldRefInput<$PrismaModel>
+    notIn?: $Enums.gender_enum[] | ListEnumgender_enumFieldRefInput<$PrismaModel>
+    not?: NestedEnumgender_enumFilter<$PrismaModel> | $Enums.gender_enum
   }
 
-  export type user_addressId_userId_alamatCompoundUniqueInput = {
-    id_user: string
-    id_alamat: string
+  export type DateTimeFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeFilter<$PrismaModel> | Date | string
   }
 
-  export type user_addressCountOrderByAggregateInput = {
-    id_user?: SortOrder
-    id_alamat?: SortOrder
-  }
-
-  export type user_addressMaxOrderByAggregateInput = {
-    id_user?: SortOrder
-    id_alamat?: SortOrder
-  }
-
-  export type user_addressMinOrderByAggregateInput = {
-    id_user?: SortOrder
-    id_alamat?: SortOrder
+  export type BytesNullableFilter<$PrismaModel = never> = {
+    equals?: Uint8Array | BytesFieldRefInput<$PrismaModel> | null
+    in?: Uint8Array[] | ListBytesFieldRefInput<$PrismaModel> | null
+    notIn?: Uint8Array[] | ListBytesFieldRefInput<$PrismaModel> | null
+    not?: NestedBytesNullableFilter<$PrismaModel> | Uint8Array | null
   }
 
   export type StringNullableFilter<$PrismaModel = never> = {
@@ -13621,25 +16739,11 @@ export namespace Prisma {
     not?: NestedStringNullableFilter<$PrismaModel> | string | null
   }
 
-  export type Enumgender_enumNullableFilter<$PrismaModel = never> = {
-    equals?: $Enums.gender_enum | Enumgender_enumFieldRefInput<$PrismaModel> | null
-    in?: $Enums.gender_enum[] | ListEnumgender_enumFieldRefInput<$PrismaModel> | null
-    notIn?: $Enums.gender_enum[] | ListEnumgender_enumFieldRefInput<$PrismaModel> | null
-    not?: NestedEnumgender_enumNullableFilter<$PrismaModel> | $Enums.gender_enum | null
-  }
-
-  export type BytesNullableFilter<$PrismaModel = never> = {
-    equals?: Uint8Array | BytesFieldRefInput<$PrismaModel> | null
-    in?: Uint8Array[] | ListBytesFieldRefInput<$PrismaModel> | null
-    notIn?: Uint8Array[] | ListBytesFieldRefInput<$PrismaModel> | null
-    not?: NestedBytesNullableFilter<$PrismaModel> | Uint8Array | null
-  }
-
-  export type Enumstatus_user_enumNullableFilter<$PrismaModel = never> = {
-    equals?: $Enums.status_user_enum | Enumstatus_user_enumFieldRefInput<$PrismaModel> | null
-    in?: $Enums.status_user_enum[] | ListEnumstatus_user_enumFieldRefInput<$PrismaModel> | null
-    notIn?: $Enums.status_user_enum[] | ListEnumstatus_user_enumFieldRefInput<$PrismaModel> | null
-    not?: NestedEnumstatus_user_enumNullableFilter<$PrismaModel> | $Enums.status_user_enum | null
+  export type Enumstatus_user_enumFilter<$PrismaModel = never> = {
+    equals?: $Enums.status_user_enum | Enumstatus_user_enumFieldRefInput<$PrismaModel>
+    in?: $Enums.status_user_enum[] | ListEnumstatus_user_enumFieldRefInput<$PrismaModel>
+    notIn?: $Enums.status_user_enum[] | ListEnumstatus_user_enumFieldRefInput<$PrismaModel>
+    not?: NestedEnumstatus_user_enumFilter<$PrismaModel> | $Enums.status_user_enum
   }
 
   export type usersCountOrderByAggregateInput = {
@@ -13687,6 +16791,40 @@ export namespace Prisma {
     updated_at?: SortOrder
   }
 
+  export type Enumgender_enumWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.gender_enum | Enumgender_enumFieldRefInput<$PrismaModel>
+    in?: $Enums.gender_enum[] | ListEnumgender_enumFieldRefInput<$PrismaModel>
+    notIn?: $Enums.gender_enum[] | ListEnumgender_enumFieldRefInput<$PrismaModel>
+    not?: NestedEnumgender_enumWithAggregatesFilter<$PrismaModel> | $Enums.gender_enum
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumgender_enumFilter<$PrismaModel>
+    _max?: NestedEnumgender_enumFilter<$PrismaModel>
+  }
+
+  export type DateTimeWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeWithAggregatesFilter<$PrismaModel> | Date | string
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedDateTimeFilter<$PrismaModel>
+    _max?: NestedDateTimeFilter<$PrismaModel>
+  }
+
+  export type BytesNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Uint8Array | BytesFieldRefInput<$PrismaModel> | null
+    in?: Uint8Array[] | ListBytesFieldRefInput<$PrismaModel> | null
+    notIn?: Uint8Array[] | ListBytesFieldRefInput<$PrismaModel> | null
+    not?: NestedBytesNullableWithAggregatesFilter<$PrismaModel> | Uint8Array | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedBytesNullableFilter<$PrismaModel>
+    _max?: NestedBytesNullableFilter<$PrismaModel>
+  }
+
   export type StringNullableWithAggregatesFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel> | null
     in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
@@ -13705,34 +16843,14 @@ export namespace Prisma {
     _max?: NestedStringNullableFilter<$PrismaModel>
   }
 
-  export type Enumgender_enumNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: $Enums.gender_enum | Enumgender_enumFieldRefInput<$PrismaModel> | null
-    in?: $Enums.gender_enum[] | ListEnumgender_enumFieldRefInput<$PrismaModel> | null
-    notIn?: $Enums.gender_enum[] | ListEnumgender_enumFieldRefInput<$PrismaModel> | null
-    not?: NestedEnumgender_enumNullableWithAggregatesFilter<$PrismaModel> | $Enums.gender_enum | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedEnumgender_enumNullableFilter<$PrismaModel>
-    _max?: NestedEnumgender_enumNullableFilter<$PrismaModel>
-  }
-
-  export type BytesNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: Uint8Array | BytesFieldRefInput<$PrismaModel> | null
-    in?: Uint8Array[] | ListBytesFieldRefInput<$PrismaModel> | null
-    notIn?: Uint8Array[] | ListBytesFieldRefInput<$PrismaModel> | null
-    not?: NestedBytesNullableWithAggregatesFilter<$PrismaModel> | Uint8Array | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedBytesNullableFilter<$PrismaModel>
-    _max?: NestedBytesNullableFilter<$PrismaModel>
-  }
-
-  export type Enumstatus_user_enumNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: $Enums.status_user_enum | Enumstatus_user_enumFieldRefInput<$PrismaModel> | null
-    in?: $Enums.status_user_enum[] | ListEnumstatus_user_enumFieldRefInput<$PrismaModel> | null
-    notIn?: $Enums.status_user_enum[] | ListEnumstatus_user_enumFieldRefInput<$PrismaModel> | null
-    not?: NestedEnumstatus_user_enumNullableWithAggregatesFilter<$PrismaModel> | $Enums.status_user_enum | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedEnumstatus_user_enumNullableFilter<$PrismaModel>
-    _max?: NestedEnumstatus_user_enumNullableFilter<$PrismaModel>
+  export type Enumstatus_user_enumWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.status_user_enum | Enumstatus_user_enumFieldRefInput<$PrismaModel>
+    in?: $Enums.status_user_enum[] | ListEnumstatus_user_enumFieldRefInput<$PrismaModel>
+    notIn?: $Enums.status_user_enum[] | ListEnumstatus_user_enumFieldRefInput<$PrismaModel>
+    not?: NestedEnumstatus_user_enumWithAggregatesFilter<$PrismaModel> | $Enums.status_user_enum
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumstatus_user_enumFilter<$PrismaModel>
+    _max?: NestedEnumstatus_user_enumFilter<$PrismaModel>
   }
 
   export type profession_categoryCountOrderByAggregateInput = {
@@ -13799,109 +16917,340 @@ export namespace Prisma {
     id_prof_cat?: SortOrder
   }
 
-  export type citiesCreateNestedOneWithoutAddressesInput = {
-    create?: XOR<citiesCreateWithoutAddressesInput, citiesUncheckedCreateWithoutAddressesInput>
-    connectOrCreate?: citiesCreateOrConnectWithoutAddressesInput
-    connect?: citiesWhereUniqueInput
+  export type UuidFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel>
+    in?: string[] | ListStringFieldRefInput<$PrismaModel>
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel>
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    mode?: QueryMode
+    not?: NestedUuidFilter<$PrismaModel> | string
   }
 
-  export type provincesCreateNestedOneWithoutAddressesInput = {
-    create?: XOR<provincesCreateWithoutAddressesInput, provincesUncheckedCreateWithoutAddressesInput>
-    connectOrCreate?: provincesCreateOrConnectWithoutAddressesInput
-    connect?: provincesWhereUniqueInput
+  export type DecimalNullableFilter<$PrismaModel = never> = {
+    equals?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel> | null
+    in?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel> | null
+    notIn?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel> | null
+    lt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    lte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    gt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    gte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    not?: NestedDecimalNullableFilter<$PrismaModel> | Decimal | DecimalJsLike | number | string | null
   }
 
-  export type user_addressCreateNestedManyWithoutAddressesInput = {
-    create?: XOR<user_addressCreateWithoutAddressesInput, user_addressUncheckedCreateWithoutAddressesInput> | user_addressCreateWithoutAddressesInput[] | user_addressUncheckedCreateWithoutAddressesInput[]
-    connectOrCreate?: user_addressCreateOrConnectWithoutAddressesInput | user_addressCreateOrConnectWithoutAddressesInput[]
-    createMany?: user_addressCreateManyAddressesInputEnvelope
-    connect?: user_addressWhereUniqueInput | user_addressWhereUniqueInput[]
+  export type BoolNullableFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel> | null
+    not?: NestedBoolNullableFilter<$PrismaModel> | boolean | null
   }
 
-  export type user_addressUncheckedCreateNestedManyWithoutAddressesInput = {
-    create?: XOR<user_addressCreateWithoutAddressesInput, user_addressUncheckedCreateWithoutAddressesInput> | user_addressCreateWithoutAddressesInput[] | user_addressUncheckedCreateWithoutAddressesInput[]
-    connectOrCreate?: user_addressCreateOrConnectWithoutAddressesInput | user_addressCreateOrConnectWithoutAddressesInput[]
-    createMany?: user_addressCreateManyAddressesInputEnvelope
-    connect?: user_addressWhereUniqueInput | user_addressWhereUniqueInput[]
+  export type BigIntNullableFilter<$PrismaModel = never> = {
+    equals?: bigint | number | BigIntFieldRefInput<$PrismaModel> | null
+    in?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel> | null
+    notIn?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel> | null
+    lt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    lte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    gt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    gte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    not?: NestedBigIntNullableFilter<$PrismaModel> | bigint | number | null
   }
 
-  export type StringFieldUpdateOperationsInput = {
-    set?: string
+  export type IntNullableFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableFilter<$PrismaModel> | number | null
   }
 
-  export type DecimalFieldUpdateOperationsInput = {
-    set?: Decimal | DecimalJsLike | number | string
-    increment?: Decimal | DecimalJsLike | number | string
-    decrement?: Decimal | DecimalJsLike | number | string
-    multiply?: Decimal | DecimalJsLike | number | string
-    divide?: Decimal | DecimalJsLike | number | string
+  export type KecamatanNullableScalarRelationFilter = {
+    is?: kecamatanWhereInput | null
+    isNot?: kecamatanWhereInput | null
   }
 
-  export type NullableDateTimeFieldUpdateOperationsInput = {
-    set?: Date | string | null
+  export type KelurahanNullableScalarRelationFilter = {
+    is?: kelurahanWhereInput | null
+    isNot?: kelurahanWhereInput | null
   }
 
-  export type citiesUpdateOneWithoutAddressesNestedInput = {
-    create?: XOR<citiesCreateWithoutAddressesInput, citiesUncheckedCreateWithoutAddressesInput>
-    connectOrCreate?: citiesCreateOrConnectWithoutAddressesInput
-    upsert?: citiesUpsertWithoutAddressesInput
-    disconnect?: citiesWhereInput | boolean
-    delete?: citiesWhereInput | boolean
-    connect?: citiesWhereUniqueInput
-    update?: XOR<XOR<citiesUpdateToOneWithWhereWithoutAddressesInput, citiesUpdateWithoutAddressesInput>, citiesUncheckedUpdateWithoutAddressesInput>
+  export type CitiesNullableScalarRelationFilter = {
+    is?: citiesWhereInput | null
+    isNot?: citiesWhereInput | null
   }
 
-  export type provincesUpdateOneWithoutAddressesNestedInput = {
-    create?: XOR<provincesCreateWithoutAddressesInput, provincesUncheckedCreateWithoutAddressesInput>
-    connectOrCreate?: provincesCreateOrConnectWithoutAddressesInput
-    upsert?: provincesUpsertWithoutAddressesInput
-    disconnect?: provincesWhereInput | boolean
-    delete?: provincesWhereInput | boolean
-    connect?: provincesWhereUniqueInput
-    update?: XOR<XOR<provincesUpdateToOneWithWhereWithoutAddressesInput, provincesUpdateWithoutAddressesInput>, provincesUncheckedUpdateWithoutAddressesInput>
+  export type ProvincesNullableScalarRelationFilter = {
+    is?: provincesWhereInput | null
+    isNot?: provincesWhereInput | null
   }
 
-  export type user_addressUpdateManyWithoutAddressesNestedInput = {
-    create?: XOR<user_addressCreateWithoutAddressesInput, user_addressUncheckedCreateWithoutAddressesInput> | user_addressCreateWithoutAddressesInput[] | user_addressUncheckedCreateWithoutAddressesInput[]
-    connectOrCreate?: user_addressCreateOrConnectWithoutAddressesInput | user_addressCreateOrConnectWithoutAddressesInput[]
-    upsert?: user_addressUpsertWithWhereUniqueWithoutAddressesInput | user_addressUpsertWithWhereUniqueWithoutAddressesInput[]
-    createMany?: user_addressCreateManyAddressesInputEnvelope
-    set?: user_addressWhereUniqueInput | user_addressWhereUniqueInput[]
-    disconnect?: user_addressWhereUniqueInput | user_addressWhereUniqueInput[]
-    delete?: user_addressWhereUniqueInput | user_addressWhereUniqueInput[]
-    connect?: user_addressWhereUniqueInput | user_addressWhereUniqueInput[]
-    update?: user_addressUpdateWithWhereUniqueWithoutAddressesInput | user_addressUpdateWithWhereUniqueWithoutAddressesInput[]
-    updateMany?: user_addressUpdateManyWithWhereWithoutAddressesInput | user_addressUpdateManyWithWhereWithoutAddressesInput[]
-    deleteMany?: user_addressScalarWhereInput | user_addressScalarWhereInput[]
+  export type Tipe_alamatNullableScalarRelationFilter = {
+    is?: tipe_alamatWhereInput | null
+    isNot?: tipe_alamatWhereInput | null
   }
 
-  export type NullableIntFieldUpdateOperationsInput = {
-    set?: number | null
-    increment?: number
-    decrement?: number
-    multiply?: number
-    divide?: number
+  export type UsersNullableScalarRelationFilter = {
+    is?: usersWhereInput | null
+    isNot?: usersWhereInput | null
   }
 
-  export type user_addressUncheckedUpdateManyWithoutAddressesNestedInput = {
-    create?: XOR<user_addressCreateWithoutAddressesInput, user_addressUncheckedCreateWithoutAddressesInput> | user_addressCreateWithoutAddressesInput[] | user_addressUncheckedCreateWithoutAddressesInput[]
-    connectOrCreate?: user_addressCreateOrConnectWithoutAddressesInput | user_addressCreateOrConnectWithoutAddressesInput[]
-    upsert?: user_addressUpsertWithWhereUniqueWithoutAddressesInput | user_addressUpsertWithWhereUniqueWithoutAddressesInput[]
-    createMany?: user_addressCreateManyAddressesInputEnvelope
-    set?: user_addressWhereUniqueInput | user_addressWhereUniqueInput[]
-    disconnect?: user_addressWhereUniqueInput | user_addressWhereUniqueInput[]
-    delete?: user_addressWhereUniqueInput | user_addressWhereUniqueInput[]
-    connect?: user_addressWhereUniqueInput | user_addressWhereUniqueInput[]
-    update?: user_addressUpdateWithWhereUniqueWithoutAddressesInput | user_addressUpdateWithWhereUniqueWithoutAddressesInput[]
-    updateMany?: user_addressUpdateManyWithWhereWithoutAddressesInput | user_addressUpdateManyWithWhereWithoutAddressesInput[]
-    deleteMany?: user_addressScalarWhereInput | user_addressScalarWhereInput[]
+  export type alamatCountOrderByAggregateInput = {
+    id_alamat?: SortOrder
+    id_user?: SortOrder
+    alamat?: SortOrder
+    catatan?: SortOrder
+    latitude?: SortOrder
+    longitude?: SortOrder
+    is_default?: SortOrder
+    id_tipe?: SortOrder
+    id_kel?: SortOrder
+    id_kec?: SortOrder
+    id_kota?: SortOrder
+    id_prov?: SortOrder
+    created_at?: SortOrder
+    updated_at?: SortOrder
   }
 
-  export type addressesCreateNestedManyWithoutCitiesInput = {
-    create?: XOR<addressesCreateWithoutCitiesInput, addressesUncheckedCreateWithoutCitiesInput> | addressesCreateWithoutCitiesInput[] | addressesUncheckedCreateWithoutCitiesInput[]
-    connectOrCreate?: addressesCreateOrConnectWithoutCitiesInput | addressesCreateOrConnectWithoutCitiesInput[]
-    createMany?: addressesCreateManyCitiesInputEnvelope
-    connect?: addressesWhereUniqueInput | addressesWhereUniqueInput[]
+  export type alamatAvgOrderByAggregateInput = {
+    latitude?: SortOrder
+    longitude?: SortOrder
+    id_tipe?: SortOrder
+    id_kel?: SortOrder
+    id_kec?: SortOrder
+    id_kota?: SortOrder
+    id_prov?: SortOrder
+  }
+
+  export type alamatMaxOrderByAggregateInput = {
+    id_alamat?: SortOrder
+    id_user?: SortOrder
+    alamat?: SortOrder
+    catatan?: SortOrder
+    latitude?: SortOrder
+    longitude?: SortOrder
+    is_default?: SortOrder
+    id_tipe?: SortOrder
+    id_kel?: SortOrder
+    id_kec?: SortOrder
+    id_kota?: SortOrder
+    id_prov?: SortOrder
+    created_at?: SortOrder
+    updated_at?: SortOrder
+  }
+
+  export type alamatMinOrderByAggregateInput = {
+    id_alamat?: SortOrder
+    id_user?: SortOrder
+    alamat?: SortOrder
+    catatan?: SortOrder
+    latitude?: SortOrder
+    longitude?: SortOrder
+    is_default?: SortOrder
+    id_tipe?: SortOrder
+    id_kel?: SortOrder
+    id_kec?: SortOrder
+    id_kota?: SortOrder
+    id_prov?: SortOrder
+    created_at?: SortOrder
+    updated_at?: SortOrder
+  }
+
+  export type alamatSumOrderByAggregateInput = {
+    latitude?: SortOrder
+    longitude?: SortOrder
+    id_tipe?: SortOrder
+    id_kel?: SortOrder
+    id_kec?: SortOrder
+    id_kota?: SortOrder
+    id_prov?: SortOrder
+  }
+
+  export type UuidWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel>
+    in?: string[] | ListStringFieldRefInput<$PrismaModel>
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel>
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    mode?: QueryMode
+    not?: NestedUuidWithAggregatesFilter<$PrismaModel> | string
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedStringFilter<$PrismaModel>
+    _max?: NestedStringFilter<$PrismaModel>
+  }
+
+  export type DecimalNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel> | null
+    in?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel> | null
+    notIn?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel> | null
+    lt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    lte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    gt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    gte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    not?: NestedDecimalNullableWithAggregatesFilter<$PrismaModel> | Decimal | DecimalJsLike | number | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedDecimalNullableFilter<$PrismaModel>
+    _sum?: NestedDecimalNullableFilter<$PrismaModel>
+    _min?: NestedDecimalNullableFilter<$PrismaModel>
+    _max?: NestedDecimalNullableFilter<$PrismaModel>
+  }
+
+  export type BoolNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel> | null
+    not?: NestedBoolNullableWithAggregatesFilter<$PrismaModel> | boolean | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedBoolNullableFilter<$PrismaModel>
+    _max?: NestedBoolNullableFilter<$PrismaModel>
+  }
+
+  export type BigIntNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: bigint | number | BigIntFieldRefInput<$PrismaModel> | null
+    in?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel> | null
+    notIn?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel> | null
+    lt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    lte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    gt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    gte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    not?: NestedBigIntNullableWithAggregatesFilter<$PrismaModel> | bigint | number | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedFloatNullableFilter<$PrismaModel>
+    _sum?: NestedBigIntNullableFilter<$PrismaModel>
+    _min?: NestedBigIntNullableFilter<$PrismaModel>
+    _max?: NestedBigIntNullableFilter<$PrismaModel>
+  }
+
+  export type IntNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableWithAggregatesFilter<$PrismaModel> | number | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedFloatNullableFilter<$PrismaModel>
+    _sum?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedIntNullableFilter<$PrismaModel>
+    _max?: NestedIntNullableFilter<$PrismaModel>
+  }
+
+  export type KelurahanListRelationFilter = {
+    every?: kelurahanWhereInput
+    some?: kelurahanWhereInput
+    none?: kelurahanWhereInput
+  }
+
+  export type kelurahanOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type kecamatanCountOrderByAggregateInput = {
+    id_kec?: SortOrder
+    kecamatan?: SortOrder
+    id_kota?: SortOrder
+    created_at?: SortOrder
+    updated_at?: SortOrder
+  }
+
+  export type kecamatanAvgOrderByAggregateInput = {
+    id_kec?: SortOrder
+    id_kota?: SortOrder
+  }
+
+  export type kecamatanMaxOrderByAggregateInput = {
+    id_kec?: SortOrder
+    kecamatan?: SortOrder
+    id_kota?: SortOrder
+    created_at?: SortOrder
+    updated_at?: SortOrder
+  }
+
+  export type kecamatanMinOrderByAggregateInput = {
+    id_kec?: SortOrder
+    kecamatan?: SortOrder
+    id_kota?: SortOrder
+    created_at?: SortOrder
+    updated_at?: SortOrder
+  }
+
+  export type kecamatanSumOrderByAggregateInput = {
+    id_kec?: SortOrder
+    id_kota?: SortOrder
+  }
+
+  export type kelurahanCountOrderByAggregateInput = {
+    id_kel?: SortOrder
+    kelurahan?: SortOrder
+    id_kec?: SortOrder
+    created_at?: SortOrder
+    updated_at?: SortOrder
+  }
+
+  export type kelurahanAvgOrderByAggregateInput = {
+    id_kel?: SortOrder
+    id_kec?: SortOrder
+  }
+
+  export type kelurahanMaxOrderByAggregateInput = {
+    id_kel?: SortOrder
+    kelurahan?: SortOrder
+    id_kec?: SortOrder
+    created_at?: SortOrder
+    updated_at?: SortOrder
+  }
+
+  export type kelurahanMinOrderByAggregateInput = {
+    id_kel?: SortOrder
+    kelurahan?: SortOrder
+    id_kec?: SortOrder
+    created_at?: SortOrder
+    updated_at?: SortOrder
+  }
+
+  export type kelurahanSumOrderByAggregateInput = {
+    id_kel?: SortOrder
+    id_kec?: SortOrder
+  }
+
+  export type tipe_alamatCountOrderByAggregateInput = {
+    id_tipe?: SortOrder
+    tipe_alamat?: SortOrder
+    created_at?: SortOrder
+    updated_at?: SortOrder
+  }
+
+  export type tipe_alamatAvgOrderByAggregateInput = {
+    id_tipe?: SortOrder
+  }
+
+  export type tipe_alamatMaxOrderByAggregateInput = {
+    id_tipe?: SortOrder
+    tipe_alamat?: SortOrder
+    created_at?: SortOrder
+    updated_at?: SortOrder
+  }
+
+  export type tipe_alamatMinOrderByAggregateInput = {
+    id_tipe?: SortOrder
+    tipe_alamat?: SortOrder
+    created_at?: SortOrder
+    updated_at?: SortOrder
+  }
+
+  export type tipe_alamatSumOrderByAggregateInput = {
+    id_tipe?: SortOrder
+  }
+
+  export type alamatCreateNestedManyWithoutCitiesInput = {
+    create?: XOR<alamatCreateWithoutCitiesInput, alamatUncheckedCreateWithoutCitiesInput> | alamatCreateWithoutCitiesInput[] | alamatUncheckedCreateWithoutCitiesInput[]
+    connectOrCreate?: alamatCreateOrConnectWithoutCitiesInput | alamatCreateOrConnectWithoutCitiesInput[]
+    createMany?: alamatCreateManyCitiesInputEnvelope
+    connect?: alamatWhereUniqueInput | alamatWhereUniqueInput[]
   }
 
   export type provincesCreateNestedOneWithoutCitiesInput = {
@@ -13910,25 +17259,47 @@ export namespace Prisma {
     connect?: provincesWhereUniqueInput
   }
 
-  export type addressesUncheckedCreateNestedManyWithoutCitiesInput = {
-    create?: XOR<addressesCreateWithoutCitiesInput, addressesUncheckedCreateWithoutCitiesInput> | addressesCreateWithoutCitiesInput[] | addressesUncheckedCreateWithoutCitiesInput[]
-    connectOrCreate?: addressesCreateOrConnectWithoutCitiesInput | addressesCreateOrConnectWithoutCitiesInput[]
-    createMany?: addressesCreateManyCitiesInputEnvelope
-    connect?: addressesWhereUniqueInput | addressesWhereUniqueInput[]
+  export type kecamatanCreateNestedManyWithoutCitiesInput = {
+    create?: XOR<kecamatanCreateWithoutCitiesInput, kecamatanUncheckedCreateWithoutCitiesInput> | kecamatanCreateWithoutCitiesInput[] | kecamatanUncheckedCreateWithoutCitiesInput[]
+    connectOrCreate?: kecamatanCreateOrConnectWithoutCitiesInput | kecamatanCreateOrConnectWithoutCitiesInput[]
+    createMany?: kecamatanCreateManyCitiesInputEnvelope
+    connect?: kecamatanWhereUniqueInput | kecamatanWhereUniqueInput[]
   }
 
-  export type addressesUpdateManyWithoutCitiesNestedInput = {
-    create?: XOR<addressesCreateWithoutCitiesInput, addressesUncheckedCreateWithoutCitiesInput> | addressesCreateWithoutCitiesInput[] | addressesUncheckedCreateWithoutCitiesInput[]
-    connectOrCreate?: addressesCreateOrConnectWithoutCitiesInput | addressesCreateOrConnectWithoutCitiesInput[]
-    upsert?: addressesUpsertWithWhereUniqueWithoutCitiesInput | addressesUpsertWithWhereUniqueWithoutCitiesInput[]
-    createMany?: addressesCreateManyCitiesInputEnvelope
-    set?: addressesWhereUniqueInput | addressesWhereUniqueInput[]
-    disconnect?: addressesWhereUniqueInput | addressesWhereUniqueInput[]
-    delete?: addressesWhereUniqueInput | addressesWhereUniqueInput[]
-    connect?: addressesWhereUniqueInput | addressesWhereUniqueInput[]
-    update?: addressesUpdateWithWhereUniqueWithoutCitiesInput | addressesUpdateWithWhereUniqueWithoutCitiesInput[]
-    updateMany?: addressesUpdateManyWithWhereWithoutCitiesInput | addressesUpdateManyWithWhereWithoutCitiesInput[]
-    deleteMany?: addressesScalarWhereInput | addressesScalarWhereInput[]
+  export type alamatUncheckedCreateNestedManyWithoutCitiesInput = {
+    create?: XOR<alamatCreateWithoutCitiesInput, alamatUncheckedCreateWithoutCitiesInput> | alamatCreateWithoutCitiesInput[] | alamatUncheckedCreateWithoutCitiesInput[]
+    connectOrCreate?: alamatCreateOrConnectWithoutCitiesInput | alamatCreateOrConnectWithoutCitiesInput[]
+    createMany?: alamatCreateManyCitiesInputEnvelope
+    connect?: alamatWhereUniqueInput | alamatWhereUniqueInput[]
+  }
+
+  export type kecamatanUncheckedCreateNestedManyWithoutCitiesInput = {
+    create?: XOR<kecamatanCreateWithoutCitiesInput, kecamatanUncheckedCreateWithoutCitiesInput> | kecamatanCreateWithoutCitiesInput[] | kecamatanUncheckedCreateWithoutCitiesInput[]
+    connectOrCreate?: kecamatanCreateOrConnectWithoutCitiesInput | kecamatanCreateOrConnectWithoutCitiesInput[]
+    createMany?: kecamatanCreateManyCitiesInputEnvelope
+    connect?: kecamatanWhereUniqueInput | kecamatanWhereUniqueInput[]
+  }
+
+  export type StringFieldUpdateOperationsInput = {
+    set?: string
+  }
+
+  export type NullableDateTimeFieldUpdateOperationsInput = {
+    set?: Date | string | null
+  }
+
+  export type alamatUpdateManyWithoutCitiesNestedInput = {
+    create?: XOR<alamatCreateWithoutCitiesInput, alamatUncheckedCreateWithoutCitiesInput> | alamatCreateWithoutCitiesInput[] | alamatUncheckedCreateWithoutCitiesInput[]
+    connectOrCreate?: alamatCreateOrConnectWithoutCitiesInput | alamatCreateOrConnectWithoutCitiesInput[]
+    upsert?: alamatUpsertWithWhereUniqueWithoutCitiesInput | alamatUpsertWithWhereUniqueWithoutCitiesInput[]
+    createMany?: alamatCreateManyCitiesInputEnvelope
+    set?: alamatWhereUniqueInput | alamatWhereUniqueInput[]
+    disconnect?: alamatWhereUniqueInput | alamatWhereUniqueInput[]
+    delete?: alamatWhereUniqueInput | alamatWhereUniqueInput[]
+    connect?: alamatWhereUniqueInput | alamatWhereUniqueInput[]
+    update?: alamatUpdateWithWhereUniqueWithoutCitiesInput | alamatUpdateWithWhereUniqueWithoutCitiesInput[]
+    updateMany?: alamatUpdateManyWithWhereWithoutCitiesInput | alamatUpdateManyWithWhereWithoutCitiesInput[]
+    deleteMany?: alamatScalarWhereInput | alamatScalarWhereInput[]
   }
 
   export type provincesUpdateOneRequiredWithoutCitiesNestedInput = {
@@ -13939,6 +17310,20 @@ export namespace Prisma {
     update?: XOR<XOR<provincesUpdateToOneWithWhereWithoutCitiesInput, provincesUpdateWithoutCitiesInput>, provincesUncheckedUpdateWithoutCitiesInput>
   }
 
+  export type kecamatanUpdateManyWithoutCitiesNestedInput = {
+    create?: XOR<kecamatanCreateWithoutCitiesInput, kecamatanUncheckedCreateWithoutCitiesInput> | kecamatanCreateWithoutCitiesInput[] | kecamatanUncheckedCreateWithoutCitiesInput[]
+    connectOrCreate?: kecamatanCreateOrConnectWithoutCitiesInput | kecamatanCreateOrConnectWithoutCitiesInput[]
+    upsert?: kecamatanUpsertWithWhereUniqueWithoutCitiesInput | kecamatanUpsertWithWhereUniqueWithoutCitiesInput[]
+    createMany?: kecamatanCreateManyCitiesInputEnvelope
+    set?: kecamatanWhereUniqueInput | kecamatanWhereUniqueInput[]
+    disconnect?: kecamatanWhereUniqueInput | kecamatanWhereUniqueInput[]
+    delete?: kecamatanWhereUniqueInput | kecamatanWhereUniqueInput[]
+    connect?: kecamatanWhereUniqueInput | kecamatanWhereUniqueInput[]
+    update?: kecamatanUpdateWithWhereUniqueWithoutCitiesInput | kecamatanUpdateWithWhereUniqueWithoutCitiesInput[]
+    updateMany?: kecamatanUpdateManyWithWhereWithoutCitiesInput | kecamatanUpdateManyWithWhereWithoutCitiesInput[]
+    deleteMany?: kecamatanScalarWhereInput | kecamatanScalarWhereInput[]
+  }
+
   export type IntFieldUpdateOperationsInput = {
     set?: number
     increment?: number
@@ -13947,18 +17332,32 @@ export namespace Prisma {
     divide?: number
   }
 
-  export type addressesUncheckedUpdateManyWithoutCitiesNestedInput = {
-    create?: XOR<addressesCreateWithoutCitiesInput, addressesUncheckedCreateWithoutCitiesInput> | addressesCreateWithoutCitiesInput[] | addressesUncheckedCreateWithoutCitiesInput[]
-    connectOrCreate?: addressesCreateOrConnectWithoutCitiesInput | addressesCreateOrConnectWithoutCitiesInput[]
-    upsert?: addressesUpsertWithWhereUniqueWithoutCitiesInput | addressesUpsertWithWhereUniqueWithoutCitiesInput[]
-    createMany?: addressesCreateManyCitiesInputEnvelope
-    set?: addressesWhereUniqueInput | addressesWhereUniqueInput[]
-    disconnect?: addressesWhereUniqueInput | addressesWhereUniqueInput[]
-    delete?: addressesWhereUniqueInput | addressesWhereUniqueInput[]
-    connect?: addressesWhereUniqueInput | addressesWhereUniqueInput[]
-    update?: addressesUpdateWithWhereUniqueWithoutCitiesInput | addressesUpdateWithWhereUniqueWithoutCitiesInput[]
-    updateMany?: addressesUpdateManyWithWhereWithoutCitiesInput | addressesUpdateManyWithWhereWithoutCitiesInput[]
-    deleteMany?: addressesScalarWhereInput | addressesScalarWhereInput[]
+  export type alamatUncheckedUpdateManyWithoutCitiesNestedInput = {
+    create?: XOR<alamatCreateWithoutCitiesInput, alamatUncheckedCreateWithoutCitiesInput> | alamatCreateWithoutCitiesInput[] | alamatUncheckedCreateWithoutCitiesInput[]
+    connectOrCreate?: alamatCreateOrConnectWithoutCitiesInput | alamatCreateOrConnectWithoutCitiesInput[]
+    upsert?: alamatUpsertWithWhereUniqueWithoutCitiesInput | alamatUpsertWithWhereUniqueWithoutCitiesInput[]
+    createMany?: alamatCreateManyCitiesInputEnvelope
+    set?: alamatWhereUniqueInput | alamatWhereUniqueInput[]
+    disconnect?: alamatWhereUniqueInput | alamatWhereUniqueInput[]
+    delete?: alamatWhereUniqueInput | alamatWhereUniqueInput[]
+    connect?: alamatWhereUniqueInput | alamatWhereUniqueInput[]
+    update?: alamatUpdateWithWhereUniqueWithoutCitiesInput | alamatUpdateWithWhereUniqueWithoutCitiesInput[]
+    updateMany?: alamatUpdateManyWithWhereWithoutCitiesInput | alamatUpdateManyWithWhereWithoutCitiesInput[]
+    deleteMany?: alamatScalarWhereInput | alamatScalarWhereInput[]
+  }
+
+  export type kecamatanUncheckedUpdateManyWithoutCitiesNestedInput = {
+    create?: XOR<kecamatanCreateWithoutCitiesInput, kecamatanUncheckedCreateWithoutCitiesInput> | kecamatanCreateWithoutCitiesInput[] | kecamatanUncheckedCreateWithoutCitiesInput[]
+    connectOrCreate?: kecamatanCreateOrConnectWithoutCitiesInput | kecamatanCreateOrConnectWithoutCitiesInput[]
+    upsert?: kecamatanUpsertWithWhereUniqueWithoutCitiesInput | kecamatanUpsertWithWhereUniqueWithoutCitiesInput[]
+    createMany?: kecamatanCreateManyCitiesInputEnvelope
+    set?: kecamatanWhereUniqueInput | kecamatanWhereUniqueInput[]
+    disconnect?: kecamatanWhereUniqueInput | kecamatanWhereUniqueInput[]
+    delete?: kecamatanWhereUniqueInput | kecamatanWhereUniqueInput[]
+    connect?: kecamatanWhereUniqueInput | kecamatanWhereUniqueInput[]
+    update?: kecamatanUpdateWithWhereUniqueWithoutCitiesInput | kecamatanUpdateWithWhereUniqueWithoutCitiesInput[]
+    updateMany?: kecamatanUpdateManyWithWhereWithoutCitiesInput | kecamatanUpdateManyWithWhereWithoutCitiesInput[]
+    deleteMany?: kecamatanScalarWhereInput | kecamatanScalarWhereInput[]
   }
 
   export type profession_detailCreateNestedManyWithoutProfessionInput = {
@@ -14081,11 +17480,11 @@ export namespace Prisma {
     update?: XOR<XOR<usersUpdateToOneWithWhereWithoutProfession_userInput, usersUpdateWithoutProfession_userInput>, usersUncheckedUpdateWithoutProfession_userInput>
   }
 
-  export type addressesCreateNestedManyWithoutProvincesInput = {
-    create?: XOR<addressesCreateWithoutProvincesInput, addressesUncheckedCreateWithoutProvincesInput> | addressesCreateWithoutProvincesInput[] | addressesUncheckedCreateWithoutProvincesInput[]
-    connectOrCreate?: addressesCreateOrConnectWithoutProvincesInput | addressesCreateOrConnectWithoutProvincesInput[]
-    createMany?: addressesCreateManyProvincesInputEnvelope
-    connect?: addressesWhereUniqueInput | addressesWhereUniqueInput[]
+  export type alamatCreateNestedManyWithoutProvincesInput = {
+    create?: XOR<alamatCreateWithoutProvincesInput, alamatUncheckedCreateWithoutProvincesInput> | alamatCreateWithoutProvincesInput[] | alamatUncheckedCreateWithoutProvincesInput[]
+    connectOrCreate?: alamatCreateOrConnectWithoutProvincesInput | alamatCreateOrConnectWithoutProvincesInput[]
+    createMany?: alamatCreateManyProvincesInputEnvelope
+    connect?: alamatWhereUniqueInput | alamatWhereUniqueInput[]
   }
 
   export type citiesCreateNestedManyWithoutProvincesInput = {
@@ -14095,11 +17494,11 @@ export namespace Prisma {
     connect?: citiesWhereUniqueInput | citiesWhereUniqueInput[]
   }
 
-  export type addressesUncheckedCreateNestedManyWithoutProvincesInput = {
-    create?: XOR<addressesCreateWithoutProvincesInput, addressesUncheckedCreateWithoutProvincesInput> | addressesCreateWithoutProvincesInput[] | addressesUncheckedCreateWithoutProvincesInput[]
-    connectOrCreate?: addressesCreateOrConnectWithoutProvincesInput | addressesCreateOrConnectWithoutProvincesInput[]
-    createMany?: addressesCreateManyProvincesInputEnvelope
-    connect?: addressesWhereUniqueInput | addressesWhereUniqueInput[]
+  export type alamatUncheckedCreateNestedManyWithoutProvincesInput = {
+    create?: XOR<alamatCreateWithoutProvincesInput, alamatUncheckedCreateWithoutProvincesInput> | alamatCreateWithoutProvincesInput[] | alamatUncheckedCreateWithoutProvincesInput[]
+    connectOrCreate?: alamatCreateOrConnectWithoutProvincesInput | alamatCreateOrConnectWithoutProvincesInput[]
+    createMany?: alamatCreateManyProvincesInputEnvelope
+    connect?: alamatWhereUniqueInput | alamatWhereUniqueInput[]
   }
 
   export type citiesUncheckedCreateNestedManyWithoutProvincesInput = {
@@ -14109,18 +17508,18 @@ export namespace Prisma {
     connect?: citiesWhereUniqueInput | citiesWhereUniqueInput[]
   }
 
-  export type addressesUpdateManyWithoutProvincesNestedInput = {
-    create?: XOR<addressesCreateWithoutProvincesInput, addressesUncheckedCreateWithoutProvincesInput> | addressesCreateWithoutProvincesInput[] | addressesUncheckedCreateWithoutProvincesInput[]
-    connectOrCreate?: addressesCreateOrConnectWithoutProvincesInput | addressesCreateOrConnectWithoutProvincesInput[]
-    upsert?: addressesUpsertWithWhereUniqueWithoutProvincesInput | addressesUpsertWithWhereUniqueWithoutProvincesInput[]
-    createMany?: addressesCreateManyProvincesInputEnvelope
-    set?: addressesWhereUniqueInput | addressesWhereUniqueInput[]
-    disconnect?: addressesWhereUniqueInput | addressesWhereUniqueInput[]
-    delete?: addressesWhereUniqueInput | addressesWhereUniqueInput[]
-    connect?: addressesWhereUniqueInput | addressesWhereUniqueInput[]
-    update?: addressesUpdateWithWhereUniqueWithoutProvincesInput | addressesUpdateWithWhereUniqueWithoutProvincesInput[]
-    updateMany?: addressesUpdateManyWithWhereWithoutProvincesInput | addressesUpdateManyWithWhereWithoutProvincesInput[]
-    deleteMany?: addressesScalarWhereInput | addressesScalarWhereInput[]
+  export type alamatUpdateManyWithoutProvincesNestedInput = {
+    create?: XOR<alamatCreateWithoutProvincesInput, alamatUncheckedCreateWithoutProvincesInput> | alamatCreateWithoutProvincesInput[] | alamatUncheckedCreateWithoutProvincesInput[]
+    connectOrCreate?: alamatCreateOrConnectWithoutProvincesInput | alamatCreateOrConnectWithoutProvincesInput[]
+    upsert?: alamatUpsertWithWhereUniqueWithoutProvincesInput | alamatUpsertWithWhereUniqueWithoutProvincesInput[]
+    createMany?: alamatCreateManyProvincesInputEnvelope
+    set?: alamatWhereUniqueInput | alamatWhereUniqueInput[]
+    disconnect?: alamatWhereUniqueInput | alamatWhereUniqueInput[]
+    delete?: alamatWhereUniqueInput | alamatWhereUniqueInput[]
+    connect?: alamatWhereUniqueInput | alamatWhereUniqueInput[]
+    update?: alamatUpdateWithWhereUniqueWithoutProvincesInput | alamatUpdateWithWhereUniqueWithoutProvincesInput[]
+    updateMany?: alamatUpdateManyWithWhereWithoutProvincesInput | alamatUpdateManyWithWhereWithoutProvincesInput[]
+    deleteMany?: alamatScalarWhereInput | alamatScalarWhereInput[]
   }
 
   export type citiesUpdateManyWithoutProvincesNestedInput = {
@@ -14137,18 +17536,18 @@ export namespace Prisma {
     deleteMany?: citiesScalarWhereInput | citiesScalarWhereInput[]
   }
 
-  export type addressesUncheckedUpdateManyWithoutProvincesNestedInput = {
-    create?: XOR<addressesCreateWithoutProvincesInput, addressesUncheckedCreateWithoutProvincesInput> | addressesCreateWithoutProvincesInput[] | addressesUncheckedCreateWithoutProvincesInput[]
-    connectOrCreate?: addressesCreateOrConnectWithoutProvincesInput | addressesCreateOrConnectWithoutProvincesInput[]
-    upsert?: addressesUpsertWithWhereUniqueWithoutProvincesInput | addressesUpsertWithWhereUniqueWithoutProvincesInput[]
-    createMany?: addressesCreateManyProvincesInputEnvelope
-    set?: addressesWhereUniqueInput | addressesWhereUniqueInput[]
-    disconnect?: addressesWhereUniqueInput | addressesWhereUniqueInput[]
-    delete?: addressesWhereUniqueInput | addressesWhereUniqueInput[]
-    connect?: addressesWhereUniqueInput | addressesWhereUniqueInput[]
-    update?: addressesUpdateWithWhereUniqueWithoutProvincesInput | addressesUpdateWithWhereUniqueWithoutProvincesInput[]
-    updateMany?: addressesUpdateManyWithWhereWithoutProvincesInput | addressesUpdateManyWithWhereWithoutProvincesInput[]
-    deleteMany?: addressesScalarWhereInput | addressesScalarWhereInput[]
+  export type alamatUncheckedUpdateManyWithoutProvincesNestedInput = {
+    create?: XOR<alamatCreateWithoutProvincesInput, alamatUncheckedCreateWithoutProvincesInput> | alamatCreateWithoutProvincesInput[] | alamatUncheckedCreateWithoutProvincesInput[]
+    connectOrCreate?: alamatCreateOrConnectWithoutProvincesInput | alamatCreateOrConnectWithoutProvincesInput[]
+    upsert?: alamatUpsertWithWhereUniqueWithoutProvincesInput | alamatUpsertWithWhereUniqueWithoutProvincesInput[]
+    createMany?: alamatCreateManyProvincesInputEnvelope
+    set?: alamatWhereUniqueInput | alamatWhereUniqueInput[]
+    disconnect?: alamatWhereUniqueInput | alamatWhereUniqueInput[]
+    delete?: alamatWhereUniqueInput | alamatWhereUniqueInput[]
+    connect?: alamatWhereUniqueInput | alamatWhereUniqueInput[]
+    update?: alamatUpdateWithWhereUniqueWithoutProvincesInput | alamatUpdateWithWhereUniqueWithoutProvincesInput[]
+    updateMany?: alamatUpdateManyWithWhereWithoutProvincesInput | alamatUpdateManyWithWhereWithoutProvincesInput[]
+    deleteMany?: alamatScalarWhereInput | alamatScalarWhereInput[]
   }
 
   export type citiesUncheckedUpdateManyWithoutProvincesNestedInput = {
@@ -14165,32 +17564,11 @@ export namespace Prisma {
     deleteMany?: citiesScalarWhereInput | citiesScalarWhereInput[]
   }
 
-  export type addressesCreateNestedOneWithoutUser_addressInput = {
-    create?: XOR<addressesCreateWithoutUser_addressInput, addressesUncheckedCreateWithoutUser_addressInput>
-    connectOrCreate?: addressesCreateOrConnectWithoutUser_addressInput
-    connect?: addressesWhereUniqueInput
-  }
-
-  export type usersCreateNestedOneWithoutUser_addressInput = {
-    create?: XOR<usersCreateWithoutUser_addressInput, usersUncheckedCreateWithoutUser_addressInput>
-    connectOrCreate?: usersCreateOrConnectWithoutUser_addressInput
-    connect?: usersWhereUniqueInput
-  }
-
-  export type addressesUpdateOneRequiredWithoutUser_addressNestedInput = {
-    create?: XOR<addressesCreateWithoutUser_addressInput, addressesUncheckedCreateWithoutUser_addressInput>
-    connectOrCreate?: addressesCreateOrConnectWithoutUser_addressInput
-    upsert?: addressesUpsertWithoutUser_addressInput
-    connect?: addressesWhereUniqueInput
-    update?: XOR<XOR<addressesUpdateToOneWithWhereWithoutUser_addressInput, addressesUpdateWithoutUser_addressInput>, addressesUncheckedUpdateWithoutUser_addressInput>
-  }
-
-  export type usersUpdateOneRequiredWithoutUser_addressNestedInput = {
-    create?: XOR<usersCreateWithoutUser_addressInput, usersUncheckedCreateWithoutUser_addressInput>
-    connectOrCreate?: usersCreateOrConnectWithoutUser_addressInput
-    upsert?: usersUpsertWithoutUser_addressInput
-    connect?: usersWhereUniqueInput
-    update?: XOR<XOR<usersUpdateToOneWithWhereWithoutUser_addressInput, usersUpdateWithoutUser_addressInput>, usersUncheckedUpdateWithoutUser_addressInput>
+  export type alamatCreateNestedManyWithoutUsersInput = {
+    create?: XOR<alamatCreateWithoutUsersInput, alamatUncheckedCreateWithoutUsersInput> | alamatCreateWithoutUsersInput[] | alamatUncheckedCreateWithoutUsersInput[]
+    connectOrCreate?: alamatCreateOrConnectWithoutUsersInput | alamatCreateOrConnectWithoutUsersInput[]
+    createMany?: alamatCreateManyUsersInputEnvelope
+    connect?: alamatWhereUniqueInput | alamatWhereUniqueInput[]
   }
 
   export type profession_userCreateNestedManyWithoutUsersInput = {
@@ -14200,11 +17578,11 @@ export namespace Prisma {
     connect?: profession_userWhereUniqueInput | profession_userWhereUniqueInput[]
   }
 
-  export type user_addressCreateNestedManyWithoutUsersInput = {
-    create?: XOR<user_addressCreateWithoutUsersInput, user_addressUncheckedCreateWithoutUsersInput> | user_addressCreateWithoutUsersInput[] | user_addressUncheckedCreateWithoutUsersInput[]
-    connectOrCreate?: user_addressCreateOrConnectWithoutUsersInput | user_addressCreateOrConnectWithoutUsersInput[]
-    createMany?: user_addressCreateManyUsersInputEnvelope
-    connect?: user_addressWhereUniqueInput | user_addressWhereUniqueInput[]
+  export type alamatUncheckedCreateNestedManyWithoutUsersInput = {
+    create?: XOR<alamatCreateWithoutUsersInput, alamatUncheckedCreateWithoutUsersInput> | alamatCreateWithoutUsersInput[] | alamatUncheckedCreateWithoutUsersInput[]
+    connectOrCreate?: alamatCreateOrConnectWithoutUsersInput | alamatCreateOrConnectWithoutUsersInput[]
+    createMany?: alamatCreateManyUsersInputEnvelope
+    connect?: alamatWhereUniqueInput | alamatWhereUniqueInput[]
   }
 
   export type profession_userUncheckedCreateNestedManyWithoutUsersInput = {
@@ -14214,27 +17592,38 @@ export namespace Prisma {
     connect?: profession_userWhereUniqueInput | profession_userWhereUniqueInput[]
   }
 
-  export type user_addressUncheckedCreateNestedManyWithoutUsersInput = {
-    create?: XOR<user_addressCreateWithoutUsersInput, user_addressUncheckedCreateWithoutUsersInput> | user_addressCreateWithoutUsersInput[] | user_addressUncheckedCreateWithoutUsersInput[]
-    connectOrCreate?: user_addressCreateOrConnectWithoutUsersInput | user_addressCreateOrConnectWithoutUsersInput[]
-    createMany?: user_addressCreateManyUsersInputEnvelope
-    connect?: user_addressWhereUniqueInput | user_addressWhereUniqueInput[]
+  export type Enumgender_enumFieldUpdateOperationsInput = {
+    set?: $Enums.gender_enum
   }
 
-  export type NullableStringFieldUpdateOperationsInput = {
-    set?: string | null
-  }
-
-  export type NullableEnumgender_enumFieldUpdateOperationsInput = {
-    set?: $Enums.gender_enum | null
+  export type DateTimeFieldUpdateOperationsInput = {
+    set?: Date | string
   }
 
   export type NullableBytesFieldUpdateOperationsInput = {
     set?: Uint8Array | null
   }
 
-  export type NullableEnumstatus_user_enumFieldUpdateOperationsInput = {
-    set?: $Enums.status_user_enum | null
+  export type NullableStringFieldUpdateOperationsInput = {
+    set?: string | null
+  }
+
+  export type Enumstatus_user_enumFieldUpdateOperationsInput = {
+    set?: $Enums.status_user_enum
+  }
+
+  export type alamatUpdateManyWithoutUsersNestedInput = {
+    create?: XOR<alamatCreateWithoutUsersInput, alamatUncheckedCreateWithoutUsersInput> | alamatCreateWithoutUsersInput[] | alamatUncheckedCreateWithoutUsersInput[]
+    connectOrCreate?: alamatCreateOrConnectWithoutUsersInput | alamatCreateOrConnectWithoutUsersInput[]
+    upsert?: alamatUpsertWithWhereUniqueWithoutUsersInput | alamatUpsertWithWhereUniqueWithoutUsersInput[]
+    createMany?: alamatCreateManyUsersInputEnvelope
+    set?: alamatWhereUniqueInput | alamatWhereUniqueInput[]
+    disconnect?: alamatWhereUniqueInput | alamatWhereUniqueInput[]
+    delete?: alamatWhereUniqueInput | alamatWhereUniqueInput[]
+    connect?: alamatWhereUniqueInput | alamatWhereUniqueInput[]
+    update?: alamatUpdateWithWhereUniqueWithoutUsersInput | alamatUpdateWithWhereUniqueWithoutUsersInput[]
+    updateMany?: alamatUpdateManyWithWhereWithoutUsersInput | alamatUpdateManyWithWhereWithoutUsersInput[]
+    deleteMany?: alamatScalarWhereInput | alamatScalarWhereInput[]
   }
 
   export type profession_userUpdateManyWithoutUsersNestedInput = {
@@ -14251,18 +17640,18 @@ export namespace Prisma {
     deleteMany?: profession_userScalarWhereInput | profession_userScalarWhereInput[]
   }
 
-  export type user_addressUpdateManyWithoutUsersNestedInput = {
-    create?: XOR<user_addressCreateWithoutUsersInput, user_addressUncheckedCreateWithoutUsersInput> | user_addressCreateWithoutUsersInput[] | user_addressUncheckedCreateWithoutUsersInput[]
-    connectOrCreate?: user_addressCreateOrConnectWithoutUsersInput | user_addressCreateOrConnectWithoutUsersInput[]
-    upsert?: user_addressUpsertWithWhereUniqueWithoutUsersInput | user_addressUpsertWithWhereUniqueWithoutUsersInput[]
-    createMany?: user_addressCreateManyUsersInputEnvelope
-    set?: user_addressWhereUniqueInput | user_addressWhereUniqueInput[]
-    disconnect?: user_addressWhereUniqueInput | user_addressWhereUniqueInput[]
-    delete?: user_addressWhereUniqueInput | user_addressWhereUniqueInput[]
-    connect?: user_addressWhereUniqueInput | user_addressWhereUniqueInput[]
-    update?: user_addressUpdateWithWhereUniqueWithoutUsersInput | user_addressUpdateWithWhereUniqueWithoutUsersInput[]
-    updateMany?: user_addressUpdateManyWithWhereWithoutUsersInput | user_addressUpdateManyWithWhereWithoutUsersInput[]
-    deleteMany?: user_addressScalarWhereInput | user_addressScalarWhereInput[]
+  export type alamatUncheckedUpdateManyWithoutUsersNestedInput = {
+    create?: XOR<alamatCreateWithoutUsersInput, alamatUncheckedCreateWithoutUsersInput> | alamatCreateWithoutUsersInput[] | alamatUncheckedCreateWithoutUsersInput[]
+    connectOrCreate?: alamatCreateOrConnectWithoutUsersInput | alamatCreateOrConnectWithoutUsersInput[]
+    upsert?: alamatUpsertWithWhereUniqueWithoutUsersInput | alamatUpsertWithWhereUniqueWithoutUsersInput[]
+    createMany?: alamatCreateManyUsersInputEnvelope
+    set?: alamatWhereUniqueInput | alamatWhereUniqueInput[]
+    disconnect?: alamatWhereUniqueInput | alamatWhereUniqueInput[]
+    delete?: alamatWhereUniqueInput | alamatWhereUniqueInput[]
+    connect?: alamatWhereUniqueInput | alamatWhereUniqueInput[]
+    update?: alamatUpdateWithWhereUniqueWithoutUsersInput | alamatUpdateWithWhereUniqueWithoutUsersInput[]
+    updateMany?: alamatUpdateManyWithWhereWithoutUsersInput | alamatUpdateManyWithWhereWithoutUsersInput[]
+    deleteMany?: alamatScalarWhereInput | alamatScalarWhereInput[]
   }
 
   export type profession_userUncheckedUpdateManyWithoutUsersNestedInput = {
@@ -14277,20 +17666,6 @@ export namespace Prisma {
     update?: profession_userUpdateWithWhereUniqueWithoutUsersInput | profession_userUpdateWithWhereUniqueWithoutUsersInput[]
     updateMany?: profession_userUpdateManyWithWhereWithoutUsersInput | profession_userUpdateManyWithWhereWithoutUsersInput[]
     deleteMany?: profession_userScalarWhereInput | profession_userScalarWhereInput[]
-  }
-
-  export type user_addressUncheckedUpdateManyWithoutUsersNestedInput = {
-    create?: XOR<user_addressCreateWithoutUsersInput, user_addressUncheckedCreateWithoutUsersInput> | user_addressCreateWithoutUsersInput[] | user_addressUncheckedCreateWithoutUsersInput[]
-    connectOrCreate?: user_addressCreateOrConnectWithoutUsersInput | user_addressCreateOrConnectWithoutUsersInput[]
-    upsert?: user_addressUpsertWithWhereUniqueWithoutUsersInput | user_addressUpsertWithWhereUniqueWithoutUsersInput[]
-    createMany?: user_addressCreateManyUsersInputEnvelope
-    set?: user_addressWhereUniqueInput | user_addressWhereUniqueInput[]
-    disconnect?: user_addressWhereUniqueInput | user_addressWhereUniqueInput[]
-    delete?: user_addressWhereUniqueInput | user_addressWhereUniqueInput[]
-    connect?: user_addressWhereUniqueInput | user_addressWhereUniqueInput[]
-    update?: user_addressUpdateWithWhereUniqueWithoutUsersInput | user_addressUpdateWithWhereUniqueWithoutUsersInput[]
-    updateMany?: user_addressUpdateManyWithWhereWithoutUsersInput | user_addressUpdateManyWithWhereWithoutUsersInput[]
-    deleteMany?: user_addressScalarWhereInput | user_addressScalarWhereInput[]
   }
 
   export type profession_detailCreateNestedManyWithoutProfession_categoryInput = {
@@ -14363,6 +17738,341 @@ export namespace Prisma {
     update?: XOR<XOR<professionUpdateToOneWithWhereWithoutProfession_detailInput, professionUpdateWithoutProfession_detailInput>, professionUncheckedUpdateWithoutProfession_detailInput>
   }
 
+  export type kecamatanCreateNestedOneWithoutAlamatInput = {
+    create?: XOR<kecamatanCreateWithoutAlamatInput, kecamatanUncheckedCreateWithoutAlamatInput>
+    connectOrCreate?: kecamatanCreateOrConnectWithoutAlamatInput
+    connect?: kecamatanWhereUniqueInput
+  }
+
+  export type kelurahanCreateNestedOneWithoutAlamatInput = {
+    create?: XOR<kelurahanCreateWithoutAlamatInput, kelurahanUncheckedCreateWithoutAlamatInput>
+    connectOrCreate?: kelurahanCreateOrConnectWithoutAlamatInput
+    connect?: kelurahanWhereUniqueInput
+  }
+
+  export type citiesCreateNestedOneWithoutAlamatInput = {
+    create?: XOR<citiesCreateWithoutAlamatInput, citiesUncheckedCreateWithoutAlamatInput>
+    connectOrCreate?: citiesCreateOrConnectWithoutAlamatInput
+    connect?: citiesWhereUniqueInput
+  }
+
+  export type provincesCreateNestedOneWithoutAlamatInput = {
+    create?: XOR<provincesCreateWithoutAlamatInput, provincesUncheckedCreateWithoutAlamatInput>
+    connectOrCreate?: provincesCreateOrConnectWithoutAlamatInput
+    connect?: provincesWhereUniqueInput
+  }
+
+  export type tipe_alamatCreateNestedOneWithoutAlamatInput = {
+    create?: XOR<tipe_alamatCreateWithoutAlamatInput, tipe_alamatUncheckedCreateWithoutAlamatInput>
+    connectOrCreate?: tipe_alamatCreateOrConnectWithoutAlamatInput
+    connect?: tipe_alamatWhereUniqueInput
+  }
+
+  export type usersCreateNestedOneWithoutAlamatInput = {
+    create?: XOR<usersCreateWithoutAlamatInput, usersUncheckedCreateWithoutAlamatInput>
+    connectOrCreate?: usersCreateOrConnectWithoutAlamatInput
+    connect?: usersWhereUniqueInput
+  }
+
+  export type NullableDecimalFieldUpdateOperationsInput = {
+    set?: Decimal | DecimalJsLike | number | string | null
+    increment?: Decimal | DecimalJsLike | number | string
+    decrement?: Decimal | DecimalJsLike | number | string
+    multiply?: Decimal | DecimalJsLike | number | string
+    divide?: Decimal | DecimalJsLike | number | string
+  }
+
+  export type NullableBoolFieldUpdateOperationsInput = {
+    set?: boolean | null
+  }
+
+  export type kecamatanUpdateOneWithoutAlamatNestedInput = {
+    create?: XOR<kecamatanCreateWithoutAlamatInput, kecamatanUncheckedCreateWithoutAlamatInput>
+    connectOrCreate?: kecamatanCreateOrConnectWithoutAlamatInput
+    upsert?: kecamatanUpsertWithoutAlamatInput
+    disconnect?: kecamatanWhereInput | boolean
+    delete?: kecamatanWhereInput | boolean
+    connect?: kecamatanWhereUniqueInput
+    update?: XOR<XOR<kecamatanUpdateToOneWithWhereWithoutAlamatInput, kecamatanUpdateWithoutAlamatInput>, kecamatanUncheckedUpdateWithoutAlamatInput>
+  }
+
+  export type kelurahanUpdateOneWithoutAlamatNestedInput = {
+    create?: XOR<kelurahanCreateWithoutAlamatInput, kelurahanUncheckedCreateWithoutAlamatInput>
+    connectOrCreate?: kelurahanCreateOrConnectWithoutAlamatInput
+    upsert?: kelurahanUpsertWithoutAlamatInput
+    disconnect?: kelurahanWhereInput | boolean
+    delete?: kelurahanWhereInput | boolean
+    connect?: kelurahanWhereUniqueInput
+    update?: XOR<XOR<kelurahanUpdateToOneWithWhereWithoutAlamatInput, kelurahanUpdateWithoutAlamatInput>, kelurahanUncheckedUpdateWithoutAlamatInput>
+  }
+
+  export type citiesUpdateOneWithoutAlamatNestedInput = {
+    create?: XOR<citiesCreateWithoutAlamatInput, citiesUncheckedCreateWithoutAlamatInput>
+    connectOrCreate?: citiesCreateOrConnectWithoutAlamatInput
+    upsert?: citiesUpsertWithoutAlamatInput
+    disconnect?: citiesWhereInput | boolean
+    delete?: citiesWhereInput | boolean
+    connect?: citiesWhereUniqueInput
+    update?: XOR<XOR<citiesUpdateToOneWithWhereWithoutAlamatInput, citiesUpdateWithoutAlamatInput>, citiesUncheckedUpdateWithoutAlamatInput>
+  }
+
+  export type provincesUpdateOneWithoutAlamatNestedInput = {
+    create?: XOR<provincesCreateWithoutAlamatInput, provincesUncheckedCreateWithoutAlamatInput>
+    connectOrCreate?: provincesCreateOrConnectWithoutAlamatInput
+    upsert?: provincesUpsertWithoutAlamatInput
+    disconnect?: provincesWhereInput | boolean
+    delete?: provincesWhereInput | boolean
+    connect?: provincesWhereUniqueInput
+    update?: XOR<XOR<provincesUpdateToOneWithWhereWithoutAlamatInput, provincesUpdateWithoutAlamatInput>, provincesUncheckedUpdateWithoutAlamatInput>
+  }
+
+  export type tipe_alamatUpdateOneWithoutAlamatNestedInput = {
+    create?: XOR<tipe_alamatCreateWithoutAlamatInput, tipe_alamatUncheckedCreateWithoutAlamatInput>
+    connectOrCreate?: tipe_alamatCreateOrConnectWithoutAlamatInput
+    upsert?: tipe_alamatUpsertWithoutAlamatInput
+    disconnect?: tipe_alamatWhereInput | boolean
+    delete?: tipe_alamatWhereInput | boolean
+    connect?: tipe_alamatWhereUniqueInput
+    update?: XOR<XOR<tipe_alamatUpdateToOneWithWhereWithoutAlamatInput, tipe_alamatUpdateWithoutAlamatInput>, tipe_alamatUncheckedUpdateWithoutAlamatInput>
+  }
+
+  export type usersUpdateOneWithoutAlamatNestedInput = {
+    create?: XOR<usersCreateWithoutAlamatInput, usersUncheckedCreateWithoutAlamatInput>
+    connectOrCreate?: usersCreateOrConnectWithoutAlamatInput
+    upsert?: usersUpsertWithoutAlamatInput
+    disconnect?: usersWhereInput | boolean
+    delete?: usersWhereInput | boolean
+    connect?: usersWhereUniqueInput
+    update?: XOR<XOR<usersUpdateToOneWithWhereWithoutAlamatInput, usersUpdateWithoutAlamatInput>, usersUncheckedUpdateWithoutAlamatInput>
+  }
+
+  export type NullableBigIntFieldUpdateOperationsInput = {
+    set?: bigint | number | null
+    increment?: bigint | number
+    decrement?: bigint | number
+    multiply?: bigint | number
+    divide?: bigint | number
+  }
+
+  export type NullableIntFieldUpdateOperationsInput = {
+    set?: number | null
+    increment?: number
+    decrement?: number
+    multiply?: number
+    divide?: number
+  }
+
+  export type alamatCreateNestedManyWithoutKecamatanInput = {
+    create?: XOR<alamatCreateWithoutKecamatanInput, alamatUncheckedCreateWithoutKecamatanInput> | alamatCreateWithoutKecamatanInput[] | alamatUncheckedCreateWithoutKecamatanInput[]
+    connectOrCreate?: alamatCreateOrConnectWithoutKecamatanInput | alamatCreateOrConnectWithoutKecamatanInput[]
+    createMany?: alamatCreateManyKecamatanInputEnvelope
+    connect?: alamatWhereUniqueInput | alamatWhereUniqueInput[]
+  }
+
+  export type citiesCreateNestedOneWithoutKecamatanInput = {
+    create?: XOR<citiesCreateWithoutKecamatanInput, citiesUncheckedCreateWithoutKecamatanInput>
+    connectOrCreate?: citiesCreateOrConnectWithoutKecamatanInput
+    connect?: citiesWhereUniqueInput
+  }
+
+  export type kelurahanCreateNestedManyWithoutKecamatanInput = {
+    create?: XOR<kelurahanCreateWithoutKecamatanInput, kelurahanUncheckedCreateWithoutKecamatanInput> | kelurahanCreateWithoutKecamatanInput[] | kelurahanUncheckedCreateWithoutKecamatanInput[]
+    connectOrCreate?: kelurahanCreateOrConnectWithoutKecamatanInput | kelurahanCreateOrConnectWithoutKecamatanInput[]
+    createMany?: kelurahanCreateManyKecamatanInputEnvelope
+    connect?: kelurahanWhereUniqueInput | kelurahanWhereUniqueInput[]
+  }
+
+  export type alamatUncheckedCreateNestedManyWithoutKecamatanInput = {
+    create?: XOR<alamatCreateWithoutKecamatanInput, alamatUncheckedCreateWithoutKecamatanInput> | alamatCreateWithoutKecamatanInput[] | alamatUncheckedCreateWithoutKecamatanInput[]
+    connectOrCreate?: alamatCreateOrConnectWithoutKecamatanInput | alamatCreateOrConnectWithoutKecamatanInput[]
+    createMany?: alamatCreateManyKecamatanInputEnvelope
+    connect?: alamatWhereUniqueInput | alamatWhereUniqueInput[]
+  }
+
+  export type kelurahanUncheckedCreateNestedManyWithoutKecamatanInput = {
+    create?: XOR<kelurahanCreateWithoutKecamatanInput, kelurahanUncheckedCreateWithoutKecamatanInput> | kelurahanCreateWithoutKecamatanInput[] | kelurahanUncheckedCreateWithoutKecamatanInput[]
+    connectOrCreate?: kelurahanCreateOrConnectWithoutKecamatanInput | kelurahanCreateOrConnectWithoutKecamatanInput[]
+    createMany?: kelurahanCreateManyKecamatanInputEnvelope
+    connect?: kelurahanWhereUniqueInput | kelurahanWhereUniqueInput[]
+  }
+
+  export type alamatUpdateManyWithoutKecamatanNestedInput = {
+    create?: XOR<alamatCreateWithoutKecamatanInput, alamatUncheckedCreateWithoutKecamatanInput> | alamatCreateWithoutKecamatanInput[] | alamatUncheckedCreateWithoutKecamatanInput[]
+    connectOrCreate?: alamatCreateOrConnectWithoutKecamatanInput | alamatCreateOrConnectWithoutKecamatanInput[]
+    upsert?: alamatUpsertWithWhereUniqueWithoutKecamatanInput | alamatUpsertWithWhereUniqueWithoutKecamatanInput[]
+    createMany?: alamatCreateManyKecamatanInputEnvelope
+    set?: alamatWhereUniqueInput | alamatWhereUniqueInput[]
+    disconnect?: alamatWhereUniqueInput | alamatWhereUniqueInput[]
+    delete?: alamatWhereUniqueInput | alamatWhereUniqueInput[]
+    connect?: alamatWhereUniqueInput | alamatWhereUniqueInput[]
+    update?: alamatUpdateWithWhereUniqueWithoutKecamatanInput | alamatUpdateWithWhereUniqueWithoutKecamatanInput[]
+    updateMany?: alamatUpdateManyWithWhereWithoutKecamatanInput | alamatUpdateManyWithWhereWithoutKecamatanInput[]
+    deleteMany?: alamatScalarWhereInput | alamatScalarWhereInput[]
+  }
+
+  export type citiesUpdateOneWithoutKecamatanNestedInput = {
+    create?: XOR<citiesCreateWithoutKecamatanInput, citiesUncheckedCreateWithoutKecamatanInput>
+    connectOrCreate?: citiesCreateOrConnectWithoutKecamatanInput
+    upsert?: citiesUpsertWithoutKecamatanInput
+    disconnect?: citiesWhereInput | boolean
+    delete?: citiesWhereInput | boolean
+    connect?: citiesWhereUniqueInput
+    update?: XOR<XOR<citiesUpdateToOneWithWhereWithoutKecamatanInput, citiesUpdateWithoutKecamatanInput>, citiesUncheckedUpdateWithoutKecamatanInput>
+  }
+
+  export type kelurahanUpdateManyWithoutKecamatanNestedInput = {
+    create?: XOR<kelurahanCreateWithoutKecamatanInput, kelurahanUncheckedCreateWithoutKecamatanInput> | kelurahanCreateWithoutKecamatanInput[] | kelurahanUncheckedCreateWithoutKecamatanInput[]
+    connectOrCreate?: kelurahanCreateOrConnectWithoutKecamatanInput | kelurahanCreateOrConnectWithoutKecamatanInput[]
+    upsert?: kelurahanUpsertWithWhereUniqueWithoutKecamatanInput | kelurahanUpsertWithWhereUniqueWithoutKecamatanInput[]
+    createMany?: kelurahanCreateManyKecamatanInputEnvelope
+    set?: kelurahanWhereUniqueInput | kelurahanWhereUniqueInput[]
+    disconnect?: kelurahanWhereUniqueInput | kelurahanWhereUniqueInput[]
+    delete?: kelurahanWhereUniqueInput | kelurahanWhereUniqueInput[]
+    connect?: kelurahanWhereUniqueInput | kelurahanWhereUniqueInput[]
+    update?: kelurahanUpdateWithWhereUniqueWithoutKecamatanInput | kelurahanUpdateWithWhereUniqueWithoutKecamatanInput[]
+    updateMany?: kelurahanUpdateManyWithWhereWithoutKecamatanInput | kelurahanUpdateManyWithWhereWithoutKecamatanInput[]
+    deleteMany?: kelurahanScalarWhereInput | kelurahanScalarWhereInput[]
+  }
+
+  export type alamatUncheckedUpdateManyWithoutKecamatanNestedInput = {
+    create?: XOR<alamatCreateWithoutKecamatanInput, alamatUncheckedCreateWithoutKecamatanInput> | alamatCreateWithoutKecamatanInput[] | alamatUncheckedCreateWithoutKecamatanInput[]
+    connectOrCreate?: alamatCreateOrConnectWithoutKecamatanInput | alamatCreateOrConnectWithoutKecamatanInput[]
+    upsert?: alamatUpsertWithWhereUniqueWithoutKecamatanInput | alamatUpsertWithWhereUniqueWithoutKecamatanInput[]
+    createMany?: alamatCreateManyKecamatanInputEnvelope
+    set?: alamatWhereUniqueInput | alamatWhereUniqueInput[]
+    disconnect?: alamatWhereUniqueInput | alamatWhereUniqueInput[]
+    delete?: alamatWhereUniqueInput | alamatWhereUniqueInput[]
+    connect?: alamatWhereUniqueInput | alamatWhereUniqueInput[]
+    update?: alamatUpdateWithWhereUniqueWithoutKecamatanInput | alamatUpdateWithWhereUniqueWithoutKecamatanInput[]
+    updateMany?: alamatUpdateManyWithWhereWithoutKecamatanInput | alamatUpdateManyWithWhereWithoutKecamatanInput[]
+    deleteMany?: alamatScalarWhereInput | alamatScalarWhereInput[]
+  }
+
+  export type kelurahanUncheckedUpdateManyWithoutKecamatanNestedInput = {
+    create?: XOR<kelurahanCreateWithoutKecamatanInput, kelurahanUncheckedCreateWithoutKecamatanInput> | kelurahanCreateWithoutKecamatanInput[] | kelurahanUncheckedCreateWithoutKecamatanInput[]
+    connectOrCreate?: kelurahanCreateOrConnectWithoutKecamatanInput | kelurahanCreateOrConnectWithoutKecamatanInput[]
+    upsert?: kelurahanUpsertWithWhereUniqueWithoutKecamatanInput | kelurahanUpsertWithWhereUniqueWithoutKecamatanInput[]
+    createMany?: kelurahanCreateManyKecamatanInputEnvelope
+    set?: kelurahanWhereUniqueInput | kelurahanWhereUniqueInput[]
+    disconnect?: kelurahanWhereUniqueInput | kelurahanWhereUniqueInput[]
+    delete?: kelurahanWhereUniqueInput | kelurahanWhereUniqueInput[]
+    connect?: kelurahanWhereUniqueInput | kelurahanWhereUniqueInput[]
+    update?: kelurahanUpdateWithWhereUniqueWithoutKecamatanInput | kelurahanUpdateWithWhereUniqueWithoutKecamatanInput[]
+    updateMany?: kelurahanUpdateManyWithWhereWithoutKecamatanInput | kelurahanUpdateManyWithWhereWithoutKecamatanInput[]
+    deleteMany?: kelurahanScalarWhereInput | kelurahanScalarWhereInput[]
+  }
+
+  export type alamatCreateNestedManyWithoutKelurahanInput = {
+    create?: XOR<alamatCreateWithoutKelurahanInput, alamatUncheckedCreateWithoutKelurahanInput> | alamatCreateWithoutKelurahanInput[] | alamatUncheckedCreateWithoutKelurahanInput[]
+    connectOrCreate?: alamatCreateOrConnectWithoutKelurahanInput | alamatCreateOrConnectWithoutKelurahanInput[]
+    createMany?: alamatCreateManyKelurahanInputEnvelope
+    connect?: alamatWhereUniqueInput | alamatWhereUniqueInput[]
+  }
+
+  export type kecamatanCreateNestedOneWithoutKelurahanInput = {
+    create?: XOR<kecamatanCreateWithoutKelurahanInput, kecamatanUncheckedCreateWithoutKelurahanInput>
+    connectOrCreate?: kecamatanCreateOrConnectWithoutKelurahanInput
+    connect?: kecamatanWhereUniqueInput
+  }
+
+  export type alamatUncheckedCreateNestedManyWithoutKelurahanInput = {
+    create?: XOR<alamatCreateWithoutKelurahanInput, alamatUncheckedCreateWithoutKelurahanInput> | alamatCreateWithoutKelurahanInput[] | alamatUncheckedCreateWithoutKelurahanInput[]
+    connectOrCreate?: alamatCreateOrConnectWithoutKelurahanInput | alamatCreateOrConnectWithoutKelurahanInput[]
+    createMany?: alamatCreateManyKelurahanInputEnvelope
+    connect?: alamatWhereUniqueInput | alamatWhereUniqueInput[]
+  }
+
+  export type alamatUpdateManyWithoutKelurahanNestedInput = {
+    create?: XOR<alamatCreateWithoutKelurahanInput, alamatUncheckedCreateWithoutKelurahanInput> | alamatCreateWithoutKelurahanInput[] | alamatUncheckedCreateWithoutKelurahanInput[]
+    connectOrCreate?: alamatCreateOrConnectWithoutKelurahanInput | alamatCreateOrConnectWithoutKelurahanInput[]
+    upsert?: alamatUpsertWithWhereUniqueWithoutKelurahanInput | alamatUpsertWithWhereUniqueWithoutKelurahanInput[]
+    createMany?: alamatCreateManyKelurahanInputEnvelope
+    set?: alamatWhereUniqueInput | alamatWhereUniqueInput[]
+    disconnect?: alamatWhereUniqueInput | alamatWhereUniqueInput[]
+    delete?: alamatWhereUniqueInput | alamatWhereUniqueInput[]
+    connect?: alamatWhereUniqueInput | alamatWhereUniqueInput[]
+    update?: alamatUpdateWithWhereUniqueWithoutKelurahanInput | alamatUpdateWithWhereUniqueWithoutKelurahanInput[]
+    updateMany?: alamatUpdateManyWithWhereWithoutKelurahanInput | alamatUpdateManyWithWhereWithoutKelurahanInput[]
+    deleteMany?: alamatScalarWhereInput | alamatScalarWhereInput[]
+  }
+
+  export type kecamatanUpdateOneWithoutKelurahanNestedInput = {
+    create?: XOR<kecamatanCreateWithoutKelurahanInput, kecamatanUncheckedCreateWithoutKelurahanInput>
+    connectOrCreate?: kecamatanCreateOrConnectWithoutKelurahanInput
+    upsert?: kecamatanUpsertWithoutKelurahanInput
+    disconnect?: kecamatanWhereInput | boolean
+    delete?: kecamatanWhereInput | boolean
+    connect?: kecamatanWhereUniqueInput
+    update?: XOR<XOR<kecamatanUpdateToOneWithWhereWithoutKelurahanInput, kecamatanUpdateWithoutKelurahanInput>, kecamatanUncheckedUpdateWithoutKelurahanInput>
+  }
+
+  export type alamatUncheckedUpdateManyWithoutKelurahanNestedInput = {
+    create?: XOR<alamatCreateWithoutKelurahanInput, alamatUncheckedCreateWithoutKelurahanInput> | alamatCreateWithoutKelurahanInput[] | alamatUncheckedCreateWithoutKelurahanInput[]
+    connectOrCreate?: alamatCreateOrConnectWithoutKelurahanInput | alamatCreateOrConnectWithoutKelurahanInput[]
+    upsert?: alamatUpsertWithWhereUniqueWithoutKelurahanInput | alamatUpsertWithWhereUniqueWithoutKelurahanInput[]
+    createMany?: alamatCreateManyKelurahanInputEnvelope
+    set?: alamatWhereUniqueInput | alamatWhereUniqueInput[]
+    disconnect?: alamatWhereUniqueInput | alamatWhereUniqueInput[]
+    delete?: alamatWhereUniqueInput | alamatWhereUniqueInput[]
+    connect?: alamatWhereUniqueInput | alamatWhereUniqueInput[]
+    update?: alamatUpdateWithWhereUniqueWithoutKelurahanInput | alamatUpdateWithWhereUniqueWithoutKelurahanInput[]
+    updateMany?: alamatUpdateManyWithWhereWithoutKelurahanInput | alamatUpdateManyWithWhereWithoutKelurahanInput[]
+    deleteMany?: alamatScalarWhereInput | alamatScalarWhereInput[]
+  }
+
+  export type alamatCreateNestedManyWithoutTipe_alamatInput = {
+    create?: XOR<alamatCreateWithoutTipe_alamatInput, alamatUncheckedCreateWithoutTipe_alamatInput> | alamatCreateWithoutTipe_alamatInput[] | alamatUncheckedCreateWithoutTipe_alamatInput[]
+    connectOrCreate?: alamatCreateOrConnectWithoutTipe_alamatInput | alamatCreateOrConnectWithoutTipe_alamatInput[]
+    createMany?: alamatCreateManyTipe_alamatInputEnvelope
+    connect?: alamatWhereUniqueInput | alamatWhereUniqueInput[]
+  }
+
+  export type alamatUncheckedCreateNestedManyWithoutTipe_alamatInput = {
+    create?: XOR<alamatCreateWithoutTipe_alamatInput, alamatUncheckedCreateWithoutTipe_alamatInput> | alamatCreateWithoutTipe_alamatInput[] | alamatUncheckedCreateWithoutTipe_alamatInput[]
+    connectOrCreate?: alamatCreateOrConnectWithoutTipe_alamatInput | alamatCreateOrConnectWithoutTipe_alamatInput[]
+    createMany?: alamatCreateManyTipe_alamatInputEnvelope
+    connect?: alamatWhereUniqueInput | alamatWhereUniqueInput[]
+  }
+
+  export type alamatUpdateManyWithoutTipe_alamatNestedInput = {
+    create?: XOR<alamatCreateWithoutTipe_alamatInput, alamatUncheckedCreateWithoutTipe_alamatInput> | alamatCreateWithoutTipe_alamatInput[] | alamatUncheckedCreateWithoutTipe_alamatInput[]
+    connectOrCreate?: alamatCreateOrConnectWithoutTipe_alamatInput | alamatCreateOrConnectWithoutTipe_alamatInput[]
+    upsert?: alamatUpsertWithWhereUniqueWithoutTipe_alamatInput | alamatUpsertWithWhereUniqueWithoutTipe_alamatInput[]
+    createMany?: alamatCreateManyTipe_alamatInputEnvelope
+    set?: alamatWhereUniqueInput | alamatWhereUniqueInput[]
+    disconnect?: alamatWhereUniqueInput | alamatWhereUniqueInput[]
+    delete?: alamatWhereUniqueInput | alamatWhereUniqueInput[]
+    connect?: alamatWhereUniqueInput | alamatWhereUniqueInput[]
+    update?: alamatUpdateWithWhereUniqueWithoutTipe_alamatInput | alamatUpdateWithWhereUniqueWithoutTipe_alamatInput[]
+    updateMany?: alamatUpdateManyWithWhereWithoutTipe_alamatInput | alamatUpdateManyWithWhereWithoutTipe_alamatInput[]
+    deleteMany?: alamatScalarWhereInput | alamatScalarWhereInput[]
+  }
+
+  export type alamatUncheckedUpdateManyWithoutTipe_alamatNestedInput = {
+    create?: XOR<alamatCreateWithoutTipe_alamatInput, alamatUncheckedCreateWithoutTipe_alamatInput> | alamatCreateWithoutTipe_alamatInput[] | alamatUncheckedCreateWithoutTipe_alamatInput[]
+    connectOrCreate?: alamatCreateOrConnectWithoutTipe_alamatInput | alamatCreateOrConnectWithoutTipe_alamatInput[]
+    upsert?: alamatUpsertWithWhereUniqueWithoutTipe_alamatInput | alamatUpsertWithWhereUniqueWithoutTipe_alamatInput[]
+    createMany?: alamatCreateManyTipe_alamatInputEnvelope
+    set?: alamatWhereUniqueInput | alamatWhereUniqueInput[]
+    disconnect?: alamatWhereUniqueInput | alamatWhereUniqueInput[]
+    delete?: alamatWhereUniqueInput | alamatWhereUniqueInput[]
+    connect?: alamatWhereUniqueInput | alamatWhereUniqueInput[]
+    update?: alamatUpdateWithWhereUniqueWithoutTipe_alamatInput | alamatUpdateWithWhereUniqueWithoutTipe_alamatInput[]
+    updateMany?: alamatUpdateManyWithWhereWithoutTipe_alamatInput | alamatUpdateManyWithWhereWithoutTipe_alamatInput[]
+    deleteMany?: alamatScalarWhereInput | alamatScalarWhereInput[]
+  }
+
+  export type NestedIntFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntFilter<$PrismaModel> | number
+  }
+
   export type NestedStringFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel>
     in?: string[] | ListStringFieldRefInput<$PrismaModel>
@@ -14377,28 +18087,6 @@ export namespace Prisma {
     not?: NestedStringFilter<$PrismaModel> | string
   }
 
-  export type NestedDecimalFilter<$PrismaModel = never> = {
-    equals?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    in?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel>
-    notIn?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel>
-    lt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    lte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    gt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    gte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    not?: NestedDecimalFilter<$PrismaModel> | Decimal | DecimalJsLike | number | string
-  }
-
-  export type NestedIntNullableFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel> | null
-    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntNullableFilter<$PrismaModel> | number | null
-  }
-
   export type NestedDateTimeNullableFilter<$PrismaModel = never> = {
     equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
     in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
@@ -14408,91 +18096,6 @@ export namespace Prisma {
     gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
-  }
-
-  export type NestedStringWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: string | StringFieldRefInput<$PrismaModel>
-    in?: string[] | ListStringFieldRefInput<$PrismaModel>
-    notIn?: string[] | ListStringFieldRefInput<$PrismaModel>
-    lt?: string | StringFieldRefInput<$PrismaModel>
-    lte?: string | StringFieldRefInput<$PrismaModel>
-    gt?: string | StringFieldRefInput<$PrismaModel>
-    gte?: string | StringFieldRefInput<$PrismaModel>
-    contains?: string | StringFieldRefInput<$PrismaModel>
-    startsWith?: string | StringFieldRefInput<$PrismaModel>
-    endsWith?: string | StringFieldRefInput<$PrismaModel>
-    not?: NestedStringWithAggregatesFilter<$PrismaModel> | string
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedStringFilter<$PrismaModel>
-    _max?: NestedStringFilter<$PrismaModel>
-  }
-
-  export type NestedIntFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel>
-    in?: number[] | ListIntFieldRefInput<$PrismaModel>
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntFilter<$PrismaModel> | number
-  }
-
-  export type NestedDecimalWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    in?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel>
-    notIn?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel>
-    lt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    lte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    gt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    gte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    not?: NestedDecimalWithAggregatesFilter<$PrismaModel> | Decimal | DecimalJsLike | number | string
-    _count?: NestedIntFilter<$PrismaModel>
-    _avg?: NestedDecimalFilter<$PrismaModel>
-    _sum?: NestedDecimalFilter<$PrismaModel>
-    _min?: NestedDecimalFilter<$PrismaModel>
-    _max?: NestedDecimalFilter<$PrismaModel>
-  }
-
-  export type NestedIntNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel> | null
-    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntNullableWithAggregatesFilter<$PrismaModel> | number | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _avg?: NestedFloatNullableFilter<$PrismaModel>
-    _sum?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedIntNullableFilter<$PrismaModel>
-    _max?: NestedIntNullableFilter<$PrismaModel>
-  }
-
-  export type NestedFloatNullableFilter<$PrismaModel = never> = {
-    equals?: number | FloatFieldRefInput<$PrismaModel> | null
-    in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
-    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
-    lt?: number | FloatFieldRefInput<$PrismaModel>
-    lte?: number | FloatFieldRefInput<$PrismaModel>
-    gt?: number | FloatFieldRefInput<$PrismaModel>
-    gte?: number | FloatFieldRefInput<$PrismaModel>
-    not?: NestedFloatNullableFilter<$PrismaModel> | number | null
-  }
-
-  export type NestedDateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
-    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
-    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
-    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeNullableWithAggregatesFilter<$PrismaModel> | Date | string | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedDateTimeNullableFilter<$PrismaModel>
-    _max?: NestedDateTimeNullableFilter<$PrismaModel>
   }
 
   export type NestedIntWithAggregatesFilter<$PrismaModel = never> = {
@@ -14522,6 +18125,48 @@ export namespace Prisma {
     not?: NestedFloatFilter<$PrismaModel> | number
   }
 
+  export type NestedStringWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel>
+    in?: string[] | ListStringFieldRefInput<$PrismaModel>
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel>
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    not?: NestedStringWithAggregatesFilter<$PrismaModel> | string
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedStringFilter<$PrismaModel>
+    _max?: NestedStringFilter<$PrismaModel>
+  }
+
+  export type NestedDateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableWithAggregatesFilter<$PrismaModel> | Date | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedDateTimeNullableFilter<$PrismaModel>
+    _max?: NestedDateTimeNullableFilter<$PrismaModel>
+  }
+
+  export type NestedIntNullableFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableFilter<$PrismaModel> | number | null
+  }
+
   export type NestedBigIntFilter<$PrismaModel = never> = {
     equals?: bigint | number | BigIntFieldRefInput<$PrismaModel>
     in?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel>
@@ -14549,6 +18194,31 @@ export namespace Prisma {
     _max?: NestedBigIntFilter<$PrismaModel>
   }
 
+  export type NestedEnumgender_enumFilter<$PrismaModel = never> = {
+    equals?: $Enums.gender_enum | Enumgender_enumFieldRefInput<$PrismaModel>
+    in?: $Enums.gender_enum[] | ListEnumgender_enumFieldRefInput<$PrismaModel>
+    notIn?: $Enums.gender_enum[] | ListEnumgender_enumFieldRefInput<$PrismaModel>
+    not?: NestedEnumgender_enumFilter<$PrismaModel> | $Enums.gender_enum
+  }
+
+  export type NestedDateTimeFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeFilter<$PrismaModel> | Date | string
+  }
+
+  export type NestedBytesNullableFilter<$PrismaModel = never> = {
+    equals?: Uint8Array | BytesFieldRefInput<$PrismaModel> | null
+    in?: Uint8Array[] | ListBytesFieldRefInput<$PrismaModel> | null
+    notIn?: Uint8Array[] | ListBytesFieldRefInput<$PrismaModel> | null
+    not?: NestedBytesNullableFilter<$PrismaModel> | Uint8Array | null
+  }
+
   export type NestedStringNullableFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel> | null
     in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
@@ -14563,25 +18233,45 @@ export namespace Prisma {
     not?: NestedStringNullableFilter<$PrismaModel> | string | null
   }
 
-  export type NestedEnumgender_enumNullableFilter<$PrismaModel = never> = {
-    equals?: $Enums.gender_enum | Enumgender_enumFieldRefInput<$PrismaModel> | null
-    in?: $Enums.gender_enum[] | ListEnumgender_enumFieldRefInput<$PrismaModel> | null
-    notIn?: $Enums.gender_enum[] | ListEnumgender_enumFieldRefInput<$PrismaModel> | null
-    not?: NestedEnumgender_enumNullableFilter<$PrismaModel> | $Enums.gender_enum | null
+  export type NestedEnumstatus_user_enumFilter<$PrismaModel = never> = {
+    equals?: $Enums.status_user_enum | Enumstatus_user_enumFieldRefInput<$PrismaModel>
+    in?: $Enums.status_user_enum[] | ListEnumstatus_user_enumFieldRefInput<$PrismaModel>
+    notIn?: $Enums.status_user_enum[] | ListEnumstatus_user_enumFieldRefInput<$PrismaModel>
+    not?: NestedEnumstatus_user_enumFilter<$PrismaModel> | $Enums.status_user_enum
   }
 
-  export type NestedBytesNullableFilter<$PrismaModel = never> = {
+  export type NestedEnumgender_enumWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.gender_enum | Enumgender_enumFieldRefInput<$PrismaModel>
+    in?: $Enums.gender_enum[] | ListEnumgender_enumFieldRefInput<$PrismaModel>
+    notIn?: $Enums.gender_enum[] | ListEnumgender_enumFieldRefInput<$PrismaModel>
+    not?: NestedEnumgender_enumWithAggregatesFilter<$PrismaModel> | $Enums.gender_enum
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumgender_enumFilter<$PrismaModel>
+    _max?: NestedEnumgender_enumFilter<$PrismaModel>
+  }
+
+  export type NestedDateTimeWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeWithAggregatesFilter<$PrismaModel> | Date | string
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedDateTimeFilter<$PrismaModel>
+    _max?: NestedDateTimeFilter<$PrismaModel>
+  }
+
+  export type NestedBytesNullableWithAggregatesFilter<$PrismaModel = never> = {
     equals?: Uint8Array | BytesFieldRefInput<$PrismaModel> | null
     in?: Uint8Array[] | ListBytesFieldRefInput<$PrismaModel> | null
     notIn?: Uint8Array[] | ListBytesFieldRefInput<$PrismaModel> | null
-    not?: NestedBytesNullableFilter<$PrismaModel> | Uint8Array | null
-  }
-
-  export type NestedEnumstatus_user_enumNullableFilter<$PrismaModel = never> = {
-    equals?: $Enums.status_user_enum | Enumstatus_user_enumFieldRefInput<$PrismaModel> | null
-    in?: $Enums.status_user_enum[] | ListEnumstatus_user_enumFieldRefInput<$PrismaModel> | null
-    notIn?: $Enums.status_user_enum[] | ListEnumstatus_user_enumFieldRefInput<$PrismaModel> | null
-    not?: NestedEnumstatus_user_enumNullableFilter<$PrismaModel> | $Enums.status_user_enum | null
+    not?: NestedBytesNullableWithAggregatesFilter<$PrismaModel> | Uint8Array | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedBytesNullableFilter<$PrismaModel>
+    _max?: NestedBytesNullableFilter<$PrismaModel>
   }
 
   export type NestedStringNullableWithAggregatesFilter<$PrismaModel = never> = {
@@ -14601,199 +18291,174 @@ export namespace Prisma {
     _max?: NestedStringNullableFilter<$PrismaModel>
   }
 
-  export type NestedEnumgender_enumNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: $Enums.gender_enum | Enumgender_enumFieldRefInput<$PrismaModel> | null
-    in?: $Enums.gender_enum[] | ListEnumgender_enumFieldRefInput<$PrismaModel> | null
-    notIn?: $Enums.gender_enum[] | ListEnumgender_enumFieldRefInput<$PrismaModel> | null
-    not?: NestedEnumgender_enumNullableWithAggregatesFilter<$PrismaModel> | $Enums.gender_enum | null
+  export type NestedEnumstatus_user_enumWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.status_user_enum | Enumstatus_user_enumFieldRefInput<$PrismaModel>
+    in?: $Enums.status_user_enum[] | ListEnumstatus_user_enumFieldRefInput<$PrismaModel>
+    notIn?: $Enums.status_user_enum[] | ListEnumstatus_user_enumFieldRefInput<$PrismaModel>
+    not?: NestedEnumstatus_user_enumWithAggregatesFilter<$PrismaModel> | $Enums.status_user_enum
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumstatus_user_enumFilter<$PrismaModel>
+    _max?: NestedEnumstatus_user_enumFilter<$PrismaModel>
+  }
+
+  export type NestedUuidFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel>
+    in?: string[] | ListStringFieldRefInput<$PrismaModel>
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel>
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    not?: NestedUuidFilter<$PrismaModel> | string
+  }
+
+  export type NestedDecimalNullableFilter<$PrismaModel = never> = {
+    equals?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel> | null
+    in?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel> | null
+    notIn?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel> | null
+    lt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    lte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    gt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    gte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    not?: NestedDecimalNullableFilter<$PrismaModel> | Decimal | DecimalJsLike | number | string | null
+  }
+
+  export type NestedBoolNullableFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel> | null
+    not?: NestedBoolNullableFilter<$PrismaModel> | boolean | null
+  }
+
+  export type NestedBigIntNullableFilter<$PrismaModel = never> = {
+    equals?: bigint | number | BigIntFieldRefInput<$PrismaModel> | null
+    in?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel> | null
+    notIn?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel> | null
+    lt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    lte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    gt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    gte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    not?: NestedBigIntNullableFilter<$PrismaModel> | bigint | number | null
+  }
+
+  export type NestedUuidWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel>
+    in?: string[] | ListStringFieldRefInput<$PrismaModel>
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel>
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    not?: NestedUuidWithAggregatesFilter<$PrismaModel> | string
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedStringFilter<$PrismaModel>
+    _max?: NestedStringFilter<$PrismaModel>
+  }
+
+  export type NestedDecimalNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel> | null
+    in?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel> | null
+    notIn?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel> | null
+    lt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    lte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    gt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    gte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    not?: NestedDecimalNullableWithAggregatesFilter<$PrismaModel> | Decimal | DecimalJsLike | number | string | null
     _count?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedEnumgender_enumNullableFilter<$PrismaModel>
-    _max?: NestedEnumgender_enumNullableFilter<$PrismaModel>
+    _avg?: NestedDecimalNullableFilter<$PrismaModel>
+    _sum?: NestedDecimalNullableFilter<$PrismaModel>
+    _min?: NestedDecimalNullableFilter<$PrismaModel>
+    _max?: NestedDecimalNullableFilter<$PrismaModel>
   }
 
-  export type NestedBytesNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: Uint8Array | BytesFieldRefInput<$PrismaModel> | null
-    in?: Uint8Array[] | ListBytesFieldRefInput<$PrismaModel> | null
-    notIn?: Uint8Array[] | ListBytesFieldRefInput<$PrismaModel> | null
-    not?: NestedBytesNullableWithAggregatesFilter<$PrismaModel> | Uint8Array | null
+  export type NestedBoolNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel> | null
+    not?: NestedBoolNullableWithAggregatesFilter<$PrismaModel> | boolean | null
     _count?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedBytesNullableFilter<$PrismaModel>
-    _max?: NestedBytesNullableFilter<$PrismaModel>
+    _min?: NestedBoolNullableFilter<$PrismaModel>
+    _max?: NestedBoolNullableFilter<$PrismaModel>
   }
 
-  export type NestedEnumstatus_user_enumNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: $Enums.status_user_enum | Enumstatus_user_enumFieldRefInput<$PrismaModel> | null
-    in?: $Enums.status_user_enum[] | ListEnumstatus_user_enumFieldRefInput<$PrismaModel> | null
-    notIn?: $Enums.status_user_enum[] | ListEnumstatus_user_enumFieldRefInput<$PrismaModel> | null
-    not?: NestedEnumstatus_user_enumNullableWithAggregatesFilter<$PrismaModel> | $Enums.status_user_enum | null
+  export type NestedBigIntNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: bigint | number | BigIntFieldRefInput<$PrismaModel> | null
+    in?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel> | null
+    notIn?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel> | null
+    lt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    lte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    gt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    gte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    not?: NestedBigIntNullableWithAggregatesFilter<$PrismaModel> | bigint | number | null
     _count?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedEnumstatus_user_enumNullableFilter<$PrismaModel>
-    _max?: NestedEnumstatus_user_enumNullableFilter<$PrismaModel>
+    _avg?: NestedFloatNullableFilter<$PrismaModel>
+    _sum?: NestedBigIntNullableFilter<$PrismaModel>
+    _min?: NestedBigIntNullableFilter<$PrismaModel>
+    _max?: NestedBigIntNullableFilter<$PrismaModel>
   }
 
-  export type citiesCreateWithoutAddressesInput = {
-    nama_kota: string
-    created_at?: Date | string | null
-    updated_at?: Date | string | null
-    provinces: provincesCreateNestedOneWithoutCitiesInput
+  export type NestedFloatNullableFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatNullableFilter<$PrismaModel> | number | null
   }
 
-  export type citiesUncheckedCreateWithoutAddressesInput = {
-    id_kota?: number
-    nama_kota: string
-    id_prov: number
-    created_at?: Date | string | null
-    updated_at?: Date | string | null
+  export type NestedIntNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableWithAggregatesFilter<$PrismaModel> | number | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedFloatNullableFilter<$PrismaModel>
+    _sum?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedIntNullableFilter<$PrismaModel>
+    _max?: NestedIntNullableFilter<$PrismaModel>
   }
 
-  export type citiesCreateOrConnectWithoutAddressesInput = {
-    where: citiesWhereUniqueInput
-    create: XOR<citiesCreateWithoutAddressesInput, citiesUncheckedCreateWithoutAddressesInput>
-  }
-
-  export type provincesCreateWithoutAddressesInput = {
-    nama_prov: string
-    created_at?: Date | string | null
-    updated_at?: Date | string | null
-    cities?: citiesCreateNestedManyWithoutProvincesInput
-  }
-
-  export type provincesUncheckedCreateWithoutAddressesInput = {
-    id_prov?: number
-    nama_prov: string
-    created_at?: Date | string | null
-    updated_at?: Date | string | null
-    cities?: citiesUncheckedCreateNestedManyWithoutProvincesInput
-  }
-
-  export type provincesCreateOrConnectWithoutAddressesInput = {
-    where: provincesWhereUniqueInput
-    create: XOR<provincesCreateWithoutAddressesInput, provincesUncheckedCreateWithoutAddressesInput>
-  }
-
-  export type user_addressCreateWithoutAddressesInput = {
-    users: usersCreateNestedOneWithoutUser_addressInput
-  }
-
-  export type user_addressUncheckedCreateWithoutAddressesInput = {
-    id_user: string
-  }
-
-  export type user_addressCreateOrConnectWithoutAddressesInput = {
-    where: user_addressWhereUniqueInput
-    create: XOR<user_addressCreateWithoutAddressesInput, user_addressUncheckedCreateWithoutAddressesInput>
-  }
-
-  export type user_addressCreateManyAddressesInputEnvelope = {
-    data: user_addressCreateManyAddressesInput | user_addressCreateManyAddressesInput[]
-    skipDuplicates?: boolean
-  }
-
-  export type citiesUpsertWithoutAddressesInput = {
-    update: XOR<citiesUpdateWithoutAddressesInput, citiesUncheckedUpdateWithoutAddressesInput>
-    create: XOR<citiesCreateWithoutAddressesInput, citiesUncheckedCreateWithoutAddressesInput>
-    where?: citiesWhereInput
-  }
-
-  export type citiesUpdateToOneWithWhereWithoutAddressesInput = {
-    where?: citiesWhereInput
-    data: XOR<citiesUpdateWithoutAddressesInput, citiesUncheckedUpdateWithoutAddressesInput>
-  }
-
-  export type citiesUpdateWithoutAddressesInput = {
-    nama_kota?: StringFieldUpdateOperationsInput | string
-    created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    provinces?: provincesUpdateOneRequiredWithoutCitiesNestedInput
-  }
-
-  export type citiesUncheckedUpdateWithoutAddressesInput = {
-    id_kota?: IntFieldUpdateOperationsInput | number
-    nama_kota?: StringFieldUpdateOperationsInput | string
-    id_prov?: IntFieldUpdateOperationsInput | number
-    created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  }
-
-  export type provincesUpsertWithoutAddressesInput = {
-    update: XOR<provincesUpdateWithoutAddressesInput, provincesUncheckedUpdateWithoutAddressesInput>
-    create: XOR<provincesCreateWithoutAddressesInput, provincesUncheckedCreateWithoutAddressesInput>
-    where?: provincesWhereInput
-  }
-
-  export type provincesUpdateToOneWithWhereWithoutAddressesInput = {
-    where?: provincesWhereInput
-    data: XOR<provincesUpdateWithoutAddressesInput, provincesUncheckedUpdateWithoutAddressesInput>
-  }
-
-  export type provincesUpdateWithoutAddressesInput = {
-    nama_prov?: StringFieldUpdateOperationsInput | string
-    created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    cities?: citiesUpdateManyWithoutProvincesNestedInput
-  }
-
-  export type provincesUncheckedUpdateWithoutAddressesInput = {
-    id_prov?: IntFieldUpdateOperationsInput | number
-    nama_prov?: StringFieldUpdateOperationsInput | string
-    created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    cities?: citiesUncheckedUpdateManyWithoutProvincesNestedInput
-  }
-
-  export type user_addressUpsertWithWhereUniqueWithoutAddressesInput = {
-    where: user_addressWhereUniqueInput
-    update: XOR<user_addressUpdateWithoutAddressesInput, user_addressUncheckedUpdateWithoutAddressesInput>
-    create: XOR<user_addressCreateWithoutAddressesInput, user_addressUncheckedCreateWithoutAddressesInput>
-  }
-
-  export type user_addressUpdateWithWhereUniqueWithoutAddressesInput = {
-    where: user_addressWhereUniqueInput
-    data: XOR<user_addressUpdateWithoutAddressesInput, user_addressUncheckedUpdateWithoutAddressesInput>
-  }
-
-  export type user_addressUpdateManyWithWhereWithoutAddressesInput = {
-    where: user_addressScalarWhereInput
-    data: XOR<user_addressUpdateManyMutationInput, user_addressUncheckedUpdateManyWithoutAddressesInput>
-  }
-
-  export type user_addressScalarWhereInput = {
-    AND?: user_addressScalarWhereInput | user_addressScalarWhereInput[]
-    OR?: user_addressScalarWhereInput[]
-    NOT?: user_addressScalarWhereInput | user_addressScalarWhereInput[]
-    id_user?: StringFilter<"user_address"> | string
-    id_alamat?: StringFilter<"user_address"> | string
-  }
-
-  export type addressesCreateWithoutCitiesInput = {
+  export type alamatCreateWithoutCitiesInput = {
     id_alamat: string
-    alamat: string
-    latitude: Decimal | DecimalJsLike | number | string
-    longitude: Decimal | DecimalJsLike | number | string
+    alamat?: string | null
+    catatan?: string | null
+    latitude?: Decimal | DecimalJsLike | number | string | null
+    longitude?: Decimal | DecimalJsLike | number | string | null
+    is_default?: boolean | null
     created_at?: Date | string | null
     updated_at?: Date | string | null
-    provinces?: provincesCreateNestedOneWithoutAddressesInput
-    user_address?: user_addressCreateNestedManyWithoutAddressesInput
+    kecamatan?: kecamatanCreateNestedOneWithoutAlamatInput
+    kelurahan?: kelurahanCreateNestedOneWithoutAlamatInput
+    provinces?: provincesCreateNestedOneWithoutAlamatInput
+    tipe_alamat?: tipe_alamatCreateNestedOneWithoutAlamatInput
+    users?: usersCreateNestedOneWithoutAlamatInput
   }
 
-  export type addressesUncheckedCreateWithoutCitiesInput = {
+  export type alamatUncheckedCreateWithoutCitiesInput = {
     id_alamat: string
-    alamat: string
-    latitude: Decimal | DecimalJsLike | number | string
-    longitude: Decimal | DecimalJsLike | number | string
+    id_user?: string | null
+    alamat?: string | null
+    catatan?: string | null
+    latitude?: Decimal | DecimalJsLike | number | string | null
+    longitude?: Decimal | DecimalJsLike | number | string | null
+    is_default?: boolean | null
+    id_tipe?: bigint | number | null
+    id_kel?: bigint | number | null
+    id_kec?: bigint | number | null
     id_prov?: number | null
     created_at?: Date | string | null
     updated_at?: Date | string | null
-    user_address?: user_addressUncheckedCreateNestedManyWithoutAddressesInput
   }
 
-  export type addressesCreateOrConnectWithoutCitiesInput = {
-    where: addressesWhereUniqueInput
-    create: XOR<addressesCreateWithoutCitiesInput, addressesUncheckedCreateWithoutCitiesInput>
+  export type alamatCreateOrConnectWithoutCitiesInput = {
+    where: alamatWhereUniqueInput
+    create: XOR<alamatCreateWithoutCitiesInput, alamatUncheckedCreateWithoutCitiesInput>
   }
 
-  export type addressesCreateManyCitiesInputEnvelope = {
-    data: addressesCreateManyCitiesInput | addressesCreateManyCitiesInput[]
+  export type alamatCreateManyCitiesInputEnvelope = {
+    data: alamatCreateManyCitiesInput | alamatCreateManyCitiesInput[]
     skipDuplicates?: boolean
   }
 
@@ -14801,7 +18466,7 @@ export namespace Prisma {
     nama_prov: string
     created_at?: Date | string | null
     updated_at?: Date | string | null
-    addresses?: addressesCreateNestedManyWithoutProvincesInput
+    alamat?: alamatCreateNestedManyWithoutProvincesInput
   }
 
   export type provincesUncheckedCreateWithoutCitiesInput = {
@@ -14809,7 +18474,7 @@ export namespace Prisma {
     nama_prov: string
     created_at?: Date | string | null
     updated_at?: Date | string | null
-    addresses?: addressesUncheckedCreateNestedManyWithoutProvincesInput
+    alamat?: alamatUncheckedCreateNestedManyWithoutProvincesInput
   }
 
   export type provincesCreateOrConnectWithoutCitiesInput = {
@@ -14817,34 +18482,68 @@ export namespace Prisma {
     create: XOR<provincesCreateWithoutCitiesInput, provincesUncheckedCreateWithoutCitiesInput>
   }
 
-  export type addressesUpsertWithWhereUniqueWithoutCitiesInput = {
-    where: addressesWhereUniqueInput
-    update: XOR<addressesUpdateWithoutCitiesInput, addressesUncheckedUpdateWithoutCitiesInput>
-    create: XOR<addressesCreateWithoutCitiesInput, addressesUncheckedCreateWithoutCitiesInput>
+  export type kecamatanCreateWithoutCitiesInput = {
+    id_kec?: bigint | number
+    kecamatan?: string | null
+    created_at?: Date | string | null
+    updated_at?: Date | string | null
+    alamat?: alamatCreateNestedManyWithoutKecamatanInput
+    kelurahan?: kelurahanCreateNestedManyWithoutKecamatanInput
   }
 
-  export type addressesUpdateWithWhereUniqueWithoutCitiesInput = {
-    where: addressesWhereUniqueInput
-    data: XOR<addressesUpdateWithoutCitiesInput, addressesUncheckedUpdateWithoutCitiesInput>
+  export type kecamatanUncheckedCreateWithoutCitiesInput = {
+    id_kec?: bigint | number
+    kecamatan?: string | null
+    created_at?: Date | string | null
+    updated_at?: Date | string | null
+    alamat?: alamatUncheckedCreateNestedManyWithoutKecamatanInput
+    kelurahan?: kelurahanUncheckedCreateNestedManyWithoutKecamatanInput
   }
 
-  export type addressesUpdateManyWithWhereWithoutCitiesInput = {
-    where: addressesScalarWhereInput
-    data: XOR<addressesUpdateManyMutationInput, addressesUncheckedUpdateManyWithoutCitiesInput>
+  export type kecamatanCreateOrConnectWithoutCitiesInput = {
+    where: kecamatanWhereUniqueInput
+    create: XOR<kecamatanCreateWithoutCitiesInput, kecamatanUncheckedCreateWithoutCitiesInput>
   }
 
-  export type addressesScalarWhereInput = {
-    AND?: addressesScalarWhereInput | addressesScalarWhereInput[]
-    OR?: addressesScalarWhereInput[]
-    NOT?: addressesScalarWhereInput | addressesScalarWhereInput[]
-    id_alamat?: StringFilter<"addresses"> | string
-    alamat?: StringFilter<"addresses"> | string
-    latitude?: DecimalFilter<"addresses"> | Decimal | DecimalJsLike | number | string
-    longitude?: DecimalFilter<"addresses"> | Decimal | DecimalJsLike | number | string
-    id_kota?: IntNullableFilter<"addresses"> | number | null
-    id_prov?: IntNullableFilter<"addresses"> | number | null
-    created_at?: DateTimeNullableFilter<"addresses"> | Date | string | null
-    updated_at?: DateTimeNullableFilter<"addresses"> | Date | string | null
+  export type kecamatanCreateManyCitiesInputEnvelope = {
+    data: kecamatanCreateManyCitiesInput | kecamatanCreateManyCitiesInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type alamatUpsertWithWhereUniqueWithoutCitiesInput = {
+    where: alamatWhereUniqueInput
+    update: XOR<alamatUpdateWithoutCitiesInput, alamatUncheckedUpdateWithoutCitiesInput>
+    create: XOR<alamatCreateWithoutCitiesInput, alamatUncheckedCreateWithoutCitiesInput>
+  }
+
+  export type alamatUpdateWithWhereUniqueWithoutCitiesInput = {
+    where: alamatWhereUniqueInput
+    data: XOR<alamatUpdateWithoutCitiesInput, alamatUncheckedUpdateWithoutCitiesInput>
+  }
+
+  export type alamatUpdateManyWithWhereWithoutCitiesInput = {
+    where: alamatScalarWhereInput
+    data: XOR<alamatUpdateManyMutationInput, alamatUncheckedUpdateManyWithoutCitiesInput>
+  }
+
+  export type alamatScalarWhereInput = {
+    AND?: alamatScalarWhereInput | alamatScalarWhereInput[]
+    OR?: alamatScalarWhereInput[]
+    NOT?: alamatScalarWhereInput | alamatScalarWhereInput[]
+    id_alamat?: UuidFilter<"alamat"> | string
+    id_user?: StringNullableFilter<"alamat"> | string | null
+    alamat?: StringNullableFilter<"alamat"> | string | null
+    catatan?: StringNullableFilter<"alamat"> | string | null
+    latitude?: DecimalNullableFilter<"alamat"> | Decimal | DecimalJsLike | number | string | null
+    longitude?: DecimalNullableFilter<"alamat"> | Decimal | DecimalJsLike | number | string | null
+    is_default?: BoolNullableFilter<"alamat"> | boolean | null
+    id_tipe?: BigIntNullableFilter<"alamat"> | bigint | number | null
+    id_kel?: BigIntNullableFilter<"alamat"> | bigint | number | null
+    id_kec?: BigIntNullableFilter<"alamat"> | bigint | number | null
+    id_kota?: IntNullableFilter<"alamat"> | number | null
+    id_prov?: IntNullableFilter<"alamat"> | number | null
+    created_at?: DateTimeNullableFilter<"alamat"> | Date | string | null
+    updated_at?: DateTimeNullableFilter<"alamat"> | Date | string | null
   }
 
   export type provincesUpsertWithoutCitiesInput = {
@@ -14862,7 +18561,7 @@ export namespace Prisma {
     nama_prov?: StringFieldUpdateOperationsInput | string
     created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    addresses?: addressesUpdateManyWithoutProvincesNestedInput
+    alamat?: alamatUpdateManyWithoutProvincesNestedInput
   }
 
   export type provincesUncheckedUpdateWithoutCitiesInput = {
@@ -14870,7 +18569,34 @@ export namespace Prisma {
     nama_prov?: StringFieldUpdateOperationsInput | string
     created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    addresses?: addressesUncheckedUpdateManyWithoutProvincesNestedInput
+    alamat?: alamatUncheckedUpdateManyWithoutProvincesNestedInput
+  }
+
+  export type kecamatanUpsertWithWhereUniqueWithoutCitiesInput = {
+    where: kecamatanWhereUniqueInput
+    update: XOR<kecamatanUpdateWithoutCitiesInput, kecamatanUncheckedUpdateWithoutCitiesInput>
+    create: XOR<kecamatanCreateWithoutCitiesInput, kecamatanUncheckedCreateWithoutCitiesInput>
+  }
+
+  export type kecamatanUpdateWithWhereUniqueWithoutCitiesInput = {
+    where: kecamatanWhereUniqueInput
+    data: XOR<kecamatanUpdateWithoutCitiesInput, kecamatanUncheckedUpdateWithoutCitiesInput>
+  }
+
+  export type kecamatanUpdateManyWithWhereWithoutCitiesInput = {
+    where: kecamatanScalarWhereInput
+    data: XOR<kecamatanUpdateManyMutationInput, kecamatanUncheckedUpdateManyWithoutCitiesInput>
+  }
+
+  export type kecamatanScalarWhereInput = {
+    AND?: kecamatanScalarWhereInput | kecamatanScalarWhereInput[]
+    OR?: kecamatanScalarWhereInput[]
+    NOT?: kecamatanScalarWhereInput | kecamatanScalarWhereInput[]
+    id_kec?: BigIntFilter<"kecamatan"> | bigint | number
+    kecamatan?: StringNullableFilter<"kecamatan"> | string | null
+    id_kota?: IntNullableFilter<"kecamatan"> | number | null
+    created_at?: DateTimeNullableFilter<"kecamatan"> | Date | string | null
+    updated_at?: DateTimeNullableFilter<"kecamatan"> | Date | string | null
   }
 
   export type profession_detailCreateWithoutProfessionInput = {
@@ -14980,34 +18706,34 @@ export namespace Prisma {
 
   export type usersCreateWithoutProfession_userInput = {
     id_user: string
-    username?: string | null
-    nama?: string | null
+    username: string
+    nama: string
     email: string
     sandi: string
-    gender?: $Enums.gender_enum | null
-    birth_date?: Date | string | null
+    gender: $Enums.gender_enum
+    birth_date: Date | string
     foto?: Uint8Array | null
     bio?: string | null
-    status_user?: $Enums.status_user_enum | null
+    status_user: $Enums.status_user_enum
     created_at?: Date | string | null
     updated_at?: Date | string | null
-    user_address?: user_addressCreateNestedManyWithoutUsersInput
+    alamat?: alamatCreateNestedManyWithoutUsersInput
   }
 
   export type usersUncheckedCreateWithoutProfession_userInput = {
     id_user: string
-    username?: string | null
-    nama?: string | null
+    username: string
+    nama: string
     email: string
     sandi: string
-    gender?: $Enums.gender_enum | null
-    birth_date?: Date | string | null
+    gender: $Enums.gender_enum
+    birth_date: Date | string
     foto?: Uint8Array | null
     bio?: string | null
-    status_user?: $Enums.status_user_enum | null
+    status_user: $Enums.status_user_enum
     created_at?: Date | string | null
     updated_at?: Date | string | null
-    user_address?: user_addressUncheckedCreateNestedManyWithoutUsersInput
+    alamat?: alamatUncheckedCreateNestedManyWithoutUsersInput
   }
 
   export type usersCreateOrConnectWithoutProfession_userInput = {
@@ -15055,65 +18781,75 @@ export namespace Prisma {
 
   export type usersUpdateWithoutProfession_userInput = {
     id_user?: StringFieldUpdateOperationsInput | string
-    username?: NullableStringFieldUpdateOperationsInput | string | null
-    nama?: NullableStringFieldUpdateOperationsInput | string | null
+    username?: StringFieldUpdateOperationsInput | string
+    nama?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     sandi?: StringFieldUpdateOperationsInput | string
-    gender?: NullableEnumgender_enumFieldUpdateOperationsInput | $Enums.gender_enum | null
-    birth_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    gender?: Enumgender_enumFieldUpdateOperationsInput | $Enums.gender_enum
+    birth_date?: DateTimeFieldUpdateOperationsInput | Date | string
     foto?: NullableBytesFieldUpdateOperationsInput | Uint8Array | null
     bio?: NullableStringFieldUpdateOperationsInput | string | null
-    status_user?: NullableEnumstatus_user_enumFieldUpdateOperationsInput | $Enums.status_user_enum | null
+    status_user?: Enumstatus_user_enumFieldUpdateOperationsInput | $Enums.status_user_enum
     created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    user_address?: user_addressUpdateManyWithoutUsersNestedInput
+    alamat?: alamatUpdateManyWithoutUsersNestedInput
   }
 
   export type usersUncheckedUpdateWithoutProfession_userInput = {
     id_user?: StringFieldUpdateOperationsInput | string
-    username?: NullableStringFieldUpdateOperationsInput | string | null
-    nama?: NullableStringFieldUpdateOperationsInput | string | null
+    username?: StringFieldUpdateOperationsInput | string
+    nama?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     sandi?: StringFieldUpdateOperationsInput | string
-    gender?: NullableEnumgender_enumFieldUpdateOperationsInput | $Enums.gender_enum | null
-    birth_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    gender?: Enumgender_enumFieldUpdateOperationsInput | $Enums.gender_enum
+    birth_date?: DateTimeFieldUpdateOperationsInput | Date | string
     foto?: NullableBytesFieldUpdateOperationsInput | Uint8Array | null
     bio?: NullableStringFieldUpdateOperationsInput | string | null
-    status_user?: NullableEnumstatus_user_enumFieldUpdateOperationsInput | $Enums.status_user_enum | null
+    status_user?: Enumstatus_user_enumFieldUpdateOperationsInput | $Enums.status_user_enum
     created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    user_address?: user_addressUncheckedUpdateManyWithoutUsersNestedInput
+    alamat?: alamatUncheckedUpdateManyWithoutUsersNestedInput
   }
 
-  export type addressesCreateWithoutProvincesInput = {
+  export type alamatCreateWithoutProvincesInput = {
     id_alamat: string
-    alamat: string
-    latitude: Decimal | DecimalJsLike | number | string
-    longitude: Decimal | DecimalJsLike | number | string
+    alamat?: string | null
+    catatan?: string | null
+    latitude?: Decimal | DecimalJsLike | number | string | null
+    longitude?: Decimal | DecimalJsLike | number | string | null
+    is_default?: boolean | null
     created_at?: Date | string | null
     updated_at?: Date | string | null
-    cities?: citiesCreateNestedOneWithoutAddressesInput
-    user_address?: user_addressCreateNestedManyWithoutAddressesInput
+    kecamatan?: kecamatanCreateNestedOneWithoutAlamatInput
+    kelurahan?: kelurahanCreateNestedOneWithoutAlamatInput
+    cities?: citiesCreateNestedOneWithoutAlamatInput
+    tipe_alamat?: tipe_alamatCreateNestedOneWithoutAlamatInput
+    users?: usersCreateNestedOneWithoutAlamatInput
   }
 
-  export type addressesUncheckedCreateWithoutProvincesInput = {
+  export type alamatUncheckedCreateWithoutProvincesInput = {
     id_alamat: string
-    alamat: string
-    latitude: Decimal | DecimalJsLike | number | string
-    longitude: Decimal | DecimalJsLike | number | string
+    id_user?: string | null
+    alamat?: string | null
+    catatan?: string | null
+    latitude?: Decimal | DecimalJsLike | number | string | null
+    longitude?: Decimal | DecimalJsLike | number | string | null
+    is_default?: boolean | null
+    id_tipe?: bigint | number | null
+    id_kel?: bigint | number | null
+    id_kec?: bigint | number | null
     id_kota?: number | null
     created_at?: Date | string | null
     updated_at?: Date | string | null
-    user_address?: user_addressUncheckedCreateNestedManyWithoutAddressesInput
   }
 
-  export type addressesCreateOrConnectWithoutProvincesInput = {
-    where: addressesWhereUniqueInput
-    create: XOR<addressesCreateWithoutProvincesInput, addressesUncheckedCreateWithoutProvincesInput>
+  export type alamatCreateOrConnectWithoutProvincesInput = {
+    where: alamatWhereUniqueInput
+    create: XOR<alamatCreateWithoutProvincesInput, alamatUncheckedCreateWithoutProvincesInput>
   }
 
-  export type addressesCreateManyProvincesInputEnvelope = {
-    data: addressesCreateManyProvincesInput | addressesCreateManyProvincesInput[]
+  export type alamatCreateManyProvincesInputEnvelope = {
+    data: alamatCreateManyProvincesInput | alamatCreateManyProvincesInput[]
     skipDuplicates?: boolean
   }
 
@@ -15121,7 +18857,8 @@ export namespace Prisma {
     nama_kota: string
     created_at?: Date | string | null
     updated_at?: Date | string | null
-    addresses?: addressesCreateNestedManyWithoutCitiesInput
+    alamat?: alamatCreateNestedManyWithoutCitiesInput
+    kecamatan?: kecamatanCreateNestedManyWithoutCitiesInput
   }
 
   export type citiesUncheckedCreateWithoutProvincesInput = {
@@ -15129,7 +18866,8 @@ export namespace Prisma {
     nama_kota: string
     created_at?: Date | string | null
     updated_at?: Date | string | null
-    addresses?: addressesUncheckedCreateNestedManyWithoutCitiesInput
+    alamat?: alamatUncheckedCreateNestedManyWithoutCitiesInput
+    kecamatan?: kecamatanUncheckedCreateNestedManyWithoutCitiesInput
   }
 
   export type citiesCreateOrConnectWithoutProvincesInput = {
@@ -15142,20 +18880,20 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
-  export type addressesUpsertWithWhereUniqueWithoutProvincesInput = {
-    where: addressesWhereUniqueInput
-    update: XOR<addressesUpdateWithoutProvincesInput, addressesUncheckedUpdateWithoutProvincesInput>
-    create: XOR<addressesCreateWithoutProvincesInput, addressesUncheckedCreateWithoutProvincesInput>
+  export type alamatUpsertWithWhereUniqueWithoutProvincesInput = {
+    where: alamatWhereUniqueInput
+    update: XOR<alamatUpdateWithoutProvincesInput, alamatUncheckedUpdateWithoutProvincesInput>
+    create: XOR<alamatCreateWithoutProvincesInput, alamatUncheckedCreateWithoutProvincesInput>
   }
 
-  export type addressesUpdateWithWhereUniqueWithoutProvincesInput = {
-    where: addressesWhereUniqueInput
-    data: XOR<addressesUpdateWithoutProvincesInput, addressesUncheckedUpdateWithoutProvincesInput>
+  export type alamatUpdateWithWhereUniqueWithoutProvincesInput = {
+    where: alamatWhereUniqueInput
+    data: XOR<alamatUpdateWithoutProvincesInput, alamatUncheckedUpdateWithoutProvincesInput>
   }
 
-  export type addressesUpdateManyWithWhereWithoutProvincesInput = {
-    where: addressesScalarWhereInput
-    data: XOR<addressesUpdateManyMutationInput, addressesUncheckedUpdateManyWithoutProvincesInput>
+  export type alamatUpdateManyWithWhereWithoutProvincesInput = {
+    where: alamatScalarWhereInput
+    data: XOR<alamatUpdateManyMutationInput, alamatUncheckedUpdateManyWithoutProvincesInput>
   }
 
   export type citiesUpsertWithWhereUniqueWithoutProvincesInput = {
@@ -15185,144 +18923,46 @@ export namespace Prisma {
     updated_at?: DateTimeNullableFilter<"cities"> | Date | string | null
   }
 
-  export type addressesCreateWithoutUser_addressInput = {
+  export type alamatCreateWithoutUsersInput = {
     id_alamat: string
-    alamat: string
-    latitude: Decimal | DecimalJsLike | number | string
-    longitude: Decimal | DecimalJsLike | number | string
+    alamat?: string | null
+    catatan?: string | null
+    latitude?: Decimal | DecimalJsLike | number | string | null
+    longitude?: Decimal | DecimalJsLike | number | string | null
+    is_default?: boolean | null
     created_at?: Date | string | null
     updated_at?: Date | string | null
-    cities?: citiesCreateNestedOneWithoutAddressesInput
-    provinces?: provincesCreateNestedOneWithoutAddressesInput
+    kecamatan?: kecamatanCreateNestedOneWithoutAlamatInput
+    kelurahan?: kelurahanCreateNestedOneWithoutAlamatInput
+    cities?: citiesCreateNestedOneWithoutAlamatInput
+    provinces?: provincesCreateNestedOneWithoutAlamatInput
+    tipe_alamat?: tipe_alamatCreateNestedOneWithoutAlamatInput
   }
 
-  export type addressesUncheckedCreateWithoutUser_addressInput = {
+  export type alamatUncheckedCreateWithoutUsersInput = {
     id_alamat: string
-    alamat: string
-    latitude: Decimal | DecimalJsLike | number | string
-    longitude: Decimal | DecimalJsLike | number | string
+    alamat?: string | null
+    catatan?: string | null
+    latitude?: Decimal | DecimalJsLike | number | string | null
+    longitude?: Decimal | DecimalJsLike | number | string | null
+    is_default?: boolean | null
+    id_tipe?: bigint | number | null
+    id_kel?: bigint | number | null
+    id_kec?: bigint | number | null
     id_kota?: number | null
     id_prov?: number | null
     created_at?: Date | string | null
     updated_at?: Date | string | null
   }
 
-  export type addressesCreateOrConnectWithoutUser_addressInput = {
-    where: addressesWhereUniqueInput
-    create: XOR<addressesCreateWithoutUser_addressInput, addressesUncheckedCreateWithoutUser_addressInput>
+  export type alamatCreateOrConnectWithoutUsersInput = {
+    where: alamatWhereUniqueInput
+    create: XOR<alamatCreateWithoutUsersInput, alamatUncheckedCreateWithoutUsersInput>
   }
 
-  export type usersCreateWithoutUser_addressInput = {
-    id_user: string
-    username?: string | null
-    nama?: string | null
-    email: string
-    sandi: string
-    gender?: $Enums.gender_enum | null
-    birth_date?: Date | string | null
-    foto?: Uint8Array | null
-    bio?: string | null
-    status_user?: $Enums.status_user_enum | null
-    created_at?: Date | string | null
-    updated_at?: Date | string | null
-    profession_user?: profession_userCreateNestedManyWithoutUsersInput
-  }
-
-  export type usersUncheckedCreateWithoutUser_addressInput = {
-    id_user: string
-    username?: string | null
-    nama?: string | null
-    email: string
-    sandi: string
-    gender?: $Enums.gender_enum | null
-    birth_date?: Date | string | null
-    foto?: Uint8Array | null
-    bio?: string | null
-    status_user?: $Enums.status_user_enum | null
-    created_at?: Date | string | null
-    updated_at?: Date | string | null
-    profession_user?: profession_userUncheckedCreateNestedManyWithoutUsersInput
-  }
-
-  export type usersCreateOrConnectWithoutUser_addressInput = {
-    where: usersWhereUniqueInput
-    create: XOR<usersCreateWithoutUser_addressInput, usersUncheckedCreateWithoutUser_addressInput>
-  }
-
-  export type addressesUpsertWithoutUser_addressInput = {
-    update: XOR<addressesUpdateWithoutUser_addressInput, addressesUncheckedUpdateWithoutUser_addressInput>
-    create: XOR<addressesCreateWithoutUser_addressInput, addressesUncheckedCreateWithoutUser_addressInput>
-    where?: addressesWhereInput
-  }
-
-  export type addressesUpdateToOneWithWhereWithoutUser_addressInput = {
-    where?: addressesWhereInput
-    data: XOR<addressesUpdateWithoutUser_addressInput, addressesUncheckedUpdateWithoutUser_addressInput>
-  }
-
-  export type addressesUpdateWithoutUser_addressInput = {
-    id_alamat?: StringFieldUpdateOperationsInput | string
-    alamat?: StringFieldUpdateOperationsInput | string
-    latitude?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
-    longitude?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
-    created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    cities?: citiesUpdateOneWithoutAddressesNestedInput
-    provinces?: provincesUpdateOneWithoutAddressesNestedInput
-  }
-
-  export type addressesUncheckedUpdateWithoutUser_addressInput = {
-    id_alamat?: StringFieldUpdateOperationsInput | string
-    alamat?: StringFieldUpdateOperationsInput | string
-    latitude?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
-    longitude?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
-    id_kota?: NullableIntFieldUpdateOperationsInput | number | null
-    id_prov?: NullableIntFieldUpdateOperationsInput | number | null
-    created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  }
-
-  export type usersUpsertWithoutUser_addressInput = {
-    update: XOR<usersUpdateWithoutUser_addressInput, usersUncheckedUpdateWithoutUser_addressInput>
-    create: XOR<usersCreateWithoutUser_addressInput, usersUncheckedCreateWithoutUser_addressInput>
-    where?: usersWhereInput
-  }
-
-  export type usersUpdateToOneWithWhereWithoutUser_addressInput = {
-    where?: usersWhereInput
-    data: XOR<usersUpdateWithoutUser_addressInput, usersUncheckedUpdateWithoutUser_addressInput>
-  }
-
-  export type usersUpdateWithoutUser_addressInput = {
-    id_user?: StringFieldUpdateOperationsInput | string
-    username?: NullableStringFieldUpdateOperationsInput | string | null
-    nama?: NullableStringFieldUpdateOperationsInput | string | null
-    email?: StringFieldUpdateOperationsInput | string
-    sandi?: StringFieldUpdateOperationsInput | string
-    gender?: NullableEnumgender_enumFieldUpdateOperationsInput | $Enums.gender_enum | null
-    birth_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    foto?: NullableBytesFieldUpdateOperationsInput | Uint8Array | null
-    bio?: NullableStringFieldUpdateOperationsInput | string | null
-    status_user?: NullableEnumstatus_user_enumFieldUpdateOperationsInput | $Enums.status_user_enum | null
-    created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    profession_user?: profession_userUpdateManyWithoutUsersNestedInput
-  }
-
-  export type usersUncheckedUpdateWithoutUser_addressInput = {
-    id_user?: StringFieldUpdateOperationsInput | string
-    username?: NullableStringFieldUpdateOperationsInput | string | null
-    nama?: NullableStringFieldUpdateOperationsInput | string | null
-    email?: StringFieldUpdateOperationsInput | string
-    sandi?: StringFieldUpdateOperationsInput | string
-    gender?: NullableEnumgender_enumFieldUpdateOperationsInput | $Enums.gender_enum | null
-    birth_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    foto?: NullableBytesFieldUpdateOperationsInput | Uint8Array | null
-    bio?: NullableStringFieldUpdateOperationsInput | string | null
-    status_user?: NullableEnumstatus_user_enumFieldUpdateOperationsInput | $Enums.status_user_enum | null
-    created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    profession_user?: profession_userUncheckedUpdateManyWithoutUsersNestedInput
+  export type alamatCreateManyUsersInputEnvelope = {
+    data: alamatCreateManyUsersInput | alamatCreateManyUsersInput[]
+    skipDuplicates?: boolean
   }
 
   export type profession_userCreateWithoutUsersInput = {
@@ -15343,22 +18983,20 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
-  export type user_addressCreateWithoutUsersInput = {
-    addresses: addressesCreateNestedOneWithoutUser_addressInput
+  export type alamatUpsertWithWhereUniqueWithoutUsersInput = {
+    where: alamatWhereUniqueInput
+    update: XOR<alamatUpdateWithoutUsersInput, alamatUncheckedUpdateWithoutUsersInput>
+    create: XOR<alamatCreateWithoutUsersInput, alamatUncheckedCreateWithoutUsersInput>
   }
 
-  export type user_addressUncheckedCreateWithoutUsersInput = {
-    id_alamat: string
+  export type alamatUpdateWithWhereUniqueWithoutUsersInput = {
+    where: alamatWhereUniqueInput
+    data: XOR<alamatUpdateWithoutUsersInput, alamatUncheckedUpdateWithoutUsersInput>
   }
 
-  export type user_addressCreateOrConnectWithoutUsersInput = {
-    where: user_addressWhereUniqueInput
-    create: XOR<user_addressCreateWithoutUsersInput, user_addressUncheckedCreateWithoutUsersInput>
-  }
-
-  export type user_addressCreateManyUsersInputEnvelope = {
-    data: user_addressCreateManyUsersInput | user_addressCreateManyUsersInput[]
-    skipDuplicates?: boolean
+  export type alamatUpdateManyWithWhereWithoutUsersInput = {
+    where: alamatScalarWhereInput
+    data: XOR<alamatUpdateManyMutationInput, alamatUncheckedUpdateManyWithoutUsersInput>
   }
 
   export type profession_userUpsertWithWhereUniqueWithoutUsersInput = {
@@ -15375,22 +19013,6 @@ export namespace Prisma {
   export type profession_userUpdateManyWithWhereWithoutUsersInput = {
     where: profession_userScalarWhereInput
     data: XOR<profession_userUpdateManyMutationInput, profession_userUncheckedUpdateManyWithoutUsersInput>
-  }
-
-  export type user_addressUpsertWithWhereUniqueWithoutUsersInput = {
-    where: user_addressWhereUniqueInput
-    update: XOR<user_addressUpdateWithoutUsersInput, user_addressUncheckedUpdateWithoutUsersInput>
-    create: XOR<user_addressCreateWithoutUsersInput, user_addressUncheckedCreateWithoutUsersInput>
-  }
-
-  export type user_addressUpdateWithWhereUniqueWithoutUsersInput = {
-    where: user_addressWhereUniqueInput
-    data: XOR<user_addressUpdateWithoutUsersInput, user_addressUncheckedUpdateWithoutUsersInput>
-  }
-
-  export type user_addressUpdateManyWithWhereWithoutUsersInput = {
-    where: user_addressScalarWhereInput
-    data: XOR<user_addressUpdateManyMutationInput, user_addressUncheckedUpdateManyWithoutUsersInput>
   }
 
   export type profession_detailCreateWithoutProfession_categoryInput = {
@@ -15519,60 +19141,747 @@ export namespace Prisma {
     profession_user?: profession_userUncheckedUpdateManyWithoutProfessionNestedInput
   }
 
-  export type user_addressCreateManyAddressesInput = {
+  export type kecamatanCreateWithoutAlamatInput = {
+    id_kec?: bigint | number
+    kecamatan?: string | null
+    created_at?: Date | string | null
+    updated_at?: Date | string | null
+    cities?: citiesCreateNestedOneWithoutKecamatanInput
+    kelurahan?: kelurahanCreateNestedManyWithoutKecamatanInput
+  }
+
+  export type kecamatanUncheckedCreateWithoutAlamatInput = {
+    id_kec?: bigint | number
+    kecamatan?: string | null
+    id_kota?: number | null
+    created_at?: Date | string | null
+    updated_at?: Date | string | null
+    kelurahan?: kelurahanUncheckedCreateNestedManyWithoutKecamatanInput
+  }
+
+  export type kecamatanCreateOrConnectWithoutAlamatInput = {
+    where: kecamatanWhereUniqueInput
+    create: XOR<kecamatanCreateWithoutAlamatInput, kecamatanUncheckedCreateWithoutAlamatInput>
+  }
+
+  export type kelurahanCreateWithoutAlamatInput = {
+    id_kel?: bigint | number
+    kelurahan?: string | null
+    created_at?: Date | string | null
+    updated_at?: Date | string | null
+    kecamatan?: kecamatanCreateNestedOneWithoutKelurahanInput
+  }
+
+  export type kelurahanUncheckedCreateWithoutAlamatInput = {
+    id_kel?: bigint | number
+    kelurahan?: string | null
+    id_kec?: bigint | number | null
+    created_at?: Date | string | null
+    updated_at?: Date | string | null
+  }
+
+  export type kelurahanCreateOrConnectWithoutAlamatInput = {
+    where: kelurahanWhereUniqueInput
+    create: XOR<kelurahanCreateWithoutAlamatInput, kelurahanUncheckedCreateWithoutAlamatInput>
+  }
+
+  export type citiesCreateWithoutAlamatInput = {
+    nama_kota: string
+    created_at?: Date | string | null
+    updated_at?: Date | string | null
+    provinces: provincesCreateNestedOneWithoutCitiesInput
+    kecamatan?: kecamatanCreateNestedManyWithoutCitiesInput
+  }
+
+  export type citiesUncheckedCreateWithoutAlamatInput = {
+    id_kota?: number
+    nama_kota: string
+    id_prov: number
+    created_at?: Date | string | null
+    updated_at?: Date | string | null
+    kecamatan?: kecamatanUncheckedCreateNestedManyWithoutCitiesInput
+  }
+
+  export type citiesCreateOrConnectWithoutAlamatInput = {
+    where: citiesWhereUniqueInput
+    create: XOR<citiesCreateWithoutAlamatInput, citiesUncheckedCreateWithoutAlamatInput>
+  }
+
+  export type provincesCreateWithoutAlamatInput = {
+    nama_prov: string
+    created_at?: Date | string | null
+    updated_at?: Date | string | null
+    cities?: citiesCreateNestedManyWithoutProvincesInput
+  }
+
+  export type provincesUncheckedCreateWithoutAlamatInput = {
+    id_prov?: number
+    nama_prov: string
+    created_at?: Date | string | null
+    updated_at?: Date | string | null
+    cities?: citiesUncheckedCreateNestedManyWithoutProvincesInput
+  }
+
+  export type provincesCreateOrConnectWithoutAlamatInput = {
+    where: provincesWhereUniqueInput
+    create: XOR<provincesCreateWithoutAlamatInput, provincesUncheckedCreateWithoutAlamatInput>
+  }
+
+  export type tipe_alamatCreateWithoutAlamatInput = {
+    id_tipe?: bigint | number
+    tipe_alamat?: string | null
+    created_at?: Date | string | null
+    updated_at?: Date | string | null
+  }
+
+  export type tipe_alamatUncheckedCreateWithoutAlamatInput = {
+    id_tipe?: bigint | number
+    tipe_alamat?: string | null
+    created_at?: Date | string | null
+    updated_at?: Date | string | null
+  }
+
+  export type tipe_alamatCreateOrConnectWithoutAlamatInput = {
+    where: tipe_alamatWhereUniqueInput
+    create: XOR<tipe_alamatCreateWithoutAlamatInput, tipe_alamatUncheckedCreateWithoutAlamatInput>
+  }
+
+  export type usersCreateWithoutAlamatInput = {
     id_user: string
+    username: string
+    nama: string
+    email: string
+    sandi: string
+    gender: $Enums.gender_enum
+    birth_date: Date | string
+    foto?: Uint8Array | null
+    bio?: string | null
+    status_user: $Enums.status_user_enum
+    created_at?: Date | string | null
+    updated_at?: Date | string | null
+    profession_user?: profession_userCreateNestedManyWithoutUsersInput
   }
 
-  export type user_addressUpdateWithoutAddressesInput = {
-    users?: usersUpdateOneRequiredWithoutUser_addressNestedInput
+  export type usersUncheckedCreateWithoutAlamatInput = {
+    id_user: string
+    username: string
+    nama: string
+    email: string
+    sandi: string
+    gender: $Enums.gender_enum
+    birth_date: Date | string
+    foto?: Uint8Array | null
+    bio?: string | null
+    status_user: $Enums.status_user_enum
+    created_at?: Date | string | null
+    updated_at?: Date | string | null
+    profession_user?: profession_userUncheckedCreateNestedManyWithoutUsersInput
   }
 
-  export type user_addressUncheckedUpdateWithoutAddressesInput = {
+  export type usersCreateOrConnectWithoutAlamatInput = {
+    where: usersWhereUniqueInput
+    create: XOR<usersCreateWithoutAlamatInput, usersUncheckedCreateWithoutAlamatInput>
+  }
+
+  export type kecamatanUpsertWithoutAlamatInput = {
+    update: XOR<kecamatanUpdateWithoutAlamatInput, kecamatanUncheckedUpdateWithoutAlamatInput>
+    create: XOR<kecamatanCreateWithoutAlamatInput, kecamatanUncheckedCreateWithoutAlamatInput>
+    where?: kecamatanWhereInput
+  }
+
+  export type kecamatanUpdateToOneWithWhereWithoutAlamatInput = {
+    where?: kecamatanWhereInput
+    data: XOR<kecamatanUpdateWithoutAlamatInput, kecamatanUncheckedUpdateWithoutAlamatInput>
+  }
+
+  export type kecamatanUpdateWithoutAlamatInput = {
+    id_kec?: BigIntFieldUpdateOperationsInput | bigint | number
+    kecamatan?: NullableStringFieldUpdateOperationsInput | string | null
+    created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    cities?: citiesUpdateOneWithoutKecamatanNestedInput
+    kelurahan?: kelurahanUpdateManyWithoutKecamatanNestedInput
+  }
+
+  export type kecamatanUncheckedUpdateWithoutAlamatInput = {
+    id_kec?: BigIntFieldUpdateOperationsInput | bigint | number
+    kecamatan?: NullableStringFieldUpdateOperationsInput | string | null
+    id_kota?: NullableIntFieldUpdateOperationsInput | number | null
+    created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    kelurahan?: kelurahanUncheckedUpdateManyWithoutKecamatanNestedInput
+  }
+
+  export type kelurahanUpsertWithoutAlamatInput = {
+    update: XOR<kelurahanUpdateWithoutAlamatInput, kelurahanUncheckedUpdateWithoutAlamatInput>
+    create: XOR<kelurahanCreateWithoutAlamatInput, kelurahanUncheckedCreateWithoutAlamatInput>
+    where?: kelurahanWhereInput
+  }
+
+  export type kelurahanUpdateToOneWithWhereWithoutAlamatInput = {
+    where?: kelurahanWhereInput
+    data: XOR<kelurahanUpdateWithoutAlamatInput, kelurahanUncheckedUpdateWithoutAlamatInput>
+  }
+
+  export type kelurahanUpdateWithoutAlamatInput = {
+    id_kel?: BigIntFieldUpdateOperationsInput | bigint | number
+    kelurahan?: NullableStringFieldUpdateOperationsInput | string | null
+    created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    kecamatan?: kecamatanUpdateOneWithoutKelurahanNestedInput
+  }
+
+  export type kelurahanUncheckedUpdateWithoutAlamatInput = {
+    id_kel?: BigIntFieldUpdateOperationsInput | bigint | number
+    kelurahan?: NullableStringFieldUpdateOperationsInput | string | null
+    id_kec?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+    created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type citiesUpsertWithoutAlamatInput = {
+    update: XOR<citiesUpdateWithoutAlamatInput, citiesUncheckedUpdateWithoutAlamatInput>
+    create: XOR<citiesCreateWithoutAlamatInput, citiesUncheckedCreateWithoutAlamatInput>
+    where?: citiesWhereInput
+  }
+
+  export type citiesUpdateToOneWithWhereWithoutAlamatInput = {
+    where?: citiesWhereInput
+    data: XOR<citiesUpdateWithoutAlamatInput, citiesUncheckedUpdateWithoutAlamatInput>
+  }
+
+  export type citiesUpdateWithoutAlamatInput = {
+    nama_kota?: StringFieldUpdateOperationsInput | string
+    created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    provinces?: provincesUpdateOneRequiredWithoutCitiesNestedInput
+    kecamatan?: kecamatanUpdateManyWithoutCitiesNestedInput
+  }
+
+  export type citiesUncheckedUpdateWithoutAlamatInput = {
+    id_kota?: IntFieldUpdateOperationsInput | number
+    nama_kota?: StringFieldUpdateOperationsInput | string
+    id_prov?: IntFieldUpdateOperationsInput | number
+    created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    kecamatan?: kecamatanUncheckedUpdateManyWithoutCitiesNestedInput
+  }
+
+  export type provincesUpsertWithoutAlamatInput = {
+    update: XOR<provincesUpdateWithoutAlamatInput, provincesUncheckedUpdateWithoutAlamatInput>
+    create: XOR<provincesCreateWithoutAlamatInput, provincesUncheckedCreateWithoutAlamatInput>
+    where?: provincesWhereInput
+  }
+
+  export type provincesUpdateToOneWithWhereWithoutAlamatInput = {
+    where?: provincesWhereInput
+    data: XOR<provincesUpdateWithoutAlamatInput, provincesUncheckedUpdateWithoutAlamatInput>
+  }
+
+  export type provincesUpdateWithoutAlamatInput = {
+    nama_prov?: StringFieldUpdateOperationsInput | string
+    created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    cities?: citiesUpdateManyWithoutProvincesNestedInput
+  }
+
+  export type provincesUncheckedUpdateWithoutAlamatInput = {
+    id_prov?: IntFieldUpdateOperationsInput | number
+    nama_prov?: StringFieldUpdateOperationsInput | string
+    created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    cities?: citiesUncheckedUpdateManyWithoutProvincesNestedInput
+  }
+
+  export type tipe_alamatUpsertWithoutAlamatInput = {
+    update: XOR<tipe_alamatUpdateWithoutAlamatInput, tipe_alamatUncheckedUpdateWithoutAlamatInput>
+    create: XOR<tipe_alamatCreateWithoutAlamatInput, tipe_alamatUncheckedCreateWithoutAlamatInput>
+    where?: tipe_alamatWhereInput
+  }
+
+  export type tipe_alamatUpdateToOneWithWhereWithoutAlamatInput = {
+    where?: tipe_alamatWhereInput
+    data: XOR<tipe_alamatUpdateWithoutAlamatInput, tipe_alamatUncheckedUpdateWithoutAlamatInput>
+  }
+
+  export type tipe_alamatUpdateWithoutAlamatInput = {
+    id_tipe?: BigIntFieldUpdateOperationsInput | bigint | number
+    tipe_alamat?: NullableStringFieldUpdateOperationsInput | string | null
+    created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type tipe_alamatUncheckedUpdateWithoutAlamatInput = {
+    id_tipe?: BigIntFieldUpdateOperationsInput | bigint | number
+    tipe_alamat?: NullableStringFieldUpdateOperationsInput | string | null
+    created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type usersUpsertWithoutAlamatInput = {
+    update: XOR<usersUpdateWithoutAlamatInput, usersUncheckedUpdateWithoutAlamatInput>
+    create: XOR<usersCreateWithoutAlamatInput, usersUncheckedCreateWithoutAlamatInput>
+    where?: usersWhereInput
+  }
+
+  export type usersUpdateToOneWithWhereWithoutAlamatInput = {
+    where?: usersWhereInput
+    data: XOR<usersUpdateWithoutAlamatInput, usersUncheckedUpdateWithoutAlamatInput>
+  }
+
+  export type usersUpdateWithoutAlamatInput = {
     id_user?: StringFieldUpdateOperationsInput | string
+    username?: StringFieldUpdateOperationsInput | string
+    nama?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    sandi?: StringFieldUpdateOperationsInput | string
+    gender?: Enumgender_enumFieldUpdateOperationsInput | $Enums.gender_enum
+    birth_date?: DateTimeFieldUpdateOperationsInput | Date | string
+    foto?: NullableBytesFieldUpdateOperationsInput | Uint8Array | null
+    bio?: NullableStringFieldUpdateOperationsInput | string | null
+    status_user?: Enumstatus_user_enumFieldUpdateOperationsInput | $Enums.status_user_enum
+    created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    profession_user?: profession_userUpdateManyWithoutUsersNestedInput
   }
 
-  export type user_addressUncheckedUpdateManyWithoutAddressesInput = {
+  export type usersUncheckedUpdateWithoutAlamatInput = {
     id_user?: StringFieldUpdateOperationsInput | string
+    username?: StringFieldUpdateOperationsInput | string
+    nama?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    sandi?: StringFieldUpdateOperationsInput | string
+    gender?: Enumgender_enumFieldUpdateOperationsInput | $Enums.gender_enum
+    birth_date?: DateTimeFieldUpdateOperationsInput | Date | string
+    foto?: NullableBytesFieldUpdateOperationsInput | Uint8Array | null
+    bio?: NullableStringFieldUpdateOperationsInput | string | null
+    status_user?: Enumstatus_user_enumFieldUpdateOperationsInput | $Enums.status_user_enum
+    created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    profession_user?: profession_userUncheckedUpdateManyWithoutUsersNestedInput
   }
 
-  export type addressesCreateManyCitiesInput = {
+  export type alamatCreateWithoutKecamatanInput = {
     id_alamat: string
-    alamat: string
-    latitude: Decimal | DecimalJsLike | number | string
-    longitude: Decimal | DecimalJsLike | number | string
+    alamat?: string | null
+    catatan?: string | null
+    latitude?: Decimal | DecimalJsLike | number | string | null
+    longitude?: Decimal | DecimalJsLike | number | string | null
+    is_default?: boolean | null
+    created_at?: Date | string | null
+    updated_at?: Date | string | null
+    kelurahan?: kelurahanCreateNestedOneWithoutAlamatInput
+    cities?: citiesCreateNestedOneWithoutAlamatInput
+    provinces?: provincesCreateNestedOneWithoutAlamatInput
+    tipe_alamat?: tipe_alamatCreateNestedOneWithoutAlamatInput
+    users?: usersCreateNestedOneWithoutAlamatInput
+  }
+
+  export type alamatUncheckedCreateWithoutKecamatanInput = {
+    id_alamat: string
+    id_user?: string | null
+    alamat?: string | null
+    catatan?: string | null
+    latitude?: Decimal | DecimalJsLike | number | string | null
+    longitude?: Decimal | DecimalJsLike | number | string | null
+    is_default?: boolean | null
+    id_tipe?: bigint | number | null
+    id_kel?: bigint | number | null
+    id_kota?: number | null
     id_prov?: number | null
     created_at?: Date | string | null
     updated_at?: Date | string | null
   }
 
-  export type addressesUpdateWithoutCitiesInput = {
-    id_alamat?: StringFieldUpdateOperationsInput | string
-    alamat?: StringFieldUpdateOperationsInput | string
-    latitude?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
-    longitude?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
-    created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    provinces?: provincesUpdateOneWithoutAddressesNestedInput
-    user_address?: user_addressUpdateManyWithoutAddressesNestedInput
+  export type alamatCreateOrConnectWithoutKecamatanInput = {
+    where: alamatWhereUniqueInput
+    create: XOR<alamatCreateWithoutKecamatanInput, alamatUncheckedCreateWithoutKecamatanInput>
   }
 
-  export type addressesUncheckedUpdateWithoutCitiesInput = {
+  export type alamatCreateManyKecamatanInputEnvelope = {
+    data: alamatCreateManyKecamatanInput | alamatCreateManyKecamatanInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type citiesCreateWithoutKecamatanInput = {
+    nama_kota: string
+    created_at?: Date | string | null
+    updated_at?: Date | string | null
+    alamat?: alamatCreateNestedManyWithoutCitiesInput
+    provinces: provincesCreateNestedOneWithoutCitiesInput
+  }
+
+  export type citiesUncheckedCreateWithoutKecamatanInput = {
+    id_kota?: number
+    nama_kota: string
+    id_prov: number
+    created_at?: Date | string | null
+    updated_at?: Date | string | null
+    alamat?: alamatUncheckedCreateNestedManyWithoutCitiesInput
+  }
+
+  export type citiesCreateOrConnectWithoutKecamatanInput = {
+    where: citiesWhereUniqueInput
+    create: XOR<citiesCreateWithoutKecamatanInput, citiesUncheckedCreateWithoutKecamatanInput>
+  }
+
+  export type kelurahanCreateWithoutKecamatanInput = {
+    id_kel?: bigint | number
+    kelurahan?: string | null
+    created_at?: Date | string | null
+    updated_at?: Date | string | null
+    alamat?: alamatCreateNestedManyWithoutKelurahanInput
+  }
+
+  export type kelurahanUncheckedCreateWithoutKecamatanInput = {
+    id_kel?: bigint | number
+    kelurahan?: string | null
+    created_at?: Date | string | null
+    updated_at?: Date | string | null
+    alamat?: alamatUncheckedCreateNestedManyWithoutKelurahanInput
+  }
+
+  export type kelurahanCreateOrConnectWithoutKecamatanInput = {
+    where: kelurahanWhereUniqueInput
+    create: XOR<kelurahanCreateWithoutKecamatanInput, kelurahanUncheckedCreateWithoutKecamatanInput>
+  }
+
+  export type kelurahanCreateManyKecamatanInputEnvelope = {
+    data: kelurahanCreateManyKecamatanInput | kelurahanCreateManyKecamatanInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type alamatUpsertWithWhereUniqueWithoutKecamatanInput = {
+    where: alamatWhereUniqueInput
+    update: XOR<alamatUpdateWithoutKecamatanInput, alamatUncheckedUpdateWithoutKecamatanInput>
+    create: XOR<alamatCreateWithoutKecamatanInput, alamatUncheckedCreateWithoutKecamatanInput>
+  }
+
+  export type alamatUpdateWithWhereUniqueWithoutKecamatanInput = {
+    where: alamatWhereUniqueInput
+    data: XOR<alamatUpdateWithoutKecamatanInput, alamatUncheckedUpdateWithoutKecamatanInput>
+  }
+
+  export type alamatUpdateManyWithWhereWithoutKecamatanInput = {
+    where: alamatScalarWhereInput
+    data: XOR<alamatUpdateManyMutationInput, alamatUncheckedUpdateManyWithoutKecamatanInput>
+  }
+
+  export type citiesUpsertWithoutKecamatanInput = {
+    update: XOR<citiesUpdateWithoutKecamatanInput, citiesUncheckedUpdateWithoutKecamatanInput>
+    create: XOR<citiesCreateWithoutKecamatanInput, citiesUncheckedCreateWithoutKecamatanInput>
+    where?: citiesWhereInput
+  }
+
+  export type citiesUpdateToOneWithWhereWithoutKecamatanInput = {
+    where?: citiesWhereInput
+    data: XOR<citiesUpdateWithoutKecamatanInput, citiesUncheckedUpdateWithoutKecamatanInput>
+  }
+
+  export type citiesUpdateWithoutKecamatanInput = {
+    nama_kota?: StringFieldUpdateOperationsInput | string
+    created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    alamat?: alamatUpdateManyWithoutCitiesNestedInput
+    provinces?: provincesUpdateOneRequiredWithoutCitiesNestedInput
+  }
+
+  export type citiesUncheckedUpdateWithoutKecamatanInput = {
+    id_kota?: IntFieldUpdateOperationsInput | number
+    nama_kota?: StringFieldUpdateOperationsInput | string
+    id_prov?: IntFieldUpdateOperationsInput | number
+    created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    alamat?: alamatUncheckedUpdateManyWithoutCitiesNestedInput
+  }
+
+  export type kelurahanUpsertWithWhereUniqueWithoutKecamatanInput = {
+    where: kelurahanWhereUniqueInput
+    update: XOR<kelurahanUpdateWithoutKecamatanInput, kelurahanUncheckedUpdateWithoutKecamatanInput>
+    create: XOR<kelurahanCreateWithoutKecamatanInput, kelurahanUncheckedCreateWithoutKecamatanInput>
+  }
+
+  export type kelurahanUpdateWithWhereUniqueWithoutKecamatanInput = {
+    where: kelurahanWhereUniqueInput
+    data: XOR<kelurahanUpdateWithoutKecamatanInput, kelurahanUncheckedUpdateWithoutKecamatanInput>
+  }
+
+  export type kelurahanUpdateManyWithWhereWithoutKecamatanInput = {
+    where: kelurahanScalarWhereInput
+    data: XOR<kelurahanUpdateManyMutationInput, kelurahanUncheckedUpdateManyWithoutKecamatanInput>
+  }
+
+  export type kelurahanScalarWhereInput = {
+    AND?: kelurahanScalarWhereInput | kelurahanScalarWhereInput[]
+    OR?: kelurahanScalarWhereInput[]
+    NOT?: kelurahanScalarWhereInput | kelurahanScalarWhereInput[]
+    id_kel?: BigIntFilter<"kelurahan"> | bigint | number
+    kelurahan?: StringNullableFilter<"kelurahan"> | string | null
+    id_kec?: BigIntNullableFilter<"kelurahan"> | bigint | number | null
+    created_at?: DateTimeNullableFilter<"kelurahan"> | Date | string | null
+    updated_at?: DateTimeNullableFilter<"kelurahan"> | Date | string | null
+  }
+
+  export type alamatCreateWithoutKelurahanInput = {
+    id_alamat: string
+    alamat?: string | null
+    catatan?: string | null
+    latitude?: Decimal | DecimalJsLike | number | string | null
+    longitude?: Decimal | DecimalJsLike | number | string | null
+    is_default?: boolean | null
+    created_at?: Date | string | null
+    updated_at?: Date | string | null
+    kecamatan?: kecamatanCreateNestedOneWithoutAlamatInput
+    cities?: citiesCreateNestedOneWithoutAlamatInput
+    provinces?: provincesCreateNestedOneWithoutAlamatInput
+    tipe_alamat?: tipe_alamatCreateNestedOneWithoutAlamatInput
+    users?: usersCreateNestedOneWithoutAlamatInput
+  }
+
+  export type alamatUncheckedCreateWithoutKelurahanInput = {
+    id_alamat: string
+    id_user?: string | null
+    alamat?: string | null
+    catatan?: string | null
+    latitude?: Decimal | DecimalJsLike | number | string | null
+    longitude?: Decimal | DecimalJsLike | number | string | null
+    is_default?: boolean | null
+    id_tipe?: bigint | number | null
+    id_kec?: bigint | number | null
+    id_kota?: number | null
+    id_prov?: number | null
+    created_at?: Date | string | null
+    updated_at?: Date | string | null
+  }
+
+  export type alamatCreateOrConnectWithoutKelurahanInput = {
+    where: alamatWhereUniqueInput
+    create: XOR<alamatCreateWithoutKelurahanInput, alamatUncheckedCreateWithoutKelurahanInput>
+  }
+
+  export type alamatCreateManyKelurahanInputEnvelope = {
+    data: alamatCreateManyKelurahanInput | alamatCreateManyKelurahanInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type kecamatanCreateWithoutKelurahanInput = {
+    id_kec?: bigint | number
+    kecamatan?: string | null
+    created_at?: Date | string | null
+    updated_at?: Date | string | null
+    alamat?: alamatCreateNestedManyWithoutKecamatanInput
+    cities?: citiesCreateNestedOneWithoutKecamatanInput
+  }
+
+  export type kecamatanUncheckedCreateWithoutKelurahanInput = {
+    id_kec?: bigint | number
+    kecamatan?: string | null
+    id_kota?: number | null
+    created_at?: Date | string | null
+    updated_at?: Date | string | null
+    alamat?: alamatUncheckedCreateNestedManyWithoutKecamatanInput
+  }
+
+  export type kecamatanCreateOrConnectWithoutKelurahanInput = {
+    where: kecamatanWhereUniqueInput
+    create: XOR<kecamatanCreateWithoutKelurahanInput, kecamatanUncheckedCreateWithoutKelurahanInput>
+  }
+
+  export type alamatUpsertWithWhereUniqueWithoutKelurahanInput = {
+    where: alamatWhereUniqueInput
+    update: XOR<alamatUpdateWithoutKelurahanInput, alamatUncheckedUpdateWithoutKelurahanInput>
+    create: XOR<alamatCreateWithoutKelurahanInput, alamatUncheckedCreateWithoutKelurahanInput>
+  }
+
+  export type alamatUpdateWithWhereUniqueWithoutKelurahanInput = {
+    where: alamatWhereUniqueInput
+    data: XOR<alamatUpdateWithoutKelurahanInput, alamatUncheckedUpdateWithoutKelurahanInput>
+  }
+
+  export type alamatUpdateManyWithWhereWithoutKelurahanInput = {
+    where: alamatScalarWhereInput
+    data: XOR<alamatUpdateManyMutationInput, alamatUncheckedUpdateManyWithoutKelurahanInput>
+  }
+
+  export type kecamatanUpsertWithoutKelurahanInput = {
+    update: XOR<kecamatanUpdateWithoutKelurahanInput, kecamatanUncheckedUpdateWithoutKelurahanInput>
+    create: XOR<kecamatanCreateWithoutKelurahanInput, kecamatanUncheckedCreateWithoutKelurahanInput>
+    where?: kecamatanWhereInput
+  }
+
+  export type kecamatanUpdateToOneWithWhereWithoutKelurahanInput = {
+    where?: kecamatanWhereInput
+    data: XOR<kecamatanUpdateWithoutKelurahanInput, kecamatanUncheckedUpdateWithoutKelurahanInput>
+  }
+
+  export type kecamatanUpdateWithoutKelurahanInput = {
+    id_kec?: BigIntFieldUpdateOperationsInput | bigint | number
+    kecamatan?: NullableStringFieldUpdateOperationsInput | string | null
+    created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    alamat?: alamatUpdateManyWithoutKecamatanNestedInput
+    cities?: citiesUpdateOneWithoutKecamatanNestedInput
+  }
+
+  export type kecamatanUncheckedUpdateWithoutKelurahanInput = {
+    id_kec?: BigIntFieldUpdateOperationsInput | bigint | number
+    kecamatan?: NullableStringFieldUpdateOperationsInput | string | null
+    id_kota?: NullableIntFieldUpdateOperationsInput | number | null
+    created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    alamat?: alamatUncheckedUpdateManyWithoutKecamatanNestedInput
+  }
+
+  export type alamatCreateWithoutTipe_alamatInput = {
+    id_alamat: string
+    alamat?: string | null
+    catatan?: string | null
+    latitude?: Decimal | DecimalJsLike | number | string | null
+    longitude?: Decimal | DecimalJsLike | number | string | null
+    is_default?: boolean | null
+    created_at?: Date | string | null
+    updated_at?: Date | string | null
+    kecamatan?: kecamatanCreateNestedOneWithoutAlamatInput
+    kelurahan?: kelurahanCreateNestedOneWithoutAlamatInput
+    cities?: citiesCreateNestedOneWithoutAlamatInput
+    provinces?: provincesCreateNestedOneWithoutAlamatInput
+    users?: usersCreateNestedOneWithoutAlamatInput
+  }
+
+  export type alamatUncheckedCreateWithoutTipe_alamatInput = {
+    id_alamat: string
+    id_user?: string | null
+    alamat?: string | null
+    catatan?: string | null
+    latitude?: Decimal | DecimalJsLike | number | string | null
+    longitude?: Decimal | DecimalJsLike | number | string | null
+    is_default?: boolean | null
+    id_kel?: bigint | number | null
+    id_kec?: bigint | number | null
+    id_kota?: number | null
+    id_prov?: number | null
+    created_at?: Date | string | null
+    updated_at?: Date | string | null
+  }
+
+  export type alamatCreateOrConnectWithoutTipe_alamatInput = {
+    where: alamatWhereUniqueInput
+    create: XOR<alamatCreateWithoutTipe_alamatInput, alamatUncheckedCreateWithoutTipe_alamatInput>
+  }
+
+  export type alamatCreateManyTipe_alamatInputEnvelope = {
+    data: alamatCreateManyTipe_alamatInput | alamatCreateManyTipe_alamatInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type alamatUpsertWithWhereUniqueWithoutTipe_alamatInput = {
+    where: alamatWhereUniqueInput
+    update: XOR<alamatUpdateWithoutTipe_alamatInput, alamatUncheckedUpdateWithoutTipe_alamatInput>
+    create: XOR<alamatCreateWithoutTipe_alamatInput, alamatUncheckedCreateWithoutTipe_alamatInput>
+  }
+
+  export type alamatUpdateWithWhereUniqueWithoutTipe_alamatInput = {
+    where: alamatWhereUniqueInput
+    data: XOR<alamatUpdateWithoutTipe_alamatInput, alamatUncheckedUpdateWithoutTipe_alamatInput>
+  }
+
+  export type alamatUpdateManyWithWhereWithoutTipe_alamatInput = {
+    where: alamatScalarWhereInput
+    data: XOR<alamatUpdateManyMutationInput, alamatUncheckedUpdateManyWithoutTipe_alamatInput>
+  }
+
+  export type alamatCreateManyCitiesInput = {
+    id_alamat: string
+    id_user?: string | null
+    alamat?: string | null
+    catatan?: string | null
+    latitude?: Decimal | DecimalJsLike | number | string | null
+    longitude?: Decimal | DecimalJsLike | number | string | null
+    is_default?: boolean | null
+    id_tipe?: bigint | number | null
+    id_kel?: bigint | number | null
+    id_kec?: bigint | number | null
+    id_prov?: number | null
+    created_at?: Date | string | null
+    updated_at?: Date | string | null
+  }
+
+  export type kecamatanCreateManyCitiesInput = {
+    id_kec?: bigint | number
+    kecamatan?: string | null
+    created_at?: Date | string | null
+    updated_at?: Date | string | null
+  }
+
+  export type alamatUpdateWithoutCitiesInput = {
     id_alamat?: StringFieldUpdateOperationsInput | string
-    alamat?: StringFieldUpdateOperationsInput | string
-    latitude?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
-    longitude?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    alamat?: NullableStringFieldUpdateOperationsInput | string | null
+    catatan?: NullableStringFieldUpdateOperationsInput | string | null
+    latitude?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    longitude?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    is_default?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    kecamatan?: kecamatanUpdateOneWithoutAlamatNestedInput
+    kelurahan?: kelurahanUpdateOneWithoutAlamatNestedInput
+    provinces?: provincesUpdateOneWithoutAlamatNestedInput
+    tipe_alamat?: tipe_alamatUpdateOneWithoutAlamatNestedInput
+    users?: usersUpdateOneWithoutAlamatNestedInput
+  }
+
+  export type alamatUncheckedUpdateWithoutCitiesInput = {
+    id_alamat?: StringFieldUpdateOperationsInput | string
+    id_user?: NullableStringFieldUpdateOperationsInput | string | null
+    alamat?: NullableStringFieldUpdateOperationsInput | string | null
+    catatan?: NullableStringFieldUpdateOperationsInput | string | null
+    latitude?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    longitude?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    is_default?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    id_tipe?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+    id_kel?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+    id_kec?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
     id_prov?: NullableIntFieldUpdateOperationsInput | number | null
     created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    user_address?: user_addressUncheckedUpdateManyWithoutAddressesNestedInput
   }
 
-  export type addressesUncheckedUpdateManyWithoutCitiesInput = {
+  export type alamatUncheckedUpdateManyWithoutCitiesInput = {
     id_alamat?: StringFieldUpdateOperationsInput | string
-    alamat?: StringFieldUpdateOperationsInput | string
-    latitude?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
-    longitude?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    id_user?: NullableStringFieldUpdateOperationsInput | string | null
+    alamat?: NullableStringFieldUpdateOperationsInput | string | null
+    catatan?: NullableStringFieldUpdateOperationsInput | string | null
+    latitude?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    longitude?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    is_default?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    id_tipe?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+    id_kel?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+    id_kec?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
     id_prov?: NullableIntFieldUpdateOperationsInput | number | null
+    created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type kecamatanUpdateWithoutCitiesInput = {
+    id_kec?: BigIntFieldUpdateOperationsInput | bigint | number
+    kecamatan?: NullableStringFieldUpdateOperationsInput | string | null
+    created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    alamat?: alamatUpdateManyWithoutKecamatanNestedInput
+    kelurahan?: kelurahanUpdateManyWithoutKecamatanNestedInput
+  }
+
+  export type kecamatanUncheckedUpdateWithoutCitiesInput = {
+    id_kec?: BigIntFieldUpdateOperationsInput | bigint | number
+    kecamatan?: NullableStringFieldUpdateOperationsInput | string | null
+    created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    alamat?: alamatUncheckedUpdateManyWithoutKecamatanNestedInput
+    kelurahan?: kelurahanUncheckedUpdateManyWithoutKecamatanNestedInput
+  }
+
+  export type kecamatanUncheckedUpdateManyWithoutCitiesInput = {
+    id_kec?: BigIntFieldUpdateOperationsInput | bigint | number
+    kecamatan?: NullableStringFieldUpdateOperationsInput | string | null
     created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
@@ -15609,11 +19918,17 @@ export namespace Prisma {
     id_user?: StringFieldUpdateOperationsInput | string
   }
 
-  export type addressesCreateManyProvincesInput = {
+  export type alamatCreateManyProvincesInput = {
     id_alamat: string
-    alamat: string
-    latitude: Decimal | DecimalJsLike | number | string
-    longitude: Decimal | DecimalJsLike | number | string
+    id_user?: string | null
+    alamat?: string | null
+    catatan?: string | null
+    latitude?: Decimal | DecimalJsLike | number | string | null
+    longitude?: Decimal | DecimalJsLike | number | string | null
+    is_default?: boolean | null
+    id_tipe?: bigint | number | null
+    id_kel?: bigint | number | null
+    id_kec?: bigint | number | null
     id_kota?: number | null
     created_at?: Date | string | null
     updated_at?: Date | string | null
@@ -15626,33 +19941,49 @@ export namespace Prisma {
     updated_at?: Date | string | null
   }
 
-  export type addressesUpdateWithoutProvincesInput = {
+  export type alamatUpdateWithoutProvincesInput = {
     id_alamat?: StringFieldUpdateOperationsInput | string
-    alamat?: StringFieldUpdateOperationsInput | string
-    latitude?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
-    longitude?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    alamat?: NullableStringFieldUpdateOperationsInput | string | null
+    catatan?: NullableStringFieldUpdateOperationsInput | string | null
+    latitude?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    longitude?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    is_default?: NullableBoolFieldUpdateOperationsInput | boolean | null
     created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    cities?: citiesUpdateOneWithoutAddressesNestedInput
-    user_address?: user_addressUpdateManyWithoutAddressesNestedInput
+    kecamatan?: kecamatanUpdateOneWithoutAlamatNestedInput
+    kelurahan?: kelurahanUpdateOneWithoutAlamatNestedInput
+    cities?: citiesUpdateOneWithoutAlamatNestedInput
+    tipe_alamat?: tipe_alamatUpdateOneWithoutAlamatNestedInput
+    users?: usersUpdateOneWithoutAlamatNestedInput
   }
 
-  export type addressesUncheckedUpdateWithoutProvincesInput = {
+  export type alamatUncheckedUpdateWithoutProvincesInput = {
     id_alamat?: StringFieldUpdateOperationsInput | string
-    alamat?: StringFieldUpdateOperationsInput | string
-    latitude?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
-    longitude?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    id_user?: NullableStringFieldUpdateOperationsInput | string | null
+    alamat?: NullableStringFieldUpdateOperationsInput | string | null
+    catatan?: NullableStringFieldUpdateOperationsInput | string | null
+    latitude?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    longitude?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    is_default?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    id_tipe?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+    id_kel?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+    id_kec?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
     id_kota?: NullableIntFieldUpdateOperationsInput | number | null
     created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    user_address?: user_addressUncheckedUpdateManyWithoutAddressesNestedInput
   }
 
-  export type addressesUncheckedUpdateManyWithoutProvincesInput = {
+  export type alamatUncheckedUpdateManyWithoutProvincesInput = {
     id_alamat?: StringFieldUpdateOperationsInput | string
-    alamat?: StringFieldUpdateOperationsInput | string
-    latitude?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
-    longitude?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    id_user?: NullableStringFieldUpdateOperationsInput | string | null
+    alamat?: NullableStringFieldUpdateOperationsInput | string | null
+    catatan?: NullableStringFieldUpdateOperationsInput | string | null
+    latitude?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    longitude?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    is_default?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    id_tipe?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+    id_kel?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+    id_kec?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
     id_kota?: NullableIntFieldUpdateOperationsInput | number | null
     created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -15662,7 +19993,8 @@ export namespace Prisma {
     nama_kota?: StringFieldUpdateOperationsInput | string
     created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    addresses?: addressesUpdateManyWithoutCitiesNestedInput
+    alamat?: alamatUpdateManyWithoutCitiesNestedInput
+    kecamatan?: kecamatanUpdateManyWithoutCitiesNestedInput
   }
 
   export type citiesUncheckedUpdateWithoutProvincesInput = {
@@ -15670,7 +20002,8 @@ export namespace Prisma {
     nama_kota?: StringFieldUpdateOperationsInput | string
     created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    addresses?: addressesUncheckedUpdateManyWithoutCitiesNestedInput
+    alamat?: alamatUncheckedUpdateManyWithoutCitiesNestedInput
+    kecamatan?: kecamatanUncheckedUpdateManyWithoutCitiesNestedInput
   }
 
   export type citiesUncheckedUpdateManyWithoutProvincesInput = {
@@ -15680,12 +20013,72 @@ export namespace Prisma {
     updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
+  export type alamatCreateManyUsersInput = {
+    id_alamat: string
+    alamat?: string | null
+    catatan?: string | null
+    latitude?: Decimal | DecimalJsLike | number | string | null
+    longitude?: Decimal | DecimalJsLike | number | string | null
+    is_default?: boolean | null
+    id_tipe?: bigint | number | null
+    id_kel?: bigint | number | null
+    id_kec?: bigint | number | null
+    id_kota?: number | null
+    id_prov?: number | null
+    created_at?: Date | string | null
+    updated_at?: Date | string | null
+  }
+
   export type profession_userCreateManyUsersInput = {
     id_profesi: bigint | number
   }
 
-  export type user_addressCreateManyUsersInput = {
-    id_alamat: string
+  export type alamatUpdateWithoutUsersInput = {
+    id_alamat?: StringFieldUpdateOperationsInput | string
+    alamat?: NullableStringFieldUpdateOperationsInput | string | null
+    catatan?: NullableStringFieldUpdateOperationsInput | string | null
+    latitude?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    longitude?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    is_default?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    kecamatan?: kecamatanUpdateOneWithoutAlamatNestedInput
+    kelurahan?: kelurahanUpdateOneWithoutAlamatNestedInput
+    cities?: citiesUpdateOneWithoutAlamatNestedInput
+    provinces?: provincesUpdateOneWithoutAlamatNestedInput
+    tipe_alamat?: tipe_alamatUpdateOneWithoutAlamatNestedInput
+  }
+
+  export type alamatUncheckedUpdateWithoutUsersInput = {
+    id_alamat?: StringFieldUpdateOperationsInput | string
+    alamat?: NullableStringFieldUpdateOperationsInput | string | null
+    catatan?: NullableStringFieldUpdateOperationsInput | string | null
+    latitude?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    longitude?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    is_default?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    id_tipe?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+    id_kel?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+    id_kec?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+    id_kota?: NullableIntFieldUpdateOperationsInput | number | null
+    id_prov?: NullableIntFieldUpdateOperationsInput | number | null
+    created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type alamatUncheckedUpdateManyWithoutUsersInput = {
+    id_alamat?: StringFieldUpdateOperationsInput | string
+    alamat?: NullableStringFieldUpdateOperationsInput | string | null
+    catatan?: NullableStringFieldUpdateOperationsInput | string | null
+    latitude?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    longitude?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    is_default?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    id_tipe?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+    id_kel?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+    id_kec?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+    id_kota?: NullableIntFieldUpdateOperationsInput | number | null
+    id_prov?: NullableIntFieldUpdateOperationsInput | number | null
+    created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type profession_userUpdateWithoutUsersInput = {
@@ -15698,18 +20091,6 @@ export namespace Prisma {
 
   export type profession_userUncheckedUpdateManyWithoutUsersInput = {
     id_profesi?: BigIntFieldUpdateOperationsInput | bigint | number
-  }
-
-  export type user_addressUpdateWithoutUsersInput = {
-    addresses?: addressesUpdateOneRequiredWithoutUser_addressNestedInput
-  }
-
-  export type user_addressUncheckedUpdateWithoutUsersInput = {
-    id_alamat?: StringFieldUpdateOperationsInput | string
-  }
-
-  export type user_addressUncheckedUpdateManyWithoutUsersInput = {
-    id_alamat?: StringFieldUpdateOperationsInput | string
   }
 
   export type profession_detailCreateManyProfession_categoryInput = {
@@ -15726,6 +20107,228 @@ export namespace Prisma {
 
   export type profession_detailUncheckedUpdateManyWithoutProfession_categoryInput = {
     id_profesi?: BigIntFieldUpdateOperationsInput | bigint | number
+  }
+
+  export type alamatCreateManyKecamatanInput = {
+    id_alamat: string
+    id_user?: string | null
+    alamat?: string | null
+    catatan?: string | null
+    latitude?: Decimal | DecimalJsLike | number | string | null
+    longitude?: Decimal | DecimalJsLike | number | string | null
+    is_default?: boolean | null
+    id_tipe?: bigint | number | null
+    id_kel?: bigint | number | null
+    id_kota?: number | null
+    id_prov?: number | null
+    created_at?: Date | string | null
+    updated_at?: Date | string | null
+  }
+
+  export type kelurahanCreateManyKecamatanInput = {
+    id_kel?: bigint | number
+    kelurahan?: string | null
+    created_at?: Date | string | null
+    updated_at?: Date | string | null
+  }
+
+  export type alamatUpdateWithoutKecamatanInput = {
+    id_alamat?: StringFieldUpdateOperationsInput | string
+    alamat?: NullableStringFieldUpdateOperationsInput | string | null
+    catatan?: NullableStringFieldUpdateOperationsInput | string | null
+    latitude?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    longitude?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    is_default?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    kelurahan?: kelurahanUpdateOneWithoutAlamatNestedInput
+    cities?: citiesUpdateOneWithoutAlamatNestedInput
+    provinces?: provincesUpdateOneWithoutAlamatNestedInput
+    tipe_alamat?: tipe_alamatUpdateOneWithoutAlamatNestedInput
+    users?: usersUpdateOneWithoutAlamatNestedInput
+  }
+
+  export type alamatUncheckedUpdateWithoutKecamatanInput = {
+    id_alamat?: StringFieldUpdateOperationsInput | string
+    id_user?: NullableStringFieldUpdateOperationsInput | string | null
+    alamat?: NullableStringFieldUpdateOperationsInput | string | null
+    catatan?: NullableStringFieldUpdateOperationsInput | string | null
+    latitude?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    longitude?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    is_default?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    id_tipe?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+    id_kel?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+    id_kota?: NullableIntFieldUpdateOperationsInput | number | null
+    id_prov?: NullableIntFieldUpdateOperationsInput | number | null
+    created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type alamatUncheckedUpdateManyWithoutKecamatanInput = {
+    id_alamat?: StringFieldUpdateOperationsInput | string
+    id_user?: NullableStringFieldUpdateOperationsInput | string | null
+    alamat?: NullableStringFieldUpdateOperationsInput | string | null
+    catatan?: NullableStringFieldUpdateOperationsInput | string | null
+    latitude?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    longitude?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    is_default?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    id_tipe?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+    id_kel?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+    id_kota?: NullableIntFieldUpdateOperationsInput | number | null
+    id_prov?: NullableIntFieldUpdateOperationsInput | number | null
+    created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type kelurahanUpdateWithoutKecamatanInput = {
+    id_kel?: BigIntFieldUpdateOperationsInput | bigint | number
+    kelurahan?: NullableStringFieldUpdateOperationsInput | string | null
+    created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    alamat?: alamatUpdateManyWithoutKelurahanNestedInput
+  }
+
+  export type kelurahanUncheckedUpdateWithoutKecamatanInput = {
+    id_kel?: BigIntFieldUpdateOperationsInput | bigint | number
+    kelurahan?: NullableStringFieldUpdateOperationsInput | string | null
+    created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    alamat?: alamatUncheckedUpdateManyWithoutKelurahanNestedInput
+  }
+
+  export type kelurahanUncheckedUpdateManyWithoutKecamatanInput = {
+    id_kel?: BigIntFieldUpdateOperationsInput | bigint | number
+    kelurahan?: NullableStringFieldUpdateOperationsInput | string | null
+    created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type alamatCreateManyKelurahanInput = {
+    id_alamat: string
+    id_user?: string | null
+    alamat?: string | null
+    catatan?: string | null
+    latitude?: Decimal | DecimalJsLike | number | string | null
+    longitude?: Decimal | DecimalJsLike | number | string | null
+    is_default?: boolean | null
+    id_tipe?: bigint | number | null
+    id_kec?: bigint | number | null
+    id_kota?: number | null
+    id_prov?: number | null
+    created_at?: Date | string | null
+    updated_at?: Date | string | null
+  }
+
+  export type alamatUpdateWithoutKelurahanInput = {
+    id_alamat?: StringFieldUpdateOperationsInput | string
+    alamat?: NullableStringFieldUpdateOperationsInput | string | null
+    catatan?: NullableStringFieldUpdateOperationsInput | string | null
+    latitude?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    longitude?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    is_default?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    kecamatan?: kecamatanUpdateOneWithoutAlamatNestedInput
+    cities?: citiesUpdateOneWithoutAlamatNestedInput
+    provinces?: provincesUpdateOneWithoutAlamatNestedInput
+    tipe_alamat?: tipe_alamatUpdateOneWithoutAlamatNestedInput
+    users?: usersUpdateOneWithoutAlamatNestedInput
+  }
+
+  export type alamatUncheckedUpdateWithoutKelurahanInput = {
+    id_alamat?: StringFieldUpdateOperationsInput | string
+    id_user?: NullableStringFieldUpdateOperationsInput | string | null
+    alamat?: NullableStringFieldUpdateOperationsInput | string | null
+    catatan?: NullableStringFieldUpdateOperationsInput | string | null
+    latitude?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    longitude?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    is_default?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    id_tipe?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+    id_kec?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+    id_kota?: NullableIntFieldUpdateOperationsInput | number | null
+    id_prov?: NullableIntFieldUpdateOperationsInput | number | null
+    created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type alamatUncheckedUpdateManyWithoutKelurahanInput = {
+    id_alamat?: StringFieldUpdateOperationsInput | string
+    id_user?: NullableStringFieldUpdateOperationsInput | string | null
+    alamat?: NullableStringFieldUpdateOperationsInput | string | null
+    catatan?: NullableStringFieldUpdateOperationsInput | string | null
+    latitude?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    longitude?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    is_default?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    id_tipe?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+    id_kec?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+    id_kota?: NullableIntFieldUpdateOperationsInput | number | null
+    id_prov?: NullableIntFieldUpdateOperationsInput | number | null
+    created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type alamatCreateManyTipe_alamatInput = {
+    id_alamat: string
+    id_user?: string | null
+    alamat?: string | null
+    catatan?: string | null
+    latitude?: Decimal | DecimalJsLike | number | string | null
+    longitude?: Decimal | DecimalJsLike | number | string | null
+    is_default?: boolean | null
+    id_kel?: bigint | number | null
+    id_kec?: bigint | number | null
+    id_kota?: number | null
+    id_prov?: number | null
+    created_at?: Date | string | null
+    updated_at?: Date | string | null
+  }
+
+  export type alamatUpdateWithoutTipe_alamatInput = {
+    id_alamat?: StringFieldUpdateOperationsInput | string
+    alamat?: NullableStringFieldUpdateOperationsInput | string | null
+    catatan?: NullableStringFieldUpdateOperationsInput | string | null
+    latitude?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    longitude?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    is_default?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    kecamatan?: kecamatanUpdateOneWithoutAlamatNestedInput
+    kelurahan?: kelurahanUpdateOneWithoutAlamatNestedInput
+    cities?: citiesUpdateOneWithoutAlamatNestedInput
+    provinces?: provincesUpdateOneWithoutAlamatNestedInput
+    users?: usersUpdateOneWithoutAlamatNestedInput
+  }
+
+  export type alamatUncheckedUpdateWithoutTipe_alamatInput = {
+    id_alamat?: StringFieldUpdateOperationsInput | string
+    id_user?: NullableStringFieldUpdateOperationsInput | string | null
+    alamat?: NullableStringFieldUpdateOperationsInput | string | null
+    catatan?: NullableStringFieldUpdateOperationsInput | string | null
+    latitude?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    longitude?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    is_default?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    id_kel?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+    id_kec?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+    id_kota?: NullableIntFieldUpdateOperationsInput | number | null
+    id_prov?: NullableIntFieldUpdateOperationsInput | number | null
+    created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type alamatUncheckedUpdateManyWithoutTipe_alamatInput = {
+    id_alamat?: StringFieldUpdateOperationsInput | string
+    id_user?: NullableStringFieldUpdateOperationsInput | string | null
+    alamat?: NullableStringFieldUpdateOperationsInput | string | null
+    catatan?: NullableStringFieldUpdateOperationsInput | string | null
+    latitude?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    longitude?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    is_default?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    id_kel?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+    id_kec?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+    id_kota?: NullableIntFieldUpdateOperationsInput | number | null
+    id_prov?: NullableIntFieldUpdateOperationsInput | number | null
+    created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
 

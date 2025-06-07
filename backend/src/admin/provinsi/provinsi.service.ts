@@ -11,6 +11,15 @@ export class ProvinsiService{
 
     async create(data:CreateProvinsiDto[]){
         try {
+            const duplicates = new Set();
+            for(const items of data){
+                const key = `${toTitleCase(items.nama_prov)}`;
+                if(duplicates.has(key)){
+                    throw new BadRequestException("Provinsi yang diinputkan ada yang duplikat")
+                }
+                duplicates.add(key);
+            }
+
             for(const item of data){
                 const existingProv = await this.prisma.provinces.findFirst({
                     where: {nama_prov: toTitleCase(item.nama_prov)}
@@ -76,6 +85,14 @@ export class ProvinsiService{
                 throw new BadRequestException("Provinsi tidak ditemukan")
             }
 
+            await this.prisma.cities.deleteMany({
+                where: {id_prov: id_prov}
+            })
+
+            await this.prisma.alamat.deleteMany({
+                where: {id_prov: id_prov}
+            })
+
             await this.prisma.provinces.delete({
                 where: {id_prov: id_prov}
             })
@@ -106,6 +123,14 @@ export class ProvinsiService{
             }
 
             await this.prisma.cities.deleteMany({
+                where: {
+                    id_prov: {
+                        in: ids
+                    }
+                }
+            })
+
+            await this.prisma.alamat.deleteMany({
                 where: {
                     id_prov: {
                         in: ids

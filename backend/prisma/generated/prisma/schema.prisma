@@ -8,35 +8,22 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model addresses {
-  id_alamat    String         @id @db.VarChar(50)
-  alamat       String         @db.VarChar(255)
-  latitude     Decimal        @db.Decimal(9, 6)
-  longitude    Decimal        @db.Decimal(9, 6)
-  id_kota      Int?
-  id_prov      Int?
-  created_at   DateTime?      @default(now()) @db.Timestamp(6)
-  updated_at   DateTime?      @default(now()) @db.Timestamp(6)
-  cities       cities?        @relation(fields: [id_kota], references: [id_kota], onDelete: NoAction, onUpdate: NoAction)
-  provinces    provinces?     @relation(fields: [id_prov], references: [id_prov], onDelete: NoAction, onUpdate: NoAction)
-  user_address user_address[]
-}
-
 model cities {
   id_kota    Int         @id @default(autoincrement())
   nama_kota  String      @db.VarChar(255)
   id_prov    Int
   created_at DateTime?   @default(now()) @db.Timestamptz(6)
   updated_at DateTime?   @default(now()) @db.Timestamptz(6)
-  addresses  addresses[]
+  alamat     alamat[]
   provinces  provinces   @relation(fields: [id_prov], references: [id_prov], onDelete: NoAction, onUpdate: NoAction)
+  kecamatan  kecamatan[]
 }
 
 model profession {
   id_profesi        BigInt              @id @default(autoincrement())
   profession        String              @db.VarChar(50)
-  created_at        DateTime?           @default(now()) @db.Timestamp(6)
-  updated_at        DateTime?           @default(now()) @db.Timestamp(6)
+  created_at        DateTime?           @default(now()) @db.Timestamptz(6)
+  updated_at        DateTime?           @default(now()) @db.Timestamptz(6)
   profession_detail profession_detail[]
   profession_user   profession_user[]
 }
@@ -51,38 +38,29 @@ model profession_user {
 }
 
 model provinces {
-  id_prov    Int         @id @default(autoincrement())
-  nama_prov  String      @db.VarChar(255)
-  created_at DateTime?   @default(now()) @db.Timestamptz(6)
-  updated_at DateTime?   @default(now()) @db.Timestamptz(6)
-  addresses  addresses[]
+  id_prov    Int       @id @default(autoincrement())
+  nama_prov  String    @db.VarChar(255)
+  created_at DateTime? @default(now()) @db.Timestamptz(6)
+  updated_at DateTime? @default(now()) @db.Timestamptz(6)
+  alamat     alamat[]
   cities     cities[]
-}
-
-model user_address {
-  id_user   String    @db.VarChar(50)
-  id_alamat String    @db.VarChar(50)
-  addresses addresses @relation(fields: [id_alamat], references: [id_alamat], onDelete: NoAction, onUpdate: NoAction)
-  users     users     @relation(fields: [id_user], references: [id_user], onDelete: NoAction, onUpdate: NoAction)
-
-  @@id([id_user, id_alamat])
 }
 
 model users {
   id_user         String            @id @db.VarChar(50)
-  username        String?           @unique @db.VarChar(50)
-  nama            String?           @db.VarChar(100)
+  username        String            @unique @db.VarChar(50)
+  nama            String            @db.VarChar(100)
   email           String            @unique @db.VarChar(255)
-  sandi           String            @db.VarChar(25)
-  gender          gender_enum?
-  birth_date      DateTime?         @db.Date
+  sandi           String            @db.VarChar(255)
+  gender          gender_enum
+  birth_date      DateTime          @db.Date
   foto            Bytes?
   bio             String?           @db.VarChar(255)
-  status_user     status_user_enum?
-  created_at      DateTime?         @default(now()) @db.Timestamp(6)
-  updated_at      DateTime?         @default(now()) @db.Timestamp(6)
+  status_user     status_user_enum
+  created_at      DateTime?         @default(now()) @db.Timestamptz(6)
+  updated_at      DateTime?         @default(now()) @db.Timestamptz(6)
+  alamat          alamat[]
   profession_user profession_user[]
-  user_address    user_address[]
 }
 
 model profession_category {
@@ -100,6 +78,58 @@ model profession_detail {
   profession          profession          @relation(fields: [id_profesi], references: [id_profesi], onDelete: NoAction, onUpdate: NoAction)
 
   @@id([id_profesi, id_prof_cat])
+}
+
+model alamat {
+  id_alamat   String       @id @db.Uuid
+  id_user     String?      @db.VarChar(50)
+  alamat      String?      @db.VarChar(255)
+  catatan     String?      @db.VarChar(100)
+  latitude    Decimal?     @db.Decimal(9, 6)
+  longitude   Decimal?     @db.Decimal(9, 6)
+  is_default  Boolean?
+  id_tipe     BigInt?
+  id_kel      BigInt?
+  id_kec      BigInt?
+  id_kota     Int?
+  id_prov     Int?
+  created_at  DateTime?    @default(now()) @db.Timestamptz(6)
+  updated_at  DateTime?    @default(now()) @db.Timestamptz(6)
+  kecamatan   kecamatan?   @relation(fields: [id_kec], references: [id_kec], onDelete: NoAction, onUpdate: NoAction)
+  kelurahan   kelurahan?   @relation(fields: [id_kel], references: [id_kel], onDelete: NoAction, onUpdate: NoAction)
+  cities      cities?      @relation(fields: [id_kota], references: [id_kota], onDelete: NoAction, onUpdate: NoAction)
+  provinces   provinces?   @relation(fields: [id_prov], references: [id_prov], onDelete: NoAction, onUpdate: NoAction)
+  tipe_alamat tipe_alamat? @relation(fields: [id_tipe], references: [id_tipe], onDelete: NoAction, onUpdate: NoAction)
+  users       users?       @relation(fields: [id_user], references: [id_user], onDelete: NoAction, onUpdate: NoAction)
+}
+
+model kecamatan {
+  id_kec     BigInt      @id @default(autoincrement())
+  kecamatan  String?     @db.VarChar(255)
+  id_kota    Int?
+  created_at DateTime?   @default(now()) @db.Timestamptz(6)
+  updated_at DateTime?   @default(now()) @db.Timestamptz(6)
+  alamat     alamat[]
+  cities     cities?     @relation(fields: [id_kota], references: [id_kota], onDelete: NoAction, onUpdate: NoAction)
+  kelurahan  kelurahan[]
+}
+
+model kelurahan {
+  id_kel     BigInt     @id @default(autoincrement())
+  kelurahan  String?    @db.VarChar(255)
+  id_kec     BigInt?
+  created_at DateTime?  @default(now()) @db.Timestamptz(6)
+  updated_at DateTime?  @default(now()) @db.Timestamptz(6)
+  alamat     alamat[]
+  kecamatan  kecamatan? @relation(fields: [id_kec], references: [id_kec], onDelete: NoAction, onUpdate: NoAction)
+}
+
+model tipe_alamat {
+  id_tipe     BigInt    @id @default(autoincrement())
+  tipe_alamat String?   @db.VarChar(100)
+  created_at  DateTime? @default(now()) @db.Timestamptz(6)
+  updated_at  DateTime? @default(now()) @db.Timestamptz(6)
+  alamat      alamat[]
 }
 
 enum gender_enum {

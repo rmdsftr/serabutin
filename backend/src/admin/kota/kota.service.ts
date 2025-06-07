@@ -11,6 +11,15 @@ export class KotaService{
 
     async create(data:CreateKotaDto[]){
         try {
+            const duplicates = new Set();
+            for(const items of data){
+                const key = `${toTitleCase(items.nama_kota)}-${items.id_prov}`;
+                if(duplicates.has(key)){
+                    throw new BadRequestException("Kota yang diinputkan ada yang duplikat")
+                }
+                duplicates.add(key);
+            }
+
             for(const item of data){
                 const existingKota = await this.prisma.cities.findFirst({
                     where: {
@@ -88,6 +97,14 @@ export class KotaService{
                 throw new BadRequestException("Kota tidak ditemukan")
             }
 
+            await this.prisma.alamat.deleteMany({
+                where: {id_kota: id_kota}
+            })
+
+            await this.prisma.kecamatan.deleteMany({
+                where: {id_kota: id_kota}
+            })
+
             await this.prisma.cities.delete({
                 where: {id_kota: id_kota}
             })
@@ -115,6 +132,22 @@ export class KotaService{
             if(cekKota.length != ids.length){
                 throw new BadRequestException("Beberapa id_kota tidak valid")
             }
+
+            await this.prisma.alamat.deleteMany({
+                where: {
+                    id_kota: {
+                        in: ids
+                    }
+                }
+            })
+
+            await this.prisma.kecamatan.deleteMany({
+                where: {
+                    id_kota: {
+                        in: ids
+                    }
+                }
+            })
 
             await this.prisma.cities.deleteMany({
                 where: {

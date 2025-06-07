@@ -20,12 +20,12 @@ exports.Prisma = Prisma
 exports.$Enums = {}
 
 /**
- * Prisma Client JS version: 6.8.2
- * Query Engine version: 2060c79ba17c6bb9f5823312b6f6b7f4a845738e
+ * Prisma Client JS version: 6.9.0
+ * Query Engine version: 81e4af48011447c3cc503a190e86995b66d2a28e
  */
 Prisma.prismaVersion = {
-  client: "6.8.2",
-  engine: "2060c79ba17c6bb9f5823312b6f6b7f4a845738e"
+  client: "6.9.0",
+  engine: "81e4af48011447c3cc503a190e86995b66d2a28e"
 }
 
 Prisma.PrismaClientKnownRequestError = () => {
@@ -120,17 +120,6 @@ exports.Prisma.TransactionIsolationLevel = makeStrictEnum({
   Serializable: 'Serializable'
 });
 
-exports.Prisma.AddressesScalarFieldEnum = {
-  id_alamat: 'id_alamat',
-  alamat: 'alamat',
-  latitude: 'latitude',
-  longitude: 'longitude',
-  id_kota: 'id_kota',
-  id_prov: 'id_prov',
-  created_at: 'created_at',
-  updated_at: 'updated_at'
-};
-
 exports.Prisma.CitiesScalarFieldEnum = {
   id_kota: 'id_kota',
   nama_kota: 'nama_kota',
@@ -156,11 +145,6 @@ exports.Prisma.ProvincesScalarFieldEnum = {
   nama_prov: 'nama_prov',
   created_at: 'created_at',
   updated_at: 'updated_at'
-};
-
-exports.Prisma.User_addressScalarFieldEnum = {
-  id_user: 'id_user',
-  id_alamat: 'id_alamat'
 };
 
 exports.Prisma.UsersScalarFieldEnum = {
@@ -190,6 +174,46 @@ exports.Prisma.Profession_detailScalarFieldEnum = {
   id_prof_cat: 'id_prof_cat'
 };
 
+exports.Prisma.AlamatScalarFieldEnum = {
+  id_alamat: 'id_alamat',
+  id_user: 'id_user',
+  alamat: 'alamat',
+  catatan: 'catatan',
+  latitude: 'latitude',
+  longitude: 'longitude',
+  is_default: 'is_default',
+  id_tipe: 'id_tipe',
+  id_kel: 'id_kel',
+  id_kec: 'id_kec',
+  id_kota: 'id_kota',
+  id_prov: 'id_prov',
+  created_at: 'created_at',
+  updated_at: 'updated_at'
+};
+
+exports.Prisma.KecamatanScalarFieldEnum = {
+  id_kec: 'id_kec',
+  kecamatan: 'kecamatan',
+  id_kota: 'id_kota',
+  created_at: 'created_at',
+  updated_at: 'updated_at'
+};
+
+exports.Prisma.KelurahanScalarFieldEnum = {
+  id_kel: 'id_kel',
+  kelurahan: 'kelurahan',
+  id_kec: 'id_kec',
+  created_at: 'created_at',
+  updated_at: 'updated_at'
+};
+
+exports.Prisma.Tipe_alamatScalarFieldEnum = {
+  id_tipe: 'id_tipe',
+  tipe_alamat: 'tipe_alamat',
+  created_at: 'created_at',
+  updated_at: 'updated_at'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -217,15 +241,17 @@ exports.status_user_enum = exports.$Enums.status_user_enum = {
 };
 
 exports.Prisma.ModelName = {
-  addresses: 'addresses',
   cities: 'cities',
   profession: 'profession',
   profession_user: 'profession_user',
   provinces: 'provinces',
-  user_address: 'user_address',
   users: 'users',
   profession_category: 'profession_category',
-  profession_detail: 'profession_detail'
+  profession_detail: 'profession_detail',
+  alamat: 'alamat',
+  kecamatan: 'kecamatan',
+  kelurahan: 'kelurahan',
+  tipe_alamat: 'tipe_alamat'
 };
 
 /**
