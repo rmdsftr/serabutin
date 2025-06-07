@@ -1,7 +1,6 @@
 import { BadRequestException, Injectable, InternalServerErrorException } from "@nestjs/common";
 import { PrismaService } from "../../prisma/prisma.service";
 import { ProfileResponse } from "./interfaces/getprofile.interface";
-import { UserAddress } from "./interfaces/alamatuser.interface";
 import { UpdateProfileDto } from "./dto/update-profile.dto";
 import { UpdateProfileResponse } from "./interfaces/updateprofile.interface";
 import { toTitleCase } from "../../utils/title.util";
@@ -20,51 +19,6 @@ export class ProfileService{
                 throw new BadRequestException("Pengguna tidak ditemukan")
             }
 
-            const alamatRaw = await this.prisma.alamat.findMany({
-                where: {id_user: id_user},
-                select: {
-                    alamat: true,
-                    catatan: true,
-                    is_default:true,
-                    tipe_alamat: {
-                        select: {
-                            tipe_alamat:true
-                        }
-                    },
-                    kecamatan: {
-                        select: {
-                            kecamatan: true
-                        }
-                    },
-                    kelurahan: {
-                        select: {
-                            kelurahan:true
-                        }
-                    },
-                    cities: {
-                        select: {
-                            nama_kota: true
-                        }
-                    },
-                    provinces: {
-                        select: {
-                            nama_prov:true
-                        }
-                    }
-                }
-            })
-
-            const alamat: UserAddress[] = alamatRaw.map(a => ({
-                alamat: a.alamat ?? '',
-                catatan: a.catatan ?? '',
-                tipe_alamat: a.tipe_alamat?.tipe_alamat ?? '',
-                kelurahan: a.kelurahan?.kelurahan ?? '',
-                kecamatan: a.kecamatan?.kecamatan ?? '',
-                kota: a.cities?.nama_kota ?? '',
-                provinsi: a.provinces?.nama_prov ?? '',
-                is_default: a.is_default ?? false
-            }))
-
             return {
                 username: user.username,
                 nama: user.nama,
@@ -73,8 +27,7 @@ export class ProfileService{
                 birthdate: user.birth_date,
                 foto: user.foto ? Buffer.from(user.foto) : Buffer.alloc(0),
                 bio: user.bio,
-                join: user.created_at,
-                addresses: alamat
+                join: user.created_at
             }
         } catch (error) {
             if(error instanceof BadRequestException){

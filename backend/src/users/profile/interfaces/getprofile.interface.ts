@@ -1,5 +1,4 @@
 import { $Enums } from "../../../../prisma/generated/prisma";
-import { UserAddress } from "./alamatuser.interface";
 
 export interface ProfileResponse{
     username:string;
@@ -10,5 +9,4 @@ export interface ProfileResponse{
     foto:Buffer;
     bio:string | null;
     join:Date | null;
-    addresses: UserAddress[];
 }

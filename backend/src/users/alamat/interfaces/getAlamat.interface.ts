@@ -1,4 +1,5 @@
 export interface UserAddress{
+    id_alamat:string;
     alamat:string;
     catatan:string;
     tipe_alamat:string;

@@ -82,25 +82,25 @@ model profession_detail {
 
 model alamat {
   id_alamat   String       @id @db.Uuid
-  id_user     String?      @db.VarChar(50)
-  alamat      String?      @db.VarChar(255)
+  id_user     String       @db.VarChar(50)
+  alamat      String       @db.VarChar(255)
   catatan     String?      @db.VarChar(100)
-  latitude    Decimal?     @db.Decimal(9, 6)
-  longitude   Decimal?     @db.Decimal(9, 6)
-  is_default  Boolean?
+  latitude    Decimal      @db.Decimal(9, 6)
+  longitude   Decimal      @db.Decimal(9, 6)
+  is_default  Boolean
   id_tipe     BigInt?
-  id_kel      BigInt?
-  id_kec      BigInt?
-  id_kota     Int?
-  id_prov     Int?
+  id_kel      BigInt
+  id_kec      BigInt
+  id_kota     Int
+  id_prov     Int
   created_at  DateTime?    @default(now()) @db.Timestamptz(6)
   updated_at  DateTime?    @default(now()) @db.Timestamptz(6)
-  kecamatan   kecamatan?   @relation(fields: [id_kec], references: [id_kec], onDelete: NoAction, onUpdate: NoAction)
-  kelurahan   kelurahan?   @relation(fields: [id_kel], references: [id_kel], onDelete: NoAction, onUpdate: NoAction)
-  cities      cities?      @relation(fields: [id_kota], references: [id_kota], onDelete: NoAction, onUpdate: NoAction)
-  provinces   provinces?   @relation(fields: [id_prov], references: [id_prov], onDelete: NoAction, onUpdate: NoAction)
+  kecamatan   kecamatan    @relation(fields: [id_kec], references: [id_kec], onDelete: NoAction, onUpdate: NoAction)
+  kelurahan   kelurahan    @relation(fields: [id_kel], references: [id_kel], onDelete: NoAction, onUpdate: NoAction)
+  cities      cities       @relation(fields: [id_kota], references: [id_kota], onDelete: NoAction, onUpdate: NoAction)
+  provinces   provinces    @relation(fields: [id_prov], references: [id_prov], onDelete: NoAction, onUpdate: NoAction)
   tipe_alamat tipe_alamat? @relation(fields: [id_tipe], references: [id_tipe], onDelete: NoAction, onUpdate: NoAction)
-  users       users?       @relation(fields: [id_user], references: [id_user], onDelete: NoAction, onUpdate: NoAction)
+  users       users        @relation(fields: [id_user], references: [id_user], onDelete: NoAction, onUpdate: NoAction)
 }
 
 model kecamatan {

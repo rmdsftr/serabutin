@@ -10145,17 +10145,17 @@ export namespace Prisma {
 
   export type AlamatGroupByOutputType = {
     id_alamat: string
-    id_user: string | null
-    alamat: string | null
+    id_user: string
+    alamat: string
     catatan: string | null
-    latitude: Decimal | null
-    longitude: Decimal | null
-    is_default: boolean | null
+    latitude: Decimal
+    longitude: Decimal
+    is_default: boolean
     id_tipe: bigint | null
-    id_kel: bigint | null
-    id_kec: bigint | null
-    id_kota: number | null
-    id_prov: number | null
+    id_kel: bigint
+    id_kec: bigint
+    id_kota: number
+    id_prov: number
     created_at: Date | null
     updated_at: Date | null
     _count: AlamatCountAggregateOutputType | null
@@ -10194,12 +10194,12 @@ export namespace Prisma {
     id_prov?: boolean
     created_at?: boolean
     updated_at?: boolean
-    kecamatan?: boolean | alamat$kecamatanArgs<ExtArgs>
-    kelurahan?: boolean | alamat$kelurahanArgs<ExtArgs>
-    cities?: boolean | alamat$citiesArgs<ExtArgs>
-    provinces?: boolean | alamat$provincesArgs<ExtArgs>
+    kecamatan?: boolean | kecamatanDefaultArgs<ExtArgs>
+    kelurahan?: boolean | kelurahanDefaultArgs<ExtArgs>
+    cities?: boolean | citiesDefaultArgs<ExtArgs>
+    provinces?: boolean | provincesDefaultArgs<ExtArgs>
     tipe_alamat?: boolean | alamat$tipe_alamatArgs<ExtArgs>
-    users?: boolean | alamat$usersArgs<ExtArgs>
+    users?: boolean | usersDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["alamat"]>
 
   export type alamatSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -10217,12 +10217,12 @@ export namespace Prisma {
     id_prov?: boolean
     created_at?: boolean
     updated_at?: boolean
-    kecamatan?: boolean | alamat$kecamatanArgs<ExtArgs>
-    kelurahan?: boolean | alamat$kelurahanArgs<ExtArgs>
-    cities?: boolean | alamat$citiesArgs<ExtArgs>
-    provinces?: boolean | alamat$provincesArgs<ExtArgs>
+    kecamatan?: boolean | kecamatanDefaultArgs<ExtArgs>
+    kelurahan?: boolean | kelurahanDefaultArgs<ExtArgs>
+    cities?: boolean | citiesDefaultArgs<ExtArgs>
+    provinces?: boolean | provincesDefaultArgs<ExtArgs>
     tipe_alamat?: boolean | alamat$tipe_alamatArgs<ExtArgs>
-    users?: boolean | alamat$usersArgs<ExtArgs>
+    users?: boolean | usersDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["alamat"]>
 
   export type alamatSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -10240,12 +10240,12 @@ export namespace Prisma {
     id_prov?: boolean
     created_at?: boolean
     updated_at?: boolean
-    kecamatan?: boolean | alamat$kecamatanArgs<ExtArgs>
-    kelurahan?: boolean | alamat$kelurahanArgs<ExtArgs>
-    cities?: boolean | alamat$citiesArgs<ExtArgs>
-    provinces?: boolean | alamat$provincesArgs<ExtArgs>
+    kecamatan?: boolean | kecamatanDefaultArgs<ExtArgs>
+    kelurahan?: boolean | kelurahanDefaultArgs<ExtArgs>
+    cities?: boolean | citiesDefaultArgs<ExtArgs>
+    provinces?: boolean | provincesDefaultArgs<ExtArgs>
     tipe_alamat?: boolean | alamat$tipe_alamatArgs<ExtArgs>
-    users?: boolean | alamat$usersArgs<ExtArgs>
+    users?: boolean | usersDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["alamat"]>
 
   export type alamatSelectScalar = {
@@ -10267,53 +10267,53 @@ export namespace Prisma {
 
   export type alamatOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id_alamat" | "id_user" | "alamat" | "catatan" | "latitude" | "longitude" | "is_default" | "id_tipe" | "id_kel" | "id_kec" | "id_kota" | "id_prov" | "created_at" | "updated_at", ExtArgs["result"]["alamat"]>
   export type alamatInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    kecamatan?: boolean | alamat$kecamatanArgs<ExtArgs>
-    kelurahan?: boolean | alamat$kelurahanArgs<ExtArgs>
-    cities?: boolean | alamat$citiesArgs<ExtArgs>
-    provinces?: boolean | alamat$provincesArgs<ExtArgs>
+    kecamatan?: boolean | kecamatanDefaultArgs<ExtArgs>
+    kelurahan?: boolean | kelurahanDefaultArgs<ExtArgs>
+    cities?: boolean | citiesDefaultArgs<ExtArgs>
+    provinces?: boolean | provincesDefaultArgs<ExtArgs>
     tipe_alamat?: boolean | alamat$tipe_alamatArgs<ExtArgs>
-    users?: boolean | alamat$usersArgs<ExtArgs>
+    users?: boolean | usersDefaultArgs<ExtArgs>
   }
   export type alamatIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    kecamatan?: boolean | alamat$kecamatanArgs<ExtArgs>
-    kelurahan?: boolean | alamat$kelurahanArgs<ExtArgs>
-    cities?: boolean | alamat$citiesArgs<ExtArgs>
-    provinces?: boolean | alamat$provincesArgs<ExtArgs>
+    kecamatan?: boolean | kecamatanDefaultArgs<ExtArgs>
+    kelurahan?: boolean | kelurahanDefaultArgs<ExtArgs>
+    cities?: boolean | citiesDefaultArgs<ExtArgs>
+    provinces?: boolean | provincesDefaultArgs<ExtArgs>
     tipe_alamat?: boolean | alamat$tipe_alamatArgs<ExtArgs>
-    users?: boolean | alamat$usersArgs<ExtArgs>
+    users?: boolean | usersDefaultArgs<ExtArgs>
   }
   export type alamatIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    kecamatan?: boolean | alamat$kecamatanArgs<ExtArgs>
-    kelurahan?: boolean | alamat$kelurahanArgs<ExtArgs>
-    cities?: boolean | alamat$citiesArgs<ExtArgs>
-    provinces?: boolean | alamat$provincesArgs<ExtArgs>
+    kecamatan?: boolean | kecamatanDefaultArgs<ExtArgs>
+    kelurahan?: boolean | kelurahanDefaultArgs<ExtArgs>
+    cities?: boolean | citiesDefaultArgs<ExtArgs>
+    provinces?: boolean | provincesDefaultArgs<ExtArgs>
     tipe_alamat?: boolean | alamat$tipe_alamatArgs<ExtArgs>
-    users?: boolean | alamat$usersArgs<ExtArgs>
+    users?: boolean | usersDefaultArgs<ExtArgs>
   }
 
   export type $alamatPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "alamat"
     objects: {
-      kecamatan: Prisma.$kecamatanPayload<ExtArgs> | null
-      kelurahan: Prisma.$kelurahanPayload<ExtArgs> | null
-      cities: Prisma.$citiesPayload<ExtArgs> | null
-      provinces: Prisma.$provincesPayload<ExtArgs> | null
+      kecamatan: Prisma.$kecamatanPayload<ExtArgs>
+      kelurahan: Prisma.$kelurahanPayload<ExtArgs>
+      cities: Prisma.$citiesPayload<ExtArgs>
+      provinces: Prisma.$provincesPayload<ExtArgs>
       tipe_alamat: Prisma.$tipe_alamatPayload<ExtArgs> | null
-      users: Prisma.$usersPayload<ExtArgs> | null
+      users: Prisma.$usersPayload<ExtArgs>
     }
     scalars: $Extensions.GetPayloadResult<{
       id_alamat: string
-      id_user: string | null
-      alamat: string | null
+      id_user: string
+      alamat: string
       catatan: string | null
-      latitude: Prisma.Decimal | null
-      longitude: Prisma.Decimal | null
-      is_default: boolean | null
+      latitude: Prisma.Decimal
+      longitude: Prisma.Decimal
+      is_default: boolean
       id_tipe: bigint | null
-      id_kel: bigint | null
-      id_kec: bigint | null
-      id_kota: number | null
-      id_prov: number | null
+      id_kel: bigint
+      id_kec: bigint
+      id_kota: number
+      id_prov: number
       created_at: Date | null
       updated_at: Date | null
     }, ExtArgs["result"]["alamat"]>
@@ -10710,12 +10710,12 @@ export namespace Prisma {
    */
   export interface Prisma__alamatClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    kecamatan<T extends alamat$kecamatanArgs<ExtArgs> = {}>(args?: Subset<T, alamat$kecamatanArgs<ExtArgs>>): Prisma__kecamatanClient<$Result.GetResult<Prisma.$kecamatanPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-    kelurahan<T extends alamat$kelurahanArgs<ExtArgs> = {}>(args?: Subset<T, alamat$kelurahanArgs<ExtArgs>>): Prisma__kelurahanClient<$Result.GetResult<Prisma.$kelurahanPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-    cities<T extends alamat$citiesArgs<ExtArgs> = {}>(args?: Subset<T, alamat$citiesArgs<ExtArgs>>): Prisma__citiesClient<$Result.GetResult<Prisma.$citiesPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-    provinces<T extends alamat$provincesArgs<ExtArgs> = {}>(args?: Subset<T, alamat$provincesArgs<ExtArgs>>): Prisma__provincesClient<$Result.GetResult<Prisma.$provincesPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    kecamatan<T extends kecamatanDefaultArgs<ExtArgs> = {}>(args?: Subset<T, kecamatanDefaultArgs<ExtArgs>>): Prisma__kecamatanClient<$Result.GetResult<Prisma.$kecamatanPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    kelurahan<T extends kelurahanDefaultArgs<ExtArgs> = {}>(args?: Subset<T, kelurahanDefaultArgs<ExtArgs>>): Prisma__kelurahanClient<$Result.GetResult<Prisma.$kelurahanPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    cities<T extends citiesDefaultArgs<ExtArgs> = {}>(args?: Subset<T, citiesDefaultArgs<ExtArgs>>): Prisma__citiesClient<$Result.GetResult<Prisma.$citiesPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    provinces<T extends provincesDefaultArgs<ExtArgs> = {}>(args?: Subset<T, provincesDefaultArgs<ExtArgs>>): Prisma__provincesClient<$Result.GetResult<Prisma.$provincesPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     tipe_alamat<T extends alamat$tipe_alamatArgs<ExtArgs> = {}>(args?: Subset<T, alamat$tipe_alamatArgs<ExtArgs>>): Prisma__tipe_alamatClient<$Result.GetResult<Prisma.$tipe_alamatPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-    users<T extends alamat$usersArgs<ExtArgs> = {}>(args?: Subset<T, alamat$usersArgs<ExtArgs>>): Prisma__usersClient<$Result.GetResult<Prisma.$usersPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    users<T extends usersDefaultArgs<ExtArgs> = {}>(args?: Subset<T, usersDefaultArgs<ExtArgs>>): Prisma__usersClient<$Result.GetResult<Prisma.$usersPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -11155,82 +11155,6 @@ export namespace Prisma {
   }
 
   /**
-   * alamat.kecamatan
-   */
-  export type alamat$kecamatanArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the kecamatan
-     */
-    select?: kecamatanSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the kecamatan
-     */
-    omit?: kecamatanOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: kecamatanInclude<ExtArgs> | null
-    where?: kecamatanWhereInput
-  }
-
-  /**
-   * alamat.kelurahan
-   */
-  export type alamat$kelurahanArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the kelurahan
-     */
-    select?: kelurahanSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the kelurahan
-     */
-    omit?: kelurahanOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: kelurahanInclude<ExtArgs> | null
-    where?: kelurahanWhereInput
-  }
-
-  /**
-   * alamat.cities
-   */
-  export type alamat$citiesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the cities
-     */
-    select?: citiesSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the cities
-     */
-    omit?: citiesOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: citiesInclude<ExtArgs> | null
-    where?: citiesWhereInput
-  }
-
-  /**
-   * alamat.provinces
-   */
-  export type alamat$provincesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the provinces
-     */
-    select?: provincesSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the provinces
-     */
-    omit?: provincesOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: provincesInclude<ExtArgs> | null
-    where?: provincesWhereInput
-  }
-
-  /**
    * alamat.tipe_alamat
    */
   export type alamat$tipe_alamatArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -11247,25 +11171,6 @@ export namespace Prisma {
      */
     include?: tipe_alamatInclude<ExtArgs> | null
     where?: tipe_alamatWhereInput
-  }
-
-  /**
-   * alamat.users
-   */
-  export type alamat$usersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the users
-     */
-    select?: usersSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the users
-     */
-    omit?: usersOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: usersInclude<ExtArgs> | null
-    where?: usersWhereInput
   }
 
   /**
@@ -15417,40 +15322,40 @@ export namespace Prisma {
     OR?: alamatWhereInput[]
     NOT?: alamatWhereInput | alamatWhereInput[]
     id_alamat?: UuidFilter<"alamat"> | string
-    id_user?: StringNullableFilter<"alamat"> | string | null
-    alamat?: StringNullableFilter<"alamat"> | string | null
+    id_user?: StringFilter<"alamat"> | string
+    alamat?: StringFilter<"alamat"> | string
     catatan?: StringNullableFilter<"alamat"> | string | null
-    latitude?: DecimalNullableFilter<"alamat"> | Decimal | DecimalJsLike | number | string | null
-    longitude?: DecimalNullableFilter<"alamat"> | Decimal | DecimalJsLike | number | string | null
-    is_default?: BoolNullableFilter<"alamat"> | boolean | null
+    latitude?: DecimalFilter<"alamat"> | Decimal | DecimalJsLike | number | string
+    longitude?: DecimalFilter<"alamat"> | Decimal | DecimalJsLike | number | string
+    is_default?: BoolFilter<"alamat"> | boolean
     id_tipe?: BigIntNullableFilter<"alamat"> | bigint | number | null
-    id_kel?: BigIntNullableFilter<"alamat"> | bigint | number | null
-    id_kec?: BigIntNullableFilter<"alamat"> | bigint | number | null
-    id_kota?: IntNullableFilter<"alamat"> | number | null
-    id_prov?: IntNullableFilter<"alamat"> | number | null
+    id_kel?: BigIntFilter<"alamat"> | bigint | number
+    id_kec?: BigIntFilter<"alamat"> | bigint | number
+    id_kota?: IntFilter<"alamat"> | number
+    id_prov?: IntFilter<"alamat"> | number
     created_at?: DateTimeNullableFilter<"alamat"> | Date | string | null
     updated_at?: DateTimeNullableFilter<"alamat"> | Date | string | null
-    kecamatan?: XOR<KecamatanNullableScalarRelationFilter, kecamatanWhereInput> | null
-    kelurahan?: XOR<KelurahanNullableScalarRelationFilter, kelurahanWhereInput> | null
-    cities?: XOR<CitiesNullableScalarRelationFilter, citiesWhereInput> | null
-    provinces?: XOR<ProvincesNullableScalarRelationFilter, provincesWhereInput> | null
+    kecamatan?: XOR<KecamatanScalarRelationFilter, kecamatanWhereInput>
+    kelurahan?: XOR<KelurahanScalarRelationFilter, kelurahanWhereInput>
+    cities?: XOR<CitiesScalarRelationFilter, citiesWhereInput>
+    provinces?: XOR<ProvincesScalarRelationFilter, provincesWhereInput>
     tipe_alamat?: XOR<Tipe_alamatNullableScalarRelationFilter, tipe_alamatWhereInput> | null
-    users?: XOR<UsersNullableScalarRelationFilter, usersWhereInput> | null
+    users?: XOR<UsersScalarRelationFilter, usersWhereInput>
   }
 
   export type alamatOrderByWithRelationInput = {
     id_alamat?: SortOrder
-    id_user?: SortOrderInput | SortOrder
-    alamat?: SortOrderInput | SortOrder
+    id_user?: SortOrder
+    alamat?: SortOrder
     catatan?: SortOrderInput | SortOrder
-    latitude?: SortOrderInput | SortOrder
-    longitude?: SortOrderInput | SortOrder
-    is_default?: SortOrderInput | SortOrder
+    latitude?: SortOrder
+    longitude?: SortOrder
+    is_default?: SortOrder
     id_tipe?: SortOrderInput | SortOrder
-    id_kel?: SortOrderInput | SortOrder
-    id_kec?: SortOrderInput | SortOrder
-    id_kota?: SortOrderInput | SortOrder
-    id_prov?: SortOrderInput | SortOrder
+    id_kel?: SortOrder
+    id_kec?: SortOrder
+    id_kota?: SortOrder
+    id_prov?: SortOrder
     created_at?: SortOrderInput | SortOrder
     updated_at?: SortOrderInput | SortOrder
     kecamatan?: kecamatanOrderByWithRelationInput
@@ -15466,40 +15371,40 @@ export namespace Prisma {
     AND?: alamatWhereInput | alamatWhereInput[]
     OR?: alamatWhereInput[]
     NOT?: alamatWhereInput | alamatWhereInput[]
-    id_user?: StringNullableFilter<"alamat"> | string | null
-    alamat?: StringNullableFilter<"alamat"> | string | null
+    id_user?: StringFilter<"alamat"> | string
+    alamat?: StringFilter<"alamat"> | string
     catatan?: StringNullableFilter<"alamat"> | string | null
-    latitude?: DecimalNullableFilter<"alamat"> | Decimal | DecimalJsLike | number | string | null
-    longitude?: DecimalNullableFilter<"alamat"> | Decimal | DecimalJsLike | number | string | null
-    is_default?: BoolNullableFilter<"alamat"> | boolean | null
+    latitude?: DecimalFilter<"alamat"> | Decimal | DecimalJsLike | number | string
+    longitude?: DecimalFilter<"alamat"> | Decimal | DecimalJsLike | number | string
+    is_default?: BoolFilter<"alamat"> | boolean
     id_tipe?: BigIntNullableFilter<"alamat"> | bigint | number | null
-    id_kel?: BigIntNullableFilter<"alamat"> | bigint | number | null
-    id_kec?: BigIntNullableFilter<"alamat"> | bigint | number | null
-    id_kota?: IntNullableFilter<"alamat"> | number | null
-    id_prov?: IntNullableFilter<"alamat"> | number | null
+    id_kel?: BigIntFilter<"alamat"> | bigint | number
+    id_kec?: BigIntFilter<"alamat"> | bigint | number
+    id_kota?: IntFilter<"alamat"> | number
+    id_prov?: IntFilter<"alamat"> | number
     created_at?: DateTimeNullableFilter<"alamat"> | Date | string | null
     updated_at?: DateTimeNullableFilter<"alamat"> | Date | string | null
-    kecamatan?: XOR<KecamatanNullableScalarRelationFilter, kecamatanWhereInput> | null
-    kelurahan?: XOR<KelurahanNullableScalarRelationFilter, kelurahanWhereInput> | null
-    cities?: XOR<CitiesNullableScalarRelationFilter, citiesWhereInput> | null
-    provinces?: XOR<ProvincesNullableScalarRelationFilter, provincesWhereInput> | null
+    kecamatan?: XOR<KecamatanScalarRelationFilter, kecamatanWhereInput>
+    kelurahan?: XOR<KelurahanScalarRelationFilter, kelurahanWhereInput>
+    cities?: XOR<CitiesScalarRelationFilter, citiesWhereInput>
+    provinces?: XOR<ProvincesScalarRelationFilter, provincesWhereInput>
     tipe_alamat?: XOR<Tipe_alamatNullableScalarRelationFilter, tipe_alamatWhereInput> | null
-    users?: XOR<UsersNullableScalarRelationFilter, usersWhereInput> | null
+    users?: XOR<UsersScalarRelationFilter, usersWhereInput>
   }, "id_alamat">
 
   export type alamatOrderByWithAggregationInput = {
     id_alamat?: SortOrder
-    id_user?: SortOrderInput | SortOrder
-    alamat?: SortOrderInput | SortOrder
+    id_user?: SortOrder
+    alamat?: SortOrder
     catatan?: SortOrderInput | SortOrder
-    latitude?: SortOrderInput | SortOrder
-    longitude?: SortOrderInput | SortOrder
-    is_default?: SortOrderInput | SortOrder
+    latitude?: SortOrder
+    longitude?: SortOrder
+    is_default?: SortOrder
     id_tipe?: SortOrderInput | SortOrder
-    id_kel?: SortOrderInput | SortOrder
-    id_kec?: SortOrderInput | SortOrder
-    id_kota?: SortOrderInput | SortOrder
-    id_prov?: SortOrderInput | SortOrder
+    id_kel?: SortOrder
+    id_kec?: SortOrder
+    id_kota?: SortOrder
+    id_prov?: SortOrder
     created_at?: SortOrderInput | SortOrder
     updated_at?: SortOrderInput | SortOrder
     _count?: alamatCountOrderByAggregateInput
@@ -15514,17 +15419,17 @@ export namespace Prisma {
     OR?: alamatScalarWhereWithAggregatesInput[]
     NOT?: alamatScalarWhereWithAggregatesInput | alamatScalarWhereWithAggregatesInput[]
     id_alamat?: UuidWithAggregatesFilter<"alamat"> | string
-    id_user?: StringNullableWithAggregatesFilter<"alamat"> | string | null
-    alamat?: StringNullableWithAggregatesFilter<"alamat"> | string | null
+    id_user?: StringWithAggregatesFilter<"alamat"> | string
+    alamat?: StringWithAggregatesFilter<"alamat"> | string
     catatan?: StringNullableWithAggregatesFilter<"alamat"> | string | null
-    latitude?: DecimalNullableWithAggregatesFilter<"alamat"> | Decimal | DecimalJsLike | number | string | null
-    longitude?: DecimalNullableWithAggregatesFilter<"alamat"> | Decimal | DecimalJsLike | number | string | null
-    is_default?: BoolNullableWithAggregatesFilter<"alamat"> | boolean | null
+    latitude?: DecimalWithAggregatesFilter<"alamat"> | Decimal | DecimalJsLike | number | string
+    longitude?: DecimalWithAggregatesFilter<"alamat"> | Decimal | DecimalJsLike | number | string
+    is_default?: BoolWithAggregatesFilter<"alamat"> | boolean
     id_tipe?: BigIntNullableWithAggregatesFilter<"alamat"> | bigint | number | null
-    id_kel?: BigIntNullableWithAggregatesFilter<"alamat"> | bigint | number | null
-    id_kec?: BigIntNullableWithAggregatesFilter<"alamat"> | bigint | number | null
-    id_kota?: IntNullableWithAggregatesFilter<"alamat"> | number | null
-    id_prov?: IntNullableWithAggregatesFilter<"alamat"> | number | null
+    id_kel?: BigIntWithAggregatesFilter<"alamat"> | bigint | number
+    id_kec?: BigIntWithAggregatesFilter<"alamat"> | bigint | number
+    id_kota?: IntWithAggregatesFilter<"alamat"> | number
+    id_prov?: IntWithAggregatesFilter<"alamat"> | number
     created_at?: DateTimeNullableWithAggregatesFilter<"alamat"> | Date | string | null
     updated_at?: DateTimeNullableWithAggregatesFilter<"alamat"> | Date | string | null
   }
@@ -16111,113 +16016,113 @@ export namespace Prisma {
 
   export type alamatCreateInput = {
     id_alamat: string
-    alamat?: string | null
+    alamat: string
     catatan?: string | null
-    latitude?: Decimal | DecimalJsLike | number | string | null
-    longitude?: Decimal | DecimalJsLike | number | string | null
-    is_default?: boolean | null
+    latitude: Decimal | DecimalJsLike | number | string
+    longitude: Decimal | DecimalJsLike | number | string
+    is_default: boolean
     created_at?: Date | string | null
     updated_at?: Date | string | null
-    kecamatan?: kecamatanCreateNestedOneWithoutAlamatInput
-    kelurahan?: kelurahanCreateNestedOneWithoutAlamatInput
-    cities?: citiesCreateNestedOneWithoutAlamatInput
-    provinces?: provincesCreateNestedOneWithoutAlamatInput
+    kecamatan: kecamatanCreateNestedOneWithoutAlamatInput
+    kelurahan: kelurahanCreateNestedOneWithoutAlamatInput
+    cities: citiesCreateNestedOneWithoutAlamatInput
+    provinces: provincesCreateNestedOneWithoutAlamatInput
     tipe_alamat?: tipe_alamatCreateNestedOneWithoutAlamatInput
-    users?: usersCreateNestedOneWithoutAlamatInput
+    users: usersCreateNestedOneWithoutAlamatInput
   }
 
   export type alamatUncheckedCreateInput = {
     id_alamat: string
-    id_user?: string | null
-    alamat?: string | null
+    id_user: string
+    alamat: string
     catatan?: string | null
-    latitude?: Decimal | DecimalJsLike | number | string | null
-    longitude?: Decimal | DecimalJsLike | number | string | null
-    is_default?: boolean | null
+    latitude: Decimal | DecimalJsLike | number | string
+    longitude: Decimal | DecimalJsLike | number | string
+    is_default: boolean
     id_tipe?: bigint | number | null
-    id_kel?: bigint | number | null
-    id_kec?: bigint | number | null
-    id_kota?: number | null
-    id_prov?: number | null
+    id_kel: bigint | number
+    id_kec: bigint | number
+    id_kota: number
+    id_prov: number
     created_at?: Date | string | null
     updated_at?: Date | string | null
   }
 
   export type alamatUpdateInput = {
     id_alamat?: StringFieldUpdateOperationsInput | string
-    alamat?: NullableStringFieldUpdateOperationsInput | string | null
+    alamat?: StringFieldUpdateOperationsInput | string
     catatan?: NullableStringFieldUpdateOperationsInput | string | null
-    latitude?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    longitude?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    is_default?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    latitude?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    longitude?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    is_default?: BoolFieldUpdateOperationsInput | boolean
     created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    kecamatan?: kecamatanUpdateOneWithoutAlamatNestedInput
-    kelurahan?: kelurahanUpdateOneWithoutAlamatNestedInput
-    cities?: citiesUpdateOneWithoutAlamatNestedInput
-    provinces?: provincesUpdateOneWithoutAlamatNestedInput
+    kecamatan?: kecamatanUpdateOneRequiredWithoutAlamatNestedInput
+    kelurahan?: kelurahanUpdateOneRequiredWithoutAlamatNestedInput
+    cities?: citiesUpdateOneRequiredWithoutAlamatNestedInput
+    provinces?: provincesUpdateOneRequiredWithoutAlamatNestedInput
     tipe_alamat?: tipe_alamatUpdateOneWithoutAlamatNestedInput
-    users?: usersUpdateOneWithoutAlamatNestedInput
+    users?: usersUpdateOneRequiredWithoutAlamatNestedInput
   }
 
   export type alamatUncheckedUpdateInput = {
     id_alamat?: StringFieldUpdateOperationsInput | string
-    id_user?: NullableStringFieldUpdateOperationsInput | string | null
-    alamat?: NullableStringFieldUpdateOperationsInput | string | null
+    id_user?: StringFieldUpdateOperationsInput | string
+    alamat?: StringFieldUpdateOperationsInput | string
     catatan?: NullableStringFieldUpdateOperationsInput | string | null
-    latitude?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    longitude?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    is_default?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    latitude?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    longitude?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    is_default?: BoolFieldUpdateOperationsInput | boolean
     id_tipe?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
-    id_kel?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
-    id_kec?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
-    id_kota?: NullableIntFieldUpdateOperationsInput | number | null
-    id_prov?: NullableIntFieldUpdateOperationsInput | number | null
+    id_kel?: BigIntFieldUpdateOperationsInput | bigint | number
+    id_kec?: BigIntFieldUpdateOperationsInput | bigint | number
+    id_kota?: IntFieldUpdateOperationsInput | number
+    id_prov?: IntFieldUpdateOperationsInput | number
     created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type alamatCreateManyInput = {
     id_alamat: string
-    id_user?: string | null
-    alamat?: string | null
+    id_user: string
+    alamat: string
     catatan?: string | null
-    latitude?: Decimal | DecimalJsLike | number | string | null
-    longitude?: Decimal | DecimalJsLike | number | string | null
-    is_default?: boolean | null
+    latitude: Decimal | DecimalJsLike | number | string
+    longitude: Decimal | DecimalJsLike | number | string
+    is_default: boolean
     id_tipe?: bigint | number | null
-    id_kel?: bigint | number | null
-    id_kec?: bigint | number | null
-    id_kota?: number | null
-    id_prov?: number | null
+    id_kel: bigint | number
+    id_kec: bigint | number
+    id_kota: number
+    id_prov: number
     created_at?: Date | string | null
     updated_at?: Date | string | null
   }
 
   export type alamatUpdateManyMutationInput = {
     id_alamat?: StringFieldUpdateOperationsInput | string
-    alamat?: NullableStringFieldUpdateOperationsInput | string | null
+    alamat?: StringFieldUpdateOperationsInput | string
     catatan?: NullableStringFieldUpdateOperationsInput | string | null
-    latitude?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    longitude?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    is_default?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    latitude?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    longitude?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    is_default?: BoolFieldUpdateOperationsInput | boolean
     created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type alamatUncheckedUpdateManyInput = {
     id_alamat?: StringFieldUpdateOperationsInput | string
-    id_user?: NullableStringFieldUpdateOperationsInput | string | null
-    alamat?: NullableStringFieldUpdateOperationsInput | string | null
+    id_user?: StringFieldUpdateOperationsInput | string
+    alamat?: StringFieldUpdateOperationsInput | string
     catatan?: NullableStringFieldUpdateOperationsInput | string | null
-    latitude?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    longitude?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    is_default?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    latitude?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    longitude?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    is_default?: BoolFieldUpdateOperationsInput | boolean
     id_tipe?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
-    id_kel?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
-    id_kec?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
-    id_kota?: NullableIntFieldUpdateOperationsInput | number | null
-    id_prov?: NullableIntFieldUpdateOperationsInput | number | null
+    id_kel?: BigIntFieldUpdateOperationsInput | bigint | number
+    id_kec?: BigIntFieldUpdateOperationsInput | bigint | number
+    id_kota?: IntFieldUpdateOperationsInput | number
+    id_prov?: IntFieldUpdateOperationsInput | number
     created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
@@ -16929,20 +16834,20 @@ export namespace Prisma {
     not?: NestedUuidFilter<$PrismaModel> | string
   }
 
-  export type DecimalNullableFilter<$PrismaModel = never> = {
-    equals?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel> | null
-    in?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel> | null
-    notIn?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel> | null
+  export type DecimalFilter<$PrismaModel = never> = {
+    equals?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    in?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel>
+    notIn?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel>
     lt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
     lte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
     gt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
     gte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    not?: NestedDecimalNullableFilter<$PrismaModel> | Decimal | DecimalJsLike | number | string | null
+    not?: NestedDecimalFilter<$PrismaModel> | Decimal | DecimalJsLike | number | string
   }
 
-  export type BoolNullableFilter<$PrismaModel = never> = {
-    equals?: boolean | BooleanFieldRefInput<$PrismaModel> | null
-    not?: NestedBoolNullableFilter<$PrismaModel> | boolean | null
+  export type BoolFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolFilter<$PrismaModel> | boolean
   }
 
   export type BigIntNullableFilter<$PrismaModel = never> = {
@@ -16956,45 +16861,24 @@ export namespace Prisma {
     not?: NestedBigIntNullableFilter<$PrismaModel> | bigint | number | null
   }
 
-  export type IntNullableFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel> | null
-    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntNullableFilter<$PrismaModel> | number | null
+  export type KecamatanScalarRelationFilter = {
+    is?: kecamatanWhereInput
+    isNot?: kecamatanWhereInput
   }
 
-  export type KecamatanNullableScalarRelationFilter = {
-    is?: kecamatanWhereInput | null
-    isNot?: kecamatanWhereInput | null
+  export type KelurahanScalarRelationFilter = {
+    is?: kelurahanWhereInput
+    isNot?: kelurahanWhereInput
   }
 
-  export type KelurahanNullableScalarRelationFilter = {
-    is?: kelurahanWhereInput | null
-    isNot?: kelurahanWhereInput | null
-  }
-
-  export type CitiesNullableScalarRelationFilter = {
-    is?: citiesWhereInput | null
-    isNot?: citiesWhereInput | null
-  }
-
-  export type ProvincesNullableScalarRelationFilter = {
-    is?: provincesWhereInput | null
-    isNot?: provincesWhereInput | null
+  export type CitiesScalarRelationFilter = {
+    is?: citiesWhereInput
+    isNot?: citiesWhereInput
   }
 
   export type Tipe_alamatNullableScalarRelationFilter = {
     is?: tipe_alamatWhereInput | null
     isNot?: tipe_alamatWhereInput | null
-  }
-
-  export type UsersNullableScalarRelationFilter = {
-    is?: usersWhereInput | null
-    isNot?: usersWhereInput | null
   }
 
   export type alamatCountOrderByAggregateInput = {
@@ -17083,28 +16967,28 @@ export namespace Prisma {
     _max?: NestedStringFilter<$PrismaModel>
   }
 
-  export type DecimalNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel> | null
-    in?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel> | null
-    notIn?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel> | null
+  export type DecimalWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    in?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel>
+    notIn?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel>
     lt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
     lte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
     gt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
     gte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    not?: NestedDecimalNullableWithAggregatesFilter<$PrismaModel> | Decimal | DecimalJsLike | number | string | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _avg?: NestedDecimalNullableFilter<$PrismaModel>
-    _sum?: NestedDecimalNullableFilter<$PrismaModel>
-    _min?: NestedDecimalNullableFilter<$PrismaModel>
-    _max?: NestedDecimalNullableFilter<$PrismaModel>
+    not?: NestedDecimalWithAggregatesFilter<$PrismaModel> | Decimal | DecimalJsLike | number | string
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedDecimalFilter<$PrismaModel>
+    _sum?: NestedDecimalFilter<$PrismaModel>
+    _min?: NestedDecimalFilter<$PrismaModel>
+    _max?: NestedDecimalFilter<$PrismaModel>
   }
 
-  export type BoolNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: boolean | BooleanFieldRefInput<$PrismaModel> | null
-    not?: NestedBoolNullableWithAggregatesFilter<$PrismaModel> | boolean | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedBoolNullableFilter<$PrismaModel>
-    _max?: NestedBoolNullableFilter<$PrismaModel>
+  export type BoolWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolWithAggregatesFilter<$PrismaModel> | boolean
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedBoolFilter<$PrismaModel>
+    _max?: NestedBoolFilter<$PrismaModel>
   }
 
   export type BigIntNullableWithAggregatesFilter<$PrismaModel = never> = {
@@ -17123,7 +17007,7 @@ export namespace Prisma {
     _max?: NestedBigIntNullableFilter<$PrismaModel>
   }
 
-  export type IntNullableWithAggregatesFilter<$PrismaModel = never> = {
+  export type IntNullableFilter<$PrismaModel = never> = {
     equals?: number | IntFieldRefInput<$PrismaModel> | null
     in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
     notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
@@ -17131,12 +17015,12 @@ export namespace Prisma {
     lte?: number | IntFieldRefInput<$PrismaModel>
     gt?: number | IntFieldRefInput<$PrismaModel>
     gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntNullableWithAggregatesFilter<$PrismaModel> | number | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _avg?: NestedFloatNullableFilter<$PrismaModel>
-    _sum?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedIntNullableFilter<$PrismaModel>
-    _max?: NestedIntNullableFilter<$PrismaModel>
+    not?: NestedIntNullableFilter<$PrismaModel> | number | null
+  }
+
+  export type CitiesNullableScalarRelationFilter = {
+    is?: citiesWhereInput | null
+    isNot?: citiesWhereInput | null
   }
 
   export type KelurahanListRelationFilter = {
@@ -17181,6 +17065,27 @@ export namespace Prisma {
   export type kecamatanSumOrderByAggregateInput = {
     id_kec?: SortOrder
     id_kota?: SortOrder
+  }
+
+  export type IntNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableWithAggregatesFilter<$PrismaModel> | number | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedFloatNullableFilter<$PrismaModel>
+    _sum?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedIntNullableFilter<$PrismaModel>
+    _max?: NestedIntNullableFilter<$PrismaModel>
+  }
+
+  export type KecamatanNullableScalarRelationFilter = {
+    is?: kecamatanWhereInput | null
+    isNot?: kecamatanWhereInput | null
   }
 
   export type kelurahanCountOrderByAggregateInput = {
@@ -17774,54 +17679,46 @@ export namespace Prisma {
     connect?: usersWhereUniqueInput
   }
 
-  export type NullableDecimalFieldUpdateOperationsInput = {
-    set?: Decimal | DecimalJsLike | number | string | null
+  export type DecimalFieldUpdateOperationsInput = {
+    set?: Decimal | DecimalJsLike | number | string
     increment?: Decimal | DecimalJsLike | number | string
     decrement?: Decimal | DecimalJsLike | number | string
     multiply?: Decimal | DecimalJsLike | number | string
     divide?: Decimal | DecimalJsLike | number | string
   }
 
-  export type NullableBoolFieldUpdateOperationsInput = {
-    set?: boolean | null
+  export type BoolFieldUpdateOperationsInput = {
+    set?: boolean
   }
 
-  export type kecamatanUpdateOneWithoutAlamatNestedInput = {
+  export type kecamatanUpdateOneRequiredWithoutAlamatNestedInput = {
     create?: XOR<kecamatanCreateWithoutAlamatInput, kecamatanUncheckedCreateWithoutAlamatInput>
     connectOrCreate?: kecamatanCreateOrConnectWithoutAlamatInput
     upsert?: kecamatanUpsertWithoutAlamatInput
-    disconnect?: kecamatanWhereInput | boolean
-    delete?: kecamatanWhereInput | boolean
     connect?: kecamatanWhereUniqueInput
     update?: XOR<XOR<kecamatanUpdateToOneWithWhereWithoutAlamatInput, kecamatanUpdateWithoutAlamatInput>, kecamatanUncheckedUpdateWithoutAlamatInput>
   }
 
-  export type kelurahanUpdateOneWithoutAlamatNestedInput = {
+  export type kelurahanUpdateOneRequiredWithoutAlamatNestedInput = {
     create?: XOR<kelurahanCreateWithoutAlamatInput, kelurahanUncheckedCreateWithoutAlamatInput>
     connectOrCreate?: kelurahanCreateOrConnectWithoutAlamatInput
     upsert?: kelurahanUpsertWithoutAlamatInput
-    disconnect?: kelurahanWhereInput | boolean
-    delete?: kelurahanWhereInput | boolean
     connect?: kelurahanWhereUniqueInput
     update?: XOR<XOR<kelurahanUpdateToOneWithWhereWithoutAlamatInput, kelurahanUpdateWithoutAlamatInput>, kelurahanUncheckedUpdateWithoutAlamatInput>
   }
 
-  export type citiesUpdateOneWithoutAlamatNestedInput = {
+  export type citiesUpdateOneRequiredWithoutAlamatNestedInput = {
     create?: XOR<citiesCreateWithoutAlamatInput, citiesUncheckedCreateWithoutAlamatInput>
     connectOrCreate?: citiesCreateOrConnectWithoutAlamatInput
     upsert?: citiesUpsertWithoutAlamatInput
-    disconnect?: citiesWhereInput | boolean
-    delete?: citiesWhereInput | boolean
     connect?: citiesWhereUniqueInput
     update?: XOR<XOR<citiesUpdateToOneWithWhereWithoutAlamatInput, citiesUpdateWithoutAlamatInput>, citiesUncheckedUpdateWithoutAlamatInput>
   }
 
-  export type provincesUpdateOneWithoutAlamatNestedInput = {
+  export type provincesUpdateOneRequiredWithoutAlamatNestedInput = {
     create?: XOR<provincesCreateWithoutAlamatInput, provincesUncheckedCreateWithoutAlamatInput>
     connectOrCreate?: provincesCreateOrConnectWithoutAlamatInput
     upsert?: provincesUpsertWithoutAlamatInput
-    disconnect?: provincesWhereInput | boolean
-    delete?: provincesWhereInput | boolean
     connect?: provincesWhereUniqueInput
     update?: XOR<XOR<provincesUpdateToOneWithWhereWithoutAlamatInput, provincesUpdateWithoutAlamatInput>, provincesUncheckedUpdateWithoutAlamatInput>
   }
@@ -17836,12 +17733,10 @@ export namespace Prisma {
     update?: XOR<XOR<tipe_alamatUpdateToOneWithWhereWithoutAlamatInput, tipe_alamatUpdateWithoutAlamatInput>, tipe_alamatUncheckedUpdateWithoutAlamatInput>
   }
 
-  export type usersUpdateOneWithoutAlamatNestedInput = {
+  export type usersUpdateOneRequiredWithoutAlamatNestedInput = {
     create?: XOR<usersCreateWithoutAlamatInput, usersUncheckedCreateWithoutAlamatInput>
     connectOrCreate?: usersCreateOrConnectWithoutAlamatInput
     upsert?: usersUpsertWithoutAlamatInput
-    disconnect?: usersWhereInput | boolean
-    delete?: usersWhereInput | boolean
     connect?: usersWhereUniqueInput
     update?: XOR<XOR<usersUpdateToOneWithWhereWithoutAlamatInput, usersUpdateWithoutAlamatInput>, usersUncheckedUpdateWithoutAlamatInput>
   }
@@ -17852,14 +17747,6 @@ export namespace Prisma {
     decrement?: bigint | number
     multiply?: bigint | number
     divide?: bigint | number
-  }
-
-  export type NullableIntFieldUpdateOperationsInput = {
-    set?: number | null
-    increment?: number
-    decrement?: number
-    multiply?: number
-    divide?: number
   }
 
   export type alamatCreateNestedManyWithoutKecamatanInput = {
@@ -17932,6 +17819,14 @@ export namespace Prisma {
     update?: kelurahanUpdateWithWhereUniqueWithoutKecamatanInput | kelurahanUpdateWithWhereUniqueWithoutKecamatanInput[]
     updateMany?: kelurahanUpdateManyWithWhereWithoutKecamatanInput | kelurahanUpdateManyWithWhereWithoutKecamatanInput[]
     deleteMany?: kelurahanScalarWhereInput | kelurahanScalarWhereInput[]
+  }
+
+  export type NullableIntFieldUpdateOperationsInput = {
+    set?: number | null
+    increment?: number
+    decrement?: number
+    multiply?: number
+    divide?: number
   }
 
   export type alamatUncheckedUpdateManyWithoutKecamatanNestedInput = {
@@ -18312,20 +18207,20 @@ export namespace Prisma {
     not?: NestedUuidFilter<$PrismaModel> | string
   }
 
-  export type NestedDecimalNullableFilter<$PrismaModel = never> = {
-    equals?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel> | null
-    in?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel> | null
-    notIn?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel> | null
+  export type NestedDecimalFilter<$PrismaModel = never> = {
+    equals?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    in?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel>
+    notIn?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel>
     lt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
     lte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
     gt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
     gte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    not?: NestedDecimalNullableFilter<$PrismaModel> | Decimal | DecimalJsLike | number | string | null
+    not?: NestedDecimalFilter<$PrismaModel> | Decimal | DecimalJsLike | number | string
   }
 
-  export type NestedBoolNullableFilter<$PrismaModel = never> = {
-    equals?: boolean | BooleanFieldRefInput<$PrismaModel> | null
-    not?: NestedBoolNullableFilter<$PrismaModel> | boolean | null
+  export type NestedBoolFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolFilter<$PrismaModel> | boolean
   }
 
   export type NestedBigIntNullableFilter<$PrismaModel = never> = {
@@ -18353,28 +18248,28 @@ export namespace Prisma {
     _max?: NestedStringFilter<$PrismaModel>
   }
 
-  export type NestedDecimalNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel> | null
-    in?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel> | null
-    notIn?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel> | null
+  export type NestedDecimalWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    in?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel>
+    notIn?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel>
     lt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
     lte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
     gt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
     gte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    not?: NestedDecimalNullableWithAggregatesFilter<$PrismaModel> | Decimal | DecimalJsLike | number | string | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _avg?: NestedDecimalNullableFilter<$PrismaModel>
-    _sum?: NestedDecimalNullableFilter<$PrismaModel>
-    _min?: NestedDecimalNullableFilter<$PrismaModel>
-    _max?: NestedDecimalNullableFilter<$PrismaModel>
+    not?: NestedDecimalWithAggregatesFilter<$PrismaModel> | Decimal | DecimalJsLike | number | string
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedDecimalFilter<$PrismaModel>
+    _sum?: NestedDecimalFilter<$PrismaModel>
+    _min?: NestedDecimalFilter<$PrismaModel>
+    _max?: NestedDecimalFilter<$PrismaModel>
   }
 
-  export type NestedBoolNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: boolean | BooleanFieldRefInput<$PrismaModel> | null
-    not?: NestedBoolNullableWithAggregatesFilter<$PrismaModel> | boolean | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedBoolNullableFilter<$PrismaModel>
-    _max?: NestedBoolNullableFilter<$PrismaModel>
+  export type NestedBoolWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolWithAggregatesFilter<$PrismaModel> | boolean
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedBoolFilter<$PrismaModel>
+    _max?: NestedBoolFilter<$PrismaModel>
   }
 
   export type NestedBigIntNullableWithAggregatesFilter<$PrismaModel = never> = {
@@ -18422,32 +18317,32 @@ export namespace Prisma {
 
   export type alamatCreateWithoutCitiesInput = {
     id_alamat: string
-    alamat?: string | null
+    alamat: string
     catatan?: string | null
-    latitude?: Decimal | DecimalJsLike | number | string | null
-    longitude?: Decimal | DecimalJsLike | number | string | null
-    is_default?: boolean | null
+    latitude: Decimal | DecimalJsLike | number | string
+    longitude: Decimal | DecimalJsLike | number | string
+    is_default: boolean
     created_at?: Date | string | null
     updated_at?: Date | string | null
-    kecamatan?: kecamatanCreateNestedOneWithoutAlamatInput
-    kelurahan?: kelurahanCreateNestedOneWithoutAlamatInput
-    provinces?: provincesCreateNestedOneWithoutAlamatInput
+    kecamatan: kecamatanCreateNestedOneWithoutAlamatInput
+    kelurahan: kelurahanCreateNestedOneWithoutAlamatInput
+    provinces: provincesCreateNestedOneWithoutAlamatInput
     tipe_alamat?: tipe_alamatCreateNestedOneWithoutAlamatInput
-    users?: usersCreateNestedOneWithoutAlamatInput
+    users: usersCreateNestedOneWithoutAlamatInput
   }
 
   export type alamatUncheckedCreateWithoutCitiesInput = {
     id_alamat: string
-    id_user?: string | null
-    alamat?: string | null
+    id_user: string
+    alamat: string
     catatan?: string | null
-    latitude?: Decimal | DecimalJsLike | number | string | null
-    longitude?: Decimal | DecimalJsLike | number | string | null
-    is_default?: boolean | null
+    latitude: Decimal | DecimalJsLike | number | string
+    longitude: Decimal | DecimalJsLike | number | string
+    is_default: boolean
     id_tipe?: bigint | number | null
-    id_kel?: bigint | number | null
-    id_kec?: bigint | number | null
-    id_prov?: number | null
+    id_kel: bigint | number
+    id_kec: bigint | number
+    id_prov: number
     created_at?: Date | string | null
     updated_at?: Date | string | null
   }
@@ -18531,17 +18426,17 @@ export namespace Prisma {
     OR?: alamatScalarWhereInput[]
     NOT?: alamatScalarWhereInput | alamatScalarWhereInput[]
     id_alamat?: UuidFilter<"alamat"> | string
-    id_user?: StringNullableFilter<"alamat"> | string | null
-    alamat?: StringNullableFilter<"alamat"> | string | null
+    id_user?: StringFilter<"alamat"> | string
+    alamat?: StringFilter<"alamat"> | string
     catatan?: StringNullableFilter<"alamat"> | string | null
-    latitude?: DecimalNullableFilter<"alamat"> | Decimal | DecimalJsLike | number | string | null
-    longitude?: DecimalNullableFilter<"alamat"> | Decimal | DecimalJsLike | number | string | null
-    is_default?: BoolNullableFilter<"alamat"> | boolean | null
+    latitude?: DecimalFilter<"alamat"> | Decimal | DecimalJsLike | number | string
+    longitude?: DecimalFilter<"alamat"> | Decimal | DecimalJsLike | number | string
+    is_default?: BoolFilter<"alamat"> | boolean
     id_tipe?: BigIntNullableFilter<"alamat"> | bigint | number | null
-    id_kel?: BigIntNullableFilter<"alamat"> | bigint | number | null
-    id_kec?: BigIntNullableFilter<"alamat"> | bigint | number | null
-    id_kota?: IntNullableFilter<"alamat"> | number | null
-    id_prov?: IntNullableFilter<"alamat"> | number | null
+    id_kel?: BigIntFilter<"alamat"> | bigint | number
+    id_kec?: BigIntFilter<"alamat"> | bigint | number
+    id_kota?: IntFilter<"alamat"> | number
+    id_prov?: IntFilter<"alamat"> | number
     created_at?: DateTimeNullableFilter<"alamat"> | Date | string | null
     updated_at?: DateTimeNullableFilter<"alamat"> | Date | string | null
   }
@@ -18813,32 +18708,32 @@ export namespace Prisma {
 
   export type alamatCreateWithoutProvincesInput = {
     id_alamat: string
-    alamat?: string | null
+    alamat: string
     catatan?: string | null
-    latitude?: Decimal | DecimalJsLike | number | string | null
-    longitude?: Decimal | DecimalJsLike | number | string | null
-    is_default?: boolean | null
+    latitude: Decimal | DecimalJsLike | number | string
+    longitude: Decimal | DecimalJsLike | number | string
+    is_default: boolean
     created_at?: Date | string | null
     updated_at?: Date | string | null
-    kecamatan?: kecamatanCreateNestedOneWithoutAlamatInput
-    kelurahan?: kelurahanCreateNestedOneWithoutAlamatInput
-    cities?: citiesCreateNestedOneWithoutAlamatInput
+    kecamatan: kecamatanCreateNestedOneWithoutAlamatInput
+    kelurahan: kelurahanCreateNestedOneWithoutAlamatInput
+    cities: citiesCreateNestedOneWithoutAlamatInput
     tipe_alamat?: tipe_alamatCreateNestedOneWithoutAlamatInput
-    users?: usersCreateNestedOneWithoutAlamatInput
+    users: usersCreateNestedOneWithoutAlamatInput
   }
 
   export type alamatUncheckedCreateWithoutProvincesInput = {
     id_alamat: string
-    id_user?: string | null
-    alamat?: string | null
+    id_user: string
+    alamat: string
     catatan?: string | null
-    latitude?: Decimal | DecimalJsLike | number | string | null
-    longitude?: Decimal | DecimalJsLike | number | string | null
-    is_default?: boolean | null
+    latitude: Decimal | DecimalJsLike | number | string
+    longitude: Decimal | DecimalJsLike | number | string
+    is_default: boolean
     id_tipe?: bigint | number | null
-    id_kel?: bigint | number | null
-    id_kec?: bigint | number | null
-    id_kota?: number | null
+    id_kel: bigint | number
+    id_kec: bigint | number
+    id_kota: number
     created_at?: Date | string | null
     updated_at?: Date | string | null
   }
@@ -18925,32 +18820,32 @@ export namespace Prisma {
 
   export type alamatCreateWithoutUsersInput = {
     id_alamat: string
-    alamat?: string | null
+    alamat: string
     catatan?: string | null
-    latitude?: Decimal | DecimalJsLike | number | string | null
-    longitude?: Decimal | DecimalJsLike | number | string | null
-    is_default?: boolean | null
+    latitude: Decimal | DecimalJsLike | number | string
+    longitude: Decimal | DecimalJsLike | number | string
+    is_default: boolean
     created_at?: Date | string | null
     updated_at?: Date | string | null
-    kecamatan?: kecamatanCreateNestedOneWithoutAlamatInput
-    kelurahan?: kelurahanCreateNestedOneWithoutAlamatInput
-    cities?: citiesCreateNestedOneWithoutAlamatInput
-    provinces?: provincesCreateNestedOneWithoutAlamatInput
+    kecamatan: kecamatanCreateNestedOneWithoutAlamatInput
+    kelurahan: kelurahanCreateNestedOneWithoutAlamatInput
+    cities: citiesCreateNestedOneWithoutAlamatInput
+    provinces: provincesCreateNestedOneWithoutAlamatInput
     tipe_alamat?: tipe_alamatCreateNestedOneWithoutAlamatInput
   }
 
   export type alamatUncheckedCreateWithoutUsersInput = {
     id_alamat: string
-    alamat?: string | null
+    alamat: string
     catatan?: string | null
-    latitude?: Decimal | DecimalJsLike | number | string | null
-    longitude?: Decimal | DecimalJsLike | number | string | null
-    is_default?: boolean | null
+    latitude: Decimal | DecimalJsLike | number | string
+    longitude: Decimal | DecimalJsLike | number | string
+    is_default: boolean
     id_tipe?: bigint | number | null
-    id_kel?: bigint | number | null
-    id_kec?: bigint | number | null
-    id_kota?: number | null
-    id_prov?: number | null
+    id_kel: bigint | number
+    id_kec: bigint | number
+    id_kota: number
+    id_prov: number
     created_at?: Date | string | null
     updated_at?: Date | string | null
   }
@@ -19463,32 +19358,32 @@ export namespace Prisma {
 
   export type alamatCreateWithoutKecamatanInput = {
     id_alamat: string
-    alamat?: string | null
+    alamat: string
     catatan?: string | null
-    latitude?: Decimal | DecimalJsLike | number | string | null
-    longitude?: Decimal | DecimalJsLike | number | string | null
-    is_default?: boolean | null
+    latitude: Decimal | DecimalJsLike | number | string
+    longitude: Decimal | DecimalJsLike | number | string
+    is_default: boolean
     created_at?: Date | string | null
     updated_at?: Date | string | null
-    kelurahan?: kelurahanCreateNestedOneWithoutAlamatInput
-    cities?: citiesCreateNestedOneWithoutAlamatInput
-    provinces?: provincesCreateNestedOneWithoutAlamatInput
+    kelurahan: kelurahanCreateNestedOneWithoutAlamatInput
+    cities: citiesCreateNestedOneWithoutAlamatInput
+    provinces: provincesCreateNestedOneWithoutAlamatInput
     tipe_alamat?: tipe_alamatCreateNestedOneWithoutAlamatInput
-    users?: usersCreateNestedOneWithoutAlamatInput
+    users: usersCreateNestedOneWithoutAlamatInput
   }
 
   export type alamatUncheckedCreateWithoutKecamatanInput = {
     id_alamat: string
-    id_user?: string | null
-    alamat?: string | null
+    id_user: string
+    alamat: string
     catatan?: string | null
-    latitude?: Decimal | DecimalJsLike | number | string | null
-    longitude?: Decimal | DecimalJsLike | number | string | null
-    is_default?: boolean | null
+    latitude: Decimal | DecimalJsLike | number | string
+    longitude: Decimal | DecimalJsLike | number | string
+    is_default: boolean
     id_tipe?: bigint | number | null
-    id_kel?: bigint | number | null
-    id_kota?: number | null
-    id_prov?: number | null
+    id_kel: bigint | number
+    id_kota: number
+    id_prov: number
     created_at?: Date | string | null
     updated_at?: Date | string | null
   }
@@ -19624,32 +19519,32 @@ export namespace Prisma {
 
   export type alamatCreateWithoutKelurahanInput = {
     id_alamat: string
-    alamat?: string | null
+    alamat: string
     catatan?: string | null
-    latitude?: Decimal | DecimalJsLike | number | string | null
-    longitude?: Decimal | DecimalJsLike | number | string | null
-    is_default?: boolean | null
+    latitude: Decimal | DecimalJsLike | number | string
+    longitude: Decimal | DecimalJsLike | number | string
+    is_default: boolean
     created_at?: Date | string | null
     updated_at?: Date | string | null
-    kecamatan?: kecamatanCreateNestedOneWithoutAlamatInput
-    cities?: citiesCreateNestedOneWithoutAlamatInput
-    provinces?: provincesCreateNestedOneWithoutAlamatInput
+    kecamatan: kecamatanCreateNestedOneWithoutAlamatInput
+    cities: citiesCreateNestedOneWithoutAlamatInput
+    provinces: provincesCreateNestedOneWithoutAlamatInput
     tipe_alamat?: tipe_alamatCreateNestedOneWithoutAlamatInput
-    users?: usersCreateNestedOneWithoutAlamatInput
+    users: usersCreateNestedOneWithoutAlamatInput
   }
 
   export type alamatUncheckedCreateWithoutKelurahanInput = {
     id_alamat: string
-    id_user?: string | null
-    alamat?: string | null
+    id_user: string
+    alamat: string
     catatan?: string | null
-    latitude?: Decimal | DecimalJsLike | number | string | null
-    longitude?: Decimal | DecimalJsLike | number | string | null
-    is_default?: boolean | null
+    latitude: Decimal | DecimalJsLike | number | string
+    longitude: Decimal | DecimalJsLike | number | string
+    is_default: boolean
     id_tipe?: bigint | number | null
-    id_kec?: bigint | number | null
-    id_kota?: number | null
-    id_prov?: number | null
+    id_kec: bigint | number
+    id_kota: number
+    id_prov: number
     created_at?: Date | string | null
     updated_at?: Date | string | null
   }
@@ -19734,32 +19629,32 @@ export namespace Prisma {
 
   export type alamatCreateWithoutTipe_alamatInput = {
     id_alamat: string
-    alamat?: string | null
+    alamat: string
     catatan?: string | null
-    latitude?: Decimal | DecimalJsLike | number | string | null
-    longitude?: Decimal | DecimalJsLike | number | string | null
-    is_default?: boolean | null
+    latitude: Decimal | DecimalJsLike | number | string
+    longitude: Decimal | DecimalJsLike | number | string
+    is_default: boolean
     created_at?: Date | string | null
     updated_at?: Date | string | null
-    kecamatan?: kecamatanCreateNestedOneWithoutAlamatInput
-    kelurahan?: kelurahanCreateNestedOneWithoutAlamatInput
-    cities?: citiesCreateNestedOneWithoutAlamatInput
-    provinces?: provincesCreateNestedOneWithoutAlamatInput
-    users?: usersCreateNestedOneWithoutAlamatInput
+    kecamatan: kecamatanCreateNestedOneWithoutAlamatInput
+    kelurahan: kelurahanCreateNestedOneWithoutAlamatInput
+    cities: citiesCreateNestedOneWithoutAlamatInput
+    provinces: provincesCreateNestedOneWithoutAlamatInput
+    users: usersCreateNestedOneWithoutAlamatInput
   }
 
   export type alamatUncheckedCreateWithoutTipe_alamatInput = {
     id_alamat: string
-    id_user?: string | null
-    alamat?: string | null
+    id_user: string
+    alamat: string
     catatan?: string | null
-    latitude?: Decimal | DecimalJsLike | number | string | null
-    longitude?: Decimal | DecimalJsLike | number | string | null
-    is_default?: boolean | null
-    id_kel?: bigint | number | null
-    id_kec?: bigint | number | null
-    id_kota?: number | null
-    id_prov?: number | null
+    latitude: Decimal | DecimalJsLike | number | string
+    longitude: Decimal | DecimalJsLike | number | string
+    is_default: boolean
+    id_kel: bigint | number
+    id_kec: bigint | number
+    id_kota: number
+    id_prov: number
     created_at?: Date | string | null
     updated_at?: Date | string | null
   }
@@ -19792,16 +19687,16 @@ export namespace Prisma {
 
   export type alamatCreateManyCitiesInput = {
     id_alamat: string
-    id_user?: string | null
-    alamat?: string | null
+    id_user: string
+    alamat: string
     catatan?: string | null
-    latitude?: Decimal | DecimalJsLike | number | string | null
-    longitude?: Decimal | DecimalJsLike | number | string | null
-    is_default?: boolean | null
+    latitude: Decimal | DecimalJsLike | number | string
+    longitude: Decimal | DecimalJsLike | number | string
+    is_default: boolean
     id_tipe?: bigint | number | null
-    id_kel?: bigint | number | null
-    id_kec?: bigint | number | null
-    id_prov?: number | null
+    id_kel: bigint | number
+    id_kec: bigint | number
+    id_prov: number
     created_at?: Date | string | null
     updated_at?: Date | string | null
   }
@@ -19815,48 +19710,48 @@ export namespace Prisma {
 
   export type alamatUpdateWithoutCitiesInput = {
     id_alamat?: StringFieldUpdateOperationsInput | string
-    alamat?: NullableStringFieldUpdateOperationsInput | string | null
+    alamat?: StringFieldUpdateOperationsInput | string
     catatan?: NullableStringFieldUpdateOperationsInput | string | null
-    latitude?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    longitude?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    is_default?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    latitude?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    longitude?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    is_default?: BoolFieldUpdateOperationsInput | boolean
     created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    kecamatan?: kecamatanUpdateOneWithoutAlamatNestedInput
-    kelurahan?: kelurahanUpdateOneWithoutAlamatNestedInput
-    provinces?: provincesUpdateOneWithoutAlamatNestedInput
+    kecamatan?: kecamatanUpdateOneRequiredWithoutAlamatNestedInput
+    kelurahan?: kelurahanUpdateOneRequiredWithoutAlamatNestedInput
+    provinces?: provincesUpdateOneRequiredWithoutAlamatNestedInput
     tipe_alamat?: tipe_alamatUpdateOneWithoutAlamatNestedInput
-    users?: usersUpdateOneWithoutAlamatNestedInput
+    users?: usersUpdateOneRequiredWithoutAlamatNestedInput
   }
 
   export type alamatUncheckedUpdateWithoutCitiesInput = {
     id_alamat?: StringFieldUpdateOperationsInput | string
-    id_user?: NullableStringFieldUpdateOperationsInput | string | null
-    alamat?: NullableStringFieldUpdateOperationsInput | string | null
+    id_user?: StringFieldUpdateOperationsInput | string
+    alamat?: StringFieldUpdateOperationsInput | string
     catatan?: NullableStringFieldUpdateOperationsInput | string | null
-    latitude?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    longitude?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    is_default?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    latitude?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    longitude?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    is_default?: BoolFieldUpdateOperationsInput | boolean
     id_tipe?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
-    id_kel?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
-    id_kec?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
-    id_prov?: NullableIntFieldUpdateOperationsInput | number | null
+    id_kel?: BigIntFieldUpdateOperationsInput | bigint | number
+    id_kec?: BigIntFieldUpdateOperationsInput | bigint | number
+    id_prov?: IntFieldUpdateOperationsInput | number
     created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type alamatUncheckedUpdateManyWithoutCitiesInput = {
     id_alamat?: StringFieldUpdateOperationsInput | string
-    id_user?: NullableStringFieldUpdateOperationsInput | string | null
-    alamat?: NullableStringFieldUpdateOperationsInput | string | null
+    id_user?: StringFieldUpdateOperationsInput | string
+    alamat?: StringFieldUpdateOperationsInput | string
     catatan?: NullableStringFieldUpdateOperationsInput | string | null
-    latitude?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    longitude?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    is_default?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    latitude?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    longitude?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    is_default?: BoolFieldUpdateOperationsInput | boolean
     id_tipe?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
-    id_kel?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
-    id_kec?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
-    id_prov?: NullableIntFieldUpdateOperationsInput | number | null
+    id_kel?: BigIntFieldUpdateOperationsInput | bigint | number
+    id_kec?: BigIntFieldUpdateOperationsInput | bigint | number
+    id_prov?: IntFieldUpdateOperationsInput | number
     created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
@@ -19920,16 +19815,16 @@ export namespace Prisma {
 
   export type alamatCreateManyProvincesInput = {
     id_alamat: string
-    id_user?: string | null
-    alamat?: string | null
+    id_user: string
+    alamat: string
     catatan?: string | null
-    latitude?: Decimal | DecimalJsLike | number | string | null
-    longitude?: Decimal | DecimalJsLike | number | string | null
-    is_default?: boolean | null
+    latitude: Decimal | DecimalJsLike | number | string
+    longitude: Decimal | DecimalJsLike | number | string
+    is_default: boolean
     id_tipe?: bigint | number | null
-    id_kel?: bigint | number | null
-    id_kec?: bigint | number | null
-    id_kota?: number | null
+    id_kel: bigint | number
+    id_kec: bigint | number
+    id_kota: number
     created_at?: Date | string | null
     updated_at?: Date | string | null
   }
@@ -19943,48 +19838,48 @@ export namespace Prisma {
 
   export type alamatUpdateWithoutProvincesInput = {
     id_alamat?: StringFieldUpdateOperationsInput | string
-    alamat?: NullableStringFieldUpdateOperationsInput | string | null
+    alamat?: StringFieldUpdateOperationsInput | string
     catatan?: NullableStringFieldUpdateOperationsInput | string | null
-    latitude?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    longitude?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    is_default?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    latitude?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    longitude?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    is_default?: BoolFieldUpdateOperationsInput | boolean
     created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    kecamatan?: kecamatanUpdateOneWithoutAlamatNestedInput
-    kelurahan?: kelurahanUpdateOneWithoutAlamatNestedInput
-    cities?: citiesUpdateOneWithoutAlamatNestedInput
+    kecamatan?: kecamatanUpdateOneRequiredWithoutAlamatNestedInput
+    kelurahan?: kelurahanUpdateOneRequiredWithoutAlamatNestedInput
+    cities?: citiesUpdateOneRequiredWithoutAlamatNestedInput
     tipe_alamat?: tipe_alamatUpdateOneWithoutAlamatNestedInput
-    users?: usersUpdateOneWithoutAlamatNestedInput
+    users?: usersUpdateOneRequiredWithoutAlamatNestedInput
   }
 
   export type alamatUncheckedUpdateWithoutProvincesInput = {
     id_alamat?: StringFieldUpdateOperationsInput | string
-    id_user?: NullableStringFieldUpdateOperationsInput | string | null
-    alamat?: NullableStringFieldUpdateOperationsInput | string | null
+    id_user?: StringFieldUpdateOperationsInput | string
+    alamat?: StringFieldUpdateOperationsInput | string
     catatan?: NullableStringFieldUpdateOperationsInput | string | null
-    latitude?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    longitude?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    is_default?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    latitude?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    longitude?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    is_default?: BoolFieldUpdateOperationsInput | boolean
     id_tipe?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
-    id_kel?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
-    id_kec?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
-    id_kota?: NullableIntFieldUpdateOperationsInput | number | null
+    id_kel?: BigIntFieldUpdateOperationsInput | bigint | number
+    id_kec?: BigIntFieldUpdateOperationsInput | bigint | number
+    id_kota?: IntFieldUpdateOperationsInput | number
     created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type alamatUncheckedUpdateManyWithoutProvincesInput = {
     id_alamat?: StringFieldUpdateOperationsInput | string
-    id_user?: NullableStringFieldUpdateOperationsInput | string | null
-    alamat?: NullableStringFieldUpdateOperationsInput | string | null
+    id_user?: StringFieldUpdateOperationsInput | string
+    alamat?: StringFieldUpdateOperationsInput | string
     catatan?: NullableStringFieldUpdateOperationsInput | string | null
-    latitude?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    longitude?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    is_default?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    latitude?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    longitude?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    is_default?: BoolFieldUpdateOperationsInput | boolean
     id_tipe?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
-    id_kel?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
-    id_kec?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
-    id_kota?: NullableIntFieldUpdateOperationsInput | number | null
+    id_kel?: BigIntFieldUpdateOperationsInput | bigint | number
+    id_kec?: BigIntFieldUpdateOperationsInput | bigint | number
+    id_kota?: IntFieldUpdateOperationsInput | number
     created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
@@ -20015,16 +19910,16 @@ export namespace Prisma {
 
   export type alamatCreateManyUsersInput = {
     id_alamat: string
-    alamat?: string | null
+    alamat: string
     catatan?: string | null
-    latitude?: Decimal | DecimalJsLike | number | string | null
-    longitude?: Decimal | DecimalJsLike | number | string | null
-    is_default?: boolean | null
+    latitude: Decimal | DecimalJsLike | number | string
+    longitude: Decimal | DecimalJsLike | number | string
+    is_default: boolean
     id_tipe?: bigint | number | null
-    id_kel?: bigint | number | null
-    id_kec?: bigint | number | null
-    id_kota?: number | null
-    id_prov?: number | null
+    id_kel: bigint | number
+    id_kec: bigint | number
+    id_kota: number
+    id_prov: number
     created_at?: Date | string | null
     updated_at?: Date | string | null
   }
@@ -20035,48 +19930,48 @@ export namespace Prisma {
 
   export type alamatUpdateWithoutUsersInput = {
     id_alamat?: StringFieldUpdateOperationsInput | string
-    alamat?: NullableStringFieldUpdateOperationsInput | string | null
+    alamat?: StringFieldUpdateOperationsInput | string
     catatan?: NullableStringFieldUpdateOperationsInput | string | null
-    latitude?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    longitude?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    is_default?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    latitude?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    longitude?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    is_default?: BoolFieldUpdateOperationsInput | boolean
     created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    kecamatan?: kecamatanUpdateOneWithoutAlamatNestedInput
-    kelurahan?: kelurahanUpdateOneWithoutAlamatNestedInput
-    cities?: citiesUpdateOneWithoutAlamatNestedInput
-    provinces?: provincesUpdateOneWithoutAlamatNestedInput
+    kecamatan?: kecamatanUpdateOneRequiredWithoutAlamatNestedInput
+    kelurahan?: kelurahanUpdateOneRequiredWithoutAlamatNestedInput
+    cities?: citiesUpdateOneRequiredWithoutAlamatNestedInput
+    provinces?: provincesUpdateOneRequiredWithoutAlamatNestedInput
     tipe_alamat?: tipe_alamatUpdateOneWithoutAlamatNestedInput
   }
 
   export type alamatUncheckedUpdateWithoutUsersInput = {
     id_alamat?: StringFieldUpdateOperationsInput | string
-    alamat?: NullableStringFieldUpdateOperationsInput | string | null
+    alamat?: StringFieldUpdateOperationsInput | string
     catatan?: NullableStringFieldUpdateOperationsInput | string | null
-    latitude?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    longitude?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    is_default?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    latitude?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    longitude?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    is_default?: BoolFieldUpdateOperationsInput | boolean
     id_tipe?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
-    id_kel?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
-    id_kec?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
-    id_kota?: NullableIntFieldUpdateOperationsInput | number | null
-    id_prov?: NullableIntFieldUpdateOperationsInput | number | null
+    id_kel?: BigIntFieldUpdateOperationsInput | bigint | number
+    id_kec?: BigIntFieldUpdateOperationsInput | bigint | number
+    id_kota?: IntFieldUpdateOperationsInput | number
+    id_prov?: IntFieldUpdateOperationsInput | number
     created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type alamatUncheckedUpdateManyWithoutUsersInput = {
     id_alamat?: StringFieldUpdateOperationsInput | string
-    alamat?: NullableStringFieldUpdateOperationsInput | string | null
+    alamat?: StringFieldUpdateOperationsInput | string
     catatan?: NullableStringFieldUpdateOperationsInput | string | null
-    latitude?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    longitude?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    is_default?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    latitude?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    longitude?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    is_default?: BoolFieldUpdateOperationsInput | boolean
     id_tipe?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
-    id_kel?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
-    id_kec?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
-    id_kota?: NullableIntFieldUpdateOperationsInput | number | null
-    id_prov?: NullableIntFieldUpdateOperationsInput | number | null
+    id_kel?: BigIntFieldUpdateOperationsInput | bigint | number
+    id_kec?: BigIntFieldUpdateOperationsInput | bigint | number
+    id_kota?: IntFieldUpdateOperationsInput | number
+    id_prov?: IntFieldUpdateOperationsInput | number
     created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
@@ -20111,16 +20006,16 @@ export namespace Prisma {
 
   export type alamatCreateManyKecamatanInput = {
     id_alamat: string
-    id_user?: string | null
-    alamat?: string | null
+    id_user: string
+    alamat: string
     catatan?: string | null
-    latitude?: Decimal | DecimalJsLike | number | string | null
-    longitude?: Decimal | DecimalJsLike | number | string | null
-    is_default?: boolean | null
+    latitude: Decimal | DecimalJsLike | number | string
+    longitude: Decimal | DecimalJsLike | number | string
+    is_default: boolean
     id_tipe?: bigint | number | null
-    id_kel?: bigint | number | null
-    id_kota?: number | null
-    id_prov?: number | null
+    id_kel: bigint | number
+    id_kota: number
+    id_prov: number
     created_at?: Date | string | null
     updated_at?: Date | string | null
   }
@@ -20134,48 +20029,48 @@ export namespace Prisma {
 
   export type alamatUpdateWithoutKecamatanInput = {
     id_alamat?: StringFieldUpdateOperationsInput | string
-    alamat?: NullableStringFieldUpdateOperationsInput | string | null
+    alamat?: StringFieldUpdateOperationsInput | string
     catatan?: NullableStringFieldUpdateOperationsInput | string | null
-    latitude?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    longitude?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    is_default?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    latitude?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    longitude?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    is_default?: BoolFieldUpdateOperationsInput | boolean
     created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    kelurahan?: kelurahanUpdateOneWithoutAlamatNestedInput
-    cities?: citiesUpdateOneWithoutAlamatNestedInput
-    provinces?: provincesUpdateOneWithoutAlamatNestedInput
+    kelurahan?: kelurahanUpdateOneRequiredWithoutAlamatNestedInput
+    cities?: citiesUpdateOneRequiredWithoutAlamatNestedInput
+    provinces?: provincesUpdateOneRequiredWithoutAlamatNestedInput
     tipe_alamat?: tipe_alamatUpdateOneWithoutAlamatNestedInput
-    users?: usersUpdateOneWithoutAlamatNestedInput
+    users?: usersUpdateOneRequiredWithoutAlamatNestedInput
   }
 
   export type alamatUncheckedUpdateWithoutKecamatanInput = {
     id_alamat?: StringFieldUpdateOperationsInput | string
-    id_user?: NullableStringFieldUpdateOperationsInput | string | null
-    alamat?: NullableStringFieldUpdateOperationsInput | string | null
+    id_user?: StringFieldUpdateOperationsInput | string
+    alamat?: StringFieldUpdateOperationsInput | string
     catatan?: NullableStringFieldUpdateOperationsInput | string | null
-    latitude?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    longitude?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    is_default?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    latitude?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    longitude?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    is_default?: BoolFieldUpdateOperationsInput | boolean
     id_tipe?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
-    id_kel?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
-    id_kota?: NullableIntFieldUpdateOperationsInput | number | null
-    id_prov?: NullableIntFieldUpdateOperationsInput | number | null
+    id_kel?: BigIntFieldUpdateOperationsInput | bigint | number
+    id_kota?: IntFieldUpdateOperationsInput | number
+    id_prov?: IntFieldUpdateOperationsInput | number
     created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type alamatUncheckedUpdateManyWithoutKecamatanInput = {
     id_alamat?: StringFieldUpdateOperationsInput | string
-    id_user?: NullableStringFieldUpdateOperationsInput | string | null
-    alamat?: NullableStringFieldUpdateOperationsInput | string | null
+    id_user?: StringFieldUpdateOperationsInput | string
+    alamat?: StringFieldUpdateOperationsInput | string
     catatan?: NullableStringFieldUpdateOperationsInput | string | null
-    latitude?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    longitude?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    is_default?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    latitude?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    longitude?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    is_default?: BoolFieldUpdateOperationsInput | boolean
     id_tipe?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
-    id_kel?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
-    id_kota?: NullableIntFieldUpdateOperationsInput | number | null
-    id_prov?: NullableIntFieldUpdateOperationsInput | number | null
+    id_kel?: BigIntFieldUpdateOperationsInput | bigint | number
+    id_kota?: IntFieldUpdateOperationsInput | number
+    id_prov?: IntFieldUpdateOperationsInput | number
     created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
@@ -20205,128 +20100,128 @@ export namespace Prisma {
 
   export type alamatCreateManyKelurahanInput = {
     id_alamat: string
-    id_user?: string | null
-    alamat?: string | null
+    id_user: string
+    alamat: string
     catatan?: string | null
-    latitude?: Decimal | DecimalJsLike | number | string | null
-    longitude?: Decimal | DecimalJsLike | number | string | null
-    is_default?: boolean | null
+    latitude: Decimal | DecimalJsLike | number | string
+    longitude: Decimal | DecimalJsLike | number | string
+    is_default: boolean
     id_tipe?: bigint | number | null
-    id_kec?: bigint | number | null
-    id_kota?: number | null
-    id_prov?: number | null
+    id_kec: bigint | number
+    id_kota: number
+    id_prov: number
     created_at?: Date | string | null
     updated_at?: Date | string | null
   }
 
   export type alamatUpdateWithoutKelurahanInput = {
     id_alamat?: StringFieldUpdateOperationsInput | string
-    alamat?: NullableStringFieldUpdateOperationsInput | string | null
+    alamat?: StringFieldUpdateOperationsInput | string
     catatan?: NullableStringFieldUpdateOperationsInput | string | null
-    latitude?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    longitude?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    is_default?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    latitude?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    longitude?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    is_default?: BoolFieldUpdateOperationsInput | boolean
     created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    kecamatan?: kecamatanUpdateOneWithoutAlamatNestedInput
-    cities?: citiesUpdateOneWithoutAlamatNestedInput
-    provinces?: provincesUpdateOneWithoutAlamatNestedInput
+    kecamatan?: kecamatanUpdateOneRequiredWithoutAlamatNestedInput
+    cities?: citiesUpdateOneRequiredWithoutAlamatNestedInput
+    provinces?: provincesUpdateOneRequiredWithoutAlamatNestedInput
     tipe_alamat?: tipe_alamatUpdateOneWithoutAlamatNestedInput
-    users?: usersUpdateOneWithoutAlamatNestedInput
+    users?: usersUpdateOneRequiredWithoutAlamatNestedInput
   }
 
   export type alamatUncheckedUpdateWithoutKelurahanInput = {
     id_alamat?: StringFieldUpdateOperationsInput | string
-    id_user?: NullableStringFieldUpdateOperationsInput | string | null
-    alamat?: NullableStringFieldUpdateOperationsInput | string | null
+    id_user?: StringFieldUpdateOperationsInput | string
+    alamat?: StringFieldUpdateOperationsInput | string
     catatan?: NullableStringFieldUpdateOperationsInput | string | null
-    latitude?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    longitude?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    is_default?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    latitude?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    longitude?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    is_default?: BoolFieldUpdateOperationsInput | boolean
     id_tipe?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
-    id_kec?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
-    id_kota?: NullableIntFieldUpdateOperationsInput | number | null
-    id_prov?: NullableIntFieldUpdateOperationsInput | number | null
+    id_kec?: BigIntFieldUpdateOperationsInput | bigint | number
+    id_kota?: IntFieldUpdateOperationsInput | number
+    id_prov?: IntFieldUpdateOperationsInput | number
     created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type alamatUncheckedUpdateManyWithoutKelurahanInput = {
     id_alamat?: StringFieldUpdateOperationsInput | string
-    id_user?: NullableStringFieldUpdateOperationsInput | string | null
-    alamat?: NullableStringFieldUpdateOperationsInput | string | null
+    id_user?: StringFieldUpdateOperationsInput | string
+    alamat?: StringFieldUpdateOperationsInput | string
     catatan?: NullableStringFieldUpdateOperationsInput | string | null
-    latitude?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    longitude?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    is_default?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    latitude?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    longitude?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    is_default?: BoolFieldUpdateOperationsInput | boolean
     id_tipe?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
-    id_kec?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
-    id_kota?: NullableIntFieldUpdateOperationsInput | number | null
-    id_prov?: NullableIntFieldUpdateOperationsInput | number | null
+    id_kec?: BigIntFieldUpdateOperationsInput | bigint | number
+    id_kota?: IntFieldUpdateOperationsInput | number
+    id_prov?: IntFieldUpdateOperationsInput | number
     created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type alamatCreateManyTipe_alamatInput = {
     id_alamat: string
-    id_user?: string | null
-    alamat?: string | null
+    id_user: string
+    alamat: string
     catatan?: string | null
-    latitude?: Decimal | DecimalJsLike | number | string | null
-    longitude?: Decimal | DecimalJsLike | number | string | null
-    is_default?: boolean | null
-    id_kel?: bigint | number | null
-    id_kec?: bigint | number | null
-    id_kota?: number | null
-    id_prov?: number | null
+    latitude: Decimal | DecimalJsLike | number | string
+    longitude: Decimal | DecimalJsLike | number | string
+    is_default: boolean
+    id_kel: bigint | number
+    id_kec: bigint | number
+    id_kota: number
+    id_prov: number
     created_at?: Date | string | null
     updated_at?: Date | string | null
   }
 
   export type alamatUpdateWithoutTipe_alamatInput = {
     id_alamat?: StringFieldUpdateOperationsInput | string
-    alamat?: NullableStringFieldUpdateOperationsInput | string | null
+    alamat?: StringFieldUpdateOperationsInput | string
     catatan?: NullableStringFieldUpdateOperationsInput | string | null
-    latitude?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    longitude?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    is_default?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    latitude?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    longitude?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    is_default?: BoolFieldUpdateOperationsInput | boolean
     created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    kecamatan?: kecamatanUpdateOneWithoutAlamatNestedInput
-    kelurahan?: kelurahanUpdateOneWithoutAlamatNestedInput
-    cities?: citiesUpdateOneWithoutAlamatNestedInput
-    provinces?: provincesUpdateOneWithoutAlamatNestedInput
-    users?: usersUpdateOneWithoutAlamatNestedInput
+    kecamatan?: kecamatanUpdateOneRequiredWithoutAlamatNestedInput
+    kelurahan?: kelurahanUpdateOneRequiredWithoutAlamatNestedInput
+    cities?: citiesUpdateOneRequiredWithoutAlamatNestedInput
+    provinces?: provincesUpdateOneRequiredWithoutAlamatNestedInput
+    users?: usersUpdateOneRequiredWithoutAlamatNestedInput
   }
 
   export type alamatUncheckedUpdateWithoutTipe_alamatInput = {
     id_alamat?: StringFieldUpdateOperationsInput | string
-    id_user?: NullableStringFieldUpdateOperationsInput | string | null
-    alamat?: NullableStringFieldUpdateOperationsInput | string | null
+    id_user?: StringFieldUpdateOperationsInput | string
+    alamat?: StringFieldUpdateOperationsInput | string
     catatan?: NullableStringFieldUpdateOperationsInput | string | null
-    latitude?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    longitude?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    is_default?: NullableBoolFieldUpdateOperationsInput | boolean | null
-    id_kel?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
-    id_kec?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
-    id_kota?: NullableIntFieldUpdateOperationsInput | number | null
-    id_prov?: NullableIntFieldUpdateOperationsInput | number | null
+    latitude?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    longitude?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    is_default?: BoolFieldUpdateOperationsInput | boolean
+    id_kel?: BigIntFieldUpdateOperationsInput | bigint | number
+    id_kec?: BigIntFieldUpdateOperationsInput | bigint | number
+    id_kota?: IntFieldUpdateOperationsInput | number
+    id_prov?: IntFieldUpdateOperationsInput | number
     created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type alamatUncheckedUpdateManyWithoutTipe_alamatInput = {
     id_alamat?: StringFieldUpdateOperationsInput | string
-    id_user?: NullableStringFieldUpdateOperationsInput | string | null
-    alamat?: NullableStringFieldUpdateOperationsInput | string | null
+    id_user?: StringFieldUpdateOperationsInput | string
+    alamat?: StringFieldUpdateOperationsInput | string
     catatan?: NullableStringFieldUpdateOperationsInput | string | null
-    latitude?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    longitude?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    is_default?: NullableBoolFieldUpdateOperationsInput | boolean | null
-    id_kel?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
-    id_kec?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
-    id_kota?: NullableIntFieldUpdateOperationsInput | number | null
-    id_prov?: NullableIntFieldUpdateOperationsInput | number | null
+    latitude?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    longitude?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    is_default?: BoolFieldUpdateOperationsInput | boolean
+    id_kel?: BigIntFieldUpdateOperationsInput | bigint | number
+    id_kec?: BigIntFieldUpdateOperationsInput | bigint | number
+    id_kota?: IntFieldUpdateOperationsInput | number
+    id_prov?: IntFieldUpdateOperationsInput | number
     created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
