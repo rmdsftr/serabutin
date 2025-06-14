@@ -1,9 +1,11 @@
 'use client';
 
-import { BackgroundLayout, TitleLayout, ContentLayout, LogoLayout } from "@/layouts/login"
+import { BackgroundLayout, TitleLayout, LogoLayout } from "@/layouts/login"
+import { ContentLayout } from "@/layouts/auth";
 import Input from "@/components/ui/input/input";
 import Button from "@/components/ui/button/button";
 import styles from '@/styles/pages/login.module.css';
+import shared from '@/styles/pages/auth.module.css';
 import userIcon from '@/assets/icons/username.png';
 import passwordIcon from '@/assets/icons/password.png';
 import Image from "next/image";
@@ -12,10 +14,10 @@ import { poppins } from "@/components/fonts/poppins";
 
 export default function LoginPage(){
     return(
-        <div className={styles.body}>
-            <LogoLayout></LogoLayout>
+        <div className={shared.body}>
+            <LogoLayout/>
             <BackgroundLayout>
-                <div>
+                <div className={shared.container}>
                     <TitleLayout></TitleLayout>
                     <br /><br />
                     <ContentLayout>
@@ -27,11 +29,11 @@ export default function LoginPage(){
                                     <Image
                                         src={userIcon}
                                         alt="username"
-                                        width={15}
-                                        height={18}
+                                        width={13}
+                                        height={15}
                                     />
                                 }
-                                fullwidth
+                                fullwidth required
                             />
                             <br />
                             <PasswordInput
@@ -42,10 +44,11 @@ export default function LoginPage(){
                                     <Image
                                         src={passwordIcon}
                                         alt="password"
-                                        width={15}
-                                        height={18}
+                                        width={13}
+                                        height={15}
                                     />
                                 }
+                                required
                             />
                         </div>
                         <br />
@@ -59,9 +62,9 @@ export default function LoginPage(){
                             >MASUK</Button>
                         </div>
                         <br />
-                        <div className={`${poppins.variable} ${styles.here}`}>
+                        <div className={`${poppins.variable} ${shared.here}`}>
                             <p>Belum punya akun? 
-                                <a href=""> Daftar di sini</a>
+                                <a href="/register"> Daftar di sini</a>
                             </p>
                         </div>
                     </ContentLayout>

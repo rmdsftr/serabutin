@@ -1,0 +1,24 @@
+.titleContainer{
+    display: flex;
+    align-items: center;
+    margin-left: -1rem;
+}
+
+.title{
+    font-size: 37pt;
+    font-family: var(--cherryMedium);
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+}
+
+.subtitle{
+    font-size: 18pt;
+    font-family: var(--poppins);
+    color: #333645;
+}
+
+.span{
+    font-family: var(--cherryMedium);
+    color: #7991C9;
+    font-weight: 500;
+}

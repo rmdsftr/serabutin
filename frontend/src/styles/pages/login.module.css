@@ -1,11 +1,3 @@
-.body{
-    width: 100%;
-    height: 100vh;
-    background-color: #333645;
-    display: flex;
-    align-items: center;
-}
-
 .forget{
     float: right;
     font-family: var(--poppins);
@@ -15,21 +7,5 @@
     text-decoration: none; 
     font-size: 9pt;
     font-weight: 500;
-    color: #333645;
-}
-
-.here{
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    font-family: var(--poppins);
-    font-size: 9pt;
-    font-weight: 500;
-    color: #333645;
-}
-
-.here a{
-    text-decoration: none;
-    font-weight: 700;
     color: #333645;
 }

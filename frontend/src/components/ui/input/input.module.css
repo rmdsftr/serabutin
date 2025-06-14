@@ -8,6 +8,10 @@
     background-color: transparent;
 }
 
+.input::placeholder{
+    color: #9ca3af;
+}
+
 .inputGroup{
     display: flex;
     flex-direction: column;
@@ -20,6 +24,12 @@
     align-items: center;
     position: relative;
     border-radius: 1.5rem;
+    border: 2px solid transparent;
+}
+
+.inputWrapper:focus-within{
+    border: 2px #7991C9 solid;
+    transition: border 0.3s ease;
 }
 
 .default{
@@ -29,6 +39,11 @@
 .large{
     font-size: 11pt;
     padding: 1rem;
+}
+
+.medium{
+    font-size: 10pt;
+    padding: 0.75rem;
 }
 
 .fullwidth{
@@ -45,4 +60,19 @@
 
 .rightIcon{
     margin-right: 1rem;
+}
+
+.label{
+    font-family: var(--poppins);
+    font-size: 8pt;
+    color: gray;
+}
+
+.input[type="date"],
+.input[type="time"],
+.input[type="datetime-local"] {
+  cursor: pointer;
+  padding: 0.5rem;
+  color: #9ca3af;
+  font-size: 10pt;
 }

@@ -1,0 +1,28 @@
+.background{
+    height: 100vh;
+    position: fixed;
+    display: flex;
+    left: 0;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #E1E4F1;
+    width: 50%;
+    border-top-right-radius: 3rem;
+    border-bottom-right-radius: 3rem;
+    padding: 5rem;
+}
+
+.margin{
+    display: flex;
+    position: fixed;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    right: 0;
+    width: 50%;
+    padding: 9rem;
+    font-family: var(--poppins);
+    font-weight: 400;
+    color: white;
+}
